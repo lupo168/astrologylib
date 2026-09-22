@@ -1,0 +1,108 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageAttribution from '../components/PageAttribution.astro';
+
+const title = "The Ten Wings · Shi Yi - AstrologyLib";
+const description = "The Ten Wings (十翼) - the commentaries that make the Zhou Yi a philosophy: Tuan, Xiang, Wen Yan, Xi Ci, Shuo Gua, Xu Gua and Za Gua. The Great Treatise (Xi Ci I) in full, translated.";
+
+const wings = [
+  { zh: "Tuan Zhuan · 彖傳", py: "彖傳", en: "Judgment Commentary", desc: "The tuan interprets each hexagram as a whole - why the judgment reads as it does. Two books, one per canon." },
+  { zh: "Xiang Zhuan · 象傳", py: "象傳", en: "Image Commentary", desc: "The xiang reads each hexagram and line as an image (the great image for the hexagram, the small images for the six lines). Two books." },
+  { zh: "Wen Yan · 文言", py: "文言", en: "Words on the Text", desc: "An extended discussion of the first two hexagrams, Qian and Kun - the most developed commentary on the archetypal pair. One book." },
+  { zh: "Xi Ci Zhuan · 繫辭傳", py: "繫辭傳", en: "The Great Treatise", desc: "The philosophical heart of the Ten Wings - the theory of change, the origins of the hexagrams, and the method of the diviner. Two books; Book I is translated in full on this page." },
+  { zh: "Shuo Gua · 說卦", py: "說卦", en: "Discussion of the Trigrams", desc: "Explains the eight trigrams and their associations - images, directions, natures, and correspondences. One book." },
+  { zh: "Xu Gua · 序卦", py: "序卦", en: "Sequence of the Hexagrams", desc: "Explains why the sixty-four hexagrams follow one another in the received order. One book, two parts." },
+  { zh: "Za Gua · 雜卦", py: "雜卦", en: "Miscellaneous Notes", desc: "Pairs the sixty-four hexagrams and contrasts them - a compressed key to the meaning of each. One book." }
+];
+
+const xici = [
+  { ch: "第一章", zh: "天尊地卑，乾坤定矣。卑高以陳，貴賤位矣。動靜有常，剛柔斷矣。方以類聚，物以羣分，吉凶生矣。在天成象，在地成形，變化見矣。是故剛柔相摩，八卦相荡，鼓之以雷霆，潤之以風雨，日月運行，一寒一暑。乾道成男，坤道成女；乾知大始，坤作成物；乾以易知，坤以簡能；易則易知，簡則易從；易知則有親，易從則有功；有親則可久，有功則可大；可久則賢人之德，可大則賢人之業。易簡，而天下之理得矣。天下之理得，而成位乎其中矣。", en: "Heaven is honored, Earth is lowly; so Qian and Kun are fixed. Low and high are set in order; so noble and mean take their places. Activity and stillness have their constant ways; so the firm and the yielding are decided. Things gather by kind and divide by group; so fortune and misfortune arise. In heaven images take shape; on earth bodies take form; and change becomes visible. Thus the firm and the yielding rub against each other; the eight trigrams activate one another. Thunder and lightning stir them; wind and rain moisten them; sun and moon circle; one cold, one hot. The way of Qian completes the male; the way of Kun completes the female. Qian knows the great beginning; Kun brings things to completion. Qian is easy to know; Kun is simple to do. What is easy is easy to know; what is simple is easy to follow. What is easy to know draws close; what is easy to follow gains merit. What draws close can endure; what gains merit can grow great. To endure is the virtue of the worthy person; to grow great is the worthy person's work. Being easy and simple, the principle of all under heaven is grasped; once grasped, one stands within it in one's own place." },
+  { ch: "第二章", zh: "聖人設卦觀象，繫辭焉而明吉凶；剛柔相推而生變化。是故吉凶者，失得之象也。悔吝者，憂虞之象也。變化者，進退之象也。剛柔者，晝夜之象也。六爻之動，三極之道也。是故君子所居而安者，易之序也。所樂而玩者，爻之辭也。是故君子居則觀其象而玩其辭，動則觀其變而玩其占；是以自天祐之，吉无不利。", en: "The sage set up the hexagrams and observed their images; he attached judgments to them to make fortune and misfortune clear. The firm and the yielding push each other, and change is born. Thus fortune and misfortune are images of gain and loss; regret and humiliation are images of worry and care; change is the image of advance and retreat; the firm and the yielding are images of day and night. The movement of the six lines carries the way of the three powers. Therefore what the noble person dwells in and rests in is the order of the Change; what delights and occupies them is the words of the lines. Resting, the noble person observes the images and savors the words; moving, they observe the changes and savor the readings. Thus heaven itself assists them - good fortune, nothing unfavorable." },
+  { ch: "第三章", zh: "彖者，言乎象者也。爻者，言乎變者也。吉凶者，言乎其失得也。悔吝者，言乎其小疵也。无咎者，善補過也。是故列貴賤者存乎位，齊小大者存乎卦，辯吉凶者存乎辭，憂悔吝者存乎介，震无咎者存乎悔。是故卦有小大，辭有險易，辭也者，各指其所之。", en: "The tuan (judgment) speaks of the images; the yao (line) speaks of the changes. Fortune and misfortune speak of gain and loss; regret and humiliation speak of small faults; no blame speaks of mending errors well. Thus rank and station rest in position; the balance of small and great rests in the hexagram; discerning fortune and misfortune rests in the words; worry over regret and humiliation rests in the boundary between them; stirring toward no blame rests in repentance. Therefore hexagrams are small and great, and their words are perilous or easy - each word points toward what it means." },
+  { ch: "第四章", zh: "易與天地準，故能彌綸天地之道。仰以觀於天文，俯以察於地理，是故知幽明之故。原始反終，故知死生之說。精氣為物，遊魂為變，是故知鬼神之情狀。與天地相似，故不違；知周乎萬物，而道濟天下，故不過；旁行而不流，樂天知命，故不憂；安土敦乎仁，故能愛；範圍天地之化而不過，曲成萬物而不遺，通乎晝夜之道而知，故神无方而易无體。", en: "The Change matches Heaven and Earth, and so can encompass the way of Heaven and Earth. Looking up it observes the patterns of heaven; looking down it examines the order of the earth; and so it knows the reasons of the dark and the light. It traces beginnings and follows endings, and so knows the teaching of life and death. Vital essence becomes things; the wandering soul brings change; and so it knows the conditions of spirits and ghosts. It is like Heaven and Earth, and so does not turn aside. Its knowing reaches all things, and its way aids all under heaven, and so it does not overreach. It moves alongside without drifting, delights in heaven and knows its portion, and so does not worry. It settles in place and is sincere in humanity, and so can love. It bounds the transformations of Heaven and Earth without overstepping, shapes all things into being without omission, and penetrates the way of day and night and knows it. Therefore the spirit has no fixed place, and the Change has no fixed form." },
+  { ch: "第五章", zh: "一陰一陽之謂道：繼之者善也，成之者性也；仁者見之謂之仁，知者見之謂之知；百姓日用而不知，故君子之道鮮矣。顯諸仁，藏諸用，鼓萬物而不與聖人同憂，盛德大業至矣哉！富有之謂大業，日新之謂盛德，生生之謂易，成象之謂乾，效法之謂坤，極數知來之謂占，通變之謂事，陰陽不測之謂神。", en: "One yin, one yang - this is called the Way. What continues it is goodness; what completes it is nature. The humane see it and call it humane; the wise see it and call it wise; the common people use it daily without knowing it - and so the way of the noble person is rare. It shows itself in the humane, is hidden in its use, and stirs all things without sharing the sage's worries - the fullest virtue and the greatest work! Abundance is called the great work; renewal each day is called full virtue; giving life to life is called the Change; forming images is called Qian; following patterns is called Kun; exhausting the numbers to know what comes is called divination; penetrating change is called affairs; the yin-yang beyond measure is called the spirit." },
+  { ch: "第六章", zh: "夫易，廣矣！大矣！以言乎遠則不禦，以言乎邇則靜而正，以言乎天地之間則備矣！夫乾，其靜也專，其動也直，是以大生焉。夫坤，其靜也翕，其動也闢，是以廣生焉。廣大配天地，變通配四時，陰陽之義配日月，易簡之善配至德。", en: "How vast is the Change! How great! Spoken of as far, it meets nothing that stops it; spoken of as near, it is still and upright; spoken of between Heaven and Earth, it is complete. Qian, still, is concentrated; moving, it is straight - and so the great is born. Kun, still, is gathered; moving, it opens - and so the vast is born. Vastness and greatness match Heaven and Earth; change and passage match the four seasons; the meaning of yin and yang matches the sun and moon; the goodness of the easy and the simple matches the highest virtue." },
+  { ch: "第七章", zh: "子曰：「易其至矣乎！夫易，聖人所以崇德而廣業也，知崇禮卑，崇效天，卑法地。天地設位，而易行乎其中矣。成性存存，道義之門。」", en: "The Master said: Is the Change not the highest! It is how the sage exalts virtue and broadens their work. Wisdom is lofty and ritual is lowly; the lofty follows Heaven, the lowly models Earth. Heaven and Earth take their places, and the Change moves within them. Completing nature and preserving it - this is the gate of the Way and of rightness." },
+  { ch: "第八章", zh: "聖人有以見天下之賾，而擬諸其形容，象其物宜，是故謂之象。聖人有以見天下之動，而觀其會通，以行其典禮，繫辭焉以斷其吉凶，是故謂之爻。言天下之至賾而不可惡也，言天下之至動而不可亂也。擬之而後言，議之而後動，擬議以成其變化。", en: "The sage saw what is hidden in all under heaven, and shaped it into forms and images, matching each thing's pattern - and so called them images. The sage saw the movement of all under heaven, and observed its confluences and passages, to carry out the rites and standards, attaching words to decide fortune and misfortune - and so called them lines. To speak of the most hidden is not to despise it; to speak of the most moving is not to throw it into disorder. Shape it, then speak; weigh it, then act; shaping and weighing complete the changes. 'The crane calls in the shade; its young answers. I have a good cup; we share it with you.' The Master said: The noble person dwells in the house, and if their words are good, those a thousand li away respond - how much more those near at hand! Dwelling in the house, if their words are not good, those a thousand li away turn away - how much more those near! Words issue from the body and reach the people; deeds begin close at hand and become visible far away. Words and deeds are the hinge and spring of the noble person; when the hinge moves, honor and disgrace follow. Words and deeds are how the noble person stirs Heaven and Earth - how can one not be careful! 'Fellowship: first weeping and wailing, then laughing.' The Master said: In the way of the noble person one may go out or stay, speak or be silent. Two minds of one heart cut through metal; words of one mind are fragrant as orchid. 'First six: cushioning with white rushes - no blame.' The Master said: It would be enough to set it on the ground; to cushion it with rushes - what blame could there be? This is the height of care. The rush is a thin thing, yet its use is weighty. Going on with this way of care, one loses nothing. 'The noble person of toiling modesty has a good ending - good fortune.' The Master said: Toiling without boasting, having merit without taking credit - this is the fullest substance. It speaks of one who puts their merit beneath others. Virtue speaks of fullness, ritual of deference; modesty is the way of drawing near in respect to preserve one's place. 'The dragon overreaches - there is regret.' The Master said: Honored yet without position, high yet without people, the worthy below in low station without support - and so acting brings regret. 'Not leaving the courtyard and door - no blame.' The Master said: Where disorder arises, words are the stairs. If the ruler is not secret, he loses his minister; if the minister is not secret, he loses his life; if affairs of the smallest kind are not secret, they harm what is accomplished. Thus the noble person is careful and secret, and does not go out. The Master said: Did the maker of the Change know about robbers? The Change says: 'Carrying a burden and riding; bandits draw near.' Carrying a burden is the business of the mean person; riding is the vehicle of the noble person. When the mean person rides in the noble person's vehicle, robbers think of taking it. When those above are lax and those below violent, robbers think of attacking. Careless hiding teaches robbery; showy looks teach licentiousness. The Change says: 'Carrying a burden and riding; bandits draw near.' Robbers are invited." },
+  { ch: "第九章", zh: "天一地二，天三地四，天五地六，天七地八，天九地十。天數五，地數五，五位相得而各有合。天數二十有五，地數三十，凡天地之數，五十有五，此所以成變化，而行鬼神也。大衍之數五十，其用四十有九，分而為二以象兩，掛一以象三，揲之以四以象四時，歸奇於扐以象閏，五歲再閏，故再扐而後掛。", en: "Heaven is one, Earth two; Heaven three, Earth four; Heaven five, Earth six; Heaven seven, Earth eight; Heaven nine, Earth ten. Heaven's numbers are five, Earth's numbers five; the five positions pair with each other, and each has its match. Heaven's numbers sum to twenty-five, Earth's to thirty; together the numbers of Heaven and Earth are fifty-five. These complete the changes and set the spirits and ghosts in motion. The number of the Great Expansion is fifty, of which forty-nine are used. Divide them in two to image the two; suspend one to image the three; count off by fours to image the four seasons; gather the remainders between the fingers to image the intercalary month. Five years have two intercalary months, so there are two foldings before the next suspension." },
+  { ch: "第十章", zh: "易有聖人之道四焉：以言者尚其辭，以動者尚其變，以制器者尚其象，以卜筮者尚其占。是以君子將有為也，將有行也，問焉而以言，其受命也如響，无有遠近幽深，遂知來物。非天下之至精，其孰能與於此！", en: "In the Change there are four ways of the sage: for speech, one honors its words; for action, one honors its changes; for making implements, one honors its images; for divination, one honors its readings. Thus when the noble person is about to act or to move, they consult it and speak; it receives the question like an echo - nothing near or far, hidden or deep, but what is to come is known. Unless it were the utmost subtlety under heaven, who could be equal to this!" },
+  { ch: "第十一章", zh: "子曰：「夫易，何為者也？夫易，開物成務，冒天下之道，如斯而已者也。」是故聖人以通天下之志，以定天下之業，以斷天下之疑。是故蓍之德圓而神，卦之德方以知，六爻之義易以貢；聖人以此洗心，退藏於密，吉凶與民同患，神以知來，知以藏往，其孰能與此哉？古之聦明叡知神武而不殺者夫！是以明於天之道，而察於民之故，是興神物以前民用；聖人以此齊戒以神明其德夫！是故闔戶謂之坤，闢戶謂之乾，一闔一闢謂之變；往來不窮謂之通，見乃謂之象，形乃謂之器，制而用之謂之法，利用出入，民咸用之謂之神。是故易有太極，是生兩儀，兩儀生四象，四象生八卦，八卦定吉凶，吉凶生大業。是故法象莫大乎天地；變通莫大乎四時；縣象著明莫大乎日月；崇高莫大乎富貴；備物致用，立成器以為天下利，莫大乎聖人；探賾索隱，鉤深致遠，以定天下之吉凶，成天下之亹亹者，莫大乎蓍龜。是故天生神物，聖人則之。天地變化，聖人效之。天垂象，見吉凶，聖人象之。河出圖，洛出書，聖人則之。易有四象，所以示也。繫辭焉，所以告也。定之以吉凶，所以斷也。", en: "The Master said: What is the Change for? The Change opens things and completes affairs, and covers the way of all under heaven - that is all it is. Thus the sage uses it to penetrate the will of all under heaven, to settle the works of all under heaven, and to decide the doubts of all under heaven. Therefore the virtue of the yarrow is round and spiritual; the virtue of the hexagram is square and knowing; the meaning of the six lines is to change and offer. The sage washes the mind with these, retreats and hides in the secret, sharing fortune and misfortune with the people. The spirit knows what comes; the wisdom stores what has gone - who could be equal to this? One who is ancient, clear, wise, spiritually martial, and yet without killing! Thus one is clear in the way of Heaven and examines the affairs of the people, raising up the spiritual things to lead the people's use. The sage fasts and purifies by these to make the virtue spiritual. Closing the door is called Kun; opening it is called Qian; one closing and one opening is called change; coming and going without end is called passage; what appears is called an image; what takes form is called an implement; what is regulated and used is called the pattern; what the people use in coming and going is called the spirit. Thus the Change has the Supreme Ultimate, which generates the two modes; the two modes generate the four images; the four images generate the eight trigrams; the eight trigrams settle fortune and misfortune; fortune and misfortune give birth to the great work. Therefore among models and images none is greater than Heaven and Earth; among change and passage none is greater than the four seasons; among suspended images shining bright none is greater than sun and moon; among heights and honors none is greater than wealth and rank; among providing things for use, setting up implements to benefit all under heaven, none is greater than the sage; and for probing the hidden, seeking the obscure, hooking the deep, reaching the far, to settle the fortune and misfortune of all under heaven and complete its ceaseless working - none is greater than the yarrow and the tortoise. Therefore Heaven gives birth to spiritual things, and the sage models on them. Heaven and Earth change, and the sage imitates them. Heaven hangs images revealing fortune and misfortune, and the sage images them. The River brought forth the Diagram, the Luo brought forth the Writing, and the sage modeled on them. The Change has four images, to show; it attaches words, to tell; it settles fortune and misfortune, to decide." },
+  { ch: "第十二章", zh: "易曰：「自天祐之，吉无不利」。子曰：「祐者，助也。天之所助者，順也。人之所助者，信也。履信思乎順，又以尚賢也，是以『自天祐之，吉无不利。』也。」", en: "The Change says: Helped from heaven - good fortune, nothing unfavorable. The Master said: Help is assistance. What Heaven assists is what is in accord; what people assist is trust. Walking in trust and thinking of accord, and esteeming the worthy - therefore 'helped from heaven, good fortune, nothing unfavorable.'" }
+];
+---
+
+<BaseLayout title={title} description={description} active="library">
+  <div class="article-head">
+    <div class="crumb"><a href="/">Library</a> › Ten Wings</div>
+    <h1><span class="zh">十翼</span>The Ten Wings</h1>
+    <p class="sub">The Ten Wings are the commentaries attached to the Zhou Yi - the layer that turns a divination manual into a philosophy of change. Here they are in the original with our own translation.</p>
+    <PageAttribution
+      sources={[
+        { label: 'Zhou Yi · Sibu Congkan via Wikisource', url: 'https://zh.wikisource.org/wiki/周易' },
+        { label: 'ctext · Book of Changes', url: 'http://ctext.org/book-of-changes' },
+      ]}
+      verified="2026-08-19"
+      version="1.0.0"
+    />
+  </div>
+
+  <div class="layout">
+    <aside class="toc">
+      <div class="t-label">Contents</div>
+      <ul>
+        <li><a href="#what">What the Ten Wings are <span class="t-zh">十翼是什麼</span></a></li>
+        <li><a href="#wings">The seven books <span class="t-zh">七種</span></a></li>
+        <li><a href="#xici1">The Great Treatise · Book I <span class="t-zh">繫辭上傳</span></a></li>
+      </ul>
+    </aside>
+
+    <article class="article-body">
+      <h2 id="what">What the Ten Wings are · 十翼是什麼</h2>
+      <p class="lead">The Zhou Yi is two things at once. Its core text - the 64 hexagrams with their judgments and line texts - was used as a divination manual. The <strong>Ten Wings</strong> are the commentary layer, traditionally attributed to Confucius, that reads that core as philosophy: change, timing, the noble person, and the order of Heaven and Earth. The name means "ten wings" because the commentaries lift the text off the ground.</p>
+      <p>Strictly, the "ten" counts seven books - the Tuan and Xiang commentaries each split into two (upper and lower), making ten pieces in all. What follows is each in one line, with the original text available below.</p>
+
+      <h2 id="wings">The seven books · 七種</h2>
+      <div class="wing-list">
+        {wings.map((w) => (
+          <div class="wing">
+            <div class="wing-head"><span class="wing-zh">{w.zh}</span><span class="wing-en">{w.en}</span></div>
+            <p class="wing-desc">{w.desc}</p>
+          </div>
+        ))}
+      </div>
+
+      <div class="note">The full original text of all seven books - including the complete Tuan and Xiang commentaries for every one of the 64 hexagrams - is carried on the <a href="/zhouyi/">Zhou Yi page</a>. Translation of the remaining wings is added book by book; <strong>Xi Ci I</strong> (the Great Treatise, Book I) is translated in full below.</div>
+
+      <h2 id="xici1">The Great Treatise · Book I <span class="zh">繫辭上傳</span></h2>
+      <p class="lead">The philosophical heart of the Ten Wings. It explains what the Change <em>is</em> - where the hexagrams come from, how the sage reads them, and why "one yin, one yang is called the Way."</p>
+
+      {xici.map((c) => (
+        <section class="xici-ch">
+          <h3><span class="ch-num">{c.ch}</span><span class="ch-zh">{c.zh}</span></h3>
+          <p class="ch-zh-text">{c.zh}</p>
+          <p class="ch-en-text">{c.en}</p>
+        </section>
+      ))}
+
+      <div class="back-row">
+        <a class="btn btn-primary" href="/zhouyi/">← The 64 hexagrams</a>
+        <a class="btn btn-secondary" href="/glossary/">Peek at the glossary →</a>
+      </div>
+    </article>
+  </div>
+</BaseLayout>
+
+<style>
+  .wing-list { display:flex; flex-direction:column; gap:12px; margin:16px 0 28px; }
+  .wing { border:1px solid var(--ink-300); border-left:3px solid var(--gold); border-radius:var(--radius-card); padding:14px 16px; background:var(--paper); }
+  .wing-head { display:flex; align-items:baseline; gap:12px; margin-bottom:4px; }
+  .wing-zh { font-family:var(--font-heading); font-weight:900; font-size:18px; color:var(--ink); }
+  .wing-en { font-size:15px; color:var(--red); font-weight:600; }
+  .wing-desc { font-size:14px; color:var(--ink-700); line-height:1.7; margin:0; }
+  .xici-ch { margin-bottom:28px; }
+  .xici-ch h3 { display:flex; align-items:baseline; gap:10px; font-family:var(--font-heading); font-size:20px; }
+  .ch-num { font-size:13px; color:var(--red); font-weight:700; }
+  .ch-zh { font-size:16px; color:var(--ink-500); font-weight:500; }
+  .ch-zh-text { font-size:15px; color:var(--ink); line-height:1.8; margin:10px 0; }
+  .ch-en-text { font-size:15px; color:var(--ink-700); line-height:1.75; }
+</style>

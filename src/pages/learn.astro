@@ -1,0 +1,168 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const title = "Learn - Start from Zero · Step 1 of 4 | AstrologyLib";
+const description = "Zero-jargon lessons on Yin Yang, Five Elements, the Zodiac, BaZi, Zi Wei Dou Shu, and Liu Yao - written for people who found other explanations confusing.";
+
+const LESSONS = [
+  { num: 1, href: '/learn/yin-yang/', zh: '陰陽', en: 'Yin & Yang',
+    desc: 'The one idea everything else builds on. Two forces, not two enemies.', tag: 'Read first · ~4 min', first: true },
+  { num: 2, href: '/learn/five-elements/', zh: '五行', en: 'The Five Elements',
+    desc: 'Wood, fire, earth, metal, water - as a cycle, not a checklist.', tag: '~4 min' },
+  { num: 3, href: '/learn/zodiac/', zh: '生肖', en: 'The Chinese Zodiac',
+    desc: 'Why the Rat comes first, and what your sign actually does.', tag: '~4 min' },
+  { num: 4, href: '/learn/bazi/', zh: '八字', en: 'BaZi, Simply',
+    desc: 'Four pillars, eight characters, one readable chart.', tag: '~5 min' },
+];
+---
+
+<BaseLayout title={title} description={description} active="learn">
+  <div class="article-head" style="border-bottom:1px solid var(--ink-200);background:linear-gradient(to bottom, var(--paper-warm), var(--paper));padding-bottom:28px">
+    <div class="crumb" style="font-size:13px;color:var(--ink-500);margin-bottom:8px">
+      <a href="/" style="color:var(--ink-500);text-decoration:none">Home</a> › 
+      <span style="color:var(--gold);font-weight:600">Learn · 零基礎入門</span>
+    </div>
+
+    <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(212,175,55,0.12);border:1px solid rgba(212,175,55,0.3);padding:4px 12px;border-radius:20px;font-size:12px;font-weight:700;color:var(--gold);margin-bottom:12px;letter-spacing:0.04em">
+      <span>STEP 1 OF 4</span> · 認知階梯第一階：常識化入門與哲學去神祕化
+    </div>
+
+    <h1><span class="zh" style="display:block;font-size:18px;color:var(--red);margin-bottom:4px;letter-spacing:0.06em">新手牆 · 零基礎</span>Start from Zero (0-to-1 Primer)</h1>
+    <p class="sub" style="max-width:760px;margin:0 auto 16px;font-size:16px;line-height:1.7;color:var(--ink-700)">
+      No jargon, no prerequisites. Each lesson starts with <em>why it's worth knowing</em>, explains it with an everyday seasonal analogy, and ends with a 30-second example. If you've been put off by confusing or superstitious explanations elsewhere — start here.
+    </p>
+
+    <!-- 4合1 階梯指引條 -->
+    <div class="cognitive-stepper" style="max-width:880px;margin:20px auto 0;background:var(--paper);border:1px solid var(--ink-300);border-radius:var(--radius-card);padding:14px 20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;box-shadow:0 2px 8px rgba(0,0,0,0.02)">
+      <div style="color:var(--gold);font-weight:700;display:flex;align-items:center;gap:10px;background:rgba(212,175,55,0.08);padding:6px 12px;border-radius:6px;border:1px solid rgba(212,175,55,0.25)">
+        <span style="width:22px;height:22px;border-radius:50%;background:var(--gold);color:#fff;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700">1</span>
+        <div>
+          <div style="font-size:10px;color:var(--gold);text-transform:uppercase;letter-spacing:0.04em">Current · 入門</div>
+          <div style="font-size:12px;font-weight:700;color:var(--ink)">0-to-1 Primer · 零基礎</div>
+        </div>
+      </div>
+      <a href="/traditions/" style="text-decoration:none;display:flex;align-items:center;gap:10px;color:var(--ink-700)">
+        <span style="width:22px;height:22px;border-radius:50%;background:var(--ink-200);color:var(--ink-700);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700">2</span>
+        <div>
+          <div style="font-size:10px;color:var(--ink-500);text-transform:uppercase;letter-spacing:0.04em">Step 2 · 流派</div>
+          <div style="font-size:12px;font-weight:600">Traditions · 大宗流派 →</div>
+        </div>
+      </a>
+      <a href="/glossary/" style="text-decoration:none;display:flex;align-items:center;gap:10px;color:var(--ink-700)">
+        <span style="width:22px;height:22px;border-radius:50%;background:var(--ink-200);color:var(--ink-700);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700">3</span>
+        <div>
+          <div style="font-size:10px;color:var(--ink-500);text-transform:uppercase;letter-spacing:0.04em">Step 3 · 查詞</div>
+          <div style="font-size:12px;font-weight:600">Lexicon · 術語庫 →</div>
+        </div>
+      </a>
+      <a href="/library/" style="text-decoration:none;display:flex;align-items:center;gap:10px;color:var(--ink-700)">
+        <span style="width:22px;height:22px;border-radius:50%;background:var(--ink-200);color:var(--ink-700);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700">4</span>
+        <div>
+          <div style="font-size:10px;color:var(--ink-500);text-transform:uppercase;letter-spacing:0.04em">Step 4 · 原典</div>
+          <div style="font-size:12px;font-weight:600">Corpus · 典藏總庫 →</div>
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <section class="path" style="max-width:var(--content-max);margin:32px auto;padding:0 24px">
+    <div style="margin-bottom:16px">
+      <h2 style="font-size:18px;color:var(--ink);font-family:var(--font-heading);margin:0 0 4px">Foundational 4-Step Ladder · 四階基石</h2>
+      <p style="font-size:13px;color:var(--ink-500);margin:0">The universal cosmological building blocks shared across all Chinese astrological and philosophical traditions.</p>
+    </div>
+    <div class="path-grid">
+      {LESSONS.map((l) => (
+        <a class:list={['lesson', l.first && 'first']} href={l.href}>
+          <span class:list={['num', l.first && 'done']}>{l.num}</span>
+          <h3>{l.en}<span class="zh">{l.zh}</span></h3>
+          <p>{l.desc}</p>
+          <span class="tag">{l.tag}</span>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <!-- 大宗数术流派进阶图谱 (Beyond the Basics) -->
+  <section style="max-width:var(--content-max);margin:0 auto 36px;padding:0 24px">
+    <div style="background:var(--paper);border:1px solid var(--ink-300);border-radius:var(--radius-card);padding:24px 28px;box-shadow:0 2px 10px rgba(0,0,0,0.02)">
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-bottom:16px;border-bottom:1px solid var(--ink-200);padding-bottom:12px">
+        <div>
+          <span style="font-size:11px;font-weight:700;color:var(--gold);text-transform:uppercase;letter-spacing:0.06em">Beyond the Basics · 專科流派圖譜</span>
+          <h3 style="font-family:var(--font-heading);font-size:18px;margin:2px 0 0;color:var(--ink)">
+            Major Applied Traditions · 兩大專科推演流派
+          </h3>
+        </div>
+        <span style="font-size:12px;color:var(--ink-500)">Explore after mastering the 4 foundational steps</span>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));gap:20px">
+        <!-- 紫微斗数 -->
+        <div style="background:var(--paper-warm);border:1px solid var(--ink-200);border-radius:8px;padding:18px">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
+            <span style="font-weight:700;color:var(--ink);font-size:15px">✨ Zi Wei Dou Shu · 紫微斗數</span>
+            <span style="font-size:11px;background:rgba(212,175,55,0.15);color:var(--gold);padding:2px 6px;border-radius:3px;font-weight:600">Natal Astrology · 虛星命理</span>
+          </div>
+          <p style="font-size:13px;color:var(--ink-700);line-height:1.6;margin:0 0 14px">
+            Built on the Emperor Star (紫微) and 12 Life Palaces. Instead of five element strength alone, it maps 14 major star archetypes and Four Transformations (四化) across human destiny.
+          </p>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;font-size:12px">
+            <a href="/traditions/ziwei/" style="color:var(--red);font-weight:600;text-decoration:none">Intro Guide →</a>
+            <span style="color:var(--ink-300)">·</span>
+            <a href="/tools/ziwei/" style="color:var(--ink);text-decoration:underline">Zi Wei Chart Tool 🧭</a>
+            <span style="color:var(--ink-300)">·</span>
+            <a href="/glossary/" style="color:var(--ink);text-decoration:underline">Zi Wei Terms</a>
+            <span style="color:var(--ink-300)">·</span>
+            <a href="/library/read/?type=daozang&id=DAO-1496" style="color:var(--ink);text-decoration:underline">Wanli Canon</a>
+          </div>
+        </div>
+
+        <!-- 六爻神卦 -->
+        <div style="background:var(--paper-warm);border:1px solid var(--ink-200);border-radius:8px;padding:18px">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
+            <span style="font-weight:700;color:var(--ink);font-size:15px">🪙 Liu Yao Divination · 六爻神卦</span>
+            <span style="font-size:11px;background:rgba(149,0,7,0.1);color:var(--red);padding:2px 6px;border-radius:3px;font-weight:600">Horary · 卜筮決策</span>
+          </div>
+          <p style="font-size:13px;color:var(--ink-700);line-height:1.6;margin:0 0 14px">
+            The classical Jing Fang Na-Jia system based on casting 3 coins. Answers specific real-world questions through 6 lines, Self & Other (世應), Six Kinships, and dynamic line changes.
+          </p>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;font-size:12px">
+            <a href="/traditions/liuyao/" style="color:var(--red);font-weight:600;text-decoration:none">Intro Guide →</a>
+            <span style="color:var(--ink-300)">·</span>
+            <a href="/tools/hexagram/" style="color:var(--ink);text-decoration:underline">Cast Hexagram Tool 🪙</a>
+            <span style="color:var(--ink-300)">·</span>
+            <a href="/glossary/" style="color:var(--ink);text-decoration:underline">Liu Yao Terms</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 承上啟下連接卡片 -->
+  <section style="max-width:var(--content-max);margin:0 auto 32px;padding:0 24px">
+    <div style="background:var(--paper-warm);border:1px solid var(--ink-300);border-left:4px solid var(--gold);border-radius:var(--radius-card);padding:24px 28px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px">
+      <div style="max-width:680px">
+        <div style="font-size:12px;font-weight:700;color:var(--gold);text-transform:uppercase;letter-spacing:0.04em;margin-bottom:4px">NEXT STEP IN THE COGNITIVE LADDER · 認知階梯第二階</div>
+        <h3 style="font-family:var(--font-heading);font-size:20px;margin:0 0 6px;color:var(--ink)">
+          Ready to explore applied traditions? Visit Major Traditions (Step 2)
+        </h3>
+        <p style="font-size:14px;color:var(--ink-700);margin:0;line-height:1.6">
+          Once you master the four universal cosmological building blocks, take Step 2: explore China's four classical applied systems (Four Pillars BaZi, Zi Wei Dou Shu, Liu Yao Divination, and The Zhou Yi) with dedicated guides, classical canons, and interactive tools.
+        </p>
+      </div>
+      <a class="btn btn-primary" href="/traditions/" style="white-space:nowrap;padding:10px 20px">
+        Step 2: Explore Major Traditions →
+      </a>
+    </div>
+  </section>
+
+  <div class="disclaimer" style="max-width:var(--content-max);margin:0 auto 24px;padding:0 24px">
+    <p style="font-size:13px;color:var(--ink-500);line-height:1.6;border-top:1px solid var(--ink-200);padding-top:16px">
+      <strong>For guidance and self-awareness purposes only.</strong> These lessons explain Chinese astrology as a cultural and philosophical framework — what it is, where it came from, and how its vocabulary works. They are not a prediction of your future, a medical or financial opinion, or a substitute for professional advice.
+    </p>
+  </div>
+
+  <div class="back-row" style="margin-bottom:60px">
+    <a class="btn btn-secondary" href="/">← Back home</a>
+    <a class="btn btn-primary" href="/traditions/">Next: Major Traditions (Step 2) →</a>
+  </div>
+</BaseLayout>

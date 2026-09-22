@@ -1,0 +1,40 @@
+---
+import type { Hexagram } from '../data/zhouyi';
+const { h } = Astro.props as { h: Hexagram };
+---
+<article class="hex-card" id={`hex-${h.n}`}>
+  <div class="h-top">
+    <svg class="h-trigram" viewBox="0 0 40 48" width="40" height="48" role="img" aria-label={`${h.zh} · ${h.en} hexagram`}>
+      {[5, 4, 3, 2, 1, 0].map((i) => {
+        const y = 4 + (5 - i) * 8;
+        return h.lines[i] === '1' ? (
+          <rect x="3" y={y} width="34" height="4" fill="currentColor" />
+        ) : (
+          <>
+            <rect x="3" y={y} width="15" height="4" fill="currentColor" />
+            <rect x="22" y={y} width="15" height="4" fill="currentColor" />
+          </>
+        );
+      })}
+    </svg>
+    <div class="h-head">
+      <span class="h-num">{String(h.n).padStart(2, '0')}</span>
+      <span class="h-name">{h.zh}</span>
+      <span class="h-py">{h.py}</span>
+    </div>
+  </div>
+  <div class="h-en">{h.en}</div>
+  <p class="h-gua">{h.gua}</p>
+  <p class="h-guaEn">{h.guaEn}</p>
+  {h.yao.length > 0 && (
+    <ol class="h-yao">
+      {h.yao.map((y) => (
+        <li>
+          <span class="y-pos">{y.pos}<span class="y-posEn">{y.posEn}</span></span>
+          <span class="y-zh">{y.zh}</span>
+          <span class="y-en">{y.en}</span>
+        </li>
+      ))}
+    </ol>
+  )}
+</article>

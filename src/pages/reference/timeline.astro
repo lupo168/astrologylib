@@ -1,0 +1,721 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageAttribution from '../../components/PageAttribution.astro';
+
+const title = "Lineage & Timeline · History of Chinese Divination - AstrologyLib";
+const description = "The chronological history of Chinese divination and metaphysics from oracle bones to modern practice, mapped directly to 2,064 classical texts in the Yi and Daoist Canons with dynastic timelines and CE dating.";
+
+interface ClassicRef {
+  id: string;
+  type: 'yicang' | 'daozang';
+  title: string;
+  author: string;
+  approx: string;
+  tag: string;
+  note: string;
+}
+
+interface Period {
+  id: string;
+  dynastyShort: string;
+  dateShort: string;
+  dynastyFull: string;
+  topicZh: string;
+  title: string;
+  body: string;
+  eraKey: string;
+  classicsCount: string;
+  classics: ClassicRef[];
+}
+
+const PERIODS: Period[] = [
+  {
+    id: "era-zhou",
+    dynastyShort: "先秦 · 西周",
+    dateShort: "前11世紀 - 前771",
+    dynastyFull: "先秦 · 西周至春秋時期 (c. 1046 - 476 BCE)",
+    topicZh: "六十四卦 · 易道源頭",
+    title: "Oracle & the Zhou Yi",
+    body: "Divination begins with turtle-shell oracles (甲骨占卜, Shang) and reaches its first written form in the <b>Zhou Yi</b> (周易) - 64 hexagrams built from yin-yang lines. The philosophical reading (yin-yang, change, the noble person) comes later in the Ten Wings commentaries.",
+    eraKey: "先秦",
+    classicsCount: "易藏 6 部 · 道藏 13 部",
+    classics: [
+      { id: "YI-022", type: "yicang", title: "周易", author: "周文王 / 周公 / 孔子", approx: "西周初年至春秋", tag: "易學元典 · 群經之首", note: "六十四卦卦爻辭與十翼經傳之原典，奠定三千年陰陽變易哲學之基石。" },
+      { id: "DAO-1579", type: "daozang", title: "莊子", author: "莊周 (約公元前 369 - 前 286 BCE)", approx: "戰國中晚期", tag: "南華真經 · 逍遙之祖", note: "道家哲學巔峰聖典，探討萬物齊一、天籟自鳴與逍遙真宰之境。" },
+      { id: "DAO-1712", type: "daozang", title: "馬王堆帛書老子乙本", author: "老子 (李耳)", approx: "戰國至西漢初年", tag: "早期帛書真傳", note: "道經在先、德經在後，還原老子五千言最質樸無華之古傳祖本。" }
+    ]
+  },
+  {
+    id: "era-zhanguo",
+    dynastyShort: "東周 · 戰國",
+    dateShort: "前475 - 前221",
+    dynastyFull: "東周戰國時代 (4th - 3rd c. BCE)",
+    topicZh: "陰陽五行 · 鄒衍立說",
+    title: "Zou Yan & the Five Elements",
+    body: "The naturalists (<i>yinyangjia</i> 陰陽家), above all <b>Zou Yan 鄒衍</b>, turn the Five Elements into a working system of seasons, dynasties, and cycles. Five-element cosmology becomes the shared vocabulary of every later school.",
+    eraKey: "先秦",
+    classicsCount: "易藏 8 部 · 道藏 22 部",
+    classics: [
+      { id: "YI-016", type: "yicang", title: "古周易", author: "呂祖謙 輯", approx: "先秦古制考據", tag: "經傳古本分立", note: "還原孔子作十翼之前商周古易分立體系，純粹象數吉凶原貌。" },
+      { id: "DAO-1658", type: "daozang", title: "老子道德經河上公章句", author: "河上公 撰", approx: "戰國至西漢傳本", tag: "養生修真注本", note: "道門最早將五行運化、內氣調攝與治國修身融為一體的道德經權威注疏。" }
+    ]
+  },
+  {
+    id: "era-han",
+    dynastyShort: "兩漢王朝",
+    dateShort: "前202 - 公元220",
+    dynastyFull: "兩漢 · 西漢與東漢時期 (202 BCE - 220 CE)",
+    topicZh: "干支納甲 · 京房象數",
+    title: "Stems, Branches & Najia",
+    body: "The <b>ten Heavenly Stems and twelve Earthly Branches</b> (天干地支) finish taking shape as the dating system. <b>Jing Fang 京房</b>'s <i>najia</i> (納甲) method ties hexagrams to stems, branches and elements - the bridge between the Zhou Yi and fortune-telling.",
+    eraKey: "漢",
+    classicsCount: "易藏 14 部 · 道藏 12 部",
+    classics: [
+      { id: "YI-007", type: "yicang", title: "京氏易傳", author: "京房 (77 BCE - 37 BCE)", approx: "西漢元帝初元時期", tag: "八宮納甲發軔", note: "開創八宮卦變、五行納甲與六親世應，是漢代象數與後世筮法之核心橋樑。" },
+      { id: "YI-042", type: "yicang", title: "周易乾鑿度", author: "鄭康成 (鄭玄) 注", approx: "兩漢之際緯書", tag: "太極九宮太素", note: "漢代易緯代表名著，首創太易、太初、太始、太素及九宮九飛卦理。" },
+      { id: "DAO-1548", type: "daozang", title: "周易參同契", author: "魏伯陽 著", approx: "東漢桓帝時期 (約 150 CE)", tag: "萬古丹經王", note: "借大易卦爻、黃帝九鼎與內煉火候，融大易、黃老、爐丹為一體之千古奇書。" }
+    ]
+  },
+  {
+    id: "era-weijin",
+    dynastyShort: "魏晉南北朝",
+    dateShort: "公元 220 - 589",
+    dynastyFull: "三國魏晉南北朝 (220 - 589 CE)",
+    topicZh: "玄學分科 · 郭璞葬書",
+    title: "Feng Shui & Physiognomy split off",
+    body: "The arts begin to separate: <b>Guo Pu 郭璞</b>'s <i>Zang Shu</i> (葬書, traditionally the founding text of Feng Shui) and <b>Liu Shao 劉劭</b>'s <i>Ren Wu Zhi</i> (人物志, a study of character). The schools of later metaphysics take their own roads.",
+    eraKey: "魏晉",
+    classicsCount: "易藏 12 部 · 道藏 110 部",
+    classics: [
+      { id: "YI-329", type: "yicang", title: "葬書", author: "郭璞 (276 - 324 CE)", approx: "東晉明帝太寧年間", tag: "風水堪輿開山祖本", note: "「氣乘風則散，界水則止」之定義首出於此，奠定兩千年形勢派風水學說。" },
+      { id: "YI-054", type: "yicang", title: "周易注", author: "王弼 (226 - 249 CE)", approx: "三國曹魏正始年間", tag: "玄學義理解易典範", note: "掃除漢代繁瑣讖緯卦氣，以魏晉老莊玄學得意忘象，開宋代理學之先聲。" },
+      { id: "DAO-0078", type: "daozang", title: "抱朴子內篇", author: "葛洪 (283 - 363 CE)", approx: "東晉太興年間", tag: "道教修仙大百科", note: "兩晉神仙金丹與服氣符箓集大成者，戰時保生養性之實證文獻。" },
+      { id: "DAO-0168", type: "daozang", title: "真誥", author: "陶弘景 (456 - 536 CE)", approx: "南朝梁武帝天監年間", tag: "茅山上清派聖典", note: "南朝隱士陶弘景手輯晉代降授仙訣，道門神仙譜系與修行指南。" }
+    ]
+  },
+  {
+    id: "era-suitang",
+    dynastyShort: "隋唐五代",
+    dateShort: "公元 581 - 960",
+    dynastyFull: "隋唐五代盛世 (581 - 960 CE)",
+    topicZh: "命理獨立 · 李虛中三柱",
+    title: "Three pillars & the Form School",
+    body: "Destiny-reading becomes its own art. <b>Li Xuzhong 李虛中</b> works from the year, month and day (three pillars, no hour). In Feng Shui, <b>Yang Yunsong 楊筠松</b> founds the Form (形勢) school. The <i>San Ming Tong Hui</i> (三命通會) lineage begins.",
+    eraKey: "唐",
+    classicsCount: "易藏 21 部 · 道藏 169 部",
+    classics: [
+      { id: "YI-292", type: "yicang", title: "李虛中命書", author: "李虛中 (762 - 813 CE)", approx: "唐憲宗元和年間", tag: "八字前身 · 三柱祿命祖本", note: "以年月日時之天干地支納音推人貴賤壽夭，韓愈為其撰墓誌銘稱「百不失一二」。" },
+      { id: "YI-087", type: "yicang", title: "周易集解", author: "李鼎祚 撰", approx: "唐玄宗天寶年間", tag: "漢代象數輯佚總庫", note: "采子夏、孟喜、京房、馬融、荀爽等三十五家易注，使漢易絕學得以流傳至今。" },
+      { id: "DAO-0126", type: "daozang", title: "坐忘論", author: "司馬承禎 (647 - 735 CE)", approx: "盛唐開元年間", tag: "道家靜坐安心心法", note: "盛唐國師傳授之高級冥想修持，分七階論敬信、斷緣、收心、簡事、泰定、得道。" }
+    ]
+  },
+  {
+    id: "era-songyuan",
+    dynastyShort: "兩宋金元",
+    dateShort: "公元 960 - 1368",
+    dynastyFull: "兩宋與金元理學大成 (960 - 1368 CE)",
+    topicZh: "四柱定型 · 邵雍經世",
+    title: "Xu Ziping & the flourishing of schools",
+    body: "<b>Xu Ziping 徐子平</b> adds the hour pillar - the <b>four pillars</b> (四柱) - and gives BaZi the shape it keeps today. <b>Shao Yong 邵雍</b> writes the <i>Huang Ji Jing Shi</i> (皇極經世) and plum-blossom numerology (梅花易數). <b>Zi Wei Dou Shu 紫微斗數</b> (attributed to Chen Tuan 陳摶) appears. Rational-qi (理氣) Feng Shui rises.",
+    eraKey: "宋",
+    classicsCount: "易藏 108 部 · 道藏 334 部",
+    classics: [
+      { id: "YI-317", type: "yicang", title: "皇極經世", author: "邵雍 (1011 - 1077 CE)", approx: "北宋神宗熙寧十年 (1077 CE)", tag: "元會運世宇宙歷數", note: "以伏羲先天六十四卦推演天地興衰大運，開闢宋代理學「加一倍法」與數學哲學。" },
+      { id: "YI-003", type: "yicang", title: "東坡易傳", author: "蘇軾 (1037 - 1101 CE)", approx: "北宋紹聖四年 (1097 CE)", tag: "蘇東坡晚年絕筆", note: "蘇軾謫居惠州、儋州九死一生時撰成，文采斐然，融合儒釋道貫通性命之理。" },
+      { id: "YI-047", type: "yicang", title: "周易本義", author: "朱熹 (1130 - 1200 CE)", approx: "南宋淳熙四年 (1177 CE)", tag: "七百年科舉欽定讀本", note: "朱子力倡「易本卜筮之書」，恢復文王周公古經分卷，自元明清歷代奉為正統。" },
+      { id: "DAO-1001", type: "daozang", title: "紫陽真人悟真篇", author: "張伯端 (987 - 1082 CE)", approx: "北宋神宗熙寧八年", tag: "金丹南宗開山聖典", note: "道門內丹修真與《參同契》齊名，以七言絕句與詞曲揭示性命雙修之密旨。" }
+    ]
+  },
+  {
+    id: "era-mingqing",
+    dynastyShort: "明清時期",
+    dateShort: "公元 1368 - 1912",
+    dynastyFull: "大明與大清帝國經典化 (1368 - 1912 CE)",
+    topicZh: "經典集成 · 滴天髓定本",
+    title: "The classical canon",
+    body: "The tradition fixes its standard texts: <i>Yuan Hai Zi Ping</i> (淵海子平), <i>Di Tian Sui</i> (滴天髓), <i>Zi Ping Zhen Quan</i> (子平真詮) and <i>Qiong Tong Bao Jian</i> (窮通寶鑑). In Feng Shui, Jiang Dahong 蔣大鴻 and later Shen Zhuren 沈竹礽 formalize the Xuan Kong 玄空 method. The three arts (三式: Qi Men 奇門, Liu Ren 六壬, Tai Yi 太乙) continue their separate transmission.",
+    eraKey: "明",
+    classicsCount: "易藏 118 部 · 道藏 970 部",
+    classics: [
+      { id: "YI-190", type: "yicang", title: "三命通會", author: "萬民英 (育吾山人, 1521 - 1603 CE)", approx: "明萬曆六年 (1578 CE)", tag: "四庫全書子平欽定巨著", note: "四柱八字命理學百科全書，清乾隆紀曉嵐評為「綜覈術數之書，此為最善」。" },
+      { id: "YI-300", type: "yicang", title: "滴天髓闡微", author: "劉基(伯溫) 原注 / 任鐵樵 疏", approx: "明洪武原注 / 清嘉慶增補", tag: "五行通變最高範本", note: "徹底摒除神煞偽術，專以陰陽五行清濁、氣勢順逆為依歸，公認命學無上寶典。" },
+      { id: "YI-100", type: "yicang", title: "御纂周易折中", author: "李光地等奉康熙勅纂", approx: "清康熙五十四年 (1715 CE)", tag: "清代皇家官方易學集成", note: "康熙御定易學巨作，折衷程朱，廣泛收錄先秦至明末歷代諸儒精闢見解。" },
+      { id: "DAO-0001", type: "daozang", title: "明正統道藏總庫", author: "明英宗敕令編修", approx: "明正統十年 (1445 CE)", tag: "五千四百八十五卷御製全藏", note: "中華道教文獻史上最浩瀚的皇家總集，涵蓋經戒、丹藥、符圖、齋醮與哲學全卷。" }
+    ]
+  },
+  {
+    id: "era-modern",
+    dynastyShort: "近現代",
+    dateShort: "1912 - 至今",
+    dynastyFull: "民國時期至當代 (1912 CE - Present)",
+    topicZh: "考據轉型 · 術數出海",
+    title: "Research, industry & going global",
+    body: "From the mid-20th century the arts industrialize in Hong Kong and Taiwan - <b>Zi Wei Dou Shu</b> becomes more popular than BaZi among practitioners there. Software and later AI make charts a commodity, while the zodiac, Feng Shui and BaZi travel west as cultural symbols.",
+    eraKey: "民国",
+    classicsCount: "易藏 6 部 · 道藏 1 部",
+    classics: [
+      { id: "YI-041", type: "yicang", title: "周易尚氏學", author: "尚秉和 (1870 - 1950 CE)", approx: "民國二十八年 (1939 CE)", tag: "近代象數易學集大成", note: "以先秦左傳國語及焦京之說解易，提倡「易無妄下之字」，近代考據學卓越豐碑。" },
+      { id: "DAO-1585", type: "daozang", title: "莊子集解", author: "郭慶藩 (1844 - 1896 CE)", approx: "清光緒二十年 (1894 CE)", tag: "乾嘉漢學莊學精華", note: "匯集王念孫、俞樾等乾嘉諸老考證成果，現代學界研讀先秦道家之標準通讀本。" }
+    ]
+  }
+];
+---
+
+<BaseLayout title={title} description={description} active="library">
+  <div class="article-head" style="max-width:var(--content-max);margin:0 auto;padding:24px 24px 16px">
+    <div class="crumb"><a href="/">Home</a> › <a href="/library/">Library</a> › Historical Lineage</div>
+    <h1><span class="zh">歷史線 · 術數與道學三千年譜系</span>Lineage &amp; Chronology</h1>
+    <p class="sub">Chinese metaphysics is one continuous tradition - not a scattered set of tricks. Here is the lineage, period by period, mapped directly to <strong>2,064 classical texts in our Grand Corpus</strong>.</p>
+    <PageAttribution
+      sources={[
+        { label: 'Compiled by AstrologyLib from the classical tradition and public-domain scholarship', url: '/copyright/' },
+        { label: 'Primary Texts from Grand Corpus (Siku Quanshu & Zhengtong Daozang)', url: '/library/classics/' },
+      ]}
+      verified="2026-09-08"
+      version="2.2.0"
+    />
+  </div>
+
+  <div class="layout" style="max-width:var(--content-max);margin:0 auto;padding:0 24px 64px">
+    
+    <!-- 左侧粘性历史纪年联动目录 (Sticky Dynastic Scrollspy TOC) -->
+    <aside class="toc" id="timeline-toc">
+      <div class="toc-masthead">
+        <span class="t-label">CHRONOLOGY · 歷史朝代</span>
+        <span class="t-span">3,000+ Years</span>
+      </div>
+
+      <nav class="toc-nav" aria-label="Chronology Navigation">
+        <ul class="toc-list" id="toc-list">
+          {PERIODS.map((p) => (
+            <li class="toc-li">
+              <a href={`#${p.id}`} class="toc-link" data-id={p.id}>
+                <span class="toc-bullet" aria-hidden="true"></span>
+                <div class="toc-content">
+                  <!-- 朝代标签 + 公元纪年 (极强时代感) -->
+                  <div class="toc-dynasty-row">
+                    <span class="toc-dynasty-badge">{p.dynastyShort}</span>
+                    <span class="toc-date">{p.dateShort}</span>
+                  </div>
+                  <!-- 核心学说主题 -->
+                  <div class="toc-topic-zh">{p.topicZh}</div>
+                  <div class="toc-topic-en">{p.title}</div>
+                </div>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+
+      <!-- 快速跳转提示卡片 -->
+      <div class="toc-hint-card">
+        <div style="font-weight:700;font-size:12px;color:var(--ink);margin-bottom:4px;display:flex;align-items:center;gap:5px">
+          <span>⏳</span> <span>朝代坐標即時聯動</span>
+        </div>
+        <div style="font-size:11px;color:var(--ink-500);line-height:1.5">
+          滑動右側時，左側朝代徽章即時高亮；點擊任一朝代可平滑定位。
+        </div>
+      </div>
+    </aside>
+
+    <!-- 右侧正文流 -->
+    <article class="article-body">
+      <p class="lead">
+        The Zhou Yi did not begin as a philosophy book - its core text was a divination manual. Over three millennia, from oracle bones to imperial encyclopedias, Chinese metaphysics built a rigorous cosmological architecture. <strong>Every era below is cross-referenced with primary sources you can read immediately in our Online Reader.</strong>
+      </p>
+
+      {PERIODS.map((p) => {
+        return (
+          <section class="tl-item" id={p.id}>
+            
+            <!-- 头部朝代卡片 (加强时代感) -->
+            <div class="tl-header">
+              <div class="tl-era-tag-row">
+                <span class="tl-dynasty-pill">{p.dynastyFull}</span>
+              </div>
+              <h3 class="tl-era-heading">
+                <span class="tl-heading-zh">{p.topicZh}</span>
+                <span class="tl-heading-en">{p.title}</span>
+              </h3>
+            </div>
+            
+            <p class="tl-body" set:html={p.body}></p>
+
+            <!-- 馆藏典籍联动展台 (Featured Classics from the 2,064 corpus) -->
+            <div class="tl-classics-box">
+              <div class="tl-box-head">
+                <div class="tl-box-title">
+                  <span style="font-size:16px">🏛️</span>
+                  <span>時代宗師與館藏傳世原典 · Primary Sources</span>
+                </div>
+                <a href={`/library/classics/?tab=yicang&era=${encodeURIComponent(p.eraKey)}`} class="tl-era-link">
+                  檢索本朝全部館藏 ({p.classicsCount}) →
+                </a>
+              </div>
+
+              <div class="tl-books-grid">
+                {p.classics.map((c) => (
+                  <div class="tl-book-card">
+                    <div>
+                      <div class="tl-card-meta">
+                        <span class:list={['tl-badge', c.type === 'daozang' ? 'badge-dao' : 'badge-yi']}>
+                          {c.type === 'daozang' ? '道藏' : '易藏'}
+                        </span>
+                        <span class="tl-tag">{c.tag}</span>
+                      </div>
+                      <h4 class="tl-book-title">《{c.title}》</h4>
+                      <div class="tl-book-author">{c.author} · <span style="color:var(--ink-500)">{c.approx}</span></div>
+                      <p class="tl-book-note">{c.note}</p>
+                    </div>
+
+                    <div class="tl-card-action">
+                      <a href={`/library/read/?type=${c.type}&id=${c.id}`} class="btn-read-online">
+                        📖 在線水墨閱讀 (Read Text) →
+                      </a>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+        );
+      })}
+
+      <div class="disclaimer">
+        <p><strong>For guidance and self-awareness purposes only.</strong> This timeline is a cultural and historical overview - a map of how the tradition developed, not a claim about any outcome. The original classical texts in the library remain the verifiable authority.</p>
+      </div>
+
+      <div class="back-row" style="margin-top:28px">
+        <a class="btn btn-secondary" href="/glossary/">← Glossary · 術語表</a>
+        <a class="btn btn-primary" href="/library/classics/">Browse Grand Corpus · 萬卷典藏大廳 →</a>
+      </div>
+    </article>
+  </div>
+</BaseLayout>
+
+<script>
+  function initScrollspy() {
+    const sections = Array.from(document.querySelectorAll('.tl-item'));
+    const tocLinks = Array.from(document.querySelectorAll('.toc-link'));
+
+    if (!sections.length || !tocLinks.length) return;
+
+    function updateActive() {
+      // 顶部导航栏高度 64px + 留白阈值约 140px
+      const scrollY = window.scrollY || window.pageYOffset;
+      const triggerY = scrollY + 140;
+
+      let currentId = sections[0].id;
+
+      // 遍历各个 section 找到当前阅读所在的朝代
+      for (let i = 0; i < sections.length; i++) {
+        const sec = sections[i];
+        const top = sec.offsetTop;
+        if (triggerY >= top) {
+          currentId = sec.id;
+        } else {
+          break;
+        }
+      }
+
+      // 触底判断：滚动到最底端强制高亮最后一个朝代 (近现代)
+      if (window.innerHeight + scrollY >= document.documentElement.scrollHeight - 60) {
+        currentId = sections[sections.length - 1].id;
+      }
+
+      // 更新左侧高亮状态
+      tocLinks.forEach((link) => {
+        const dataId = link.getAttribute('data-id');
+        if (dataId === currentId) {
+          link.classList.add('active');
+        } else {
+          link.classList.remove('active');
+        }
+      });
+    }
+
+    // 平滑点击跳转
+    tocLinks.forEach((link) => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const targetId = link.getAttribute('data-id');
+        const targetSec = document.getElementById(targetId);
+        if (targetSec) {
+          // 减去 80px 顶部导航栏高度
+          const targetTop = targetSec.getBoundingClientRect().top + window.pageYOffset - 80;
+          window.scrollTo({ top: targetTop, behavior: 'smooth' });
+          history.replaceState(null, null, '#' + targetId);
+
+          // 立即更新高亮反馈
+          tocLinks.forEach(l => l.classList.remove('active'));
+          link.classList.add('active');
+        }
+      });
+    });
+
+    // 滚动节流监听
+    let ticking = false;
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          updateActive();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    }, { passive: true });
+
+    // 首次载入触发
+    updateActive();
+  }
+
+  // 支持 Astro 客户端多周期执行
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initScrollspy);
+  } else {
+    initScrollspy();
+  }
+</script>
+
+<style>
+  /* ----------------- 整体布局与右侧正文 ----------------- */
+  .tl-item { 
+    margin-bottom: 48px; 
+    border-left: 3px solid var(--gold); 
+    padding: 0 0 0 22px; 
+    scroll-margin-top: 90px;
+    position: relative;
+    transition: border-color .2s ease;
+  }
+  .tl-header {
+    margin-bottom: 12px;
+  }
+  .tl-era-tag-row {
+    margin-bottom: 6px;
+  }
+  .tl-dynasty-pill {
+    display: inline-block;
+    background: #FAF9F6;
+    border: 1px solid var(--ink-300);
+    border-left: 3px solid var(--red);
+    padding: 3px 10px;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--red);
+    letter-spacing: .02em;
+    border-radius: 2px;
+  }
+  .tl-era-heading {
+    margin: 6px 0 0;
+    line-height: 1.35;
+  }
+  .tl-heading-zh {
+    font-family: var(--font-heading);
+    font-size: 22px;
+    font-weight: 900;
+    color: var(--ink);
+    display: inline-block;
+    margin-right: 10px;
+  }
+  .tl-heading-en {
+    font-family: var(--font-heading);
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--ink-500);
+  }
+  .tl-body { 
+    font-size: 15px; 
+    color: var(--ink-700); 
+    line-height: 1.75; 
+    margin: 10px 0 16px; 
+  }
+
+  /* ----------------- 左侧 Sticky 时代感联动目录 (Scrollspy) ----------------- */
+  .toc {
+    position: sticky;
+    top: 88px;
+    align-self: start;
+    max-height: calc(100vh - 110px);
+    overflow-y: auto;
+    padding-right: 6px;
+    scrollbar-width: thin;
+  }
+  .toc::-webkit-scrollbar {
+    width: 3px;
+  }
+  .toc::-webkit-scrollbar-thumb {
+    background: var(--ink-300);
+    border-radius: 2px;
+  }
+
+  .toc-masthead {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--ink-300);
+  }
+  .toc-masthead .t-label {
+    font-weight: 800;
+    letter-spacing: .08em;
+    color: var(--ink);
+    font-size: 12px;
+    margin: 0;
+  }
+  .toc-masthead .t-span {
+    font-size: 11px;
+    color: var(--ink-500);
+    font-family: var(--font-numeric);
+  }
+
+  .toc-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 16px 0;
+    border-left: 2px solid #E5E7EB;
+    position: relative;
+  }
+  .toc-li {
+    margin: 0 0 6px 0;
+    position: relative;
+  }
+  .toc-link {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    padding: 8px 10px;
+    text-decoration: none !important;
+    color: var(--ink-700);
+    border-radius: 0 var(--radius-btn) var(--radius-btn) 0;
+    transition: all .16s ease;
+    margin-left: -2px;
+    border-left: 2px solid transparent;
+  }
+  .toc-bullet {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #D1D5DB;
+    flex: none;
+    margin-top: 6px;
+    transition: all .16s ease;
+  }
+  .toc-content {
+    flex: 1;
+    min-width: 0;
+  }
+
+  /* 朝代徽章与公元纪年行 */
+  .toc-dynasty-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 4px;
+    margin-bottom: 3px;
+  }
+  .toc-dynasty-badge {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--ink-700);
+    background: #E5E7EB;
+    padding: 1px 5px;
+    border-radius: 2px;
+    line-height: 1.2;
+    transition: all .16s ease;
+  }
+  .toc-date {
+    font-size: 10px;
+    color: var(--ink-500);
+    font-family: var(--font-numeric);
+    letter-spacing: 0.01em;
+    white-space: nowrap;
+  }
+
+  /* 核心学说与英文 */
+  .toc-topic-zh {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--ink);
+    line-height: 1.35;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .toc-topic-en {
+    font-size: 11px;
+    color: var(--ink-500);
+    line-height: 1.25;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .toc-link:hover {
+    color: var(--ink);
+    background: rgba(0, 0, 0, 0.02);
+  }
+  .toc-link:hover .toc-bullet {
+    background: var(--ink-700);
+  }
+
+  /* 激活状态 (Active State - 极强时代感) */
+  .toc-link.active {
+    color: var(--red) !important;
+    border-left: 2px solid var(--red);
+    background: #FAF9F6;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.02);
+  }
+  .toc-link.active .toc-bullet {
+    background: var(--red);
+    box-shadow: 0 0 0 3px rgba(149, 0, 7, 0.18);
+  }
+  .toc-link.active .toc-dynasty-badge {
+    background: var(--red);
+    color: #FFFFFF;
+    font-weight: 800;
+  }
+  .toc-link.active .toc-date {
+    color: var(--red);
+    font-weight: 600;
+  }
+  .toc-link.active .toc-topic-zh {
+    color: var(--red);
+    font-weight: 800;
+  }
+  .toc-link.active .toc-topic-en {
+    color: var(--ink-700);
+    font-weight: 500;
+  }
+
+  .toc-hint-card {
+    background: var(--paper);
+    border: 1px solid var(--ink-300);
+    border-radius: var(--radius-card);
+    padding: 10px 12px;
+    margin-top: 12px;
+  }
+
+  /* ----------------- 典籍联动卡片区 ----------------- */
+  .tl-classics-box {
+    margin-top: 16px;
+    padding: 16px 20px 20px;
+    background: #FAF9F6;
+    border: 1px solid var(--ink-300);
+    border-radius: var(--radius-card);
+  }
+  .tl-box-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 14px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+  }
+  .tl-box-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--ink);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--font-heading);
+  }
+  .tl-era-link {
+    font-size: 12px;
+    color: var(--red);
+    font-weight: 600;
+    text-decoration: underline;
+  }
+  .tl-era-link:hover {
+    color: var(--ink);
+  }
+
+  .tl-books-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 12px;
+  }
+  .tl-book-card {
+    background: #FFFFFF;
+    border: 1px solid var(--ink-300);
+    border-radius: 4px;
+    padding: 14px 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: border-color .15s ease, box-shadow .15s ease;
+  }
+  .tl-book-card:hover {
+    border-color: var(--ink-500);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  }
+  .tl-card-meta {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-bottom: 6px;
+  }
+  .tl-badge {
+    font-size: 11px;
+    padding: 1px 6px;
+    border-radius: 2px;
+    font-weight: 700;
+    color: #fff;
+  }
+  .badge-yi { background: var(--red); }
+  .badge-dao { background: #374151; }
+
+  .tl-tag {
+    font-size: 11px;
+    background: #F3F4F6;
+    color: var(--ink-700);
+    padding: 1px 6px;
+    border-radius: 2px;
+    font-weight: 500;
+  }
+  .tl-book-title {
+    font-family: var(--font-heading);
+    font-size: 16px;
+    font-weight: 800;
+    color: var(--ink);
+    margin: 4px 0 4px;
+  }
+  .tl-book-author {
+    font-size: 12px;
+    color: var(--ink-700);
+    margin-bottom: 8px;
+  }
+  .tl-book-note {
+    font-size: 12px;
+    color: var(--ink-500);
+    line-height: 1.55;
+    margin: 0 0 12px;
+  }
+  .tl-card-action {
+    margin-top: auto;
+    padding-top: 8px;
+    border-top: 1px dashed #F3F4F6;
+  }
+  .btn-read-online {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--ink);
+    border: 1px solid var(--ink-300);
+    padding: 4px 10px;
+    border-radius: var(--radius-btn);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    background: #F9FAFB;
+    transition: background .12s ease;
+  }
+  .btn-read-online:hover {
+    background: var(--ink);
+    color: #fff;
+    border-color: var(--ink);
+  }
+</style>

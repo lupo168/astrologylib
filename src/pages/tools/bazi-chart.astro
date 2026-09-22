@@ -1,0 +1,309 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const title = "Free BaZi Chart Calculator · AstrologyLib";
+const description = "A free, transparent BaZi (Four Pillars) chart calculator - compute your birth chart's stems, branches, elements and zodiac animal from your date and time. For guidance and self-awareness only.";
+---
+
+<BaseLayout title={title} description={description} active="tools">
+  <div class="article-head">
+    <div class="crumb"><a href="/">Home</a> › Tools › BaZi Chart</div>
+    <h1><span class="zh">免費排盤</span>BaZi Chart Calculator</h1>
+    <p class="sub">Enter your birth date and time, and this tool computes your Four Pillars - the eight characters of Chinese astrology - using the standard classical calendar (lunar-javascript, MIT). Transparent, free, and grounded in the same calculations this library documents.</p>
+  </div>
+
+  <div class="tool-wrap" style="max-width:var(--content-max);margin:0 auto;padding:0 24px 40px">
+    <div class="tool-card" style="border:1px solid var(--ink-300);border-left:3px solid var(--gold);border-radius:var(--radius-card);padding:20px 22px;background:var(--paper)">
+      <form id="bazi-form" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px">
+        <label>Year <input type="number" id="y" min="1900" max="2100" value="1990" required /></label>
+        <label>Month <input type="number" id="m" min="1" max="12" value="5" required /></label>
+        <label>Day <input type="number" id="d" min="1" max="31" value="15" required /></label>
+        <label>Hour <input type="number" id="h" min="0" max="23" value="10" required /></label>
+        <label>Minute <input type="number" id="mi" min="0" max="59" value="30" /></label>
+        <label>Time zone (UTC offset)
+          <select id="tz">
+            <option value="8">China (UTC+8)</option>
+            <option value="7">Thailand / Vietnam (UTC+7)</option>
+            <option value="5.5">India (UTC+5:30)</option>
+            <option value="1">Germany (UTC+1)</option>
+            <option value="0">UK (UTC+0)</option>
+            <option value="-5">US Eastern (UTC-5)</option>
+            <option value="-8">US Pacific (UTC-8)</option>
+            <option value="9">Japan / Korea (UTC+9)</option>
+          </select>
+        </label>
+        <label>Birth longitude (for true solar time)
+          <input type="number" id="lon" step="0.01" placeholder="e.g. 116.41 Beijing" title="Decimal degrees, positive east of Greenwich" />
+          <span style="font-size:11px;color:var(--ink-500)">East positive, e.g. 116.41</span>
+        </label>
+        <div style="grid-column:1/-1">
+          <button type="submit" class="btn btn-primary" style="cursor:pointer">Compute my chart</button>
+        </div>
+      </form>
+    </div>
+
+    <div id="result" class="result-card" hidden style="margin-top:24px;border:1px solid var(--ink-300);border-left:3px solid var(--red);border-radius:var(--radius-card);padding:20px 22px;background:var(--paper)">
+      <h2 style="font-family:var(--font-heading);font-size:20px;margin:0 0 14px"><span class="zh">四柱八字</span>Your Four Pillars</h2>
+
+      <div class="pillars" style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:18px">
+        <div class="pillar" data-p="year"><div class="pl-label">Year Pillar</div><div class="pl-gan"></div><div class="pl-zhi"></div><div class="pl-el"></div></div>
+        <div class="pillar" data-p="month"><div class="pl-label">Month Pillar</div><div class="pl-gan"></div><div class="pl-zhi"></div><div class="pl-el"></div></div>
+        <div class="pillar" data-p="day"><div class="pl-label">Day Pillar</div><div class="pl-gan"></div><div class="pl-zhi"></div><div class="pl-el"></div></div>
+        <div class="pillar" data-p="hour"><div class="pl-label">Hour Pillar</div><div class="pl-gan"></div><div class="pl-zhi"></div><div class="pl-el"></div></div>
+      </div>
+
+      <p id="zodiac" class="result-line"></p>
+      <p id="daymaster" class="result-line"></p>
+      <p id="lunar" class="result-line"></p>
+
+      <div class="note" style="margin-top:14px"><strong>What this is:</strong> the eight characters (four pillars × two) are the <em>starting point</em> of BaZi, computed from the standard solar-to-lunar calendar. The <strong>Day Master</strong> (the stem of your day pillar) is the anchor of the whole tradition. A full reading - the Ten Gods, your strengths and gaps, and the luck cycles - needs a trained reader; this tool gives you the foundation transparently.</div>
+
+      <!-- 经典学术溯源与馆藏原典对照 -->
+      <div id="classical-sources" style="margin-top:20px;padding:18px 20px;background:rgba(212,175,55,0.06);border:1px solid var(--gold);border-radius:var(--radius-card)">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px">
+          <span style="font-size:18px">📜</span>
+          <h3 style="font-family:var(--font-heading);font-size:16px;margin:0;color:var(--ink)">
+            <span class="zh">原典學術溯源</span>Classical Canon Primary Sources for Your Day Master
+          </h3>
+        </div>
+        <p id="cs-quote" style="font-family:var(--font-heading);font-size:15px;color:var(--red);margin:0 0 6px;line-height:1.6"></p>
+        <p id="cs-meaning" style="font-size:13px;color:var(--ink-700);margin:0 0 12px;line-height:1.6"></p>
+        <div style="font-size:12px;font-weight:700;color:var(--ink-500);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:8px">Read In The Grand Corpus:</div>
+        <div id="cs-links" style="display:flex;gap:10px;flex-wrap:wrap"></div>
+      </div>
+    </div>
+
+    <div class="disclaimer" style="margin-top:24px;padding:14px 16px;border:1px solid var(--ink-300);border-left:3px solid var(--red);border-radius:var(--radius-card);font-size:13px;color:var(--ink-700);line-height:1.7">
+      <p style="margin:0"><strong>For guidance and self-awareness purposes only.</strong> This calculator computes a cultural framework - it does not predict your future, diagnose anything, or replace professional advice. Calculated locally in your browser; no data is sent anywhere.</p>
+      <p style="margin:6px 0 0"><strong>About accuracy:</strong> the chart is computed from the standard solar-to-lunar calendar (the same classical method documented in our <a href="/zhouyi/">Zhou Yi</a> and <a href="/learn/">Learn</a> pages). When you enter your <em>birth longitude</em>, the tool applies <strong>true solar time</strong> - the longitude correction (4 min per degree east of the 120°E reference) plus the equation of time (Meeus / NOAA solar algorithm, accurate to about a minute) - which is the classical refinement. Where true solar time shifts the hour pillar, the chart shown uses it and notes the change. The seasonal starting point of the year (lìchūn) is applied by the underlying calendar library.</p>
+    </div>
+
+    <div class="back-row" style="margin-top:24px">
+      <a class="btn btn-secondary" href="/learn/">Learn the basics first →</a>
+      <a class="btn btn-primary" href="/glossary/">Peek at the glossary →</a>
+    </div>
+  </div>
+</BaseLayout>
+
+<script>
+  // Lunar library loaded from the installed npm package (bundled by Astro)
+  import { Solar } from 'lunar-javascript';
+
+  const WUXING = { '甲':'Wood','乙':'Wood','丙':'Fire','丁':'Fire','戊':'Earth','己':'Earth','庚':'Metal','辛':'Metal','壬':'Water','癸':'Water',
+                   '子':'Water','丑':'Earth','寅':'Wood','卯':'Wood','辰':'Earth','巳':'Fire','午':'Fire','未':'Earth','申':'Metal','酉':'Metal','戌':'Earth','亥':'Water' };
+
+  const STEM_CANON: Record<string, { quote: string; meaning: string }> = {
+    '甲': {
+      quote: '《滴天髓·論甲木》：“甲木參天，脫胎要火。春不容金，秋不容土。火熾乘龍，水宕騎虎。地潤天和，植立千古。”',
+      meaning: 'Jia Wood represents the towering forest tree — upward-striving, noble, thriving with moderate Fire to bloom and moist fertile Earth to anchor its roots.',
+    },
+    '乙': {
+      quote: '《滴天髓·論乙木》：“乙木雖柔，刲羊解牛。懷丁抱丙，跨鳳乘猴。虛濕之地，騎馬亦憂。藤蘿系甲，可春可秋。”',
+      meaning: 'Yi Wood represents climbing vines, flowers and supple flora — adaptable, resilient, flourishing when warmed by the Sun (Bing) or winding around towering trees (Jia).',
+    },
+    '丙': {
+      quote: '《滴天髓·論丙火》：“丙火猛烈，欺霜傲雪。能煉庚金，逢辛反怯。土眾成慈，水猖顯節。虎馬犬鄉，甲來成滅。”',
+      meaning: 'Bing Fire is the solar radiance — magnanimous, illuminating the universe, unyielding against cold, tempering raw Metal with boundless vitality.',
+    },
+    '丁': {
+      quote: '《滴天髓·論丁火》：“丁火柔中，內性昭融。抱乙而孝，合壬而忠。旺而不烈，衰而不窮。如有嫡母，可秋可冬。”',
+      meaning: 'Ding Fire represents the flame, the forge, and the hearth — delicate yet penetrating, enduring, illuminating the inner spirit and civilizing all things.',
+    },
+    '戊': {
+      quote: '《滴天髓·論戊土》：“戊土固重，既中且正。靜翕動闢，萬物司命。水旺物病，火燥物病。若在艮坤，怕衝宜靜。”',
+      meaning: 'Wu Earth is the solid mountain and high plateau — firm, dependable, the steady central pivot that nourishes and bears all life.',
+    },
+    '己': {
+      quote: '《滴天髓·論己土》：“己土卑濕，中正蓄藏。不愁木盛，不畏水狂。火少火晦，金多金光。若要物旺，宜助宜幫。”',
+      meaning: 'Ji Earth is fertile garden loam and alluvial soil — receptive, nurturing, silently sustaining roots and harmonizing diverse elements.',
+    },
+    '庚': {
+      quote: '《滴天髓·論庚金》：“庚金帶煞，剛健為最。得水而清，得火而銳。土潤則生，土乾則脆。能贏甲兄，輸於乙妹。”',
+      meaning: 'Geng Metal is celestial ore and forged steel — bold, upright, refined through the kiln of Fire and cleared by the cleansing flow of Water.',
+    },
+    '辛': {
+      quote: '《滴天髓·論辛金》：“辛金軟弱，溫潤而清。畏土之疊，樂水之盈。能扶社稷，能救生靈。熱則喜母，寒則喜丁。”',
+      meaning: 'Xin Metal represents cut gems, precious pearls, and fine gold — delicate, luminous, craving clear Water for radiance while disliking burying mud.',
+    },
+    '壬': {
+      quote: '《滴天髓·論壬水》：“壬水通河，能洩金氣。剛中之德，周流不滯。通根透癸，衝天奔地。化則有情，從則相濟。”',
+      meaning: 'Ren Water is the surging river and ocean current — dynamic, profound, overcoming obstacles through continuous flow and vast natural wisdom.',
+    },
+    '癸': {
+      quote: '《滴天髓·論癸水》：“癸水至弱，達於津涯。得龍而運，功化斯神。不愁火土，不論庚辛。合戊見火，化象斯真。”',
+      meaning: 'Gui Water is the morning dew, mist, and mountain spring — gentle, deeply penetrating, nourishing all living beings with quiet grace.',
+    },
+  };
+
+  function elOf(char: string) { return WUXING[char] || ''; }
+
+  // ---- True solar time (Meeus, "Astronomical Algorithms"; also NOAA) ----
+  // Equation of time in minutes for a given civil date.
+  function equationOfTime(y, m, d) {
+    if (m <= 2) { y -= 1; m += 12; }
+    const A = Math.floor(y / 100);
+    const B = 2 - A + Math.floor(A / 4);
+    const jd = Math.floor(365.25 * (y + 4716)) + Math.floor(30.6001 * (m + 1)) + d + B - 1524.5;
+    const T = (jd - 2451545.0) / 36525.0;
+    const L0 = (280.46646 + 36000.76983 * T + 0.0003032 * T * T) % 360;
+    const M = 357.52911 + 35999.05029 * T - 0.0001537 * T * T;
+    const e = 0.016708634 - 0.000042037 * T - 0.0000001267 * T * T;
+    const C = Math.sin(M * Math.PI / 180) * (1.914602 - 0.004817 * T - 0.000014 * T * T)
+            + Math.sin(2 * M * Math.PI / 180) * (0.019993 - 0.000101 * T)
+            + Math.sin(3 * M * Math.PI / 180) * 0.000289;
+    const trueLong = L0 + C;
+    const eps0 = 23 + 26 / 60 + 21.448 / 3600 - (46.8150 * T + 0.00059 * T * T - 0.001813 * T * T * T) / 3600;
+    const yy = Math.tan((eps0 / 2) * Math.PI / 180) ** 2;
+    const eotDeg = yy * Math.sin(2 * L0 * Math.PI / 180)
+      - 2 * e * Math.sin(M * Math.PI / 180)
+      + 4 * e * yy * Math.sin(M * Math.PI / 180) * Math.cos(2 * L0 * Math.PI / 180)
+      - 0.5 * yy * yy * Math.sin(4 * L0 * Math.PI / 180)
+      - 1.25 * e * e * Math.sin(2 * M * Math.PI / 180);
+    return eotDeg * 4; // minutes
+  }
+
+  // True solar time = standard time + longitude correction (4 min per degree, east +)
+  // + equation of time. Returns { minutes, hour, minute, sign }.
+  function trueSolarTime(y, m, d, h, mi, lon) {
+    const eot = equationOfTime(y, m, d);
+    // longitude offset: +4 min per degree EAST of the reference meridian (120°E).
+    // Beijing (116.41°E) is west of 120°E, so its solar noon is LATER on the clock
+    // by ~14 min: offset = (120 - lon) * 4, positive adds to the clock time.
+    const lonOffset = (120 - lon) * 4; // minutes
+    const totalMin = h * 60 + mi + lonOffset + eot;
+    const day = new Date(Date.UTC(y, m - 1, d));
+    let days = 0;
+    let mins = totalMin;
+    while (mins < 0) { mins += 1440; days -= 1; }
+    while (mins >= 1440) { mins -= 1440; days += 1; }
+    const c = new Date(day.getTime() + days * 86400000);
+    return { date: c, minutes: mins, eot: eot, lonOffset: lonOffset };
+  }
+
+  function buildPillars(solar) {
+    const ec = solar.getLunar().getEightChar();
+    return [
+      { label: 'Year', gan: ec.getYearGan(), zhi: ec.getYearZhi() },
+      { label: 'Month', gan: ec.getMonthGan(), zhi: ec.getMonthZhi() },
+      { label: 'Day', gan: ec.getDayGan(), zhi: ec.getDayZhi() },
+      { label: 'Hour', gan: ec.getTimeGan(), zhi: ec.getTimeZhi() },
+    ];
+  }
+
+  function renderPillars(pillars) {
+    document.querySelectorAll('.pillar').forEach((box) => {
+      const p = pillars[box.dataset.p === 'year' ? 0 : box.dataset.p === 'month' ? 1 : box.dataset.p === 'day' ? 2 : 3];
+      box.querySelector('.pl-gan').textContent = p.gan;
+      box.querySelector('.pl-zhi').textContent = p.zhi;
+      box.querySelector('.pl-el').textContent = `${elOf(p.gan)} / ${elOf(p.zhi)}`;
+    });
+  }
+
+  document.getElementById('bazi-form').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const y = +document.getElementById('y').value;
+    const m = +document.getElementById('m').value;
+    const d = +document.getElementById('d').value;
+    const h = +document.getElementById('h').value;
+    const mi = +document.getElementById('mi').value || 0;
+    const tz = parseFloat(document.getElementById('tz').value);
+    const lonRaw = document.getElementById('lon').value.trim();
+    const lon = lonRaw === '' ? null : parseFloat(lonRaw);
+
+    try {
+      // Standard time: local birth time -> UTC -> CST (the calendar's frame).
+      const utcBirth = Date.UTC(y, m - 1, d, h, mi, 0);
+      const birthUtc = new Date(utcBirth - tz * 3600 * 1000);
+      const cst = new Date(birthUtc.getTime() + 8 * 3600 * 1000);
+      const stdSolar = Solar.fromYmdHms(cst.getUTCFullYear(), cst.getUTCMonth() + 1, cst.getUTCDate(), cst.getUTCHours(), cst.getUTCMinutes(), 0);
+
+      const stdPillars = buildPillars(stdSolar);
+
+      // True solar time chart (only meaningful when longitude is given).
+      let tsInfo = null, tsPillars = null, useTs = false;
+      if (lon !== null) {
+        const ts = trueSolarTime(y, m, d, h, mi, lon);
+        const tsCst = new Date(ts.date.getTime() + 8 * 3600 * 1000);
+        const tsSolar = Solar.fromYmdHms(tsCst.getUTCFullYear(), tsCst.getUTCMonth() + 1, tsCst.getUTCDate(), tsCst.getUTCHours(), tsCst.getUTCMinutes(), 0);
+        tsPillars = buildPillars(tsSolar);
+        const hh = Math.floor(ts.minutes / 60), mm = Math.floor(ts.minutes % 60);
+        tsInfo = {
+          text: `True solar time: ${String(hh).padStart(2,'0')}:${String(mm).padStart(2,'0')} (EoT ${ts.eot >= 0 ? '+' : ''}${ts.eot.toFixed(1)} min, longitude ${ts.lonOffset >= 0 ? '+' : ''}${ts.lonOffset.toFixed(0)} min)`,
+          differs: JSON.stringify(stdPillars) !== JSON.stringify(tsPillars),
+        };
+        // If true solar time changes the hour pillar, use it and note the difference.
+        useTs = tsInfo.differs;
+      }
+
+      const display = useTs && tsPillars ? tsPillars : stdPillars;
+      renderPillars(display);
+
+      const lunar = stdSolar.getLunar();
+      const animal = lunar.getYearShengXiao();
+      document.getElementById('zodiac').textContent = `Zodiac animal: ${animal}`;
+      const dayMaster = display[2].gan;
+      document.getElementById('daymaster').textContent = `Day Master (日主): ${dayMaster} (${elOf(dayMaster)}) - the anchor of your chart`;
+      document.getElementById('lunar').textContent = `Lunar date: ${lunar.toString()}`;
+
+      // True solar time note
+      let tsNote = document.getElementById('ts-note');
+      if (!tsNote) {
+        tsNote = document.createElement('p');
+        tsNote.id = 'ts-note';
+        tsNote.className = 'result-line';
+        document.getElementById('lunar').insertAdjacentElement('afterend', tsNote);
+      }
+      if (tsInfo) {
+        tsNote.textContent = tsInfo.text + (tsInfo.differs ? '  — this shifts the hour pillar (shown above).' : '  — the hour pillar is unchanged.');
+      } else {
+        tsNote.textContent = 'Enter your birth longitude for true solar time (the classical refinement).';
+      }
+
+      // Render Classical Canon Primary Sources
+      const canon = STEM_CANON[dayMaster];
+      if (canon) {
+        const qEl = document.getElementById('cs-quote');
+        const mEl = document.getElementById('cs-meaning');
+        const linksDiv = document.getElementById('cs-links');
+        if (qEl && mEl && linksDiv) {
+          qEl.textContent = canon.quote;
+          mEl.textContent = canon.meaning;
+          linksDiv.innerHTML = `
+            <a href="/library/ditian-sui/#tongshen" style="background:#fff;border:1px solid var(--gold);color:var(--ink);padding:6px 12px;font-size:12px;border-radius:var(--radius-btn);text-decoration:none;display:inline-flex;align-items:center;gap:4px">
+              📖 滴天髓 · 天干論 (Di Tian Sui) →
+            </a>
+            <a href="/library/read/?type=yicang&id=YI-299" style="background:#fff;border:1px solid var(--gold);color:var(--ink);padding:6px 12px;font-size:12px;border-radius:var(--radius-btn);text-decoration:none;display:inline-flex;align-items:center;gap:4px">
+              📜 淵海子平 · 論日主 (Yuan Hai Zi Ping) →
+            </a>
+            <a href="/library/read/?type=yicang&id=YI-327" style="background:#fff;border:1px solid var(--gold);color:var(--ink);padding:6px 12px;font-size:12px;border-radius:var(--radius-btn);text-decoration:none;display:inline-flex;align-items:center;gap:4px">
+              📜 窮通寶鑑 · 調候論 (Qiong Tong Bao Jian) →
+            </a>
+            <a href="/library/read/?type=yicang&id=YI-190" style="background:#fff;border:1px solid var(--gold);color:var(--ink);padding:6px 12px;font-size:12px;border-radius:var(--radius-btn);text-decoration:none;display:inline-flex;align-items:center;gap:4px">
+              📜 三命通會 · 卷二論十干 (San Ming Tong Hui) →
+            </a>
+            <a href="/library/read/?type=yicang&id=YI-263" style="background:#fff;border:1px solid var(--gold);color:var(--ink);padding:6px 12px;font-size:12px;border-radius:var(--radius-btn);text-decoration:none;display:inline-flex;align-items:center;gap:4px">
+              📜 子平真詮 · 用神配氣 (Zi Ping Zhen Quan) →
+            </a>
+          `;
+        }
+      }
+
+      document.getElementById('result').hidden = false;
+      document.getElementById('result').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    } catch (err) {
+      alert('Please check the date - it may be out of range or invalid.');
+    }
+  });
+</script>
+
+<style>
+  .pillar { border:1px solid var(--ink-300); border-radius:var(--radius-card); padding:10px 12px; text-align:center; }
+  .pl-label { font-size:12px; color:var(--ink-500); margin-bottom:6px; }
+  .pl-gan { font-family:var(--font-heading); font-size:24px; color:var(--red); font-weight:700; }
+  .pl-zhi { font-family:var(--font-heading); font-size:24px; color:var(--ink); font-weight:700; }
+  .pl-el { font-size:12px; color:var(--ink-500); margin-top:4px; }
+  .result-line { font-size:15px; color:var(--ink-700); line-height:1.7; margin:6px 0; }
+  .result-line strong { color:var(--ink); }
+  .tool-wrap label { display:flex; flex-direction:column; gap:4px; font-size:13px; color:var(--ink-500); }
+  .tool-wrap input, .tool-wrap select { padding:8px 10px; border:1px solid var(--ink-300); border-radius:6px; font-size:14px; background:var(--paper); color:var(--ink); }
+</style>

@@ -1,0 +1,190 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const title = "The Library · A Shelf of Texts - AstrologyLib";
+const description = "The AstrologyLib's shelf of classical texts - the Zhou Yi, the Ten Wings, and the working texts of BaZi, Feng Shui and the divination arts, in the public-domain original with our own translation.";
+
+// 书架：一部书一张卡片。status: 'live' 可打开；'draft' 原文就绪、阅读页制作中
+// 每本古籍带认证信息：来源 / 协议 / 贡献 / 校对 / 英译状态
+const BOOKS = [
+  { num: 1, zh: '周易', py: 'Zhōu Yì', en: 'The Zhou Yi · Book of Changes', cat: 'Foundation', desc: 'The root text - 64 hexagrams, each with judgment and line texts, fully translated.', href: '/zhouyi/', status: 'live', src: 'Wikisource (Sibu Congkan)', srcUrl: 'https://zh.wikisource.org/wiki/周易', hasEn: 'Fully translated', reviewer: '衡' },
+  { num: 2, zh: '十翼', py: 'Shí Yì', en: 'The Ten Wings', cat: 'Foundation', desc: 'The commentaries that make the Zhou Yi a philosophy - including the Great Treatise in full.', href: '/ten-wings/', status: 'live', src: 'Wikisource (Sibu Congkan)', srcUrl: 'https://zh.wikisource.org/wiki/周易', hasEn: 'Xi Ci I in full · others pending', reviewer: '衡' },
+  { num: 3, zh: '滴天髓', py: 'Dī Tiān Suǐ', en: 'Di Tian Sui · The Marrow of Heaven', cat: 'BaZi · 八字', desc: 'The deepest of the BaZi classics - the marrow of the Ziping method, chapter by chapter.', href: '/library/ditian-sui/', status: 'live', src: 'Wikisource / ctext', srcUrl: 'https://ctext.org', hasEn: 'Tong Shen Lun 5-21 translated', reviewer: '衡' },
+  { num: 4, zh: '淵海子平', py: 'Yuān Hǎi Zǐ Píng', en: 'Yuan Hai Zi Ping · The Sea of Sources', cat: 'BaZi · 八字', desc: 'The foundational source of the Ziping four-pillar system, setting out patterns and stem interactions.', href: '/library/read/?type=yicang&id=YI-299', status: 'live', src: 'Siku Quanshu / daizhigev20', srcUrl: 'https://github.com/garychowcmu/daizhigev20', hasEn: 'Original text in reader', reviewer: '衡' },
+  { num: 5, zh: '子平真詮', py: 'Zǐ Píng Zhēn Quán', en: 'Zi Ping Zhen Quan · True Explanation', cat: 'BaZi · 八字', desc: 'The clearest classical exposition of Ziping structures, focusing on the month command and pattern formation.', href: '/library/read/?type=yicang&id=YI-263', status: 'live', src: 'Siku Quanshu / daizhigev20', srcUrl: 'https://github.com/garychowcmu/daizhigev20', hasEn: 'Original text in reader', reviewer: '衡' },
+  { num: 6, zh: '窮通寶鑑', py: 'Qióng Tōng Bǎo Jiàn', en: 'Qiong Tong Bao Jian · The Precious Mirror', cat: 'BaZi · 八字', desc: 'The seasonal manual of Day Master adjustments and climatic balance across the twelve solar months.', href: '/library/read/?type=yicang&id=YI-327', status: 'live', src: 'Siku Quanshu / daizhigev20', srcUrl: 'https://github.com/garychowcmu/daizhigev20', hasEn: 'Original text in reader', reviewer: '衡' },
+  { num: 7, zh: '神峰通考', py: 'Shén Fēng Tōng Kǎo', en: 'Shen Feng Tong Kao · Thorough Study', cat: 'BaZi · 八字', desc: 'The comprehensive Ming dynasty synthesis of BaZi case studies and disease diagnosis.', href: '/library/read/?type=yicang&id=YI-321', status: 'live', src: 'Siku Quanshu / daizhigev20', srcUrl: 'https://github.com/garychowcmu/daizhigev20', hasEn: 'Original text in reader', reviewer: '衡' },
+  { num: 8, zh: '卜筮正宗', py: 'Bǔ Shì Zhèng Zōng', en: 'Bu Shi Zheng Zong · Orthodox Divination', cat: 'Divination · 卜筮', desc: 'The standard Qing dynasty textbook of the Six Lines (Liu Yao) divination method.', href: '/library/read/?type=yicang&id=YI-233', status: 'live', src: 'Siku Quanshu / daizhigev20', srcUrl: 'https://github.com/garychowcmu/daizhigev20', hasEn: 'Original text in reader', reviewer: '衡' },
+  { num: 9, zh: '增刪卜易', py: 'Zēng Shān Bǔ Yì', en: 'Zeng Shan Bu Yi · Revised Divination', cat: 'Divination · 卜筮', desc: 'The practical field manual of Yehe Laoren, refining hexagram lines through thousands of verified cases.', href: '/library/read/?type=yicang&id=YI-245', status: 'live', src: 'Siku Quanshu / daizhigev20', srcUrl: 'https://github.com/garychowcmu/daizhigev20', hasEn: 'Original text in reader', reviewer: '衡' },
+  { num: 10, zh: '梅花易數', py: 'Méi Huā Yì Shù', en: 'Plum Blossom Numerology', cat: 'Divination · 卜筮', desc: 'The mind-image divination system attributed to Song dynasty master Shao Yong.', href: '/library/read/?type=yicang&id=YI-294', status: 'live', src: 'Siku Quanshu / daizhigev20', srcUrl: 'https://github.com/garychowcmu/daizhigev20', hasEn: 'Original text in reader', reviewer: '衡' },
+  { num: 11, zh: '地理辨正', py: 'Dì Lǐ Biàn Zhèng', en: 'Di Li Bian Zheng · Rectification of Geography', cat: 'Feng Shui · 風水', desc: 'The seminal classic of Flying Star and compass landscape Feng Shui annotated by Jiang Dahong.', href: '/library/read/?type=yicang&id=YI-243', status: 'live', src: 'Siku Quanshu / daizhigev20', srcUrl: 'https://github.com/garychowcmu/daizhigev20', hasEn: 'Original text in reader', reviewer: '衡' },
+  { num: 12, zh: '疑龍經', py: 'Yí Lóng Jīng', en: 'Yi Long Jing · The Classic of the Doubtful Dragon', cat: 'Feng Shui · 風水', desc: 'Tang dynasty master Yang Yunsong on discerning dragon veins in flatlands and mountain terrains.', href: '/library/read/?type=yicang&id=YI-316', status: 'live', src: 'Siku Quanshu / daizhigev20', srcUrl: 'https://github.com/garychowcmu/daizhigev20', hasEn: 'Original text in reader', reviewer: '衡' },
+  { num: 13, zh: '冰鑑', py: 'Bīng Jiàn', en: 'Bing Jian · The Ice Mirror', cat: 'Character · 相學', desc: 'Zeng Guofan on discernment of character, bone structure, and voice.', href: '/library/read/?type=yicang&id=YI-229', status: 'live', src: 'Siku Quanshu / daizhigev20', srcUrl: 'https://github.com/garychowcmu/daizhigev20', hasEn: 'Original text in reader', reviewer: '衡' },
+  { num: 14, zh: '焦氏易林', py: 'Jiāo Shì Yì Lín', en: 'Jiao Shi Yi Lin · The Forest of Changes', cat: 'Divination · 易', desc: 'Han dynasty expansion of the 64 hexagrams into 4,096 verse transformations.', href: '/library/read/?type=yicang&id=YI-308', status: 'live', src: 'Siku Quanshu / daizhigev20', srcUrl: 'https://github.com/garychowcmu/daizhigev20', hasEn: 'Original text in reader', reviewer: '衡' },
+  { num: 15, zh: '紫微斗數', py: 'Zǐ Wēi Dǒu Shù', en: 'Zi Wei Dou Shu · Purple Star Classic', cat: 'Stars · 星命', desc: 'The authoritative Ming dynasty Wanli Xu Daozang woodblock edition of the 14 major stars and 12-palace celestial framework.', href: '/library/read/?type=daozang&id=DAO-1496', status: 'live', src: 'Wanli Xu Daozang (1607 CE)', srcUrl: 'https://github.com/garychowcmu/daizhigev20', hasEn: 'Original text in reader', reviewer: '衡' },
+];
+---
+
+<BaseLayout title={title} description={description} active="library">
+  <div class="article-head" style="border-bottom:1px solid var(--ink-200);background:linear-gradient(to bottom, var(--paper-warm), var(--paper));padding-bottom:28px">
+    <div class="crumb" style="font-size:13px;color:var(--ink-500);margin-bottom:8px">
+      <a href="/" style="color:var(--ink-500);text-decoration:none">Home</a> › 
+      <span style="color:var(--ink);font-weight:600">4. Grand Corpus · 萬卷典藏</span>
+    </div>
+
+    <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(26,26,26,0.06);border:1px solid rgba(26,26,26,0.15);padding:4px 12px;border-radius:20px;font-size:12px;font-weight:700;color:var(--ink);margin-bottom:12px;letter-spacing:0.04em">
+      <span>STEP 4 OF 4</span> · 認知階梯第四階：萬卷典籍原文與歷史源流
+    </div>
+
+    <h1><span class="zh">書架 · 典籍</span>The Library &amp; Grand Corpus</h1>
+    <p class="sub" style="max-width:760px;margin:0 auto 16px;font-size:16px;line-height:1.7;color:var(--ink-700)">
+      A shelf of classical texts and our 2,064-volume unified corpus. The Zhou Yi is fully translated; the Great Treatise (Xi Ci I) of the Ten Wings is complete. The working texts of BaZi, divination, Feng Shui, Zi Wei Dou Shu, and physiognomy are prepared for study.
+    </p>
+
+    <!-- 4合1 階梯指引條 -->
+    <div class="cognitive-stepper" style="max-width:880px;margin:20px auto 0;background:var(--paper);border:1px solid var(--ink-300);border-radius:var(--radius-card);padding:14px 20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;box-shadow:0 2px 8px rgba(0,0,0,0.02)">
+      <a href="/learn/" style="text-decoration:none;display:flex;align-items:center;gap:10px;color:var(--ink-700)">
+        <span style="width:22px;height:22px;border-radius:50%;background:var(--ink-200);color:var(--ink-700);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700">1</span>
+        <div>
+          <div style="font-size:10px;color:var(--ink-500);text-transform:uppercase;letter-spacing:0.04em">Step 1 · 入門</div>
+          <div style="font-size:12px;font-weight:600">0-to-1 Primer →</div>
+        </div>
+      </a>
+      <a href="/traditions/" style="text-decoration:none;display:flex;align-items:center;gap:10px;color:var(--ink-700)">
+        <span style="width:22px;height:22px;border-radius:50%;background:var(--ink-200);color:var(--ink-700);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700">2</span>
+        <div>
+          <div style="font-size:10px;color:var(--ink-500);text-transform:uppercase;letter-spacing:0.04em">Step 2 · 流派</div>
+          <div style="font-size:12px;font-weight:600">Traditions · 大宗流派 →</div>
+        </div>
+      </a>
+      <a href="/glossary/" style="text-decoration:none;display:flex;align-items:center;gap:10px;color:var(--ink-700)">
+        <span style="width:22px;height:22px;border-radius:50%;background:var(--ink-200);color:var(--ink-700);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700">3</span>
+        <div>
+          <div style="font-size:10px;color:var(--ink-500);text-transform:uppercase;letter-spacing:0.04em">Step 3 · 查詞</div>
+          <div style="font-size:12px;font-weight:600">Canonical Lexicon →</div>
+        </div>
+      </a>
+      <div style="color:var(--ink);font-weight:700;display:flex;align-items:center;gap:10px;background:var(--ink-200);padding:6px 12px;border-radius:6px;border:1px solid var(--ink-300)">
+        <span style="width:22px;height:22px;border-radius:50%;background:var(--ink);color:#fff;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700">4</span>
+        <div>
+          <div style="font-size:10px;color:var(--ink-700);text-transform:uppercase;letter-spacing:0.04em">Current · 原典</div>
+          <div style="font-size:12px;font-weight:700;color:var(--ink)">Grand Corpus · 萬卷典藏</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 萬卷典藏 2,064 卷统一总库横幅 -->
+  <section style="max-width:var(--content-max);margin:0 auto 20px;padding:0 24px">
+    <div style="background:linear-gradient(135deg, rgba(149,0,7,0.06), rgba(212,175,55,0.12));border:1px solid var(--gold);border-radius:var(--radius-card);padding:24px 28px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:18px">
+      <div style="max-width:760px">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px">
+          <span style="background:var(--red);color:#fff;font-size:11px;font-weight:700;padding:2px 8px;border-radius:2px;letter-spacing:0.05em">GRAND CORPUS</span>
+          <span style="font-size:13px;color:var(--ink-700);font-weight:600">2,064 Volumes Unified Classical Archive</span>
+        </div>
+        <h2 style="font-family:var(--font-heading);font-size:22px;color:var(--ink);margin:0 0 6px">📜 萬卷典藏總庫 · 2,064 卷中華古典文獻全庫</h2>
+        <p style="font-size:14px;color:var(--ink-700);line-height:1.6;margin:0">
+          歷經三千年傳承的東方宇宙觀、易理象數、四柱八字、紫微星命、六爻神卦與道家修真典藏。全量完成朝代考據與公元紀年考證，100% 公有領域開放，支持在線水墨閱讀、即時檢索與學術引用。
+        </p>
+      </div>
+      <a href="/library/classics/" style="background:var(--red);color:#fff;padding:12px 24px;font-size:15px;font-weight:600;border-radius:var(--radius-btn);text-decoration:none;white-space:nowrap;box-shadow:0 4px 12px rgba(149,0,7,0.2)">
+        進入萬卷典藏大廳 →
+      </a>
+    </div>
+  </section>
+
+  <!-- 典籍歷史源流線導引橫幅 -->
+  <section style="max-width:var(--content-max);margin:0 auto 28px;padding:0 24px">
+    <div style="background:var(--paper-warm);border:1px solid var(--ink-300);border-left:4px solid var(--gold);border-radius:var(--radius-card);padding:18px 24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px">
+      <div style="max-width:740px">
+        <div style="font-size:11px;font-weight:700;color:var(--gold);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:4px">CHRONOLOGICAL LINEAGE · 典籍歷史源流線</div>
+        <h3 style="font-family:var(--font-heading);font-size:18px;margin:0 0 4px;color:var(--ink)">
+          三千年術數文獻史：從甲骨占卜、周易經傳到紫微八字
+        </h3>
+        <p style="font-size:13px;color:var(--ink-700);line-height:1.6;margin:0">
+          典籍並非孤立散落。沿著朝代紀年與思想演進，查閱從先秦、兩漢、隋唐、兩宋到明清民國的完整傳承譜系，每段源流均直接對照總庫 2,064 卷對應古籍底本。
+        </p>
+      </div>
+      <a class="btn btn-secondary" href="/reference/timeline/" style="white-space:nowrap;padding:9px 18px;font-weight:600;font-size:13px">
+        瀏覽歷史源流線 →
+      </a>
+    </div>
+  </section>
+
+  <section class="shelf" style="max-width:var(--content-max);margin:0 auto;padding:8px 24px 48px">
+    <div class="shelf-grid">
+      {BOOKS.map((b) => (
+        <div class:list={['book', b.status]} data-href={b.href !== '#' ? b.href : undefined}>
+          <span class="book-num">{String(b.num).padStart(2, '0')}</span>
+          <div class="book-body">
+            <span class="book-cat">{b.cat}</span>
+            <h3>{b.en}</h3>
+            <p class="book-zh">{b.zh} · {b.py}</p>
+            <p class="book-desc">{b.desc}</p>
+            <div class="book-attrib">
+              <span class="ba-row"><span class="ba-k">Source · 來源</span><span class="ba-val"><a href={b.srcUrl} target="_blank" rel="noopener noreferrer">{b.src}</a></span></span>
+              <span class="ba-row"><span class="ba-k">English · 英譯</span><span class="ba-val"><span class:list={['ba-en', b.hasEn.startsWith('Fully') || b.hasEn.startsWith('Xi Ci') || b.hasEn.startsWith('Corpus') ? 'en-yes' : 'en-no']}>{b.hasEn}</span></span></span>
+              <span class="ba-row"><span class="ba-k">Proofread · 校對</span><span class="ba-val"><span class="seal-mini"><span class="sq">{b.reviewer}</span>verified</span></span></span>
+              <span class="ba-row"><span class="ba-k">Licence · 許可</span><span class="ba-val">CC BY-SA 4.0 · <a href="/contributor-agreement/">Agreement</a></span></span>
+            </div>
+            {b.status === 'live' ? (
+              <span class="book-tag tag-live">已校對 · Read →</span>
+            ) : (
+              <span class="book-tag tag-draft">待校對 · In preparation</span>
+            )}
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <div class="back-row" style="max-width:var(--content-max);margin:0 auto;padding:0 24px 40px">
+    <a class="btn btn-primary" href="/">← Back home</a>
+    <a class="btn btn-secondary" href="/learn/">Start from zero →</a>
+  </div>
+</BaseLayout>
+
+<style>
+  .shelf-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:26px;align-items:stretch}
+  .book{background:var(--paper);border:var(--border-gold);border-left:3px solid var(--gold);border-radius:var(--radius-card);padding:20px 22px;display:flex;flex-direction:column;position:relative;transition:box-shadow .18s,transform .18s,border-color .18s;cursor:pointer;box-shadow:0 1px 3px rgba(43,33,24,.06)}
+  .book:hover{box-shadow:0 8px 20px rgba(43,33,24,.14);transform:translateY(-2px);border-color:var(--red)}
+  .book.draft{opacity:.72}
+  .book.draft:hover{opacity:1}
+  .book h3 a{color:var(--ink)}
+  .book h3 a:hover{color:var(--red)}
+  .book-num{position:absolute;top:16px;right:20px;font-size:12px;color:var(--ink-300);font-variant-numeric:tabular-nums;letter-spacing:.04em}
+  .book-cat{font-size:11px;letter-spacing:.1em;color:var(--ink-500);text-transform:uppercase;font-weight:700}
+  .book h3{font-family:var(--font-heading);font-weight:700;font-size:19px;margin:6px 0 3px;color:var(--ink);padding-right:36px}
+  .book .book-zh{font-size:13px;color:var(--red);margin-bottom:8px;letter-spacing:.02em}
+  .book .book-desc{font-size:13px;color:var(--ink-700);line-height:1.6;margin-bottom:4px}
+  .book .book-tag{margin-top:auto;padding-top:12px;font-size:11px;letter-spacing:.04em;font-weight:600}
+  .book .tag-live{color:var(--success)}
+  .book .tag-draft{color:var(--ink-500)}
+  .book-attrib{margin-top:14px;padding-top:12px;border-top:1px dashed var(--ink-300);display:flex;flex-direction:column;gap:7px}
+  .book-attrib .ba-row{display:flex;align-items:flex-start;font-size:12px;color:var(--ink-700);line-height:1.5}
+  .book-attrib .ba-k{flex:0 0 92px;font-size:10px;letter-spacing:.06em;color:var(--ink-500);text-transform:uppercase;font-weight:700;white-space:nowrap;padding-top:1px}
+  .book-attrib .ba-val{flex:1 1 auto;min-width:0}
+  .book-attrib .ba-val a{color:var(--ink-700);text-decoration:underline;text-decoration-color:rgba(149,0,7,.35);text-underline-offset:2px}
+  .book-attrib .ba-val a:hover{color:var(--red);text-decoration-color:var(--red)}
+  .book-attrib .ba-en{font-weight:600;display:inline-block}
+  .book-attrib .ba-en.en-yes{color:var(--success)}
+  .book-attrib .ba-en.en-no{color:var(--ink-500)}
+  .book-attrib .seal-mini{display:inline-flex;align-items:center;gap:5px;background:var(--success);color:#fff;font-size:11px;font-weight:700;padding:2px 7px;border-radius:2px;white-space:nowrap}
+  .book-attrib .seal-mini .sq{width:13px;height:13px;background:#fff;color:var(--success);font-family:var(--font-heading);font-weight:900;font-size:10px;display:inline-flex;align-items:center;justify-content:center;border-radius:1px}
+  @media (max-width:720px){.shelf-grid{grid-template-columns:1fr}}
+</style>
+
+<script>
+  // 整卡交互：live 书点击跳转；draft 书点击提示待校对；内部链接不触发整卡
+  document.querySelectorAll('.book').forEach((card) => {
+    card.addEventListener('click', (e) => {
+      if (e.target.closest('a')) return; // 点内部链接（来源/协议）不触发整卡
+      const href = card.getAttribute('data-href');
+      if (href) {
+        window.location.href = href;
+      } else {
+        alert('This text is awaiting proofreading — its reading page is being prepared.');
+      }
+    });
+  });
+</script>

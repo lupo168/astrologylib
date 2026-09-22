@@ -1,0 +1,136 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const title = "404 · Page Not Found · 迷途未濟 - AstrologyLib";
+const description = "The classical page or scroll you are looking for could not be found in the AstrologyLib archive.";
+---
+
+<BaseLayout title={title} description={description}>
+  <div class="empty-hall" style="max-width:760px;margin:40px auto 80px;padding:48px 24px;text-align:center">
+    
+    <!-- 崇羲篆体 / 周易未济卦象征 -->
+    <div style="width:84px;height:84px;margin:0 auto 24px;border-radius:4px;background:var(--red);color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:inset 0 0 0 1px #6E0406, 0 4px 16px rgba(149,0,7,0.15)">
+      <span style="font-family:var(--font-heading);font-size:36px;font-weight:900;line-height:1">未</span>
+      <span style="font-size:10px;letter-spacing:0.1em;text-transform:uppercase;margin-top:2px;opacity:0.85">Wèi Jì</span>
+    </div>
+
+    <div style="font-size:12px;font-weight:700;color:var(--red);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:8px">
+      404 · PAGE NOT FOUND · 迷途未濟
+    </div>
+
+    <h1 style="font-family:var(--font-heading);font-size:32px;font-weight:900;color:var(--ink);margin:0 0 16px">
+      The Scroll Could Not Be Found
+    </h1>
+
+    <p style="font-size:16px;color:var(--ink-700);line-height:1.7;margin:0 auto 28px;max-width:580px">
+      In the <em>Book of Changes</em>, Hexagram 64 is <strong>Wei Ji (Before Completion)</strong> — when one has nearly crossed the river, but the path diverges. The page or edition you are seeking may have been re-indexed, moved, or never existed in our open corpus.
+    </p>
+
+    <!-- 实用导航索引框 -->
+    <div style="background:var(--paper);border:var(--border-gold);border-left:3px solid var(--gold);border-radius:var(--radius-card);padding:24px 28px;margin-bottom:32px;text-align:left;box-shadow:0 2px 12px rgba(0,0,0,0.02)">
+      <div style="font-size:12px;font-weight:700;color:var(--ink-500);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:14px">
+        Available Pathways Into The Tradition · 典藏推薦入口
+      </div>
+      <div class="pathway-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+        <a href="/" class="path-card">
+          <span>🏛️ Return to Home · 返回首頁</span>
+          <span class="arr">→</span>
+        </a>
+        <a href="/library/classics/" class="path-card">
+          <span>📜 Grand Corpus (2,064) · 萬卷典藏</span>
+          <span class="arr">→</span>
+        </a>
+        <a href="/zhouyi/" class="path-card">
+          <span>☯️ The Zhou Yi · 周易全本</span>
+          <span class="arr">→</span>
+        </a>
+        <a href="/reference/timeline/" class="path-card">
+          <span>🧭 Lineage Timeline · 歷史線</span>
+          <span class="arr">→</span>
+        </a>
+        <a href="/tools/bazi-chart/" class="path-card">
+          <span>🔢 BaZi Calculator · 八字排盤</span>
+          <span class="arr">→</span>
+        </a>
+        <a href="/community/" class="path-card">
+          <span>👥 Scholarly Forum · 研討社區</span>
+          <span class="arr">→</span>
+        </a>
+      </div>
+    </div>
+
+    <div style="display:flex;justify-content:center;gap:14px;flex-wrap:wrap">
+      <a class="btn btn-primary" href="/">← Return to Library Home</a>
+      <a class="btn btn-secondary" href="/stats/">Live Analytics & Traffic →</a>
+      <a class="btn btn-secondary" href="mailto:contact@astrologylib.org">Report Broken Link</a>
+    </div>
+
+    <!-- 404 真实流量捕获与诊断探针 (Cookieless) -->
+    <div id="telemetry-box" style="margin-top:28px;padding:12px 16px;background:rgba(0,0,0,0.03);border:1px dashed var(--ink-300);border-radius:var(--radius-card);font-size:12px;color:var(--ink-500);max-width:540px;margin-left:auto;margin-right:auto">
+      <span style="color:var(--success);font-weight:700">● 404 Telemetry Captured:</span>
+      <span id="telemetry-path">Logging path...</span>
+      <div style="font-size:11px;margin-top:4px;color:var(--ink-500)">
+        Tracked via Cloudflare RUM & local diagnostics. View all metrics on our <a href="/stats/" style="color:var(--red);text-decoration:underline">Public Analytics Dashboard</a>.
+      </div>
+    </div>
+
+  </div>
+
+  <script is:inline>
+    // 404 错误路径客户端捕获与持久化诊断（供 /stats/ 读取）
+    (function capture404Telemetry() {
+      try {
+        const path = window.location.pathname + window.location.search;
+        const now = Date.now();
+        localStorage.setItem("cal_last_404_path", path);
+        localStorage.setItem("cal_last_404_time", now.toString());
+
+        const count = parseInt(localStorage.getItem("cal_404_count") || "0", 10) + 1;
+        localStorage.setItem("cal_404_count", count.toString());
+
+        const el = document.getElementById("telemetry-path");
+        if (el) {
+          el.textContent = `${path} (Total 404s recorded: ${count})`;
+        }
+      } catch (e) {}
+    })();
+  </script>
+</BaseLayout>
+
+<style>
+  .path-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 14px;
+    background: rgba(255, 255, 255, 0.7);
+    border: 1px solid var(--ink-300);
+    border-radius: var(--radius-btn);
+    font-size: 14px;
+    color: var(--ink);
+    text-decoration: none;
+    transition: all 0.15s ease;
+  }
+  .path-card:hover {
+    background: #fff;
+    border-color: var(--red);
+    color: var(--red);
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(149, 0, 7, 0.08);
+  }
+  .path-card .arr {
+    color: var(--ink-500);
+    font-weight: 700;
+    margin-left: 8px;
+    transition: transform 0.15s ease;
+  }
+  .path-card:hover .arr {
+    color: var(--red);
+    transform: translateX(3px);
+  }
+  @media (max-width: 640px) {
+    .pathway-grid {
+      grid-template-columns: 1fr !important;
+    }
+  }
+</style>

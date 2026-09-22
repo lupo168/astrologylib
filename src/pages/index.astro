@@ -1,0 +1,284 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const title = "AstrologyLib - The Public-Domain Source for Chinese Metaphysics";
+const description = "From 0-to-1 beginner primer to the 2,064-volume Grand Classical Corpus: verified translations, standardized canonical glossary, and public-domain Chinese metaphysics. Sources you can check, guidance without promises.";
+---
+
+<BaseLayout title={title} description={description} active="home">
+  <!-- Hero Section -->
+  <section class="hero" style="padding-bottom:32px">
+    <div class="hero-inner">
+      <div class="kicker">The Public-Domain Source Library</div>
+      <h1><span class="en">Chinese Astrology Library</span>溯源 · 入門 · 可驗證<br />From Zero to Classical Canon, in Clear English</h1>
+      <span hidden data-deploy-test="20260910-cal-ladder">auto</span>
+      <p class="lede">
+        We bridge 3,000 years of Eastern cosmology through a rigorous <strong>four-pillar cognitive pathway</strong>: 
+        <strong>0-to-1 beginner onboarding</strong>, <strong>major applied traditions</strong>, a <strong>standardized canonical glossary</strong>, and our <strong>2,064-volume Grand Classical Corpus</strong>. 
+        No mystification. No empty promises. Sources you can verify.
+      </p>
+      <div class="cta-row" style="display:flex;gap:12px;flex-wrap:wrap">
+        <a class="btn btn-primary" href="/learn/" style="padding:12px 20px">
+          1. Start from Zero · 零基礎入門 →
+        </a>
+        <a class="btn btn-secondary" href="/traditions/" style="padding:12px 18px">
+          2. Traditions · 大宗流派 🧭
+        </a>
+        <a class="btn btn-secondary" href="/glossary/" style="padding:12px 18px">
+          3. Standard Glossary · 查閱術語庫 📖
+        </a>
+        <a class="btn btn-secondary" href="/library/" style="padding:12px 18px">
+          4. Grand Corpus · 萬卷典籍 📜
+        </a>
+      </div>
+    </div>
+    <figure class="hero-meta">
+      <div class="seal-logo" role="img" aria-label="易 · The Book of Changes">
+        <svg class="char-svg" viewBox="0 0 190 190" width="100%" height="100%" aria-hidden="true"><path d="M99.59 34.00 L100.09 34.25 Q100.47 34.00 101.10 34.00 L101.10 34.25 L101.60 34.00 L106.01 34.00 Q109.40 34.00 109.40 34.75 L109.90 34.50 Q112.17 34.50 115.06 37.90 Q116.32 38.28 116.95 40.16 Q118.71 41.42 120.22 50.35 Q120.22 50.98 120.97 51.86 L120.97 52.11 Q120.97 52.36 120.72 52.36 L121.35 53.87 Q120.47 55.51 120.47 56.26 L120.72 56.76 Q120.47 57.27 120.47 57.52 Q120.72 58.02 120.72 58.40 Q120.22 58.40 119.21 63.81 Q118.83 65.19 113.55 69.72 Q111.16 70.60 111.16 70.98 L110.91 70.98 Q110.41 70.73 110.16 70.73 Q110.16 71.35 106.76 71.86 L104.50 71.86 Q102.86 71.86 102.86 73.37 Q104.12 75.00 111.41 80.91 Q112.80 82.17 114.05 84.56 Q114.68 84.56 116.95 87.08 Q121.60 93.99 122.10 99.28 Q122.36 99.28 122.36 99.53 Q122.36 99.65 122.61 102.92 Q122.36 102.92 122.36 103.18 L122.86 103.43 Q122.86 108.71 120.22 115.12 L116.57 122.54 Q114.81 125.19 114.81 125.94 L114.56 125.94 L114.05 125.69 Q114.05 126.19 113.80 126.19 L114.05 126.69 L114.05 126.95 Q112.80 127.95 111.66 130.34 Q110.16 132.23 109.65 132.23 L110.16 132.98 Q108.65 135.00 107.51 135.50 Q107.51 137.26 104.75 137.64 Q104.75 138.14 106.01 138.14 L106.01 138.64 Q104.50 138.64 103.11 141.79 Q102.74 142.04 101.85 142.04 L101.85 142.29 L102.36 143.05 Q102.11 143.05 97.70 148.20 Q96.32 149.33 95.69 149.33 Q95.69 149.59 95.94 149.59 Q95.94 150.84 93.30 153.48 Q93.30 154.24 92.30 154.99 L91.79 154.74 Q91.79 155.12 90.66 155.75 Q90.16 155.75 90.16 155.25 Q89.15 155.50 88.40 156.00 L88.15 156.00 L85.76 154.24 Q86.26 152.23 86.26 152.10 L86.01 150.84 Q86.38 149.59 88.90 147.70 Q88.65 147.70 88.65 147.45 Q90.66 146.57 91.54 145.18 L91.29 144.55 L91.29 144.30 L91.54 144.30 L92.04 144.55 Q92.42 144.55 93.30 143.05 Q93.93 143.05 94.06 142.04 L97.20 138.64 Q96.95 138.64 96.95 138.39 L97.20 138.39 L97.70 138.64 Q97.96 137.51 99.84 135.25 Q99.84 134.74 100.35 134.74 L100.09 134.24 L100.60 133.99 Q101.73 134.49 102.11 134.49 L102.11 133.99 L101.60 133.99 Q101.60 132.73 102.11 132.73 Q102.61 132.98 102.86 132.98 L102.36 131.10 Q102.61 131.10 102.61 130.85 L103.11 131.10 L103.36 131.10 Q103.11 130.59 103.11 130.34 Q104.87 126.69 106.51 126.69 L106.26 126.19 Q106.63 126.19 108.39 123.42 L110.16 120.28 Q110.16 120.53 110.41 120.53 Q110.41 120.28 110.66 120.28 L110.41 119.78 Q111.29 118.14 111.92 117.64 L111.66 117.14 L111.66 116.88 Q112.80 116.88 112.80 114.62 Q115.56 108.58 115.56 104.43 Q115.56 103.05 115.06 98.77 L114.81 98.77 Q112.92 100.66 110.91 103.43 Q111.16 103.43 111.16 103.68 Q110.66 103.68 108.02 107.58 Q104.24 111.60 104.24 112.73 L103.36 113.49 Q103.62 113.99 103.62 114.24 Q103.49 114.24 101.10 116.88 Q101.35 117.39 101.35 117.64 Q99.09 119.78 98.71 119.78 L98.96 120.28 Q96.19 122.67 96.19 123.17 Q96.45 123.68 96.45 123.93 Q95.82 124.43 95.06 124.43 L95.44 124.93 L95.44 125.19 Q95.06 125.19 93.81 125.94 L94.06 126.44 L94.06 126.69 Q90.66 128.71 90.66 130.09 Q89.78 131.73 88.40 132.48 Q88.65 132.98 88.65 133.24 Q87.89 133.36 87.39 134.24 L86.89 134.24 L87.14 134.74 Q87.14 135.12 85.25 136.13 Q85.50 136.63 85.50 136.88 Q84.50 138.14 82.74 138.89 L82.99 139.40 Q82.99 139.78 82.11 140.15 Q81.35 140.15 80.35 138.89 Q79.34 139.40 78.84 139.40 Q78.84 139.15 77.45 138.14 Q77.45 137.89 77.71 137.89 L77.45 137.39 L77.45 137.13 Q77.45 136.88 77.71 136.88 L77.45 136.38 Q78.59 133.74 78.59 132.98 L79.34 132.98 L79.34 133.49 L79.59 133.49 L79.59 132.98 Q79.34 132.98 79.34 132.73 Q80.22 132.23 82.74 128.58 Q83.37 128.58 83.99 128.08 L83.74 127.58 Q83.74 127.07 85.76 125.94 L85.76 124.93 L86.01 124.93 L86.64 125.19 Q86.64 124.18 88.15 123.17 L87.89 122.54 L89.91 120.53 Q89.65 120.53 89.65 120.28 Q91.04 119.90 91.04 119.53 Q90.66 119.53 90.66 119.27 Q97.83 111.22 107.51 96.89 Q110.66 91.98 110.66 89.97 Q107.89 87.33 107.51 87.33 L107.26 87.33 Q106.76 87.45 105.25 89.72 Q105.50 89.72 105.50 89.97 Q104.75 89.97 102.61 93.11 Q102.11 93.11 98.21 98.77 Q97.58 98.77 92.80 106.07 Q91.79 106.07 90.66 109.09 L90.41 109.09 L89.91 108.84 Q89.91 110.22 88.40 110.97 Q87.01 113.74 86.01 113.74 L86.26 114.24 Q86.01 115.12 84.75 115.12 L84.75 115.38 L85.00 115.88 Q83.74 116.51 82.11 118.39 Q81.61 118.39 81.61 118.65 Q81.86 119.15 81.86 119.53 Q80.72 119.53 78.84 122.80 Q76.95 124.31 76.95 124.93 L76.20 125.69 Q76.20 125.44 75.95 125.44 Q75.95 125.81 75.19 126.19 Q74.69 125.94 74.44 125.94 L74.94 126.69 Q74.94 127.20 74.44 127.20 Q74.44 126.69 73.93 126.69 Q72.68 128.58 71.29 128.58 Q67.90 128.58 67.14 126.95 L67.14 126.69 L67.39 125.69 L67.14 125.19 Q68.65 121.54 72.55 117.89 Q72.55 117.14 77.45 113.24 Q83.62 106.82 87.89 101.04 Q95.06 93.49 100.09 84.81 Q100.72 84.18 101.35 82.67 Q99.34 81.16 97.96 81.16 Q96.95 83.05 87.39 91.23 Q86.01 93.87 80.60 98.52 Q79.22 100.41 77.45 101.29 Q75.19 104.43 72.80 104.43 Q71.79 104.94 71.04 104.94 L71.04 104.68 L70.03 105.44 Q68.52 103.68 67.90 103.68 Q68.78 99.02 70.03 99.02 Q70.03 98.40 73.68 95.88 L74.44 94.87 Q74.18 94.87 74.18 94.62 L74.69 94.37 L74.69 94.62 Q74.94 94.62 88.65 80.66 Q92.42 76.39 93.05 73.37 L93.05 71.86 L89.91 71.86 Q89.40 71.86 88.90 71.61 L88.40 71.86 L87.89 71.61 L87.39 71.86 Q80.22 70.73 77.71 68.46 Q74.31 64.44 74.18 59.91 Q73.93 59.91 73.30 58.40 L73.93 58.02 Q73.68 57.77 73.05 53.37 Q73.30 53.37 73.30 53.12 L72.80 52.87 Q73.30 51.73 73.68 50.10 L73.05 50.35 L72.80 50.35 L72.80 50.10 Q72.93 49.47 73.30 49.47 L73.05 47.71 Q73.93 42.05 76.20 39.66 Q76.20 38.02 79.84 37.65 Q79.84 37.90 80.10 37.90 Q81.23 35.38 93.81 34.25 L94.31 34.50 Z M98.21 40.16 Q98.21 40.92 97.70 40.92 L95.06 40.92 L93.30 41.29 Q93.30 40.92 93.05 40.92 L92.80 41.55 L91.54 41.29 L91.04 41.55 Q90.54 41.29 89.91 41.29 L89.65 41.29 L88.90 41.80 L88.40 41.55 Q88.40 41.92 85.00 42.55 Q84.12 43.68 80.10 45.07 L79.59 47.21 L79.84 47.71 Q79.59 48.21 79.59 48.46 Q79.59 50.35 80.60 50.35 Q83.87 50.85 85.76 50.85 L86.89 50.60 L87.39 50.85 Q90.91 50.48 91.54 50.35 Q91.79 50.35 91.79 50.60 L96.45 50.10 Q96.70 50.10 96.70 50.35 Q100.72 49.85 109.90 49.22 L109.90 49.47 L110.41 49.22 L110.66 49.22 Q111.29 49.22 111.66 49.47 L113.05 48.97 Q112.04 41.29 105.25 41.29 Q103.24 41.29 101.60 40.92 L100.60 41.55 Q98.46 40.92 98.46 40.16 Z M88.90 57.77 L88.90 57.52 L88.40 57.77 L86.26 57.77 Q85.76 57.77 85.25 57.52 Q82.49 57.77 80.60 58.40 L80.85 59.66 L80.60 60.16 Q81.86 61.17 82.74 63.31 Q85.25 64.19 85.25 64.56 L85.76 64.31 L89.65 65.57 Q89.78 65.07 90.16 65.07 L93.05 65.07 Q93.68 65.57 94.06 65.57 Q94.06 65.07 99.59 64.81 Q99.59 65.32 100.09 65.32 Q100.60 64.81 103.36 64.56 L105.25 65.32 Q105.25 64.31 107.26 64.31 L108.39 64.56 Q110.66 63.43 110.66 63.05 Q112.55 60.04 112.55 58.65 L112.55 57.77 Q111.04 57.77 110.66 57.02 Q110.16 57.27 109.90 57.27 L109.40 57.02 Q108.90 57.27 108.65 57.27 L108.65 57.02 L108.02 57.27 Q107.26 57.27 107.26 57.02 L105.75 57.27 L102.61 57.02 L102.11 57.27 L100.85 56.76 Q100.35 57.02 100.09 57.02 L100.09 56.76 Q99.09 57.27 88.90 57.77 Z" fill="#FFFFFF"/></svg>
+      </div>
+      <figcaption>Yì · The Book of Changes</figcaption>
+    </figure>
+  </section>
+
+  <!-- 四合一認知階梯核心架構展台 (The Four-Pillar Cognitive Pathway) -->
+  <section class="ladder-section" style="max-width:var(--content-max);margin:0 auto 40px;padding:0 24px">
+    <div style="text-align:center;max-width:760px;margin:0 auto 28px">
+      <div style="font-size:12px;font-weight:700;color:var(--red);letter-spacing:0.06em;text-transform:uppercase;margin-bottom:6px">THE FOUR-PILLAR COGNITIVE PATHWAY · 四階研學體系</div>
+      <h2 style="font-family:var(--font-heading);font-size:28px;margin:0 0 10px;color:var(--ink)">
+        從入門、流派、查詞到原典的四階認知體系
+      </h2>
+      <p style="font-size:15px;color:var(--ink-700);line-height:1.7;margin:0">
+        Don't get overwhelmed by archaic texts. Follow our verified 4-step pathway from universal cosmological building blocks to primary classical editions.
+      </p>
+    </div>
+
+    <div class="ladder-grid" style="display:grid;grid-template-columns:repeat(4, 1fr);gap:20px">
+      
+      <!-- 阶梯 1：零基础入门 -->
+      <div class="ladder-card" style="background:var(--paper);border:1px solid var(--ink-300);border-top:4px solid var(--gold);border-radius:var(--radius-card);padding:22px 18px;display:flex;flex-direction:column;box-shadow:0 3px 12px rgba(0,0,0,0.02)">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+          <span style="font-size:11px;font-weight:800;color:var(--gold);background:rgba(212,175,55,0.12);padding:2px 8px;border-radius:4px">STEP 1 · 入門</span>
+          <span style="font-size:11px;color:var(--ink-500)">0-to-1 Primer</span>
+        </div>
+        <h3 style="font-family:var(--font-heading);font-size:18px;margin:0 0 8px;color:var(--ink)">
+          Beginner Primer · 零基礎
+        </h3>
+        <p style="font-size:13px;color:var(--ink-700);line-height:1.6;margin-bottom:14px;flex:1">
+          Demystifying cosmology into natural philosophy. Plain-English first steps explaining Yin-Yang, the Five Phases, Chinese Zodiac archetypes, and natal BaZi logic.
+        </p>
+        <ul style="list-style:none;padding:0;margin:0 0 14px;font-size:12px;line-height:1.75">
+          <li><a href="/learn/yin-yang/" style="color:var(--ink);text-decoration:none">☯️ <strong>Yin &amp; Yang</strong> — Natural rhythm →</a></li>
+          <li><a href="/learn/five-elements/" style="color:var(--ink);text-decoration:none">🌱 <strong>Five Elements</strong> — Seasonal phases →</a></li>
+          <li><a href="/learn/zodiac/" style="color:var(--ink);text-decoration:none">🐎 <strong>Chinese Zodiac</strong> — 12 animals →</a></li>
+          <li><a href="/learn/bazi/" style="color:var(--ink);text-decoration:none">📜 <strong>BaZi Framework</strong> — Four pillars →</a></li>
+        </ul>
+        <a class="btn btn-secondary" href="/learn/" style="text-align:center;font-size:12px;padding:8px">
+          Start the Primer →
+        </a>
+      </div>
+
+      <!-- 阶梯 2：大宗流派 -->
+      <div class="ladder-card" style="background:var(--paper);border:1px solid var(--ink-300);border-top:4px solid var(--gold);border-radius:var(--radius-card);padding:22px 18px;display:flex;flex-direction:column;box-shadow:0 3px 12px rgba(0,0,0,0.02)">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+          <span style="font-size:11px;font-weight:800;color:var(--gold);background:rgba(212,175,55,0.12);padding:2px 8px;border-radius:4px">STEP 2 · 流派</span>
+          <span style="font-size:11px;color:var(--ink-500)">Major Traditions</span>
+        </div>
+        <h3 style="font-family:var(--font-heading);font-size:18px;margin:0 0 8px;color:var(--ink)">
+          Traditions · 大宗流派
+        </h3>
+        <p style="font-size:13px;color:var(--ink-700);line-height:1.6;margin-bottom:14px;flex:1">
+          Deep-dive into the four classical calculation systems: Four Pillars BaZi, Purple Star Zi Wei, Six Lines Liu Yao, and the Book of Changes (Zhou Yi).
+        </p>
+        <ul style="list-style:none;padding:0;margin:0 0 14px;font-size:12px;line-height:1.75">
+          <li><a href="/learn/bazi/" style="color:var(--ink);text-decoration:none">📜 <strong>BaZi</strong> — Solar stems &amp; branches →</a></li>
+          <li><a href="/traditions/ziwei/" style="color:var(--ink);text-decoration:none">✨ <strong>Zi Wei Dou Shu</strong> — 12 Palaces →</a></li>
+          <li><a href="/traditions/liuyao/" style="color:var(--ink);text-decoration:none">🪙 <strong>Liu Yao</strong> — Six Lines Divination →</a></li>
+          <li><a href="/zhouyi/" style="color:var(--ink);text-decoration:none">📖 <strong>The Zhou Yi</strong> — 386 Lines Canon →</a></li>
+        </ul>
+        <a class="btn btn-secondary" href="/traditions/" style="text-align:center;font-size:12px;padding:8px">
+          Explore Traditions →
+        </a>
+      </div>
+
+      <!-- 阶梯 3：标准术语库 -->
+      <div class="ladder-card" style="background:var(--paper);border:1px solid var(--ink-300);border-top:4px solid var(--red);border-radius:var(--radius-card);padding:22px 18px;display:flex;flex-direction:column;box-shadow:0 3px 12px rgba(0,0,0,0.02)">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+          <span style="font-size:11px;font-weight:800;color:var(--red);background:rgba(149,0,7,0.08);padding:2px 8px;border-radius:4px">STEP 3 · 查詞</span>
+          <span style="font-size:11px;color:var(--red);font-weight:700">Canonical Lexicon</span>
+        </div>
+        <h3 style="font-family:var(--font-heading);font-size:18px;margin:0 0 8px;color:var(--ink)">
+          Glossary · 標準術語庫
+        </h3>
+        <p style="font-size:13px;color:var(--ink-700);line-height:1.6;margin-bottom:14px;flex:1">
+          The official bilingual standard dictionary. 24 Core Essentials for beginners and 200+ reference terms with Pinyin, definitions, and classical source citations.
+        </p>
+        <div style="background:var(--paper-warm);border:1px solid var(--ink-200);border-radius:6px;padding:8px 10px;margin-bottom:14px;font-size:11px;color:var(--ink-700)">
+          <div style="font-weight:700;color:var(--ink);margin-bottom:4px">Standard Lookups:</div>
+          <div style="display:flex;gap:4px;flex-wrap:wrap">
+            <span style="background:#fff;border:1px solid var(--ink-300);padding:1px 5px;border-radius:3px">日主 (Day Master)</span>
+            <span style="background:#fff;border:1px solid var(--ink-300);padding:1px 5px;border-radius:3px">紫微星 (Zi Wei)</span>
+            <span style="background:#fff;border:1px solid var(--ink-300);padding:1px 5px;border-radius:3px">世應 (Shi &amp; Ying)</span>
+            <span style="background:#fff;border:1px solid var(--ink-300);padding:1px 5px;border-radius:3px">六親 (Six Kinships)</span>
+          </div>
+        </div>
+        <a class="btn btn-primary" href="/glossary/" style="text-align:center;font-size:12px;padding:8px">
+          Search Lexicon 🔍
+        </a>
+      </div>
+
+      <!-- 阶梯 4：典籍总库 -->
+      <div class="ladder-card" style="background:var(--paper);border:1px solid var(--ink-300);border-top:4px solid var(--ink);border-radius:var(--radius-card);padding:22px 18px;display:flex;flex-direction:column;box-shadow:0 3px 12px rgba(0,0,0,0.02)">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+          <span style="font-size:11px;font-weight:800;color:var(--ink);background:var(--ink-200);padding:2px 8px;border-radius:4px">STEP 4 · 原典</span>
+          <span style="font-size:11px;color:var(--ink-500)">2,064 Canons</span>
+        </div>
+        <h3 style="font-family:var(--font-heading);font-size:18px;margin:0 0 8px;color:var(--ink)">
+          Library · 萬卷典藏總庫
+        </h3>
+        <p style="font-size:13px;color:var(--ink-700);line-height:1.6;margin-bottom:14px;flex:1">
+          The ultimate primary text bedrock. 2,064 public-domain volumes in one unified, searchable collection, mapped directly to historical dynasties and citations.
+        </p>
+        <ul style="list-style:none;padding:0;margin:0 0 14px;font-size:12px;line-height:1.75">
+          <li><a href="/library/classics/" style="color:var(--ink);text-decoration:none">🏛️ <strong>Grand Corpus</strong> — 2,064 volumes →</a></li>
+          <li><a href="/reference/timeline/" style="color:var(--ink);text-decoration:none">🕰️ <strong>Historical Lineage</strong> — 3,000-year map →</a></li>
+          <li><a href="/zhouyi/" style="color:var(--ink);text-decoration:none">📖 <strong>The Zhou Yi</strong> — 386 lines bilingual →</a></li>
+          <li><a href="/library/read/?type=daozang&id=DAO-1496" style="color:var(--ink);text-decoration:none">✨ <strong>Zi Wei Daozang</strong> — DAO-1496 edition →</a></li>
+        </ul>
+        <a class="btn btn-secondary" href="/library/" style="text-align:center;font-size:12px;padding:8px">
+          Enter Grand Corpus →
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 萬卷典藏 2,064 卷大库重磅展台 -->
+  <section class="grand-corpus-banner" style="max-width:var(--content-max);margin:0 auto 36px;padding:0 24px">
+    <div style="background:linear-gradient(135deg, rgba(149,0,7,0.05), rgba(212,175,55,0.12));border:1px solid var(--gold);border-left:4px solid var(--red);border-radius:var(--radius-card);padding:28px 32px;box-shadow:0 4px 18px rgba(0,0,0,0.03)">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:20px;margin-bottom:20px">
+        <div style="max-width:760px">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px">
+            <span style="background:var(--red);color:#fff;font-size:11px;font-weight:700;padding:2px 8px;border-radius:2px;letter-spacing:0.06em;text-transform:uppercase">Monumental Open Archive</span>
+            <span style="font-size:13px;color:var(--ink-700);font-weight:600">2,064 Volumes · 100% Public Domain</span>
+          </div>
+          <h2 style="font-family:var(--font-heading);font-size:26px;font-weight:900;color:var(--ink);margin:0 0 8px">
+            萬卷典藏 · 中華古典古籍庫 <span style="font-size:18px;font-weight:400;color:var(--ink-700)">Grand Classical Corpus</span>
+          </h2>
+          <p style="font-size:15px;color:var(--ink-700);line-height:1.7;margin:0">
+            Preserving 3,000 years of Eastern cosmology, divination, internal alchemy, and metaphysics. Complete with dynastic dating, authorial attribution, and an ink-wash reader with scholarly citations.
+          </p>
+        </div>
+        <a class="btn btn-primary" href="/library/classics/" style="white-space:nowrap;padding:12px 24px;font-size:15px">
+          Explore Grand Corpus (2,064) →
+        </a>
+      </div>
+
+      <!-- 核心指标与朝代直通 -->
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;padding-top:16px;border-top:1px dashed var(--ink-300)">
+        <div>
+          <span style="font-size:11px;color:var(--ink-500);text-transform:uppercase;letter-spacing:0.05em">The Archive</span>
+          <div style="font-size:18px;font-weight:700;color:var(--ink);margin-top:2px">
+            <a href="/library/classics/" style="color:var(--red);text-decoration:underline">2,064 卷統一典籍總庫</a>
+          </div>
+        </div>
+        <div>
+          <span style="font-size:11px;color:var(--ink-500);text-transform:uppercase;letter-spacing:0.05em">Chronological Span</span>
+          <div style="font-size:18px;font-weight:700;color:var(--ink);margin-top:2px">1046 BCE – 1912 CE</div>
+        </div>
+        <div>
+          <span style="font-size:11px;color:var(--ink-500);text-transform:uppercase;letter-spacing:0.05em">Source Editions</span>
+          <div style="font-size:18px;font-weight:700;color:var(--ink);margin-top:2px">Siku Quanshu &amp; Daozang</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 在线学术实证工具与研讨社区并列区 -->
+  <section style="max-width:var(--content-max);margin:0 auto 36px;padding:0 24px">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px" class="home-duo-grid">
+      
+      <!-- 工具卡片 -->
+      <div style="background:var(--paper);border:1px solid var(--ink-300);border-left:3px solid var(--gold);border-radius:var(--radius-card);padding:24px 28px;box-shadow:0 2px 10px rgba(0,0,0,0.02)">
+        <div style="font-size:12px;font-weight:700;color:var(--gold);letter-spacing:0.06em;text-transform:uppercase;margin-bottom:6px">INTERACTIVE TOOLS · 實證工具</div>
+        <h3 style="font-family:var(--font-heading);font-size:20px;margin:0 0 8px;color:var(--ink)">
+          Interactive Classical Calculation
+        </h3>
+        <p style="font-size:14px;color:var(--ink-700);line-height:1.6;margin-bottom:16px">
+          Open, transparent calculators grounded in the classical calendar and astronomical algorithms — zero superstition, fully cited.
+        </p>
+        <div style="display:flex;gap:10px;flex-wrap:wrap">
+          <a class="btn btn-secondary" href="/tools/bazi-chart/" style="font-size:13px;padding:8px 14px">
+            ☯️ BaZi Chart Calculator →
+          </a>
+          <a class="btn btn-secondary" href="/tools/ziwei/" style="font-size:13px;padding:8px 14px">
+            🧭 Zi Wei Chart Tool →
+          </a>
+          <a class="btn btn-secondary" href="/tools/hexagram/" style="font-size:13px;padding:8px 14px">
+            🪙 Hexagram Divination →
+          </a>
+        </div>
+      </div>
+
+      <!-- 社区卡片 -->
+      <div style="background:var(--paper);border:1px solid var(--ink-300);border-left:3px solid var(--red);border-radius:var(--radius-card);padding:24px 28px;box-shadow:0 2px 10px rgba(0,0,0,0.02)">
+        <div style="font-size:12px;font-weight:700;color:var(--red);letter-spacing:0.06em;text-transform:uppercase;margin-bottom:6px">SCHOLARLY EXCHANGE · 研討社區</div>
+        <h3 style="font-family:var(--font-heading);font-size:20px;margin:0 0 8px;color:var(--ink)">
+          Collation, Errata &amp; In-Depth Study
+        </h3>
+        <p style="font-size:14px;color:var(--ink-700);line-height:1.6;margin-bottom:16px">
+          Join international sinologists and practitioners in discussing woodblock variants, verifying historical charts, and claiming translation tasks.
+        </p>
+        <div style="display:flex;gap:12px;flex-wrap:wrap">
+          <a class="btn btn-primary" href="/community/" style="font-size:13px;padding:8px 16px">
+            🏛️ Enter Community Forum →
+          </a>
+          <a class="btn btn-secondary" href="/contribute/" style="font-size:13px;padding:8px 16px">
+            Volunteer &amp; Tasks →
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 信任与背书 -->
+  <section class="trust">
+    <div class="trust-inner">
+      <h2>Why you can trust what's here</h2>
+      <div class="trust-grid">
+        <div class="trust-item"><div class="t-seal">衡</div><div><b>Verifiable sources</b><p>Every page carries its source and a verified seal. No source, no page - that's the rule.</p></div></div>
+        <div class="trust-item"><div class="t-seal">藏</div><div><b>Public-domain originals</b><p>Classical texts from public-domain editions, translated here from scratch - never copied from another translator.</p></div></div>
+        <div class="trust-item"><div class="t-seal">知</div><div><b>Honest about limits</b><p>When something is unknown, we say so. This is guidance and cultural study, not a promise about your future.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 官方联络与学者问答咨询服务台 -->
+  <section class="home-contact" style="max-width:var(--content-max);margin:0 auto;padding:0 24px 48px">
+    <div style="background:#fff;border:1px solid var(--ink-300);border-left:3px solid var(--red);border-radius:var(--radius-card);padding:24px 28px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px;box-shadow:0 2px 10px rgba(0,0,0,0.02)">
+      <div>
+        <div style="font-size:12px;font-weight:700;color:var(--red);letter-spacing:0.06em;text-transform:uppercase;margin-bottom:4px">CURATOR DESK · 官方聯絡服務臺</div>
+        <h3 style="font-family:var(--font-heading);font-size:20px;font-weight:700;margin:0 0 6px;color:var(--ink)">Get in touch with the library curator</h3>
+        <p style="font-size:14px;color:var(--ink-700);margin:0;max-width:680px;line-height:1.6">
+          Found an erratum, wish to claim a translation task, or have questions regarding classical Chinese editions? Write directly to our official desk: <strong style="color:var(--ink)">contact@astrologylib.org</strong>
+        </p>
+      </div>
+      <a class="btn btn-primary" href="mailto:contact@astrologylib.org" style="white-space:nowrap;padding:10px 22px">
+        Email contact@astrologylib.org →
+      </a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  @media (max-width: 960px) and (min-width: 601px) {
+    .ladder-grid {
+      grid-template-columns: repeat(2, 1fr) !important;
+    }
+  }
+  @media (max-width: 600px) {
+    .ladder-grid {
+      grid-template-columns: 1fr !important;
+    }
+  }
+</style>

@@ -1,0 +1,319 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const title = "Grand Classical Corpus · 萬卷典藏總庫 (2,064 Volumes) - AstrologyLib";
+const description = "Explore the complete unified collection of 2,064 classical Chinese texts across Eastern cosmology, divination, philosophy, and inner cultivation. 100% Public Domain.";
+---
+
+<BaseLayout title={title} description={description} active="library">
+  <div class="article-head" style="max-width:var(--content-max);margin:0 auto;padding:24px 24px 16px">
+    <div class="crumb"><a href="/">Home</a> › <a href="/library/">Library</a> › Grand Classical Corpus</div>
+    <h1><span class="zh">萬卷典藏 · 中華古典古籍總庫</span>Grand Classical Corpus</h1>
+    <p class="sub">A monumental, unified archive of <strong>2,064 classical texts</strong> spanning over 3,000 years of Eastern cosmology, divination, philosophy, and inner cultivation. 100% Public Domain (公有領域), verified from the Siku Quanshu (四庫全書) and Ming Zhengtong Daozang (正統道藏) woodblock editions.</p>
+  </div>
+
+  <section class="corpus-section" style="max-width:var(--content-max);margin:0 auto;padding:8px 24px 64px">
+    
+    <!-- 统计指示面板 -->
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-bottom:20px">
+      <div style="background:var(--paper);border:1px solid var(--ink-300);border-radius:var(--radius-card);padding:16px 20px">
+        <span style="font-size:12px;color:var(--ink-500);text-transform:uppercase;letter-spacing:0.05em">Unified Grand Archive</span>
+        <div style="font-size:28px;font-weight:900;font-family:var(--font-heading);color:var(--red);margin:4px 0">2,064 <span style="font-size:16px;font-weight:400;color:var(--ink-700)">典籍文獻</span></div>
+        <span style="font-size:12px;color:var(--success)">✓ 統一總庫 · 零阻隔全量一站式檢索</span>
+      </div>
+
+      <div style="background:var(--paper);border:1px solid var(--ink-300);border-radius:var(--radius-card);padding:16px 20px">
+        <span style="font-size:12px;color:var(--ink-500);text-transform:uppercase;letter-spacing:0.05em">Chronological Span</span>
+        <div style="font-size:28px;font-weight:900;font-family:var(--font-heading);color:var(--ink);margin:4px 0">3,000+ <span style="font-size:16px;font-weight:400;color:var(--ink-700)">年歷史跨度</span></div>
+        <span style="font-size:12px;color:var(--ink-500)">西周初年 (1046 BCE) - 民國時期</span>
+      </div>
+
+      <div style="background:var(--paper);border:1px solid var(--ink-300);border-radius:var(--radius-card);padding:16px 20px">
+        <span style="font-size:12px;color:var(--ink-500);text-transform:uppercase;letter-spacing:0.05em">Copyright Status</span>
+        <div style="font-size:28px;font-weight:900;font-family:var(--font-heading);color:var(--gold);margin:4px 0">Public Domain</div>
+        <span style="font-size:12px;color:var(--ink-500)">100% 公有領域開放引用</span>
+      </div>
+    </div>
+
+    <!-- 典籍歷史源流線導引橫幅（總庫內專屬對照） -->
+    <div style="background:var(--paper-warm);border:1px solid var(--ink-300);border-left:4px solid var(--gold);border-radius:var(--radius-card);padding:14px 20px;margin-bottom:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px">
+      <div style="font-size:13px;color:var(--ink-700)">
+        📜 <strong>按歷史譜系通讀？</strong> 三千年易學、術數與道家思想演進史，每段源流均直接對照總庫 2,064 卷對應古籍底本。
+      </div>
+      <a href="/reference/timeline/" style="font-size:13px;color:var(--red);font-weight:700;text-decoration:none;display:inline-flex;align-items:center;gap:4px">
+        查閱典籍歷史源流線 (Historical Timeline) →
+      </a>
+    </div>
+
+    <!-- 搜索与筛选工具栏 -->
+    <div class="filter-box" style="background:var(--paper);border:1px solid var(--ink-300);border-radius:var(--radius-card);padding:16px 20px;margin-bottom:24px">
+      <div style="display:flex;gap:16px;flex-wrap:wrap;align-items:center;margin-bottom:16px">
+        <div style="flex:1;min-width:260px">
+          <input id="search-input" type="text" placeholder="🔍 即時搜尋全總庫 2,064 部古籍：書名、著者、公元年代或關鍵字（如：周易、紫微斗數、卜筮正宗、京房、滴天髓、曾國藩、莊子...）" style="width:100%;padding:10px 14px;border:1px solid var(--ink-300);border-radius:var(--radius-btn);font-size:14px;background:#fff;color:var(--ink)" />
+        </div>
+        <button id="btn-reset" style="padding:10px 16px;border:1px solid var(--ink-300);background:none;font-size:14px;cursor:pointer;border-radius:var(--radius-btn)">
+          重置篩選
+        </button>
+      </div>
+
+      <!-- 朝代快速筛选标签 -->
+      <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-size:13px">
+        <span style="color:var(--ink-500);font-weight:600">朝代歷程：</span>
+        <button class="era-chip active" data-era="all">全部朝代 (2,064)</button>
+        <button class="era-chip" data-era="先秦">先秦 (商周戰國)</button>
+        <button class="era-chip" data-era="漢">兩漢 (西漢東漢)</button>
+        <button class="era-chip" data-era="魏晉">魏晉南北朝</button>
+        <button class="era-chip" data-era="唐">隋唐五代</button>
+        <button class="era-chip" data-era="宋">兩宋 (北宋南宋)</button>
+        <button class="era-chip" data-era="金元">金元時期</button>
+        <button class="era-chip" data-era="明">大明王朝</button>
+        <button class="era-chip" data-era="清">大清帝國</button>
+        <button class="era-chip" data-era="民国">民國</button>
+      </div>
+    </div>
+
+    <!-- 结果统计与列表 -->
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;font-size:14px;color:var(--ink-500)">
+      <span>當前檢索到 <strong id="result-count" style="color:var(--red)">2,064</strong> 部典籍文獻</span>
+      <span style="font-size:12px">點擊任意典籍即可進入在線古典水墨閱讀器</span>
+    </div>
+
+    <div id="books-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:16px">
+      <!-- 动态注入典籍卡片 -->
+      <div style="grid-column:1/-1;text-align:center;padding:40px;color:var(--ink-500)">正在載入萬卷典藏總庫 2,064 部全量目錄...</div>
+    </div>
+
+    <!-- 分页 / 载入更多 -->
+    <div style="text-align:center;margin-top:32px">
+      <button id="btn-load-more" style="display:none;background:var(--ink-100);border:1px solid var(--ink-300);color:var(--ink);padding:10px 32px;font-size:15px;font-weight:600;border-radius:var(--radius-btn);cursor:pointer">
+        載入更多典籍 ↓
+      </button>
+    </div>
+
+    <!-- 數位化底本來源與開源致謝 -->
+    <div style="margin-top:48px;padding:28px 32px;background:var(--paper);border:var(--border-gold);border-radius:var(--radius-card);box-shadow:0 4px 16px rgba(0,0,0,0.03)">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px">
+        <span style="font-size:22px">🏛️</span>
+        <h3 style="font-family:var(--font-heading);font-size:18px;margin:0;color:var(--ink)">文獻底本、數位化來源與開放開源致謝 · Provenance & Acknowledgments</h3>
+      </div>
+      <p style="font-size:14px;color:var(--ink-700);line-height:1.7;margin-bottom:12px">
+        本萬卷典藏庫所收錄之 2,064 卷古籍文本，底本均基於清乾隆文淵閣《四庫全書》易藏、明正統御製《道藏》、萬曆《續道藏》及歷代公版木刻善本，版權屬於 <strong>100% 公有領域（Public Domain）</strong>。
+      </p>
+      <p style="font-size:14px;color:var(--ink-700);line-height:1.7;margin-bottom:12px">
+        本庫所使用之全量原始文字數位化底本，誠摯感謝 <strong><a href="https://github.com/garychowcmu/daizhigev20" target="_blank" rel="noopener noreferrer" style="color:var(--red);font-weight:600;text-decoration:underline">殆知閣古代文獻檢索系統開源專案（Gary Chow / daizhigev20）</a></strong> 的整理、校勘與無私開源分享。殆知閣志願團隊為全球漢學與中華古典文獻的數位化典藏做出了不可磨滅的歷史貢獻。
+      </p>
+      <p style="font-size:14px;color:var(--ink-700);line-height:1.7;margin:0">
+        AstrologyLib (CAL) 團隊在其數位化底本基礎上，全量考證補全了每部典籍的 <strong>著者考訂、歷史朝代、公元公曆紀年（CE）、學術義理分類及三洞四輔部類索引</strong>，並研發了在線古典水墨閱讀器與規範學術引用生成器。特此公開銘謝，共同守護與弘揚東方經典文明。
+      </p>
+    </div>
+
+  </section>
+</BaseLayout>
+
+<style>
+  .era-chip {
+    background: none;
+    border: 1px solid var(--ink-300);
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-size: 12px;
+    cursor: pointer;
+    color: var(--ink-700);
+  }
+  .era-chip:hover {
+    border-color: var(--red);
+    color: var(--red);
+  }
+  .era-chip.active {
+    background: var(--ink-700);
+    color: #fff !important;
+    border-color: var(--ink-700);
+  }
+  .book-card {
+    background: var(--paper);
+    border: 1px solid var(--ink-300);
+    border-radius: var(--radius-card);
+    padding: 18px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease;
+    text-decoration: none;
+    color: inherit;
+  }
+  .book-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+    border-color: var(--gold);
+  }
+</style>
+
+<script>
+  let allBooks = [];
+  let currentFiltered = [];
+  let displayedCount = 48;
+  const PAGE_SIZE = 48;
+  let selectedEra = 'all';
+  let searchQuery = '';
+
+  async function initCorpusPage() {
+    try {
+      // 同时并发载入易藏 (343 部) 与道藏 (1,721 部)，合为单一万卷典藏总库 (2,064 卷)
+      const [yiRes, daoRes] = await Promise.all([
+        fetch('/classics/yicang_catalog.json'),
+        fetch('/classics/daozang_catalog.json')
+      ]);
+
+      const yiData = await yiRes.json();
+      const daoData = await daoRes.json();
+
+      allBooks = [
+        ...yiData.map((b) => ({ ...b, corpusType: 'yicang' })),
+        ...daoData.map((b) => ({ ...b, corpusType: 'daozang' }))
+      ];
+
+      currentFiltered = allBooks;
+      applyFilters();
+
+    } catch (e) {
+      console.error(e);
+      document.getElementById('books-grid').innerHTML = '<div style="color:var(--red);text-align:center;grid-column:1/-1">載入目錄失敗，請刷新重試。</div>';
+    }
+
+    // 绑定搜索输入
+    document.getElementById('search-input')?.addEventListener('input', (e) => {
+      searchQuery = (e.target as HTMLInputElement).value.trim().toLowerCase();
+      applyFilters();
+    });
+
+    // 绑定重置
+    document.getElementById('btn-reset')?.addEventListener('click', () => {
+      const searchInput = document.getElementById('search-input') as HTMLInputElement;
+      if (searchInput) searchInput.value = '';
+      searchQuery = '';
+      selectedEra = 'all';
+      document.querySelectorAll('.era-chip').forEach(c => c.classList.remove('active'));
+      document.querySelector('.era-chip[data-era="all"]')?.classList.add('active');
+      applyFilters();
+    });
+
+    // 绑定朝代筛选项
+    document.querySelectorAll('.era-chip').forEach(chip => {
+      chip.addEventListener('click', () => {
+        document.querySelectorAll('.era-chip').forEach(c => c.classList.remove('active'));
+        chip.classList.add('active');
+        selectedEra = chip.getAttribute('data-era') || 'all';
+        applyFilters();
+      });
+    });
+
+    // 绑定载入更多
+    document.getElementById('btn-load-more')?.addEventListener('click', () => {
+      displayedCount += PAGE_SIZE;
+      renderCards();
+    });
+
+    // 解析 URL 参数联动 (?era=漢&q=周易)
+    const urlParams = new URLSearchParams(window.location.search);
+    const eraParam = urlParams.get('era');
+    const qParam = urlParams.get('q');
+
+    if (qParam) {
+      searchQuery = qParam.trim().toLowerCase();
+      const searchInput = document.getElementById('search-input') as HTMLInputElement;
+      if (searchInput) searchInput.value = qParam;
+    }
+
+    if (eraParam) {
+      selectedEra = eraParam;
+      document.querySelectorAll('.era-chip').forEach(c => {
+        if (c.getAttribute('data-era') === eraParam) {
+          c.classList.add('active');
+        } else {
+          c.classList.remove('active');
+        }
+      });
+    }
+
+    if (qParam || eraParam) {
+      applyFilters();
+    }
+  }
+
+  function applyFilters() {
+    currentFiltered = allBooks.filter(item => {
+      // 1. 关键词过滤
+      const matchQuery = !searchQuery || 
+        (item.title && item.title.toLowerCase().includes(searchQuery)) ||
+        (item.author && item.author.toLowerCase().includes(searchQuery)) ||
+        (item.dynasty && item.dynasty.toLowerCase().includes(searchQuery)) ||
+        (item.approx_date && item.approx_date.toLowerCase().includes(searchQuery)) ||
+        (item.category && item.category.toLowerCase().includes(searchQuery));
+
+      // 2. 朝代过滤
+      let matchEra = true;
+      if (selectedEra !== 'all') {
+        matchEra = (item.dynasty && item.dynasty.includes(selectedEra)) || 
+                   (item.approx_date && item.approx_date.includes(selectedEra));
+      }
+
+      return matchQuery && matchEra;
+    });
+
+    displayedCount = PAGE_SIZE;
+    renderCards();
+  }
+
+  function renderCards() {
+    const grid = document.getElementById('books-grid');
+    const resultCount = document.getElementById('result-count');
+    const loadMoreBtn = document.getElementById('btn-load-more');
+    if (!grid || !resultCount || !loadMoreBtn) return;
+
+    resultCount.textContent = currentFiltered.length.toLocaleString();
+
+    if (currentFiltered.length === 0) {
+      grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:60px;color:var(--ink-500)">無符合條件的典籍，請調整搜尋關鍵字或朝代範圍。</div>';
+      loadMoreBtn.style.display = 'none';
+      return;
+    }
+
+    const slice = currentFiltered.slice(0, displayedCount);
+    let html = '';
+
+    slice.forEach(b => {
+      const readUrl = `/library/read/?type=${b.corpusType}&id=${b.book_id}`;
+      html += `
+        <a class="book-card" href="${readUrl}">
+          <div>
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+              <span style="font-size:11px;font-family:var(--font-numeric);color:var(--ink-500)">${b.book_id}</span>
+              <span style="font-size:11px;background:var(--ink-100);border:1px solid var(--ink-300);padding:1px 6px;border-radius:2px;color:var(--ink-700)">${b.dynasty}</span>
+            </div>
+            <h3 style="font-family:var(--font-heading);font-size:18px;font-weight:700;color:var(--ink);margin:0 0 6px">《${b.title}》</h3>
+            <p style="font-size:13px;color:var(--ink-700);margin-bottom:6px"><strong>${b.author}</strong></p>
+            <p style="font-size:12px;color:var(--ink-500);margin-bottom:8px">${b.approx_date}</p>
+          </div>
+          <div style="border-top:1px dashed var(--ink-300);padding-top:10px;margin-top:10px;display:flex;justify-content:space-between;align-items:center">
+            <span style="font-size:12px;color:var(--gold);font-weight:600">${b.category}</span>
+            <span style="font-size:12px;color:var(--red);font-weight:600">閱讀原文 →</span>
+          </div>
+        </a>
+      `;
+    });
+
+    grid.innerHTML = html;
+
+    if (displayedCount < currentFiltered.length) {
+      loadMoreBtn.style.display = 'inline-block';
+    } else {
+      loadMoreBtn.style.display = 'none';
+    }
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initCorpusPage);
+  } else {
+    initCorpusPage();
+  }
+</script>

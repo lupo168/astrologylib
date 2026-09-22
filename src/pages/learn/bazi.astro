@@ -1,0 +1,63 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageAttribution from '../../components/PageAttribution.astro';
+
+const title = "What Is Your BaZi? - AstrologyLib";
+const description = "BaZi (eight characters) explained from zero - the four pillars, the Day Master, a daily-life analogy, and a 30-second example.";
+---
+
+<BaseLayout title={title} description={description} active="learn">
+  <div class="article-head">
+    <div class="crumb"><a href="/">Home</a> › <a href="/learn/">Learn</a> › What Is Your BaZi?</div>
+    <h1><span class="zh">八字</span>What Is Your BaZi?</h1>
+  </div>
+
+  <div class="layout">
+    <aside class="toc">
+      <div class="t-label">In this lesson</div>
+      <ul>
+        <li><a href="#why">Why read this</a></li>
+        <li><a href="#pillars">The four pillars</a></li>
+        <li><a href="#analogy">A daily-life analogy</a></li>
+        <li><a href="#example">A 30-second example</a></li>
+        <li><a href="#where">Where this leads</a></li>
+      </ul>
+    </aside>
+
+    <article class="article-body">
+      <PageAttribution
+        sources={[
+          { label: 'Yuan Hai Zi Ping (淵海子平) · classical BaZi tradition', url: '/glossary/' },
+        ]}
+        verified="2026-08-19"
+        version="1.0.0"
+      />
+
+      <h2 id="why">Why read this</h2>
+      <p class="lead">BaZi literally means "eight characters." Your birth moment is encoded as four pairs of Chinese characters - year, month, day, hour - and those eight characters are the whole chart.</p>
+      <p>BaZi is the branch of the tradition this site reads most. If you remember only one thing: <strong>the character in the "day" position is you</strong>. It is called the Day Master (日主), and every other character in the chart is read as a relationship to it - a resource, an output, an officer, a rival. The Ten Gods table in the glossary names those relationships.</p>
+
+      <h2 id="pillars">The four pillars</h2>
+      <p>Each pillar has a <strong>Heavenly Stem</strong> (天干) on top and an <strong>Earthly Branch</strong> (地支) below. Year pillar - your environment and roots. Month pillar - your upbringing and the season you were born into. Day pillar - you, the Day Master. Hour pillar - your inner life and later years. Four pillars × two characters = eight.</p>
+
+      <h2 id="analogy">A daily-life analogy</h2>
+      <div class="analogy"><b>Everyday analogy.</b> Think of your birth certificate: place, date, time. BaZi is the same coordinates read through stems, branches and elements. The Day Master is the anchor; everything else is context around it.</div>
+
+      <h2 id="example">A 30-second example</h2>
+      <p>Open a chart and do exactly one thing: find the day column and look at its top character - the stem. That is the Day Master. Then ask whether its element is strong or weak: does the surrounding year, month and hour feed it or drain it? That single question is where nearly every reading starts.</p>
+
+      <h2 id="where">Where this leads</h2>
+      <p>From the Day Master, two timelines extend outward: the Ten Gods (how other people and events relate to you) and the luck cycles - <em>dà yùn</em> (大運) and <em>liú nián</em> (流年) - which move the chart through a life. To explore other major traditions, see our guides on <a href="/learn/ziwei/">Zi Wei Dou Shu (紫微斗數)</a> and <a href="/learn/liuyao/">Liu Yao Divination (六爻神卦)</a>, or proceed directly to Step 2: Canonical Glossary.</p>
+
+      <div class="disclaimer">
+        <p><strong>For guidance and self-awareness purposes only.</strong> This lesson explains Chinese astrology as a cultural and philosophical framework - what it is, where it came from, and how its vocabulary works. It is not a prediction of your future, a medical or financial opinion, or a substitute for professional advice.</p>
+      </div>
+
+      <div class="back-row" style="margin-top:28px">
+        <a class="btn btn-secondary" href="/learn/">← All lessons</a>
+        <a class="btn btn-secondary" href="/learn/zodiac/">← Previous: The Chinese Zodiac</a>
+        <a class="btn btn-primary" href="/glossary/">Next: Canonical Glossary (Step 2) →</a>
+      </div>
+    </article>
+  </div>
+</BaseLayout>

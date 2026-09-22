@@ -1,0 +1,132 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageAttribution from '../../components/PageAttribution.astro';
+
+const title = "What Is Liu Yao Divination? - AstrologyLib";
+const description = "Liu Yao (Six Lines Divination) explained from zero - King Wen Ba Gua, Shi and Ying lines, the Six Kinships, a daily-life analogy, and a 30-second example.";
+---
+
+<BaseLayout title={title} description={description} active="traditions">
+  <div class="article-head">
+    <div class="crumb"><a href="/">Home</a> › <a href="/traditions/">Traditions</a> › What Is Liu Yao Divination?</div>
+    <h1><span class="zh">六爻神卦</span>What Is Liu Yao Divination?</h1>
+  </div>
+
+  <div class="layout">
+    <aside class="toc">
+      <div class="t-label">In this lesson</div>
+      <ul>
+        <li><a href="#why">Why read this</a></li>
+        <li><a href="#structure">From I Ching to Six Lines</a></li>
+        <li><a href="#shiying">The Shi and Ying lines (世應)</a></li>
+        <li><a href="#kinships">The Six Kinships (六親)</a></li>
+        <li><a href="#spirits">The Six Spirits (六神)</a></li>
+        <li><a href="#analogy">A daily-life analogy</a></li>
+        <li><a href="#example">A 30-second example</a></li>
+        <li><a href="#where">Where this leads</a></li>
+      </ul>
+    </aside>
+
+    <article class="article-body">
+      <PageAttribution
+        sources={[
+          { label: 'Bu Shi Zheng Zong (卜筮正宗 · YI-233) · Qing orthodox manual', url: '/library/read/?type=yicang&id=YI-233' },
+          { label: 'Zeng Shan Bu Yi (增刪卜易 · YI-245) · Yehe Laoren verified cases', url: '/library/read/?type=yicang&id=YI-245' },
+        ]}
+        verified="2026-09-10"
+        version="1.0.0"
+      />
+
+      <h2 id="why">Why read this</h2>
+      <p class="lead">While BaZi and Zi Wei analyze your lifetime constitution and long-term seasons, <strong>Liu Yao (六爻 · Six Lines Divination)</strong> is designed for answering immediate, concrete situational decisions.</p>
+      <p>Also known as <em>Wen Wang Ba Gua</em> (文王八卦) or the Najia method (納甲法), Liu Yao was pioneered by Western Han scholar Jing Fang (京房). It transforms the poetic, symbolic lines of the <em>Zhou Yi</em> (I Ching) into an exact, computational diagnostic tool using Five Element mechanics, calendar timing, and relational dynamics.</p>
+
+      <h2 id="structure">From I Ching to Six Lines</h2>
+      <p>When you consult the <em>Zhou Yi</em> (often by tossing three coins six times), you obtain a hexagram composed of six lines (either Yin or Yang). In traditional philosophical reading, you consult the poetic line commentary. In <strong>Liu Yao</strong>, however, each line is assigned:</p>
+      <ul>
+        <li>An <strong>Earthly Branch</strong> (地支: Zi, Chou, Yin, etc.) with its corresponding element.</li>
+        <li>A <strong>Six Kinship role</strong> (六親: Parents, Officer, Siblings, Wealth, Offspring).</li>
+        <li>A <strong>Celestial Spirit</strong> (六神: Qing Long, Zhu Que, Bai Hu, etc.) reflecting psychological atmosphere.</li>
+      </ul>
+
+      <h2 id="shiying">The Shi and Ying lines (世應)</h2>
+      <p>Every hexagram contains two structural anchors:</p>
+      <ul>
+        <li><strong>Shi Yao (世爻 · Self Line)</strong>: Represents you—the inquirer, your current strength, confidence, and capacity.</li>
+        <li><strong>Ying Yao (應爻 · Other Line)</strong>: Represents the counterpart—the company offering the job, the business partner, the house to purchase, or the external situation.</li>
+      </ul>
+      <p>If the Shi line and Ying line generate each other or combine, mutual agreement comes naturally. If they clash or overcome each other, friction and divergence are inevitable.</p>
+
+      <h2 id="kinships">The Six Kinships (六親)</h2>
+      <p>In Liu Yao, the matter you are inquiring about is identified as the <strong>Yong Shen (用神 · Functional Focus Spirit)</strong> using the five relational categories:</p>
+      <table style="width:100%;margin:16px 0;border-collapse:collapse;font-size:14px">
+        <thead>
+          <tr style="border-bottom:2px solid var(--ink-300);text-align:left">
+            <th style="padding:8px 10px;color:var(--red)">Kinship</th>
+            <th style="padding:8px 10px">Element Relation</th>
+            <th style="padding:8px 10px">Inquiry Domains</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom:1px solid var(--ink-200)">
+            <td style="padding:8px 10px;font-weight:700">Parents (父母)</td>
+            <td style="padding:8px 10px">Generates Palace</td>
+            <td style="padding:8px 10px">Contracts, real estate, vehicles, exams, schools, elder protection</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--ink-200)">
+            <td style="padding:8px 10px;font-weight:700">Officer / Ghost (官鬼)</td>
+            <td style="padding:8px 10px">Overcomes Palace</td>
+            <td style="padding:8px 10px">Career status, promotions, bosses, regulations, anxiety, illness</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--ink-200)">
+            <td style="padding:8px 10px;font-weight:700">Siblings (兄弟)</td>
+            <td style="padding:8px 10px">Same as Palace</td>
+            <td style="padding:8px 10px">Peers, competitors, partners, shared costs, wealth leakage</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--ink-200)">
+            <td style="padding:8px 10px;font-weight:700">Wealth (妻財)</td>
+            <td style="padding:8px 10px">Overcome by Palace</td>
+            <td style="padding:8px 10px">Money, revenue, assets, tangible resources, staff sustenance</td>
+          </tr>
+          <tr>
+            <td style="padding:8px 10px;font-weight:700">Offspring (子孫)</td>
+            <td style="padding:8px 10px">Palace Generates</td>
+            <td style="padding:8px 10px">Creativity, customers, solutions, leisure, medicine, relief from worry</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2 id="spirits">The Six Spirits (六神)</h2>
+      <p>Determined by the Heavenly Stem of the consultation day, the Six Celestial Spirits paint the situational texture:</p>
+      <ul>
+        <li><strong>Qing Long (青龍 · Azure Dragon)</strong>: Joy, festivities, high ethical standards, prestige.</li>
+        <li><strong>Zhu Que (朱雀 · Vermilion Bird)</strong>: Documents, communication, public speaking, disputes.</li>
+        <li><strong>Gou Chen (勾陳 · Yellow Dragon)</strong>: Real estate, delays, bureaucratic red tape, entanglement.</li>
+        <li><strong>Teng She (騰蛇 · Soaring Serpent)</strong>: Anxiety, deceit, sudden surprises, restlessness.</li>
+        <li><strong>Bai Hu (白虎 · White Tiger)</strong>: Urgency, sharp action, physical danger, surgery, bold force.</li>
+        <li><strong>Xuan Wu (玄武 · Black Tortoise)</strong>: Hidden matters, ambiguity, secrets, covert maneuvers.</li>
+      </ul>
+
+      <h2 id="analogy">A daily-life analogy</h2>
+      <div class="analogy">
+        <b>Everyday analogy.</b> Think of a contract negotiation. You are the <em>Shi line</em>; the opposing negotiator is the <em>Ying line</em>. The contract terms on the table are the <em>Parents line</em>. The salary or investment sum is the <em>Wealth line</em>. The calendar Month and Day act as the presiding legal statutes: whatever they support has legal weight; whatever they clash with is voided.
+      </div>
+
+      <h2 id="example">A 30-second example</h2>
+      <p>Suppose you ask: <em>"Will I receive the funding grant?"</em> Since grants involve legal approval and official funds, you locate the <strong>Wealth line (妻財)</strong> and the <strong>Parents line (父母)</strong>. If Wealth is active and generated by the consultation day, and your Self line (世爻) is strong, the funds are approved. If the Siblings line (兄弟 · wealth-draining rivals) moves to attack the Wealth line, competition is fierce and expenses are high.</p>
+
+      <h2 id="where">Where this leads</h2>
+      <p>When an old line changes polarity, it creates a <strong>Moving Line (動爻)</strong> and generates a transformed hexagram. By cross-referencing Month Clash (月破) and Ten-Day Void (旬空), Liu Yao provides precise calendar timing (down to the day or month) for when an outcome manifests.</p>
+
+      <div class="disclaimer">
+        <p><strong>For guidance and self-awareness purposes only.</strong> This lesson explains Chinese divination as an analytical and cultural framework — how its logic operates and where its literature originates. It is not a prediction of your future or a substitute for professional counsel.</p>
+      </div>
+
+      <div class="back-row" style="margin-top:28px">
+        <a class="btn btn-secondary" href="/learn/">← All lessons</a>
+        <a class="btn btn-secondary" href="/learn/ziwei/">← Previous: Zi Wei Dou Shu</a>
+        <a class="btn btn-primary" href="/glossary/">Next: Canonical Glossary (Step 2) →</a>
+      </div>
+    </article>
+  </div>
+</BaseLayout>

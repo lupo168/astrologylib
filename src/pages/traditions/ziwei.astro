@@ -1,0 +1,113 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageAttribution from '../../components/PageAttribution.astro';
+
+const title = "What Is Zi Wei Dou Shu? · Purple Star Astrology | AstrologyLib";
+const description = "In-depth guide to Zi Wei Dou Shu (Purple Star Astrology) - the Emperor Star, 14 Major Stars, 12 Palaces, Four Transformations (Si Hua), and Ming Daozang canon.";
+---
+
+<BaseLayout title={title} description={description} active="traditions">
+  <div class="article-head">
+    <div class="crumb"><a href="/">Home</a> › <a href="/traditions/">Traditions</a> › What Is Zi Wei Dou Shu?</div>
+    <h1><span class="zh">紫微斗數</span>What Is Zi Wei Dou Shu?</h1>
+  </div>
+
+  <div class="layout">
+    <aside class="toc">
+      <div class="t-label">In this lesson</div>
+      <ul>
+        <li><a href="#why">Why read this</a></li>
+        <li><a href="#stars">The Emperor &amp; the 14 Stars</a></li>
+        <li><a href="#palaces">The Twelve Palaces</a></li>
+        <li><a href="#transformations">The Four Transformations (Si Hua)</a></li>
+        <li><a href="#analogy">A daily-life analogy</a></li>
+        <li><a href="#example">A 30-second example</a></li>
+        <li><a href="#tool">Interactive Chart Tool</a></li>
+        <li><a href="#where">Where this leads</a></li>
+      </ul>
+    </aside>
+
+    <article class="article-body">
+      <PageAttribution
+        sources={[
+          { label: 'Wanli Xu Daozang: Zi Wei Dou Shu (DAO-1496) · Ming woodblock canon', url: '/library/read/?type=daozang&id=DAO-1496' },
+          { label: 'Zi Wei Dou Shu Quan Shu (紫微斗數全書) · classical tradition', url: '/glossary/?cat=ziwei' },
+        ]}
+        verified="2026-09-10"
+        version="1.1.0"
+      />
+
+      <h2 id="why">Why read this</h2>
+      <p class="lead">While BaZi calculates your elemental energy balance through time (stems and branches), <strong>Zi Wei Dou Shu (紫微斗數)</strong> maps your psychological archetypes and life sectors across space (stars and palaces).</p>
+      <p>Attributed historically to Daoist sage Chen Tuan (陳摶) and canonized in the Ming dynasty <em>Wanli Xu Daozang</em> (萬曆續道藏), Zi Wei is often called the "Emperor of Chinese Astrology." It is the most widely practiced astrological system in contemporary Hong Kong and Taiwan, prized for its vivid psychological archetypes and detailed life area mapping.</p>
+
+      <h2 id="stars">The Emperor &amp; the 14 Stars</h2>
+      <p>The name <em>Zi Wei</em> (紫微) refers to the North Star (the Purple Forbidden Enclosure), symbolizing the Emperor at the center of the cosmic court. Around this celestial pivot rotate <strong>14 Major Stars (十四主星)</strong>, representing human personality archetypes:</p>
+      <ul>
+        <li><strong>Command &amp; Leadership</strong>: Zi Wei (紫微 · The Emperor), Tian Fu (天府 · The Treasurer), Wu Qu (武曲 · The General).</li>
+        <li><strong>Strategy &amp; Intellect</strong>: Tian Ji (天機 · The Strategist), Ju Men (巨門 · The Orator / Gatekeeper), Tian Liang (天梁 · The Elder / Mentor).</li>
+        <li><strong>Expression &amp; Warmth</strong>: Tai Yang (太陽 · The Sun / Generosity), Tai Yin (太陰 · The Moon / Nurture), Tian Tong (天同 · The Child / Leisure).</li>
+        <li><strong>Drive &amp; Transformation</strong>: Lian Zhen (廉貞 · The Diplomat / Rebel), Tan Lang (貪狼 · The Seeker / Charisma), Qi Sha (七殺 · The Marshal / Bold Pioneer), Po Jun (破軍 · The Vanguard / Reformer).</li>
+        <li><strong>Harmony &amp; Trust</strong>: Tian Xiang (天相 · The Prime Minister / Keeper of the Seal).</li>
+      </ul>
+
+      <h2 id="palaces">The Twelve Palaces</h2>
+      <p>Every chart divides existence into <strong>Twelve Palaces (十二宮)</strong> arranged around a clock-like circular or square grid:</p>
+      <p>1. <strong>Life (命宮)</strong>: Core identity, natural talents, and worldview.<br/>
+      2. <strong>Siblings (兄弟宮)</strong>: Peers, business partners, and close associates.<br/>
+      3. <strong>Marriage (夫妻宮)</strong>: Intimate relationships and emotional expectations.<br/>
+      4. <strong>Children (子女宮)</strong>: Offspring, junior colleagues, and creative descendants.<br/>
+      5. <strong>Wealth (財帛宮)</strong>: Cash flow, earning style, and financial disposition.<br/>
+      6. <strong>Health (疾厄宮)</strong>: Physical constitution and subconscious stress.<br/>
+      7. <strong>Migration (遷移宮)</strong>: External environment, travel, and social persona.<br/>
+      8. <strong>Friends (交友宮)</strong>: Broader network, public community, and subordinates.<br/>
+      9. <strong>Career (官祿宮)</strong>: Professional domain, leadership style, and work ethic.<br/>
+      10. <strong>Property (田宅宮)</strong>: Real estate, domestic foundation, and family wealth.<br/>
+      11. <strong>Fortune (福德宮)</strong>: Inner peace, spiritual mindset, and mental resilience.<br/>
+      12. <strong>Parents (父母宮)</strong>: Ancestral heritage, mentors, and institutional authorities.</p>
+
+      <h2 id="transformations">The Four Transformations (Si Hua)</h2>
+      <p>Stars are not static; they are dynamically catalyzed by the Ten Heavenly Stems through the <strong>Four Transformations (四化)</strong>:</p>
+      <ul>
+        <li><strong>Hua Lu (化祿 · Flow)</strong>: Abundance, opportunity, smooth relationships, and optimism.</li>
+        <li><strong>Hua Quan (化權 · Power)</strong>: Authority, competence, executive will, and competitiveness.</li>
+        <li><strong>Hua Ke (化科 · Fame)</strong>: Intellectual clarity, academic honor, and protective reputation.</li>
+        <li><strong>Hua Ji (化忌 · Karma)</strong>: Fixation, friction, deep anxiety, and areas demanding patience.</li>
+      </ul>
+
+      <h2 id="analogy">A daily-life analogy</h2>
+      <div class="analogy">
+        <b>Everyday analogy.</b> Imagine your life as an enterprise. The Twelve Palaces are the corporate departments: Executive (Life), Operations (Career), Treasury (Wealth), Public Relations (Migration), and Board of Advisors (Fortune). The 14 Stars are the executives assigned to run each department. The Four Transformations are the macroeconomic shifts that grant bonus budgets (Hua Lu) or impose restructuring audits (Hua Ji).
+      </div>
+
+      <h2 id="example">A 30-second example</h2>
+      <p>Open a Zi Wei chart and look at exactly one palace: <strong>Ming Gong (命宮 · Life Palace)</strong>. What star sits there? If it is <em>Tian Ji</em>, your natural mode is intellectual analysis and swift problem-solving. If it is <em>Wu Qu</em>, your natural mode is disciplined execution and tangible results. Next, find where <strong>Hua Ji (化忌)</strong> falls: that palace is not "cursed," but is where you feel the greatest sense of deficit and where your most profound life lessons unfold.</p>
+
+      <h2 id="tool">Interactive Chart Tool</h2>
+      <div style="background:var(--paper-warm);border:1px solid var(--ink-300);border-left:4px solid var(--gold);border-radius:var(--radius-card);padding:20px 24px;margin:24px 0">
+        <h3 style="font-family:var(--font-heading);font-size:18px;margin:0 0 6px;color:var(--ink)">
+          🧭 Compute Your Classical Zi Wei Chart
+        </h3>
+        <p style="font-size:14px;color:var(--ink-700);line-height:1.6;margin:0 0 14px">
+          Explore our client-side Zi Wei Dou Shu calculator. Generate the 12-palace grid, locate the Emperor star, compute your Bureau (五行局), and track the Four Transformations with zero data tracking.
+        </p>
+        <a class="btn btn-primary" href="/tools/ziwei/" style="padding:8px 18px;font-size:13px">
+          Open Zi Wei Chart Tool →
+        </a>
+      </div>
+
+      <h2 id="where">Where this leads</h2>
+      <p>Zi Wei never reads a palace in isolation. It relies on the <strong>San Fang Si Zheng (三方四正)</strong>—the triangular interplay between Life, Wealth, Career, and Migration. From there, decennial cycles called <strong>Da Xian (大限)</strong> activate each palace for ten years at a time.</p>
+
+      <div class="disclaimer">
+        <p><strong>For guidance and self-awareness purposes only.</strong> This lesson explains Chinese astrology as a cultural and philosophical framework — what it is, where it came from, and how its vocabulary works. It is not a prediction of your future, a medical or financial opinion, or a substitute for professional advice.</p>
+      </div>
+
+      <div class="back-row" style="margin-top:28px">
+        <a class="btn btn-secondary" href="/traditions/">← Traditions Overview</a>
+        <a class="btn btn-secondary" href="/tools/ziwei/">Zi Wei Chart Tool 🧭</a>
+        <a class="btn btn-primary" href="/traditions/liuyao/">Next: Liu Yao Divination →</a>
+      </div>
+    </article>
+  </div>
+</BaseLayout>

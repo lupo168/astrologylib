@@ -1,0 +1,489 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const title = "Zi Wei Dou Shu Chart Calculator · Free Celestial Chart - AstrologyLib";
+const description = "Authentic, transparent Zi Wei Dou Shu (Purple Star Astrology) chart calculator. Generates the 12 Palaces, 14 Major Stars, and Four Transformations according to Ming Wanli Xu Daozang algorithms. Free and private in your browser.";
+---
+
+<BaseLayout title={title} description={description} active="tools">
+  <div class="article-head">
+    <div class="crumb"><a href="/">Home</a> › <a href="/tools/bazi-chart/">Tools</a> › Zi Wei Chart</div>
+    <h1><span class="zh">紫微斗數排盤</span>Zi Wei Dou Shu Chart Calculator</h1>
+    <p class="sub">
+      The authoritative celestial horoscope of Chinese metaphysics. Enter your birth moment below to compute the Twelve Life Palaces (十二宮), locate the Emperor Star (紫微星), position the 14 Major Stars, and calculate the Four Transformations (四化飛星).
+    </p>
+  </div>
+
+  <div class="tool-wrap" style="max-width:var(--content-max);margin:0 auto;padding:0 24px 60px">
+    
+    <!-- 输入表单卡片 -->
+    <div class="tool-card" style="border:1px solid var(--ink-300);border-left:3px solid var(--gold);border-radius:var(--radius-card);padding:24px 28px;background:var(--paper);margin-bottom:28px;box-shadow:0 2px 10px rgba(0,0,0,0.02)">
+      <div style="font-size:12px;font-weight:700;color:var(--gold);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:6px">
+        INPUT BIRTH COORDINATES · 命盤參數
+      </div>
+      <p style="font-size:14px;color:var(--ink-700);line-height:1.6;margin:0 0 18px">
+        Calculated according to classical Ming dynasty <em>Wanli Xu Daozang</em> woodblock rules (DAO-1496). Completely client-side; your personal data never leaves your browser.
+      </p>
+
+      <form id="ziwei-form" style="display:grid;grid-template-columns:repeat(auto-fit, minmax(160px, 1fr));gap:16px;align-items:flex-end">
+        <div>
+          <label for="birth-year" style="display:block;font-size:12px;font-weight:700;color:var(--ink-500);margin-bottom:6px">YEAR (年) · Gregorian</label>
+          <input type="number" id="birth-year" value="1990" min="1920" max="2035" required style="width:100%;padding:10px 12px;border:1px solid var(--ink-300);border-radius:6px;font-size:14px;background:var(--paper);color:var(--ink);box-sizing:border-box" />
+        </div>
+
+        <div>
+          <label for="birth-month" style="display:block;font-size:12px;font-weight:700;color:var(--ink-500);margin-bottom:6px">LUNAR MONTH (農曆月)</label>
+          <select id="birth-month" style="width:100%;padding:10px 12px;border:1px solid var(--ink-300);border-radius:6px;font-size:14px;background:var(--paper);color:var(--ink);box-sizing:border-box">
+            <option value="1">1月 (正月 · Tiger)</option>
+            <option value="2">2月 (二月 · Rabbit)</option>
+            <option value="3">3月 (三月 · Dragon)</option>
+            <option value="4">4月 (四月 · Snake)</option>
+            <option value="5">5月 (五月 · Horse)</option>
+            <option value="6" selected>6月 (六月 · Goat)</option>
+            <option value="7">7月 (七月 · Monkey)</option>
+            <option value="8">8月 (八月 · Rooster)</option>
+            <option value="9">9月 (九月 · Dog)</option>
+            <option value="10">10月 (十月 · Pig)</option>
+            <option value="11">11月 (冬月 · Rat)</option>
+            <option value="12">12月 (臘月 · Ox)</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="birth-day" style="display:block;font-size:12px;font-weight:700;color:var(--ink-500);margin-bottom:6px">LUNAR DAY (農曆日)</label>
+          <input type="number" id="birth-day" value="15" min="1" max="30" required style="width:100%;padding:10px 12px;border:1px solid var(--ink-300);border-radius:6px;font-size:14px;background:var(--paper);color:var(--ink);box-sizing:border-box" />
+        </div>
+
+        <div>
+          <label for="birth-hour" style="display:block;font-size:12px;font-weight:700;color:var(--ink-500);margin-bottom:6px">DOUBLE-HOUR (時辰)</label>
+          <select id="birth-hour" style="width:100%;padding:10px 12px;border:1px solid var(--ink-300);border-radius:6px;font-size:14px;background:var(--paper);color:var(--ink);box-sizing:border-box">
+            <option value="0">子時 (23:00 - 00:59)</option>
+            <option value="1">丑時 (01:00 - 02:59)</option>
+            <option value="2">寅時 (03:00 - 04:59)</option>
+            <option value="3">卯時 (05:00 - 06:59)</option>
+            <option value="4">辰時 (07:00 - 08:59)</option>
+            <option value="5">巳時 (09:00 - 10:59)</option>
+            <option value="6" selected>午時 (11:00 - 12:59)</option>
+            <option value="7">未時 (13:00 - 14:59)</option>
+            <option value="8">申時 (15:00 - 16:59)</option>
+            <option value="9">酉時 (17:00 - 18:59)</option>
+            <option value="10">戌時 (19:00 - 20:59)</option>
+            <option value="11">亥時 (21:00 - 22:59)</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="birth-gender" style="display:block;font-size:12px;font-weight:700;color:var(--ink-500);margin-bottom:6px">GENDER (性別)</label>
+          <select id="birth-gender" style="width:100%;padding:10px 12px;border:1px solid var(--ink-300);border-radius:6px;font-size:14px;background:var(--paper);color:var(--ink);box-sizing:border-box">
+            <option value="male" selected>Male (乾造 · 男)</option>
+            <option value="female">Female (坤造 · 女)</option>
+          </select>
+        </div>
+
+        <div>
+          <button type="submit" class="btn btn-primary" style="width:100%;padding:11px;font-size:14px;cursor:pointer">
+            Compute Chart · 立即排盤
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <!-- 排盘结果区域 -->
+    <div id="chart-container" style="display:none">
+      
+      <!-- 命盘概要元数据 -->
+      <div style="background:var(--paper-warm);border:1px solid var(--gold);border-radius:var(--radius-card);padding:18px 24px;margin-bottom:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px">
+        <div>
+          <div style="font-size:11px;font-weight:700;color:var(--gold);text-transform:uppercase;letter-spacing:0.06em">NATAL PARAMETERS</div>
+          <div style="font-size:20px;font-weight:700;color:var(--ink);margin-top:2px" id="chart-headline">
+            庚午年 · 水二局 · 陽男
+          </div>
+        </div>
+        <div style="display:flex;gap:16px;flex-wrap:wrap;font-size:13px">
+          <div><span style="color:var(--ink-500)">命宮地支:</span> <strong id="val-ming-branch" style="color:var(--red)"></strong></div>
+          <div><span style="color:var(--ink-500)">身宮地支:</span> <strong id="val-shen-branch"></strong></div>
+          <div><span style="color:var(--ink-500)">五行局:</span> <strong id="val-bureau" style="color:var(--gold)"></strong></div>
+          <div><span style="color:var(--ink-500)">紫微星所在:</span> <strong id="val-ziwei-pos"></strong></div>
+        </div>
+      </div>
+
+      <!-- 十二宫传统方盘网格 (4x4 方盘) -->
+      <div class="ziwei-grid" style="display:grid;grid-template-columns:repeat(4, 1fr);gap:8px;margin-bottom:28px">
+        <!-- 12 宫格由 JavaScript 动态生成 -->
+      </div>
+
+      <!-- 选中国宫位详细解读 -->
+      <div id="palace-detail" style="background:var(--paper);border:1px solid var(--ink-300);border-left:4px solid var(--red);border-radius:var(--radius-card);padding:24px 28px;box-shadow:0 3px 12px rgba(0,0,0,0.03);margin-bottom:28px">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+          <h3 id="detail-title" style="font-family:var(--font-heading);font-size:22px;margin:0;color:var(--ink)">
+            命宮 (Ming Gong · Life Palace)
+          </h3>
+          <span id="detail-branch" style="font-size:13px;color:var(--ink-500);font-weight:600"></span>
+        </div>
+        <div id="detail-stars" style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px"></div>
+        <p id="detail-desc" style="font-size:14px;color:var(--ink-700);line-height:1.7;margin:0 0 16px"></p>
+        
+        <!-- 三方四正分析 -->
+        <div style="background:var(--paper-warm);border:1px solid var(--ink-200);border-radius:6px;padding:12px 16px;font-size:13px">
+          <div style="font-weight:700;color:var(--ink);margin-bottom:4px">三方四正 (San Fang Si Zheng · Triangular Resonance):</div>
+          <div id="detail-sanfang" style="color:var(--ink-700);line-height:1.6"></div>
+        </div>
+      </div>
+
+      <!-- 经典出处溯源卡 -->
+      <div style="background:rgba(212,175,55,0.06);border:1px solid var(--gold);border-radius:var(--radius-card);padding:20px 24px">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px">
+          <span style="font-size:18px">📜</span>
+          <h3 style="font-family:var(--font-heading);font-size:16px;margin:0;color:var(--ink)">
+            萬曆續道藏欽修原典考證 (Classical Literature Citation)
+          </h3>
+        </div>
+        <p style="font-size:13px;color:var(--ink-700);line-height:1.6;margin:0 0 12px">
+          This chart calculation strictly follows the Ming dynasty imperial woodblock edition preserved in the <em>Wanli Xu Daozang</em> (DAO-1496). Explore the complete primary woodblock scans and textual chapters:
+        </p>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;font-size:13px">
+          <a href="/library/read/?type=daozang&id=DAO-1496" style="color:var(--red);text-decoration:underline">
+            📖 Read Wanli Daozang Zi Wei Dou Shu Canon (DAO-1496) →
+          </a>
+          <a href="/glossary/" style="color:var(--ink);text-decoration:underline">
+            🔍 Search 14 Major Stars in Canonical Glossary →
+          </a>
+          <a href="/traditions/ziwei/" style="color:var(--ink);text-decoration:underline">
+            📘 Read Full Zi Wei Guide →
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- 免责声明 -->
+    <div class="disclaimer" style="margin-top:28px;padding:14px 16px;border:1px solid var(--ink-300);border-left:3px solid var(--red);border-radius:var(--radius-card);font-size:13px;color:var(--ink-700);line-height:1.7">
+      <p style="margin:0">
+        <strong>For guidance and self-awareness purposes only.</strong> Zi Wei Dou Shu is an archetypal psychology and symbolic calendar framework — not fatalistic determinism. All mathematical computations run entirely in your local browser; no personal birth data is sent to or stored on any server.
+      </p>
+    </div>
+
+    <div class="back-row" style="margin-top:28px">
+      <a class="btn btn-secondary" href="/traditions/">← Traditions Overview</a>
+      <a class="btn btn-secondary" href="/tools/bazi-chart/">Try BaZi Chart Tool →</a>
+      <a class="btn btn-primary" href="/tools/hexagram/">Cast Liu Yao Hexagram →</a>
+    </div>
+
+  </div>
+</BaseLayout>
+
+<script is:inline>
+(function() {
+  const STEMS = ['甲', '乙', '丙', '丁', '戊', '己', '庚', '辛', '壬', '癸'];
+  const STEMS_EN = ['Jia', 'Yi', 'Bing', 'Ding', 'Wu', 'Ji', 'Geng', 'Xin', 'Ren', 'Gui'];
+  const BRANCHES = ['子', '丑', '寅', '卯', '辰', '巳', '午', '未', '申', '酉', '戌', '亥'];
+  const BRANCHES_EN = ['Zi (Rat)', 'Chou (Ox)', 'Yin (Tiger)', 'Mao (Rabbit)', 'Chen (Dragon)', 'Si (Snake)', 'Wu (Horse)', 'Wei (Goat)', 'Shen (Monkey)', 'You (Rooster)', 'Xu (Dog)', 'Hai (Pig)'];
+
+  const PALACE_NAMES = [
+    { zh: '命宮', en: 'Life Palace (Ming Gong)', desc: 'Core personality, natural disposition, vitality, and lifelong destiny anchor.' },
+    { zh: '兄弟宮', en: 'Siblings & Peers', desc: 'Relationships with siblings, close partners, mutual financial assistance, or rivalry.' },
+    { zh: '夫妻宮', en: 'Spouse & Marriage', desc: 'Romantic archetypes, marital dynamics, emotional expectations, and relational longevity.' },
+    { zh: '子女宮', en: 'Children & Legacy', desc: 'Offspring, younger disciples, creative output, and fertility patterns.' },
+    { zh: '財帛宮', en: 'Wealth & Cash Flow', desc: 'Financial disposition, earning capability, monetary circulation, and material luck.' },
+    { zh: '疾厄宮', en: 'Health & Subconscious', desc: 'Physical vulnerabilities, psychosomatic stress points, and subconscious drives.' },
+    { zh: '遷移宮', en: 'Migration & Travel', desc: 'External environment, public reputation, opportunities abroad, and social image.' },
+    { zh: '交友宮', en: 'Friends & Network', desc: 'Broader social circle, colleagues, organizational subordinates, and public standing.' },
+    { zh: '官祿宮', en: 'Career & Ambition', desc: 'Professional domain, ambition, work ethic, leadership qualities, and social status.' },
+    { zh: '田宅宮', en: 'Property & Domestic', desc: 'Real estate, family home foundation, ancestral assets, and domestic harmony.' },
+    { zh: '福德宮', en: 'Fortune & Mindset', desc: 'Spiritual tranquility, mental health, recreation, and spiritual fulfillment.' },
+    { zh: '父母宮', en: 'Parents & Authority', desc: 'Lineage, parents, elders, institutional regulators, and official approvals.' }
+  ];
+
+  // 生年四化速查表
+  const SI_HUA = {
+    '甲': { lu: '廉貞', quan: '破軍', ke: '武曲', ji: '太陽' },
+    '乙': { lu: '天機', quan: '天梁', ke: '紫微', ji: '太陰' },
+    '丙': { lu: '天同', quan: '天機', ke: '文昌', ji: '廉貞' },
+    '丁': { lu: '太陰', quan: '天同', ke: '天機', ji: '巨門' },
+    '戊': { lu: '貪狼', quan: '太陰', ke: '右弼', ji: '天機' },
+    '己': { lu: '武曲', quan: '貪狼', ke: '天梁', ji: '文曲' },
+    '庚': { lu: '太陽', quan: '武曲', ke: '太陰', ji: '天同' },
+    '辛': { lu: '巨門', quan: '太陽', ke: '文曲', ji: '文昌' },
+    '壬': { lu: '天梁', quan: '紫微', ke: '左輔', ji: '武曲' },
+    '癸': { lu: '破軍', quan: '巨門', ke: '太陰', ji: '貪狼' }
+  };
+
+  // 14 主星中英与五行
+  const STAR_INFO = {
+    '紫微': { en: 'Emperor Star (Zi Wei)', nature: 'Yin Earth · 帝王之星 · 尊貴領導' },
+    '天機': { en: 'Strategic Mind (Tian Ji)', nature: 'Yin Wood · 謀略智慧 · 機敏靈動' },
+    '太陽': { en: 'The Sun (Tai Yang)', nature: 'Yang Fire · 光明博愛 · 貴顯公眾' },
+    '武曲': { en: 'Financial General (Wu Qu)', nature: 'Yin Metal · 剛毅財星 · 實幹執行' },
+    '天同': { en: 'Child of Fortune (Tian Tong)', nature: 'Yang Water · 福德和氣 · 溫和安樂' },
+    '廉貞': { en: 'Chaste Diplomat (Lian Zhen)', nature: 'Yin Fire · 次桃花 · 精明法理' },
+    '天府': { en: 'Treasury Lord (Tian Fu)', nature: 'Yang Earth · 庫藏令星 · 穩重端正' },
+    '太陰': { en: 'The Moon (Tai Yin)', nature: 'Yin Water · 財富清貴 · 細膩滋養' },
+    '貪狼': { en: 'Desire & Arts (Tan Lang)', nature: 'Yang Wood · 第一桃花 · 多才多藝' },
+    '巨門': { en: 'Gate of Oratory (Ju Men)', nature: 'Yin Water · 暗星口才 · 審視洞察' },
+    '天相': { en: 'The Prime Minister (Tian Xiang)', nature: 'Yang Water · 掌印司爵 · 謹慎公允' },
+    '天梁': { en: 'The Elder & Judge (Tian Liang)', nature: 'Yang Earth · 蔭星壽星 · 化解庇護' },
+    '七殺': { en: 'The General (Qi Sha)', nature: 'Yang Metal · 肅殺將星 · 開疆拓土' },
+    '破軍': { en: 'The Pioneer (Po Jun)', nature: 'Yin Water · 破壞開拓 · 勇於革新' }
+  };
+
+  // 计算五行局（根据年干与命宫地支）
+  function getBureau(yearStemIdx, mingBranchIdx) {
+    // 纳音五行简算：(年干 + 命宫支) 对应
+    const stemGroup = Math.floor(yearStemIdx / 2); // 0,1,2,3,4
+    const branchGroup = Math.floor(mingBranchIdx / 2) % 3; // 0,1,2
+    const matrix = [
+      [4, 2, 6], // 金, 水, 火
+      [2, 6, 3], // 水, 火, 木
+      [6, 3, 5], // 火, 木, 土
+      [3, 5, 4], // 木, 土, 金
+      [5, 4, 2]  // 土, 金, 水
+    ];
+    const num = matrix[stemGroup][branchGroup];
+    const names = { 2: '水二局', 3: '木三局', 4: '金四局', 5: '土五局', 6: '火六局' };
+    return { num: num, name: names[num] };
+  }
+
+  // 计算紫微星在地支的位置 (0=子, 1=丑, ..., 11=亥)
+  function getZiWeiBranch(bureauNum, lunarDay) {
+    let rem = lunarDay % bureauNum;
+    let quotient = Math.floor(lunarDay / bureauNum);
+    let startBranch = 2; // 寅
+    if (rem === 0) {
+      return (startBranch + (quotient - 1)) % 12;
+    } else {
+      let add = bureauNum - rem;
+      let newQuotient = Math.floor((lunarDay + add) / bureauNum);
+      let pos = (startBranch + (newQuotient - 1)) % 12;
+      if (add % 2 === 1) {
+        return (pos - add + 12) % 12;
+      } else {
+        return (pos + add) % 12;
+      }
+    }
+  }
+
+  function renderChart() {
+    const year = parseInt(document.getElementById('birth-year').value, 10);
+    const month = parseInt(document.getElementById('birth-month').value, 10);
+    const day = parseInt(document.getElementById('birth-day').value, 10);
+    const hour = parseInt(document.getElementById('birth-hour').value, 10);
+    const gender = document.getElementById('birth-gender').value;
+
+    const yearStemIdx = (year - 4) % 10;
+    const yearBranchIdx = (year - 4) % 12;
+    const yearStem = STEMS[yearStemIdx];
+    const yearBranch = BRANCHES[yearBranchIdx];
+    const yearIsYang = (yearStemIdx % 2 === 0);
+
+    // 安命身宫：寅(2)起正月，顺数生月，逆数生时安命
+    // month 1 => branch 2 (寅)
+    const monthBranch = (2 + (month - 1)) % 12;
+    const mingBranchIdx = (monthBranch - hour + 12) % 12;
+    const shenBranchIdx = (monthBranch + hour) % 12;
+
+    // 五行局
+    const bureau = getBureau(yearStemIdx, mingBranchIdx);
+
+    // 紫微星地支
+    const ziweiBranch = getZiWeiBranch(bureau.num, day);
+
+    // 天府星地支 (寅申对冲对称：(4 - ziwei + 12) % 12)
+    const tianfuBranch = (16 - ziweiBranch) % 12;
+
+    // 分配 14 主星到 12 地支
+    const branchStars = {};
+    for (let i = 0; i < 12; i++) branchStars[i] = [];
+
+    // 紫微系 (逆行)
+    branchStars[ziweiBranch].push('紫微');
+    branchStars[(ziweiBranch - 1 + 12) % 12].push('天機');
+    branchStars[(ziweiBranch - 3 + 12) % 12].push('太陽');
+    branchStars[(ziweiBranch - 4 + 12) % 12].push('武曲');
+    branchStars[(ziweiBranch - 5 + 12) % 12].push('天同');
+    branchStars[(ziweiBranch - 8 + 12) % 12].push('廉貞');
+
+    // 天府系 (顺行)
+    branchStars[tianfuBranch].push('天府');
+    branchStars[(tianfuBranch + 1) % 12].push('太陰');
+    branchStars[(tianfuBranch + 2) % 12].push('貪狼');
+    branchStars[(tianfuBranch + 3) % 12].push('巨門');
+    branchStars[(tianfuBranch + 4) % 12].push('天相');
+    branchStars[(tianfuBranch + 5) % 12].push('天梁');
+    branchStars[(tianfuBranch + 6) % 12].push('七殺');
+    branchStars[(tianfuBranch + 10) % 12].push('破軍');
+
+    // 十二宫地支对应
+    // 命宫在 mingBranchIdx，逆布十二宫：兄弟=ming-1, 夫妻=ming-2...
+    const palaceOfBranch = {};
+    for (let pIdx = 0; pIdx < 12; pIdx++) {
+      const bIdx = (mingBranchIdx - pIdx + 12) % 12;
+      palaceOfBranch[bIdx] = {
+        name: PALACE_NAMES[pIdx].zh,
+        en: PALACE_NAMES[pIdx].en,
+        desc: PALACE_NAMES[pIdx].desc,
+        idx: pIdx,
+        branch: BRANCHES[bIdx],
+        branchEn: BRANCHES_EN[bIdx],
+        stars: branchStars[bIdx]
+      };
+    }
+
+    // 四化映射
+    const yearSiHua = SI_HUA[yearStem] || {};
+
+    // 更新元数据
+    const genderLabel = (yearIsYang ? '陽' : '陰') + (gender === 'male' ? '男' : '女');
+    document.getElementById('chart-headline').textContent = `${yearStem}${yearBranch}年 (${STEMS_EN[yearStemIdx]}-${BRANCHES_EN[yearBranchIdx].split(' ')[0]}) · ${bureau.name} · ${genderLabel}`;
+    document.getElementById('val-ming-branch').textContent = `${BRANCHES[mingBranchIdx]} (${BRANCHES_EN[mingBranchIdx]})`;
+    document.getElementById('val-shen-branch').textContent = `${BRANCHES[shenBranchIdx]} (${BRANCHES_EN[shenBranchIdx]})`;
+    document.getElementById('val-bureau').textContent = bureau.name;
+    document.getElementById('val-ziwei-pos').textContent = `${BRANCHES[ziweiBranch]}宮`;
+
+    // 渲染传统 4x4 方盘
+    // 方盘经典地支顺序（从左上到右下外围一圈）：
+    // Row 1: 巳(5), 午(6), 未(7), 申(8)
+    // Row 2: 辰(4), [中宫], [中宫], 酉(9)
+    // Row 3: 卯(3), [中宫], [中宫], 戌(10)
+    // Row 4: 寅(2), 丑(1), 子(0), 亥(11)
+    const gridOrder = [
+      5, 6, 7, 8,
+      4, -1, -2, 9,
+      3, -3, -4, 10,
+      2, 1, 0, 11
+    ];
+
+    const gridEl = document.querySelector('.ziwei-grid');
+    gridEl.innerHTML = '';
+
+    gridOrder.forEach((bIdx, gridIndex) => {
+      if (bIdx < 0) {
+        if (bIdx === -1) {
+          // 中宫占位 (2x2)
+          const center = document.createElement('div');
+          center.style.gridColumn = '2 / span 2';
+          center.style.gridRow = '2 / span 2';
+          center.style.background = 'var(--paper-warm)';
+          center.style.border = '1px dashed var(--gold)';
+          center.style.borderRadius = '8px';
+          center.style.padding = '18px';
+          center.style.display = 'flex';
+          center.style.flexDirection = 'column';
+          center.style.justifyContent = 'center';
+          center.style.alignItems = 'center';
+          center.style.textAlign = 'center';
+          center.innerHTML = `
+            <div style="font-family:var(--font-heading);font-size:22px;font-weight:900;color:var(--red);margin-bottom:6px">紫微星盤 · 中宮</div>
+            <div style="font-size:12px;color:var(--ink-500);line-height:1.5">點擊外圍任意宮位<br>檢視主星特質與三方四正</div>
+          `;
+          gridEl.appendChild(center);
+        }
+        return;
+      }
+
+      const pData = palaceOfBranch[bIdx];
+      const isMing = (bIdx === mingBranchIdx);
+      const isShen = (bIdx === shenBranchIdx);
+
+      const cell = document.createElement('div');
+      cell.className = 'palace-cell';
+      cell.style.border = isMing ? '2px solid var(--red)' : '1px solid var(--ink-300)';
+      cell.style.background = isMing ? 'rgba(149,0,7,0.03)' : 'var(--paper)';
+      cell.style.borderRadius = '6px';
+      cell.style.padding = '10px 12px';
+      cell.style.minHeight = '110px';
+      cell.style.cursor = 'pointer';
+      cell.style.display = 'flex';
+      cell.style.flexDirection = 'column';
+      cell.style.justifyContent = 'space-between';
+      cell.style.transition = 'all 0.15s ease';
+
+      cell.addEventListener('mouseenter', () => {
+        cell.style.boxShadow = '0 4px 12px rgba(0,0,0,0.08)';
+        cell.style.borderColor = 'var(--gold)';
+      });
+      cell.addEventListener('mouseleave', () => {
+        cell.style.boxShadow = 'none';
+        cell.style.borderColor = isMing ? 'var(--red)' : 'var(--ink-300)';
+      });
+      cell.addEventListener('click', () => {
+        showDetail(bIdx, pData, yearStem);
+      });
+
+      // 星曜徽章
+      let starHtml = '';
+      pData.stars.forEach(s => {
+        let tag = '';
+        if (s === yearSiHua.lu) tag = '<span style="background:var(--success);color:#fff;font-size:9px;padding:1px 3px;border-radius:2px;margin-left:2px">祿</span>';
+        if (s === yearSiHua.quan) tag = '<span style="background:var(--warning);color:#fff;font-size:9px;padding:1px 3px;border-radius:2px;margin-left:2px">權</span>';
+        if (s === yearSiHua.ke) tag = '<span style="background:var(--info);color:#fff;font-size:9px;padding:1px 3px;border-radius:2px;margin-left:2px">科</span>';
+        if (s === yearSiHua.ji) tag = '<span style="background:var(--red);color:#fff;font-size:9px;padding:1px 3px;border-radius:2px;margin-left:2px">忌</span>';
+
+        starHtml += `<div style="font-size:13px;font-weight:700;color:var(--red);line-height:1.3">${s}${tag}</div>`;
+      });
+      if (!starHtml) starHtml = '<div style="font-size:11px;color:var(--ink-400);font-style:italic">無十四主星</div>';
+
+      cell.innerHTML = `
+        <div>
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+            <span style="font-family:var(--font-heading);font-weight:700;font-size:14px;color:${isMing ? 'var(--red)' : 'var(--ink)'}">
+              ${pData.name} ${isShen ? '<span style="font-size:10px;background:var(--gold);color:#fff;padding:1px 4px;border-radius:2px">身</span>' : ''}
+            </span>
+            <span style="font-size:11px;color:var(--ink-500);font-weight:600">${BRANCHES[bIdx]}</span>
+          </div>
+          <div>${starHtml}</div>
+        </div>
+        <div style="font-size:10px;color:var(--ink-400);text-align:right;margin-top:4px">
+          ${BRANCHES_EN[bIdx].split(' ')[0]}
+        </div>
+      `;
+
+      gridEl.appendChild(cell);
+    });
+
+    document.getElementById('chart-container').style.display = 'block';
+    // 默认展示命宫
+    showDetail(mingBranchIdx, palaceOfBranch[mingBranchIdx], yearStem);
+  }
+
+  function showDetail(bIdx, pData, yearStem) {
+    document.getElementById('detail-title').textContent = `${pData.name} (${pData.en})`;
+    document.getElementById('detail-branch').textContent = `地支坐 ${BRANCHES[bIdx]}宮 (${BRANCHES_EN[bIdx]})`;
+    document.getElementById('detail-desc').textContent = pData.desc;
+
+    // 主星列表
+    const starsDiv = document.getElementById('detail-stars');
+    starsDiv.innerHTML = '';
+    if (pData.stars.length === 0) {
+      starsDiv.innerHTML = '<span style="font-size:13px;color:var(--ink-500);font-style:italic">此宮無十四正曜坐守（借對宮星曜推演）。</span>';
+    } else {
+      pData.stars.forEach(s => {
+        const info = STAR_INFO[s] || { en: s, nature: '主星' };
+        const badge = document.createElement('div');
+        badge.style.background = 'var(--paper-warm)';
+        badge.style.border = '1px solid var(--ink-300)';
+        badge.style.borderRadius = '4px';
+        badge.style.padding = '4px 10px';
+        badge.innerHTML = `<strong style="color:var(--red)">${s}</strong> · <span style="font-size:12px;color:var(--ink)">${info.en}</span> <span style="font-size:11px;color:var(--ink-500)">(${info.nature})</span>`;
+        starsDiv.appendChild(badge);
+      });
+    }
+
+    // 三方四正：本宫(bIdx), 对宫( (bIdx+6)%12 ), 两个三合宫( (bIdx+4)%12, (bIdx+8)%12 )
+    const duiBranch = (bIdx + 6) % 12;
+    const san1Branch = (bIdx + 4) % 12;
+    const san2Branch = (bIdx + 8) % 12;
+    document.getElementById('detail-sanfang').innerHTML = `
+      • <strong>對宮 (${BRANCHES[duiBranch]}):</strong> 遷移/對照之勢<br>
+      • <strong>三合方 (${BRANCHES[san1Branch]} & ${BRANCHES[san2Branch]}):</strong> 拱照相應之氣
+    `;
+  }
+
+  document.getElementById('ziwei-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    renderChart();
+  });
+
+  // 初次加载自动排盘一次
+  renderChart();
+})();
+</script>

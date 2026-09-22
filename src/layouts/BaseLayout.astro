@@ -1,0 +1,293 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+  active?: 'home' | 'library' | 'learn' | 'reference' | 'tools' | 'contribute' | 'about' | 'community';
+  ogType?: 'website' | 'article' | 'book';
+  ogImage?: string;
+  canonicalUrl?: string;
+  schemaJson?: Record<string, any> | Record<string, any>[];
+}
+
+const {
+  title,
+  description = "AstrologyLib is an open-access classical Chinese astrology and cosmological digital library featuring 2,064 public-domain texts from the Yi Canon and Daoist Canon.",
+  active = 'home',
+  ogType = 'website',
+  ogImage = 'https://astrologylib.org/logo.png',
+  canonicalUrl,
+  schemaJson
+} = Astro.props;
+
+const canonical = canonicalUrl || new URL(Astro.url.pathname, Astro.site || 'https://astrologylib.org').href;
+
+// Standard Schema.org Graph
+const baseGraph: any[] = [
+  {
+    "@type": "Library",
+    "@id": "https://astrologylib.org/#organization",
+    "name": "AstrologyLib",
+    "alternateName": [
+      "AstrologyLib.org",
+      "萬卷東方典藏庫",
+      "中華術數古籍圖書館",
+      "Chinese Astrology Library"
+    ],
+    "url": "https://astrologylib.org/",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://astrologylib.org/logo.png",
+      "width": 512,
+      "height": 512
+    },
+    "description": "An open-access scholarly digital library dedicated to classical Chinese astrology, I Ching, BaZi, and ancient cosmological texts from the Yi and Daoist Canons.",
+    "sameAs": [
+      "https://github.com/lupo168/astrologylib"
+    ],
+    "email": "contact@astrologylib.org",
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "email": "contact@astrologylib.org",
+      "contactType": "academic support"
+    }
+  },
+  {
+    "@type": "WebSite",
+    "@id": "https://astrologylib.org/#website",
+    "url": "https://astrologylib.org/",
+    "name": "AstrologyLib",
+    "publisher": {
+      "@id": "https://astrologylib.org/#organization"
+    },
+    "inLanguage": ["en", "zh-Hant", "zh-Hans"]
+  },
+  {
+    "@type": "WebPage",
+    "@id": `${canonical}#webpage`,
+    "url": canonical,
+    "name": title,
+    "description": description,
+    "isPartOf": {
+      "@id": "https://astrologylib.org/#website"
+    },
+    "inLanguage": "en"
+  }
+];
+
+if (schemaJson) {
+  if (Array.isArray(schemaJson)) {
+    baseGraph.push(...schemaJson);
+  } else {
+    baseGraph.push(schemaJson);
+  }
+}
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": baseGraph
+};
+
+const DISCLAIMER = "For guidance and self-awareness purposes only. Not a substitute for medical, legal, financial, or psychological advice.";
+
+interface NavItem {
+  href: string;
+  label: string;
+  key: string;
+  children?: { href: string; label: string }[];
+}
+
+const NAV: NavItem[] = [
+  { href: '/', label: 'Home', key: 'home' },
+  {
+    href: '/learn/', label: 'Learn', key: 'learn',
+    children: [
+      { href: '/learn/', label: 'Beginner Primer · 零基礎導讀' },
+      { href: '/learn/yin-yang/', label: 'Yin & Yang · 陰陽之道' },
+      { href: '/learn/five-elements/', label: 'Five Elements · 五行生剋' },
+      { href: '/learn/zodiac/', label: 'Chinese Zodiac · 十二生肖' },
+      { href: '/learn/bazi/', label: 'BaZi Framework · 八字大綱' },
+    ],
+  },
+  {
+    href: '/traditions/', label: 'Traditions', key: 'traditions',
+    children: [
+      { href: '/traditions/', label: 'Traditions Overview · 大宗流派全景' },
+      { href: '/learn/bazi/', label: 'BaZi · 四柱八字命理' },
+      { href: '/traditions/ziwei/', label: 'Zi Wei Dou Shu · 紫微斗數' },
+      { href: '/traditions/liuyao/', label: 'Liu Yao Divination · 六爻神卦' },
+      { href: '/zhouyi/', label: 'The Zhou Yi (I Ching) · 周易象數 (386 爻)' },
+    ],
+  },
+  {
+    href: '/glossary/', label: 'Glossary', key: 'reference',
+    children: [
+      { href: '/glossary/', label: 'Core Essentials · 核心基石必讀' },
+      { href: '/reference/quick-reference/', label: 'Quick Reference · 體系速查表' },
+      { href: '/glossary/?view=all', label: 'Canonical Lexicon · 標準全庫檢索' },
+    ],
+  },
+  {
+    href: '/library/', label: 'Library', key: 'library',
+    children: [
+      { href: '/library/classics/', label: 'Grand Corpus · 萬卷典藏總庫 (2,064 卷)' },
+      { href: '/reference/timeline/', label: 'Historical Lineage & Timeline · 典籍歷史源流線' },
+      { href: '/library/', label: 'Foundational Classics · 核心精選書架' },
+      { href: '/zhouyi/', label: 'The Zhou Yi (I Ching) · 周易經傳 (386 爻)' },
+    ],
+  },
+  {
+    href: '/tools/bazi-chart/', label: 'Tools', key: 'tools',
+    children: [
+      { href: '/tools/bazi-chart/', label: 'BaZi Chart · 真太陽時排盤' },
+      { href: '/tools/ziwei/', label: 'Zi Wei Chart · 紫微斗數排盤' },
+      { href: '/tools/hexagram/', label: 'Hexagram Cast · 周易起卦' },
+    ],
+  },
+  {
+    href: '/community/', label: 'Community', key: 'community',
+    children: [
+      { href: '/community/', label: 'Forum Index · 研討廣場' },
+      { href: '/community/?cat=classics', label: 'Classics & Errata · 典籍校勘' },
+      { href: '/community/?cat=bazi', label: 'BaZi & Destiny · 命理實證' },
+      { href: '/community/?cat=dao', label: 'Daoist Canon · 道藏研讀' },
+    ],
+  },
+  {
+    href: '/contribute/', label: 'Contribute', key: 'contribute',
+    children: [
+      { href: '/contribute/', label: 'Volunteer · 參與' },
+      { href: '/contributors/', label: 'Contributors · 名牆' },
+      { href: '/contributor-agreement/', label: 'Contributor Agreement · 貢獻者協議' },
+    ],
+  },
+  {
+    href: '/about/', label: 'About', key: 'about',
+    children: [
+      { href: '/about/', label: 'About · 關於' },
+      { href: '/license/', label: 'License · 許可' },
+      { href: '/copyright/', label: 'Copyright · 版權' },
+      { href: '/privacy/', label: 'Privacy · 隱私' },
+    ],
+  },
+];
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <link rel="canonical" href={canonical} />
+
+  <!-- Google Search Console Verification -->
+  <meta name="google-site-verification" content={import.meta.env.PUBLIC_GOOGLE_SITE_VERIFICATION || "googlee793910c2688ec13"} />
+
+  <!-- Robots & Directives -->
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+  <meta name="theme-color" content="#1A1A1A" />
+  <meta name="format-detection" content="telephone=no" />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:site_name" content="AstrologyLib · 萬卷東方典藏" />
+  <meta property="og:type" content={ogType} />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:url" content={canonical} />
+  <meta property="og:image" content={ogImage} />
+  <meta property="og:image:width" content="512" />
+  <meta property="og:image:height" content="512" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:locale:alternate" content="zh_TW" />
+  <meta property="og:locale:alternate" content="zh_CN" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content={ogImage} />
+
+  <!-- Favicons & Assets -->
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="/logo-192.png" />
+  <link rel="sitemap" href="/sitemap-index.xml" />
+  <link rel="alternate" type="application/rss+xml" title="AstrologyLib Classical Canon Updates" href="/feed.xml" />
+
+  <!-- Fonts & Preconnect -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@600;700;900&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet" />
+
+  <!-- Structured Data (JSON-LD) -->
+  <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+</head>
+<body>
+  <div class="disclaimer-banner">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+    {DISCLAIMER}
+  </div>
+
+  <header class="site-header">
+    <div class="nav">
+      <a class="wordmark" href="/"><span class="brand-seal" aria-hidden="true"><svg viewBox="0 0 190 190"><g transform="translate(95 95) scale(1.2) translate(-95 -95)"><path d="M99.59 34.00 L100.09 34.25 Q100.47 34.00 101.10 34.00 L101.10 34.25 L101.60 34.00 L106.01 34.00 Q109.40 34.00 109.40 34.75 L109.90 34.50 Q112.17 34.50 115.06 37.90 Q116.32 38.28 116.95 40.16 Q118.71 41.42 120.22 50.35 Q120.22 50.98 120.97 51.86 L120.97 52.11 Q120.97 52.36 120.72 52.36 L121.35 53.87 Q120.47 55.51 120.47 56.26 L120.72 56.76 Q120.47 57.27 120.47 57.52 Q120.72 58.02 120.72 58.40 Q120.22 58.40 119.21 63.81 Q118.83 65.19 113.55 69.72 Q111.16 70.60 111.16 70.98 L110.91 70.98 Q110.41 70.73 110.16 70.73 Q110.16 71.35 106.76 71.86 L104.50 71.86 Q102.86 71.86 102.86 73.37 Q104.12 75.00 111.41 80.91 Q112.80 82.17 114.05 84.56 Q114.68 84.56 116.95 87.08 Q121.60 93.99 122.10 99.28 Q122.36 99.28 122.36 99.53 Q122.36 99.65 122.61 102.92 Q122.36 102.92 122.36 103.18 L122.86 103.43 Q122.86 108.71 120.22 115.12 L116.57 122.54 Q114.81 125.19 114.81 125.94 L114.56 125.94 L114.05 125.69 Q114.05 126.19 113.80 126.19 L114.05 126.69 L114.05 126.95 Q112.80 127.95 111.66 130.34 Q110.16 132.23 109.65 132.23 L110.16 132.98 Q108.65 135.00 107.51 135.50 Q107.51 137.26 104.75 137.64 Q104.75 138.14 106.01 138.14 L106.01 138.64 Q104.50 138.64 103.11 141.79 Q102.74 142.04 101.85 142.04 L101.85 142.29 L102.36 143.05 Q102.11 143.05 97.70 148.20 Q96.32 149.33 95.69 149.33 Q95.69 149.59 95.94 149.59 Q95.94 150.84 93.30 153.48 Q93.30 154.24 92.30 154.99 L91.79 154.74 Q91.79 155.12 90.66 155.75 Q90.16 155.75 90.16 155.25 Q89.15 155.50 88.40 156.00 L88.15 156.00 L85.76 154.24 Q86.26 152.23 86.26 152.10 L86.01 150.84 Q86.38 149.59 88.90 147.70 Q88.65 147.70 88.65 147.45 Q90.66 146.57 91.54 145.18 L91.29 144.55 L91.29 144.30 L91.54 144.30 L92.04 144.55 Q92.42 144.55 93.30 143.05 Q93.93 143.05 94.06 142.04 L97.20 138.64 Q96.95 138.64 96.95 138.39 L97.20 138.39 L97.70 138.64 Q97.96 137.51 99.84 135.25 Q99.84 134.74 100.35 134.74 L100.09 134.24 L100.60 133.99 Q101.73 134.49 102.11 134.49 L102.11 133.99 L101.60 133.99 Q101.60 132.73 102.11 132.73 Q102.61 132.98 102.86 132.98 L102.36 131.10 Q102.61 131.10 102.61 130.85 L103.11 131.10 L103.36 131.10 Q103.11 130.59 103.11 130.34 Q104.87 126.69 106.51 126.69 L106.26 126.19 Q106.63 126.19 108.39 123.42 L110.16 120.28 Q110.16 120.53 110.41 120.53 Q110.41 120.28 110.66 120.28 L110.41 119.78 Q111.29 118.14 111.92 117.64 L111.66 117.14 L111.66 116.88 Q112.80 116.88 112.80 114.62 Q115.56 108.58 115.56 104.43 Q115.56 103.05 115.06 98.77 L114.81 98.77 Q112.92 100.66 110.91 103.43 Q111.16 103.43 111.16 103.68 Q110.66 103.68 108.02 107.58 Q104.24 111.60 104.24 112.73 L103.36 113.49 Q103.62 113.99 103.62 114.24 Q103.49 114.24 101.10 116.88 Q101.35 117.39 101.35 117.64 Q99.09 119.78 98.71 119.78 L98.96 120.28 Q96.19 122.67 96.19 123.17 Q96.45 123.68 96.45 123.93 Q95.82 124.43 95.06 124.43 L95.44 124.93 L95.44 125.19 Q95.06 125.19 93.81 125.94 L94.06 126.44 L94.06 126.69 Q90.66 128.71 90.66 130.09 Q89.78 131.73 88.40 132.48 Q88.65 132.98 88.65 133.24 Q87.89 133.36 87.39 134.24 L86.89 134.24 L87.14 134.74 Q87.14 135.12 85.25 136.13 Q85.50 136.63 85.50 136.88 Q84.50 138.14 82.74 138.89 L82.99 139.40 Q82.99 139.78 82.11 140.15 Q81.35 140.15 80.35 138.89 Q79.34 139.40 78.84 139.40 Q78.84 139.15 77.45 138.14 Q77.45 137.89 77.71 137.89 L77.45 137.39 L77.45 137.13 Q77.45 136.88 77.71 136.88 L77.45 136.38 Q78.59 133.74 78.59 132.98 L79.34 132.98 L79.34 133.49 L79.59 133.49 L79.59 132.98 Q79.34 132.98 79.34 132.73 Q80.22 132.23 82.74 128.58 Q83.37 128.58 83.99 128.08 L83.74 127.58 Q83.74 127.07 85.76 125.94 L85.76 124.93 L86.01 124.93 L86.64 125.19 Q86.64 124.18 88.15 123.17 L87.89 122.54 L89.91 120.53 Q89.65 120.53 89.65 120.28 Q91.04 119.90 91.04 119.53 Q90.66 119.53 90.66 119.27 Q97.83 111.22 107.51 96.89 Q110.66 91.98 110.66 89.97 Q107.89 87.33 107.51 87.33 L107.26 87.33 Q106.76 87.45 105.25 89.72 Q105.50 89.72 105.50 89.97 Q104.75 89.97 102.61 93.11 Q102.11 93.11 98.21 98.77 Q97.58 98.77 92.80 106.07 Q91.79 106.07 90.66 109.09 L90.41 109.09 L89.91 108.84 Q89.91 110.22 88.40 110.97 Q87.01 113.74 86.01 113.74 L86.26 114.24 Q86.01 115.12 84.75 115.12 L84.75 115.38 L85.00 115.88 Q83.74 116.51 82.11 118.39 Q81.61 118.39 81.61 118.65 Q81.86 119.15 81.86 119.53 Q80.72 119.53 78.84 122.80 Q76.95 124.31 76.95 124.93 L76.20 125.69 Q76.20 125.44 75.95 125.44 Q75.95 125.81 75.19 126.19 Q74.69 125.94 74.44 125.94 L74.94 126.69 Q74.94 127.20 74.44 127.20 Q74.44 126.69 73.93 126.69 Q72.68 128.58 71.29 128.58 Q67.90 128.58 67.14 126.95 L67.14 126.69 L67.39 125.69 L67.14 125.19 Q68.65 121.54 72.55 117.89 Q72.55 117.14 77.45 113.24 Q83.62 106.82 87.89 101.04 Q95.06 93.49 100.09 84.81 Q100.72 84.18 101.35 82.67 Q99.34 81.16 97.96 81.16 Q96.95 83.05 87.39 91.23 Q86.01 93.87 80.60 98.52 Q79.22 100.41 77.45 101.29 Q75.19 104.43 72.80 104.43 Q71.79 104.94 71.04 104.94 L71.04 104.68 L70.03 105.44 Q68.52 103.68 67.90 103.68 Q68.78 99.02 70.03 99.02 Q70.03 98.40 73.68 95.88 L74.44 94.87 Q74.18 94.87 74.18 94.62 L74.69 94.37 L74.69 94.62 Q74.94 94.62 88.65 80.66 Q92.42 76.39 93.05 73.37 L93.05 71.86 L89.91 71.86 Q89.40 71.86 88.90 71.61 L88.40 71.86 L87.89 71.61 L87.39 71.86 Q80.22 70.73 77.71 68.46 Q74.31 64.44 74.18 59.91 Q73.93 59.91 73.30 58.40 L73.93 58.02 Q73.68 57.77 73.05 53.37 Q73.30 53.37 73.30 53.12 L72.80 52.87 Q73.30 51.73 73.68 50.10 L73.05 50.35 L72.80 50.35 L72.80 50.10 Q72.93 49.47 73.30 49.47 L73.05 47.71 Q73.93 42.05 76.20 39.66 Q76.20 38.02 79.84 37.65 Q79.84 37.90 80.10 37.90 Q81.23 35.38 93.81 34.25 L94.31 34.50 Z M98.21 40.16 Q98.21 40.92 97.70 40.92 L95.06 40.92 L93.30 41.29 Q93.30 40.92 93.05 40.92 L92.80 41.55 L91.54 41.29 L91.04 41.55 Q90.54 41.29 89.91 41.29 L89.65 41.29 L88.90 41.80 L88.40 41.55 Q88.40 41.92 85.00 42.55 Q84.12 43.68 80.10 45.07 L79.59 47.21 L79.84 47.71 Q79.59 48.21 79.59 48.46 Q79.59 50.35 80.60 50.35 Q83.87 50.85 85.76 50.85 L86.89 50.60 L87.39 50.85 Q90.91 50.48 91.54 50.35 Q91.79 50.35 91.79 50.60 L96.45 50.10 Q96.70 50.10 96.70 50.35 Q100.72 49.85 109.90 49.22 L109.90 49.47 L110.41 49.22 L110.66 49.22 Q111.29 49.22 111.66 49.47 L113.05 48.97 Q112.04 41.29 105.25 41.29 Q103.24 41.29 101.60 40.92 L100.60 41.55 Q98.46 40.92 98.46 40.16 Z M88.90 57.77 L88.90 57.52 L88.40 57.77 L86.26 57.77 Q85.76 57.77 85.25 57.52 Q82.49 57.77 80.60 58.40 L80.85 59.66 L80.60 60.16 Q81.86 61.17 82.74 63.31 Q85.25 64.19 85.25 64.56 L85.76 64.31 L89.65 65.57 Q89.78 65.07 90.16 65.07 L93.05 65.07 Q93.68 65.57 94.06 65.57 Q94.06 65.07 99.59 64.81 Q99.59 65.32 100.09 65.32 Q100.60 64.81 103.36 64.56 L105.25 65.32 Q105.25 64.31 107.26 64.31 L108.39 64.56 Q110.66 63.43 110.66 63.05 Q112.55 60.04 112.55 58.65 L112.55 57.77 Q111.04 57.77 110.66 57.02 Q110.16 57.27 109.90 57.27 L109.40 57.02 Q108.90 57.27 108.65 57.27 L108.65 57.02 L108.02 57.27 Q107.26 57.27 107.26 57.02 L105.75 57.27 L102.61 57.02 L102.11 57.27 L100.85 56.76 Q100.35 57.02 100.09 57.02 L100.09 56.76 Q99.09 57.27 88.90 57.77 Z" fill="#FFFFFF"/></g></svg></span>Astrology<em>Lib</em></a>
+      <nav class="nav-links">
+        {NAV.map((item) => (
+          item.children ? (
+            <div class:list={['nav-item', item.key === active && 'active']}>
+              <a href={item.href} class:list={['nav-parent', item.key === active && 'active']}>{item.label}</a>
+              <div class="nav-drop">
+                {item.children.map((c) => (
+                  <a href={c.href} class:list={[c.href === `/${active}/` && 'drop-active']}>{c.label}</a>
+                ))}
+              </div>
+            </div>
+          ) : (
+            <a href={item.href} class:list={[item.key === active && 'active']}>{item.label}</a>
+          )
+        ))}
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <slot />
+  </main>
+
+  <footer class="site-footer">
+    <div class="f-top">
+      <div>
+        <span>© 2026 AstrologyLib</span>
+        <span style="margin:0 8px;color:var(--ink-300)">·</span>
+        <span>Official Contact: <a href="mailto:contact@astrologylib.org" style="color:var(--ink);font-weight:600;text-decoration:underline">contact@astrologylib.org</a></span>
+      </div>
+      <div class="f-links">
+        <a href="/zhouyi/">Zhou Yi</a>
+        <a href="/ten-wings/">Ten Wings</a>
+        <a href="/learn/">Learn</a>
+        <a href="/traditions/">Traditions</a>
+        <a href="/glossary/">Glossary</a>
+        <a href="/contributors/">Contributors</a>
+        <a href="/tools/bazi-chart/">Chart Tool</a>
+        <a href="/community/">Community</a>
+        <a href="/contribute/">Contribute</a>
+        <a href="/about/">About</a>
+        <a href="/stats/">Analytics · 統計</a>
+        <a href="mailto:contact@astrologylib.org">Contact</a>
+        <a href="/license/">License</a>
+        <a href="https://github.com/lupo168/astrologylib" target="_blank" rel="noopener noreferrer">GitHub (Open Source)</a>
+        <a href="/contributor-agreement/">Contributor Agreement</a>
+        <a href="/copyright/">Copyright</a>
+        <a href="/privacy/">Privacy</a>
+      </div>
+    </div>
+    <div class="foot-note">AstrologyLib preserves and translates public-domain classical Chinese texts on astrology, philosophy, and the art of reading patterns. Classical texts are shown in traditional characters, as they appear in the source editions. All content is for guidance and cultural education.</div>
+    <div class="foot-credit">Brand seal character “易” drawn from <a href="https://xiaoxue.iis.sinica.edu.tw/chongxi/" rel="noopener noreferrer">Chong Xi Small Seal 崇羲篆體</a> · 中央研究院小學堂 (Academia Sinica) · CC BY-ND 3.0 TW</div>
+    <div class="foot-disclaimer" style="margin-top:14px;padding-top:14px;border-top:1px dashed var(--ink-300);font-size:12px;color:var(--ink-500);line-height:1.6">
+      <strong>Non-Commercial Academic Charter:</strong> AstrologyLib is an open-access public-domain preservation initiative dedicated purely to classical literature, historical research, and cultural education. We do not sell products, run commercial advertisements, or conduct commercial consultations.
+    </div>
+  </footer>
+</body>
+</html>

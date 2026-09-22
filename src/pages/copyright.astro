@@ -1,0 +1,61 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const title = "Copyright & Sources - AstrologyLib";
+const description = "The public-domain sources, translation copyright, and licenses used by the AstrologyLib.";
+---
+
+<BaseLayout title={title} description={description} active="about">
+  <div class="article-head">
+    <div class="crumb"><a href="/">Home</a> › Copyright &amp; Sources</div>
+    <h1><span class="zh">版權與數據來源</span>Copyright &amp; Sources</h1>
+    <p class="sub">What is public domain, what we own, and what you may reuse - stated plainly.</p>
+  </div>
+
+  <div class="layout">
+    <aside class="toc">
+      <div class="t-label">On this page</div>
+      <ul>
+        <li><a href="#originals">The classical texts</a></li>
+        <li><a href="#translations">Our translations</a></li>
+        <li><a href="#glossary">The glossary</a></li>
+        <li><a href="#assets">Fonts &amp; images</a></li>
+        <li><a href="#reuse">What you may reuse</a></li>
+      </ul>
+    </aside>
+
+    <article class="article-body">
+      <h2 id="originals">The classical texts · 公版原文與底本來源</h2>
+      <p>The Chinese classical texts on this site are public domain. They were composed centuries ago and are part of the shared global cultural commons. We transcribe and collate them with immense gratitude to the open-source digital humanities community, primarily Gary Chow's <a href="https://github.com/garychowcmu/daizhigev20" target="_blank" rel="noopener noreferrer">daizhigev20 (殆知閣古代文獻檢索系統開源專案)</a>, alongside the <a href="https://ctext.org/" target="_blank" rel="noopener noreferrer">Chinese Text Project (ctext.org)</a> and <a href="https://zh.wikisource.org/" target="_blank" rel="noopener noreferrer">Wikisource (維基文庫)</a>.</p>
+
+      <h2 id="translations">Our translations · 翻譯版權</h2>
+      <p>The English translations on this site are original works of the Chinese Astrology Library, written directly from the classical originals - we do not reproduce the translations of others. They are published under the <strong>Creative Commons Attribution-ShareAlike 4.0 (CC BY-SA 4.0)</strong> license.</p>
+      <p>What that means, plainly:</p>
+      <ul>
+        <li>You may share and adapt our translations freely, provided appropriate attribution is given.</li>
+        <li><strong>Derivative works must stay under the same license</strong> - the library's translations can never be privatized or locked behind a closed, proprietary paywall. This is a permanent structural guarantee.</li>
+        <li>Anyone who creates derivative works, translations, or annotations based on our corpus must publish and share them openly under the exact same CC BY-SA 4.0 license.</li>
+      </ul>
+      <p>Please note: older translations found in public-domain archives - for example the nineteenth-century versions of Legge or Wilhelm - are <em>not</em> ours and are not what you see on this site.</p>
+
+      <h2 id="glossary">The glossary · 術語表</h2>
+      <p>Our <a href="/glossary/">bilingual glossary</a> is published under the <strong>Creative Commons Attribution-ShareAlike 4.0</strong> (CC BY-SA 4.0) license - the same licence as our translations and bilingual corpus, so the whole library stays consistently open. You may share and adapt it for any purpose, provided you attribute it to AstrologyLib and keep derivatives under the same licence. (For the full licence summary and attribution format, see the <a href="/license/">License</a> page.)</p>
+
+      <h2 id="assets">Fonts &amp; images · 字體、印章與圖形來源</h2>
+      <ul>
+        <li><strong>Brand Seal Character “易” (官方印章篆體):</strong> Derived from the authoritative <a href="https://xiaoxue.iis.sinica.edu.tw/chongxi/" target="_blank" rel="noopener noreferrer">Chong Xi Small Seal 崇羲篆體</a>, developed by Academia Sinica (中央研究院小學堂), licensed under <a href="https://creativecommons.org/licenses/by-nd/3.0/tw/" target="_blank" rel="noopener noreferrer">Creative Commons Attribution-NoDerivs 3.0 Taiwan (CC BY-ND 3.0 TW)</a>.</li>
+        <li><strong>Typefaces (字體):</strong> <a href="https://fonts.google.com/noto/specimen/Noto+Serif+SC" target="_blank" rel="noopener noreferrer">Source Han Serif / Noto Serif SC (思源宋體)</a> and <a href="https://fonts.google.com/noto/specimen/Noto+Sans+SC" target="_blank" rel="noopener noreferrer">Source Han Sans / Noto Sans SC (思源黑體)</a>, both under the SIL Open Font License 1.1 - free for open scholarly and educational use.</li>
+        <li><strong>Images and diagrams:</strong> All illustrations, the five-element cosmological disc, the SVG seals, and the line art on this site are original vectors drawn in SVG, or public-domain (CC0) assets.</li>
+      </ul>
+
+      <h2 id="reuse">What you may reuse · 可重用範圍</h2>
+      <ul>
+        <li><strong>Public-domain original texts:</strong> free to quote, reproduce, and translate.</li>
+        <li><strong>Our translations:</strong> please quote with attribution; for wholesale reproduction, contact us.</li>
+        <li><strong>The glossary (CC BY-SA 4.0):</strong> reusable with attribution; derivatives stay open.</li>
+      </ul>
+    </article>
+  </div>
+
+  <div class="back-row"><a class="btn btn-primary" href="/">← Back home</a></div>
+</BaseLayout>

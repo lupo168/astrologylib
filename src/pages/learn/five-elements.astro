@@ -1,0 +1,63 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageAttribution from '../../components/PageAttribution.astro';
+
+const title = "The Five Elements, Explained Simply - AstrologyLib";
+const description = "Wood, fire, earth, metal and water - the Five Elements as five ways energy moves, with the generating and controlling cycles, an analogy, and a 30-second example.";
+---
+
+<BaseLayout title={title} description={description} active="learn">
+  <div class="article-head">
+    <div class="crumb"><a href="/">Home</a> › <a href="/learn/">Learn</a> › The Five Elements</div>
+    <h1><span class="zh">五行</span>The Five Elements, Explained Simply</h1>
+  </div>
+
+  <div class="layout">
+    <aside class="toc">
+      <div class="t-label">In this lesson</div>
+      <ul>
+        <li><a href="#why">Why read this</a></li>
+        <li><a href="#cycles">The two cycles</a></li>
+        <li><a href="#analogy">A daily-life analogy</a></li>
+        <li><a href="#example">A 30-second example</a></li>
+        <li><a href="#where">Where this leads</a></li>
+      </ul>
+    </aside>
+
+    <article class="article-body">
+      <PageAttribution
+        sources={[
+          { label: 'Wu Xing cosmology · Five Elements tradition', url: 'https://en.wikipedia.org/wiki/Wuxing_(Chinese_philosophy)' },
+        ]}
+        verified="2026-08-19"
+        version="1.0.0"
+      />
+
+      <h2 id="why">Why read this</h2>
+      <p class="lead">Yin and Yang give you two forces; the Five Elements give that balance a body. Wood, fire, earth, metal and water are not five <em>things</em> - they are five ways energy moves, and the whole system is about how they feed and check one another.</p>
+      <p>Every chart, every season, every personality reading on this site is built from the Five Elements. They are the vocabulary of the system: <strong>wood</strong> grows and spreads, <strong>fire</strong> rises and transforms, <strong>earth</strong> holds and settles, <strong>metal</strong> cuts and refines, <strong>water</strong> runs and gathers. Nothing is judged - each element is simply a different tempo.</p>
+
+      <h2 id="cycles">The two cycles</h2>
+      <p>Elements relate to each other in two directions. In the <strong>generating cycle</strong>, each element feeds the next: wood feeds fire (it burns), fire feeds earth (it becomes ash), earth feeds metal (ore forms in the ground), metal feeds water (it melts and flows), water feeds wood. In the <strong>controlling cycle</strong>, each element checks another: wood parts earth (roots break soil), earth dams water, water quenches fire, fire melts metal, metal cuts wood.</p>
+
+      <h2 id="analogy">A daily-life analogy</h2>
+      <div class="analogy"><b>Everyday analogy.</b> Think of the year: spring is wood - rising growth; summer is fire - full blaze; the turning of the seasons is earth - the pivot that holds the others; autumn is metal - harvest and letting go; winter is water - storing and resting. The Five Elements are the same cycle you already live in, given names.</div>
+
+      <h2 id="example">A 30-second example</h2>
+      <p>Take any BaZi chart. The first question is always: which elements are present, and which are strong? A chart full of wood and fire runs "hot"; one heavy with metal and water runs "cold." Reading is mostly this - seeing the balance, and what a missing element would restore.</p>
+
+      <h2 id="where">Where this leads</h2>
+      <p>Each Zodiac animal carries one or more elements, and each of the four pillars in BaZi does too. Once you can see the Five Elements in a chart, the Zodiac and the pillars become the same language - and the Ten Gods in the glossary name the relationships between them.</p>
+
+      <div class="disclaimer">
+        <p><strong>For guidance and self-awareness purposes only.</strong> This lesson explains Chinese astrology as a cultural and philosophical framework - what it is, where it came from, and how its vocabulary works. It is not a prediction of your future, a medical or financial opinion, or a substitute for professional advice.</p>
+      </div>
+
+      <div class="back-row" style="margin-top:28px">
+        <a class="btn btn-secondary" href="/learn/">← All lessons</a>
+        <a class="btn btn-secondary" href="/learn/yin-yang/">← Previous: Yin &amp; Yang</a>
+        <a class="btn btn-primary" href="/learn/zodiac/">Next: The Chinese Zodiac →</a>
+      </div>
+    </article>
+  </div>
+</BaseLayout>

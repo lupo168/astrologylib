@@ -1,0 +1,47 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const title = "Privacy Policy - AstrologyLib";
+const description = "How the AstrologyLib handles your data - and why it is so little.";
+---
+
+<BaseLayout title={title} description={description} active="about">
+  <div class="article-head">
+    <div class="crumb"><a href="/">Home</a> › Privacy</div>
+    <h1><span class="zh">隱私政策</span>Privacy Policy</h1>
+    <p class="sub">We collect as little as possible, because that is the honest thing to do. Here is exactly what that means.</p>
+  </div>
+
+  <div class="layout">
+    <aside class="toc">
+      <div class="t-label">On this page</div>
+      <ul>
+        <li><a href="#short">The short version</a></li>
+        <li><a href="#birth">Birth data</a></li>
+        <li><a href="#analytics">Analytics</a></li>
+        <li><a href="#cookies">Cookies</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </aside>
+
+    <article class="article-body">
+      <h2 id="short">The short version</h2>
+      <p class="lead">You can read this library without creating an account. We do not ask for, store, or sell your personal information. There is nothing to opt out of because there is nothing collected.</p>
+
+      <h2 id="birth">Birth data · 出生信息</h2>
+      <p>Chinese astrology genuinely involves a date and time of birth, so we want to be explicit: <strong>we do not collect it.</strong> Nothing on this site requires you to enter your birth details to read, search, or quote. If we later offer an interactive chart tool, that tool will run in your browser and process your birth data locally - it will not be sent to or stored on our server.</p>
+      <p>This policy exists because birth data is exactly the kind of information a reader should be able to share, or not, on their own terms.</p>
+
+      <h2 id="analytics">Analytics</h2>
+      <p>We do not run third-party advertising trackers. Any aggregate visit statistics we may use in future will be privacy-respecting, cookieless, and clearly disclosed on this page before they begin.</p>
+
+      <h2 id="cookies">Cookies</h2>
+      <p>We do not set marketing or tracking cookies. The only cookie-like storage that may occur is the browser's own cache of the page files themselves, which you control in your browser settings.</p>
+
+      <h2 id="contact">Contact</h2>
+      <p>Questions about this policy can be sent directly to the library's curator at <a href="mailto:contact@astrologylib.org">contact@astrologylib.org</a>. We will answer plainly, because a privacy policy you cannot understand is not a policy - it is a warning.</p>
+    </article>
+  </div>
+
+  <div class="back-row"><a class="btn btn-primary" href="/">← Back home</a></div>
+</BaseLayout>

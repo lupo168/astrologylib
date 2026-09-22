@@ -1,0 +1,155 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { TASKS, CATEGORIES } from '../data/tasks';
+
+const title = "Contribute - Proofread the Translations · AstrologyLib";
+const description = "Volunteer to proofread and maintain the Chinese-English translations at the AstrologyLib. Named credit, honest work, a public good.";
+
+const STATUS = {
+  open: { label: '待認領', cls: 'badge-open' },
+  inprogress: { label: '校對中', cls: 'badge-inprogress' },
+  verified: { label: '已核驗', cls: 'badge-verified' },
+} as const;
+---
+
+<BaseLayout title={title} description={description} active="contribute">
+  <div class="article-head">
+    <div class="crumb"><a href="/">Home</a> › Contribute</div>
+    <h1><span class="zh">志願者招募 · 譯文校對</span>Proofread the Translations</h1>
+    <p class="sub">Every translation on this site carries a verified seal. Keeping that seal honest takes human eyes - and that is where you come in.</p>
+  </div>
+
+  <div class="layout">
+    <aside class="toc">
+      <div class="t-label">On this page</div>
+      <ul>
+        <li><a href="#why">Why proofreaders</a></li>
+        <li><a href="#donations">Contribution &amp; gift policy</a></li>
+        <li><a href="#do">What you'd do</a></li>
+        <li><a href="#who">Who we're looking for</a></li>
+        <li><a href="#get">What you get</a></li>
+        <li><a href="#how">How it works</a></li>
+        <li><a href="#tasks">Work in progress</a></li>
+        <li><a href="#join">How to join</a></li>
+      </ul>
+    </aside>
+
+    <article class="article-body">
+      <h2 id="why">Why proofreaders</h2>
+      <p class="lead">This library promises three things: original text first, our own translation second, and the source named on every page. A translation is a claim, and a claim without anyone checking it is just an opinion. The verified seal is only worth what the people who earn it are willing to verify.</p>
+      <p>We are looking for volunteers who will read the classical Chinese against our English, catch what a machine cannot - nuance, idiom, tone - and help us keep every page honest.</p>
+
+      <h2 id="donations">Gift &amp; Contribution Policy · 捐獻與貢獻政策</h2>
+      <div class="card" style="background:var(--paper-soft);border-left:4px solid var(--red);padding:18px 22px;margin:20px 0;border-radius:4px">
+        <p style="margin:0 0 10px 0;font-weight:700;color:var(--ink-900);font-size:17px">Strictly Zero Financial Donations · 絕不接受金錢贊助</p>
+        <p style="margin:0 0 12px 0;line-height:1.6;font-size:15px;color:var(--ink-700)">AstrologyLib.org operates with complete independence. We <strong>do not accept any monetary contributions, wire transfers, crypto donations, or financial sponsorships</strong>. There is no bank account or donation box associated with this library.</p>
+        <p style="margin:0 0 8px 0;font-weight:700;color:var(--ink-900);font-size:16px">What We Welcome with Deep Gratitude · 我們感恩接受的捐獻：</p>
+        <ul style="margin:0;padding-left:20px;font-size:15px;color:var(--ink-700)">
+          <li><strong>Rare texts &amp; manuscripts (古籍善本資料)</strong>: High-resolution scans, historical editions, rare woodblock prints, or public-domain classical transcriptions that enrich the repository.</li>
+          <li><strong>Textual collation &amp; corrections (校勘與勘誤)</strong>: Pointing out OCR typos, missed characters, or scholarly variant readings in our 2,000+ texts.</li>
+          <li><strong>Translation &amp; proofreading volunteers (志願校對與翻譯)</strong>: Helping translate passages, harmonize bilingual terminology, or refine English prose to natural literary standards.</li>
+        </ul>
+      </div>
+
+      <h2 id="do">What you'd do · 做什麼</h2>
+      <ul>
+        <li><strong>Proofread translations</strong> - read a hexagram, a chapter, or a passage against our English rendering.</li>
+        <li><strong>Check glossary consistency</strong> - the same term must carry the same English everywhere (our <a href="/glossary/">glossary</a> is the standard).</li>
+        <li><strong>Flag uncertain passages</strong> - where a character is missing or disputed, we mark it rather than hide it.</li>
+        <li><strong>Suggest, not rewrite</strong> - proposals come with a note; a human decides. That is how the seal stays earned.</li>
+      </ul>
+
+      <h2 id="who">Who we're looking for · 我們需要誰</h2>
+      <p>You need any <em>one</em> of these - not all:</p>
+      <ul>
+        <li><strong>Reading knowledge of classical Chinese</strong> - you can read 文言 and want to improve the English it becomes.</li>
+        <li><strong>Strong English + genuine interest</strong> - you may not know 文言 yet, but you care whether the English is natural and true; you can learn the Chinese as you go.</li>
+        <li><strong>Native English taste</strong> - the final read that makes the rendering sound like English, not translation.</li>
+      </ul>
+      <p>No paid work, no corporate strings, no deadlines beyond your own comfort. Just careful, credited effort.</p>
+
+      <h2 id="get">What you get · 回報</h2>
+      <ul>
+        <li><strong>Named credit &amp; a verified seal</strong> - your name goes on every page you worked on, beside the seal you helped earn.</li>
+        <li><strong>Your own private seal · 你的私人印章</strong> - every volunteer receives a personal seal in the library's seal style: a character you choose, stamped as "your name · 印". It starts as a digital SVG you can use anywhere, and it can grow into a real one. <a href="/" title="AstrologyLib" style="display:inline-block;vertical-align:middle;margin-left:10px"><img src="/sample-seal.svg" alt="CAL personal seal, linking to the library" style="width:44px;height:44px;border-radius:2px;display:block"></a></li>
+        <li><strong>Real depth in the classics</strong> - proofreading one hexagram against the original teaches more than a dozen casual reads. This is the kind of hands-on access to the source texts that paid metaphysics courses rarely give you.</li>
+        <li><strong>A proofreader's role in the community</strong> - a verified scholar role in the library's <a href="/community/">community forum</a>, early access to new translations and tools, and a place among people who care about the same rare topic.</li>
+        <li><strong>Contributor's record</strong> - a verifiable record of what you proofread, dated and credited; useful in a portfolio or CV, and honest - we only count work that passed review.</li>
+        <li><strong>Thank-you copies</strong> - after a set number of accepted reviews, the library's premium translations and reports come to you free.</li>
+        <li><strong>A public good</strong> - this library is free and source-verifiable; your work makes it trustworthy for every reader who comes after.</li>
+      </ul>
+      <p class="note" style="margin-top:8px">The role, the early access, and the thank-you copies grow with the community. What never changes is the credit and the seal - they are yours from your first accepted review.</p>
+
+      <h3 style="font-family:var(--font-heading);font-weight:700;font-size:20px;margin-top:26px">The seal, and how it grows · 印章三階</h3>
+      <ul>
+        <li><strong>銅 · Digital seal</strong> - your first accepted review earns your digital "XX印" SVG, ready to use anywhere.</li>
+        <li><strong>石 · Carved seal</strong> - 10 accepted reviews earn a real carved seal in traditional seal stone (青田 or Shoushan stone), carved and mailed to you, wherever you are.</li>
+        <li><strong>玉 · Jade seal</strong> - 30 accepted reviews, or completing a whole text, earn a jade seal - the highest honour in the seal tradition - permanent top billing on the <a href="/contributors/">contributors wall</a>, and the library's premium works free.</li>
+      </ul>
+
+      <h2 id="how">How it works · 流程</h2>
+      <ol>
+        <li><strong>Claim a text</strong> - pick a hexagram, chapter, or passage from the <a href="#tasks">work-in-progress list</a> below.</li>
+        <li><strong>Compare and annotate</strong> - read the original against our translation; note what should change and why.</li>
+        <li><strong>Submit your notes</strong> - submit via email or discuss on the <a href="/community/?cat=classics">Classics & Errata forum</a>.</li>
+        <li><strong>Review and seal</strong> - an editor reviews; accepted changes are applied, and the page's verified seal is updated with your name.</li>
+      </ol>
+
+      <div class="note"><strong>Review is the point.</strong> We will not accept wholesale rewrites that ignore the glossary, and we will not publish a change just because it was proposed. The slower, checked process is exactly what makes a "verified" mark worth having.</div>
+
+      <h2 id="tasks">Work in progress · 待校對清單</h2>
+      <p>While our digital archives house <strong>2,000+ classical Chinese works</strong> in complete transcriptions, our Chinese-to-English translation effort has only just begun. We have established foundational bilingual terminology in our <a href="/glossary/">Glossary</a> and completed initial foundational texts, but the vast majority of volumes are awaiting line-by-line translation and rigorous human collation.</p>
+      <p>Here is what is claimable right now. Each task is a classical passage waiting for a careful eye; pick one, read the original against our draft English, and submit your review.</p>
+      <div class="note" style="margin-bottom:20px"><strong>How claiming works:</strong> email us the task id (or post in the <a href="/community/?cat=classics">Errata forum</a>) and we confirm it is yours. When your notes pass review, your name goes on the page with a verified seal. The <a href="/glossary/">glossary</a> is the standard every task checks against.</div>
+
+      {CATEGORIES.map((cat) => {
+        const catTasks = TASKS.filter(t => t.category === cat.key);
+        if (catTasks.length === 0) return null;
+        return (
+          <section style="margin: 28px 0;">
+            <h3 style="font-family:var(--font-heading);font-size:18px;margin-bottom:6px;color:var(--ink-900);border-bottom:1px solid var(--paper-border);padding-bottom:4px">
+              {cat.title}
+            </h3>
+            <p style="font-size:13px;color:var(--ink-500);margin-bottom:14px">{cat.desc}</p>
+            {catTasks.map((t) => (
+              <article class="task" style="margin-bottom:12px">
+                <div class="t-head">
+                  <div class="t-title">{t.title}</div>
+                  <div class="t-zh">{t.zh}</div>
+                </div>
+                <div>
+                  <div class="t-scope"><strong>Scope:</strong> {t.scope}</div>
+                  <div class="t-note">{t.note}</div>
+                </div>
+                <div style="display:flex;align-items:center;gap:10px;justify-content:flex-end">
+                  <span class:list={['badge', STATUS[t.status].cls]}><span class="dot"></span>{STATUS[t.status].label}</span>
+                  {t.status === 'open' && (
+                    <a
+                      href={`mailto:contact@astrologylib.org?subject=Claim%20Task%3A%20${t.id}&body=Hello%20AstrologyLib%20Editors%2C%0A%0AI%20would%20like%20to%20claim%20proofreading%20task%20%5B${t.id}%5D%3A%20${encodeURIComponent(t.title)}.%0A%0AMy%20background%3A%0A%0AThank%20you.`}
+                      class="btn btn-secondary"
+                      style="font-size:12px;padding:3px 10px;text-decoration:none"
+                    >
+                      認領 Claim →
+                    </a>
+                  )}
+                </div>
+              </article>
+            ))}
+          </section>
+        );
+      })}
+
+      <h2 id="join">How to join · 加入</h2>
+      <p>Write to us with a sentence about which of the three profiles fits you and which text you would like to start with. We answer everyone, and the first text usually goes out the same week.</p>
+
+      <div class="note" style="margin-top:26px"><strong>Scholarly Independence · 學術獨立性</strong>
+        <p style="margin-top:8px">The library - the original texts, our translations, the glossary, and the introductory articles - is <strong>free, forever</strong>. We <strong>do not solicit or accept any monetary donations, grants, or financial sponsorships</strong>. There is no bank account or donation button.</p>
+        <p>Your volunteer work enters the public commons and is never privatized or sold. The full terms are in the <a href="/contributor-agreement/">Contributor Agreement</a>.</p>
+      </div>
+      <p class="lead" style="margin-top:18px"><a class="btn btn-primary" href="mailto:contact@astrologylib.org?subject=Volunteer%20proofreader">Email contact@astrologylib.org →</a></p>
+      <p style="font-size:14px;color:var(--ink-500)">(Official communication address: contact@astrologylib.org)</p>
+    </article>
+  </div>
+
+  <div class="back-row"><a class="btn btn-secondary" href="/about/">Learn more about the library →</a></div>
+</BaseLayout>

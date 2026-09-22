@@ -1,0 +1,63 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageAttribution from '../../components/PageAttribution.astro';
+
+const title = "The 12 Zodiac Animals, Explained Simply - AstrologyLib";
+const description = "The 12 Chinese zodiac animals and the Earthly Branches - why the Rat comes first, a daily-life analogy, and a 30-second example.";
+---
+
+<BaseLayout title={title} description={description} active="learn">
+  <div class="article-head">
+    <div class="crumb"><a href="/">Home</a> › <a href="/learn/">Learn</a> › The Chinese Zodiac</div>
+    <h1><span class="zh">生肖</span>The 12 Zodiac Animals, Explained Simply</h1>
+  </div>
+
+  <div class="layout">
+    <aside class="toc">
+      <div class="t-label">In this lesson</div>
+      <ul>
+        <li><a href="#why">Why read this</a></li>
+        <li><a href="#rat">Why the Rat comes first</a></li>
+        <li><a href="#analogy">A daily-life analogy</a></li>
+        <li><a href="#example">A 30-second example</a></li>
+        <li><a href="#where">Where this leads</a></li>
+      </ul>
+    </aside>
+
+    <article class="article-body">
+      <PageAttribution
+        sources={[
+          { label: 'Earthly Branches · Chinese calendar tradition', url: 'https://en.wikipedia.org/wiki/Earthly_Branches' },
+        ]}
+        verified="2026-08-19"
+        version="1.0.0"
+      />
+
+      <h2 id="why">Why read this</h2>
+      <p class="lead">Rat, ox, tiger, rabbit, dragon, snake, horse, goat, monkey, rooster, dog, pig - twelve animals, one per year, in a repeating cycle. But the Zodiac is a <em>calendar</em> before it is a personality test.</p>
+      <p>The twelve animals are the faces of the twelve <strong>Earthly Branches</strong> (子丑寅卯辰巳午未申酉戌亥) - the same branches used in the four pillars. Attaching an animal to each year made the calendar memorable, and it stuck. The animal of the year you were born in is your zodiac sign.</p>
+
+      <h2 id="rat">Why the Rat comes first</h2>
+      <p>The famous story - the cat and the rat racing across the river - is folklore, not the reason. The real ordering comes from the branches themselves: the Rat's branch <em>zǐ</em> (子) begins the day's cycle (11 pm-1 am) and stands first among the twelve. The animals were layered onto an order that already existed.</p>
+
+      <h2 id="analogy">A daily-life analogy</h2>
+      <div class="analogy"><b>Everyday analogy.</b> The Zodiac is like the twelve signs of the Western zodiac, except it maps to whole years instead of months. Your sign is the year, and the year's branch and element add detail on top.</div>
+
+      <h2 id="example">A 30-second example</h2>
+      <p>2026 is the year of the Horse (午馬, bǐng-wǔ). 2027 will be the Goat (未羊). The year flips at Chinese New Year, so a birth in late January can fall on either side of the line - exactly the kind of edge case the four pillars are careful about.</p>
+
+      <h2 id="where">Where this leads</h2>
+      <p>The animal is the friendly face; the branch behind it - with its element and direction - is what a BaZi chart actually uses. The glossary keeps both names, so you can move from "I'm a Horse" to "my chart's 午 branch" without losing the thread.</p>
+
+      <div class="disclaimer">
+        <p><strong>For guidance and self-awareness purposes only.</strong> This lesson explains Chinese astrology as a cultural and philosophical framework - what it is, where it came from, and how its vocabulary works. It is not a prediction of your future, a medical or financial opinion, or a substitute for professional advice.</p>
+      </div>
+
+      <div class="back-row" style="margin-top:28px">
+        <a class="btn btn-secondary" href="/learn/">← All lessons</a>
+        <a class="btn btn-secondary" href="/learn/five-elements/">← Previous: The Five Elements</a>
+        <a class="btn btn-primary" href="/learn/bazi/">Next: What Is Your BaZi? →</a>
+      </div>
+    </article>
+  </div>
+</BaseLayout>

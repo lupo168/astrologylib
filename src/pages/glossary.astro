@@ -1,0 +1,518 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageAttribution from '../components/PageAttribution.astro';
+import { GLOSSARY_TERMS, CATEGORIES, type GlossaryTerm } from '../data/glossary';
+
+const totalCoreCount = GLOSSARY_TERMS.filter(t => t.isCore).length;
+const totalTermsCount = GLOSSARY_TERMS.length;
+
+const title = "Bilingual Canonical Glossary - Standard Lexicon of Chinese Metaphysics | AstrologyLib";
+const description = `The authoritative bilingual glossary of Chinese astrology and cosmology: ${totalCoreCount} Core Essentials for beginners and ${totalTermsCount}+ standardized terms with pinyin, English definitions, and classical citations. CC BY-SA 4.0.`;
+
+// Schema.org DefinedTermSet
+const glossarySchema = {
+  "@context": "https://schema.org",
+  "@type": "DefinedTermSet",
+  "@id": "https://astrologylib.org/glossary/#defined-term-set",
+  "name": "AstrologyLib Canonical Chinese Metaphysics Glossary",
+  "description": description,
+  "url": "https://astrologylib.org/glossary/",
+  "inLanguage": ["en", "zh-Hant", "zh-Hans"],
+  "hasDefinedTerm": GLOSSARY_TERMS.filter(t => t.isCore).map((t) => ({
+    "@type": "DefinedTerm",
+    "name": `${t.zh} (${t.py})`,
+    "alternateName": t.en,
+    "description": t.shortDef,
+    "termCode": t.id,
+    "url": `https://astrologylib.org/glossary/#${t.id}`,
+    "inDefinedTermSet": "https://astrologylib.org/glossary/#defined-term-set"
+  }))
+};
+---
+
+<BaseLayout title={title} description={description} active="reference" schemaJson={glossarySchema}>
+  <div class="article-head" style="border-bottom:1px solid var(--ink-200);background:linear-gradient(to bottom, var(--paper-warm), var(--paper));padding-bottom:32px">
+    <div class="crumb" style="font-size:13px;color:var(--ink-500);margin-bottom:8px">
+      <a href="/" style="color:var(--ink-500);text-decoration:none">Home</a> › 
+      <span style="color:var(--red);font-weight:600">3. Standard Glossary · 術語庫</span>
+    </div>
+    
+    <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(149,0,7,0.08);border:1px solid rgba(149,0,7,0.2);padding:4px 12px;border-radius:20px;font-size:12px;font-weight:700;color:var(--red);margin-bottom:12px;letter-spacing:0.04em">
+      <span>STEP 3 OF 4</span> · 認知階梯第三階：標準名詞定義與權威詞典
+    </div>
+
+    <h1 style="margin:0 0 12px"><span class="zh" style="display:block;font-size:18px;color:var(--red);margin-bottom:4px;letter-spacing:0.06em">命理標準術語與概念詞典</span>Canonical Metaphysics Lexicon</h1>
+    <p class="sub" style="max-width:760px;margin:0 auto 16px;font-size:16px;line-height:1.7;color:var(--ink-700)">
+      <strong>One term, one definitive standard.</strong> Bridging modern beginners and ancient primary texts without mystification or superstitious fluff. Every entry includes Chinese characters, Romanized Pinyin, authoritative English translations, plain-language logic, and direct classical citations.
+    </p>
+
+    <!-- 4合1 階梯指引條 -->
+    <div class="cognitive-stepper" style="max-width:880px;margin:20px auto 0;background:var(--paper);border:1px solid var(--ink-300);border-radius:var(--radius-card);padding:14px 20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;box-shadow:0 2px 8px rgba(0,0,0,0.02)">
+      <a href="/learn/" style="text-decoration:none;display:flex;align-items:center;gap:10px;color:var(--ink-700)">
+        <span style="width:22px;height:22px;border-radius:50%;background:var(--ink-200);color:var(--ink-700);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700">1</span>
+        <div>
+          <div style="font-size:10px;color:var(--ink-500);text-transform:uppercase;letter-spacing:0.04em">Step 1 · 入門</div>
+          <div style="font-size:12px;font-weight:600">0-to-1 Primer →</div>
+        </div>
+      </a>
+      <a href="/traditions/" style="text-decoration:none;display:flex;align-items:center;gap:10px;color:var(--ink-700)">
+        <span style="width:22px;height:22px;border-radius:50%;background:var(--ink-200);color:var(--ink-700);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700">2</span>
+        <div>
+          <div style="font-size:10px;color:var(--ink-500);text-transform:uppercase;letter-spacing:0.04em">Step 2 · 流派</div>
+          <div style="font-size:12px;font-weight:600">Traditions · 大宗流派 →</div>
+        </div>
+      </a>
+      <div style="color:var(--red);font-weight:700;display:flex;align-items:center;gap:10px;background:rgba(149,0,7,0.06);padding:6px 12px;border-radius:6px;border:1px solid rgba(149,0,7,0.15)">
+        <span style="width:22px;height:22px;border-radius:50%;background:var(--red);color:#fff;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700">3</span>
+        <div>
+          <div style="font-size:10px;color:var(--red);text-transform:uppercase;letter-spacing:0.04em">Current · 查詞</div>
+          <div style="font-size:12px;font-weight:700;color:var(--red)">Canonical Lexicon · 術語庫</div>
+        </div>
+      </div>
+      <a href="/library/" style="text-decoration:none;display:flex;align-items:center;gap:10px;color:var(--ink-700)">
+        <span style="width:22px;height:22px;border-radius:50%;background:var(--ink-200);color:var(--ink-700);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700">4</span>
+        <div>
+          <div style="font-size:10px;color:var(--ink-500);text-transform:uppercase;letter-spacing:0.04em">Step 4 · 原典</div>
+          <div style="font-size:12px;font-weight:600">Grand Corpus · 萬卷典藏 →</div>
+        </div>
+      </a>
+    </div>
+
+    <div style="margin-top:20px">
+      <PageAttribution
+        sources={[
+          { label: 'Compiled from Siku Quanshu, Daozang, Di Tian Sui, Zi Ping Zhen Quan, and Zhou Yi', url: '/copyright/' },
+          { label: 'Open Access CC BY-SA 4.0 License', url: '/license/' }
+        ]}
+        verified="2026-09-10"
+        version="3.1.0"
+      />
+    </div>
+  </div>
+
+  <div class="glossary-container" style="max-width:var(--content-max);margin:0 auto;padding:24px 24px 80px">
+    
+    <!-- 交互控制面板：视图切换 + 实时检索 + 分类过滤 -->
+    <div class="control-panel" style="background:var(--paper);border:1px solid var(--ink-300);border-radius:var(--radius-card);padding:20px 24px;margin-bottom:32px;box-shadow:0 3px 12px rgba(0,0,0,0.03);position:sticky;top:70px;z-index:20">
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;margin-bottom:16px">
+        
+        <!-- 视图切换器 -->
+        <div class="view-switcher" style="display:inline-flex;background:var(--paper-warm);padding:4px;border-radius:8px;border:1px solid var(--ink-300)">
+          <button id="btn-view-core" class="switch-btn active" type="button" aria-label={`Show Core ${totalCoreCount} Essentials`}>
+            Core {totalCoreCount} Essentials · 基石必讀
+          </button>
+          <button id="btn-view-all" class="switch-btn" type="button" aria-label="Show All Terms">
+            Complete Lexicon · 全庫標準檢索 ({totalTermsCount})
+          </button>
+        </div>
+
+        <!-- 实时搜索输入框 -->
+        <div style="flex:1;min-width:280px;position:relative">
+          <input 
+            type="text" 
+            id="glossary-search" 
+            placeholder="Search in English, Chinese, Pinyin, or concept (e.g. Day Master, 紫微, 世应, 六亲, 用神)..." 
+            aria-label="Filter glossary terms"
+            style="width:100%;padding:10px 14px 10px 38px;font-size:14px;border:1px solid var(--ink-300);border-radius:6px;background:var(--paper);color:var(--ink);box-sizing:border-box"
+          />
+          <svg style="position:absolute;left:12px;top:50%;transform:translateY(-50%);color:var(--ink-400);pointer-events:none" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <button id="btn-clear-search" type="button" style="display:none;position:absolute;right:10px;top:50%;transform:translateY(-50%);background:none;border:none;font-size:16px;color:var(--ink-400);cursor:pointer;padding:4px">×</button>
+        </div>
+      </div>
+
+      <!-- 分类标签过滤器 -->
+      <div class="category-chips" style="display:flex;gap:8px;overflow-x:auto;padding-bottom:4px;scrollbar-width:thin">
+        {CATEGORIES.map((cat, idx) => {
+          const count = cat.key === 'all' 
+            ? totalTermsCount 
+            : cat.key === 'core'
+              ? totalCoreCount
+              : GLOSSARY_TERMS.filter(t => t.category === cat.key).length;
+          return (
+            <button 
+              type="button" 
+              class={`chip-btn ${idx === 0 ? 'active' : ''}`} 
+              data-cat={cat.key}
+            >
+              {cat.zh} <span style="opacity:0.6;font-size:11px">({count})</span>
+            </button>
+          );
+        })}
+      </div>
+
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-top:12px;padding-top:12px;border-top:1px dashed var(--ink-200);font-size:12px;color:var(--ink-500)">
+        <span id="results-count" data-total-core={totalCoreCount} data-total-terms={totalTermsCount}>Showing {totalCoreCount} Core Essential Terms</span>
+        <span style="font-style:italic">Click any term card to copy anchor link or jump to classical source.</span>
+      </div>
+    </div>
+
+    <!-- 视图 1：Core 36 必读卡片网格 -->
+    <div id="core-view" class="terms-grid" style="display:grid;grid-template-columns:repeat(auto-fill, minmax(360px, 1fr));gap:24px;margin-bottom:48px">
+      {GLOSSARY_TERMS.filter(t => t.isCore).map((term) => (
+        <article class="term-card core-card" id={term.id} data-cat={term.category} data-core="true" data-search={`${term.zh} ${term.py} ${term.en} ${term.shortDef} ${term.detailedDef || ''}`}>
+          <div class="card-top" style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px">
+            <div style="display:flex;align-items:center;gap:12px">
+              <span class="glyph" style="font-family:var(--font-heading);font-size:32px;font-weight:900;color:var(--red);line-height:1;border-bottom:2px solid var(--gold);padding-bottom:2px">{term.zh}</span>
+              <div>
+                <div style="font-size:13px;font-weight:700;color:var(--ink-500);letter-spacing:0.04em">{term.py}</div>
+                <h3 style="margin:0;font-size:18px;font-weight:700;color:var(--ink);line-height:1.2">{term.en}</h3>
+              </div>
+            </div>
+            <span style="font-size:11px;font-weight:700;color:var(--red);background:rgba(149,0,7,0.06);border:1px solid rgba(149,0,7,0.2);padding:2px 8px;border-radius:4px;white-space:nowrap">
+              {term.categoryZh}
+            </span>
+          </div>
+
+          <p class="term-short" style="font-size:14px;font-weight:600;color:var(--ink);line-height:1.6;margin-bottom:10px">
+            {term.shortDef}
+          </p>
+
+          {term.detailedDef && (
+            <p class="term-detail" style="font-size:13px;color:var(--ink-700);line-height:1.6;margin-bottom:12px;background:var(--paper-warm);padding:10px 12px;border-radius:4px;border-left:2px solid var(--gold)">
+              {term.detailedDef}
+            </p>
+          )}
+
+          {term.practicalNote && (
+            <div style="font-size:12px;color:var(--ink-600);margin-bottom:14px;line-height:1.5">
+              <strong style="color:var(--ink);font-weight:700">Practical Reading:</strong> {term.practicalNote}
+            </div>
+          )}
+
+          <div class="card-footer" style="display:flex;justify-content:space-between;align-items:center;padding-top:12px;border-top:1px solid var(--ink-200);font-size:12px;gap:8px;flex-wrap:wrap">
+            {term.source && (
+              <div style="color:var(--ink-500);font-size:11px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:220px" title={term.source}>
+                📜 {term.source.split(':')[0]}
+              </div>
+            )}
+            <div style="display:flex;gap:10px;margin-left:auto">
+              {term.learnLink && (
+                <a href={term.learnLink} style="color:var(--ink);font-weight:600;text-decoration:underline">
+                  Learn Guide →
+                </a>
+              )}
+              {term.sourceLink && (
+                <a href={term.sourceLink} style="color:var(--red);font-weight:600;text-decoration:underline">
+                  Verify Source ↗
+                </a>
+              )}
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+
+    <!-- 视图 2：全库完整检索表格列表 -->
+    <div id="all-view" class="all-terms-table" style="display:none;margin-bottom:48px">
+      <div style="background:var(--paper);border:1px solid var(--ink-300);border-radius:var(--radius-card);overflow:hidden;box-shadow:0 2px 10px rgba(0,0,0,0.02)">
+        <table class="canonical-table" style="width:100%;border-collapse:collapse;text-align:left;font-size:14px">
+          <thead>
+            <tr style="background:var(--paper-warm);border-bottom:2px solid var(--ink-300)">
+              <th style="padding:14px 16px;width:100px;font-weight:700;color:var(--ink)">中文</th>
+              <th style="padding:14px 16px;width:120px;font-weight:700;color:var(--ink)">拼音</th>
+              <th style="padding:14px 16px;width:240px;font-weight:700;color:var(--ink)">Standard English</th>
+              <th style="padding:14px 16px;width:100px;font-weight:700;color:var(--ink)">分類</th>
+              <th style="padding:14px 16px;font-weight:700;color:var(--ink)">Canonical Definition &amp; Context</th>
+              <th style="padding:14px 16px;width:120px;font-weight:700;color:var(--ink)">Citation</th>
+            </tr>
+          </thead>
+          <tbody id="table-body">
+            {GLOSSARY_TERMS.map((term) => (
+              <tr 
+                class="table-row" 
+                id={`tr-${term.id}`}
+                data-cat={term.category} 
+                data-core={term.isCore ? "true" : "false"}
+                data-search={`${term.zh} ${term.py} ${term.en} ${term.shortDef} ${term.detailedDef || ''}`}
+                style="border-bottom:1px solid var(--ink-200);transition:background 0.15s ease"
+              >
+                <td style="padding:12px 16px;font-family:var(--font-heading);font-weight:900;font-size:18px;color:var(--red);white-space:nowrap">
+                  {term.zh}
+                  {term.isCore && <span title="Core 36 Essential" style="font-size:11px;vertical-align:super;margin-left:2px">✨</span>}
+                </td>
+                <td style="padding:12px 16px;font-size:13px;color:var(--ink-600);white-space:nowrap">
+                  {term.py}
+                </td>
+                <td style="padding:12px 16px;font-weight:600;color:var(--ink)">
+                  {term.en}
+                </td>
+                <td style="padding:12px 16px;white-space:nowrap">
+                  <span style="font-size:11px;background:var(--paper-warm);border:1px solid var(--ink-200);padding:2px 6px;border-radius:3px">
+                    {term.categoryZh}
+                  </span>
+                </td>
+                <td style="padding:12px 16px;line-height:1.6;color:var(--ink-700)">
+                  <div>{term.shortDef}</div>
+                  {term.practicalNote && (
+                    <div style="font-size:12px;color:var(--ink-500);margin-top:4px">
+                      <em>Context:</em> {term.practicalNote}
+                    </div>
+                  )}
+                </td>
+                <td style="padding:12px 16px;font-size:12px;white-space:nowrap">
+                  {term.sourceLink ? (
+                    <a href={term.sourceLink} style="color:var(--red);text-decoration:underline">
+                      Verify ↗
+                    </a>
+                  ) : (
+                    <span style="color:var(--ink-400)">Standard</span>
+                  )}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- 无搜索结果提示 -->
+    <div id="no-results" style="display:none;text-align:center;padding:60px 20px;background:var(--paper-warm);border-radius:var(--radius-card);border:1px dashed var(--ink-300)">
+      <div style="font-size:32px;margin-bottom:12px">🔍</div>
+      <h3 style="font-size:18px;margin:0 0 8px;color:var(--ink)">No matching terms found</h3>
+      <p style="font-size:14px;color:var(--ink-500);margin:0 0 16px">Try searching for broader keywords like "wood", "water", "officer", "luck", or clear filters.</p>
+      <button id="btn-reset-filters" type="button" class="btn btn-secondary" style="font-size:13px;padding:6px 16px">
+        Reset Search &amp; Filters
+      </button>
+    </div>
+
+    <!-- 底部三合一认知导航 -->
+    <section class="next-ladder" style="background:linear-gradient(135deg, rgba(149,0,7,0.04), rgba(212,175,55,0.08));border:1px solid var(--ink-300);border-radius:var(--radius-card);padding:28px 32px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px;margin-top:40px">
+      <div style="max-width:600px">
+        <div style="font-size:12px;font-weight:700;color:var(--red);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:4px">READY FOR PRIMARY SOURCES?</div>
+        <h3 style="font-family:var(--font-heading);font-size:22px;margin:0 0 8px;color:var(--ink)">
+          Now, read the verified words in the Grand Classical Corpus
+        </h3>
+        <p style="font-size:14px;color:var(--ink-700);line-height:1.6;margin:0">
+          Once you understand the 36 Core Essentials and the canonical definitions, step directly into our 2,064-volume open-access archive. Verify translations against original dynastic blockprints.
+        </p>
+      </div>
+      <div style="display:flex;gap:12px;flex-wrap:wrap">
+        <a class="btn btn-secondary" href="/learn/" style="padding:10px 18px">
+          ← Review 0-to-1 Primer
+        </a>
+        <a class="btn btn-primary" href="/library/" style="padding:10px 20px">
+          Enter Grand Corpus (2,064) →
+        </a>
+      </div>
+    </section>
+
+  </div>
+
+  <style>
+    .switch-btn {
+      padding: 8px 16px;
+      font-size: 13px;
+      font-weight: 600;
+      border: none;
+      background: transparent;
+      color: var(--ink-700);
+      cursor: pointer;
+      border-radius: 6px;
+      transition: all 0.15s ease;
+    }
+    .switch-btn.active {
+      background: var(--paper);
+      color: var(--red);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+      font-weight: 700;
+    }
+    .chip-btn {
+      padding: 6px 14px;
+      font-size: 12px;
+      font-weight: 600;
+      border: 1px solid var(--ink-300);
+      background: var(--paper);
+      color: var(--ink-700);
+      cursor: pointer;
+      border-radius: 20px;
+      white-space: nowrap;
+      transition: all 0.15s ease;
+    }
+    .chip-btn:hover {
+      border-color: var(--gold);
+      color: var(--ink);
+    }
+    .chip-btn.active {
+      background: var(--ink);
+      color: #fff;
+      border-color: var(--ink);
+    }
+    .term-card {
+      background: var(--paper);
+      border: 1px solid var(--ink-300);
+      border-radius: var(--radius-card);
+      padding: 22px 24px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.02);
+      transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+    }
+    .term-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.05);
+      border-color: var(--gold);
+    }
+    .canonical-table tbody tr:hover {
+      background: rgba(149, 0, 7, 0.02);
+    }
+    @media (max-width: 768px) {
+      .control-panel {
+        top: 60px;
+        padding: 14px;
+      }
+      .terms-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+
+  <script>
+    // Client-side instant filter and view switching logic
+    document.addEventListener('DOMContentLoaded', () => {
+      const btnCore = document.getElementById('btn-view-core');
+      const btnAll = document.getElementById('btn-view-all');
+      const coreView = document.getElementById('core-view');
+      const allView = document.getElementById('all-view');
+      const searchInput = document.getElementById('glossary-search') as HTMLInputElement | null;
+      const btnClear = document.getElementById('btn-clear-search');
+      const chipButtons = document.querySelectorAll('.chip-btn');
+      const resultsCount = document.getElementById('results-count');
+      const noResults = document.getElementById('no-results');
+      const btnReset = document.getElementById('btn-reset-filters');
+
+      let currentView = 'core'; // 'core' | 'all'
+      let currentCat = 'all';
+      let searchKeyword = '';
+
+      // Check URL params (?view=all or ?filter=core)
+      const urlParams = new URLSearchParams(window.location.search);
+      if (urlParams.get('view') === 'all') {
+        currentView = 'all';
+      }
+
+      function updateViewDisplay() {
+        if (currentView === 'core') {
+          btnCore?.classList.add('active');
+          btnAll?.classList.remove('active');
+          if (coreView) coreView.style.display = 'grid';
+          if (allView) allView.style.display = 'none';
+        } else {
+          btnAll?.classList.add('active');
+          btnCore?.classList.remove('active');
+          if (coreView) coreView.style.display = 'none';
+          if (allView) allView.style.display = 'block';
+        }
+        filterTerms();
+      }
+
+      function filterTerms() {
+        const q = searchKeyword.trim().toLowerCase();
+        let visibleCount = 0;
+
+        // Filter cards in coreView
+        const cards = document.querySelectorAll('.term-card');
+        cards.forEach((el) => {
+          const card = el as HTMLElement;
+          const cat = card.dataset.cat || '';
+          const searchData = (card.dataset.search || '').toLowerCase();
+          
+          const matchesCat = (currentCat === 'all' || cat === currentCat);
+          const matchesQuery = !q || searchData.includes(q);
+
+          if (matchesCat && matchesQuery) {
+            card.style.display = 'block';
+            visibleCount++;
+          } else {
+            card.style.display = 'none';
+          }
+        });
+
+        // Filter rows in allView
+        const rows = document.querySelectorAll('.table-row');
+        let tableVisibleCount = 0;
+        rows.forEach((el) => {
+          const row = el as HTMLElement;
+          const cat = row.dataset.cat || '';
+          const searchData = (row.dataset.search || '').toLowerCase();
+          
+          const matchesCat = (currentCat === 'all' || cat === currentCat);
+          const matchesQuery = !q || searchData.includes(q);
+
+          if (matchesCat && matchesQuery) {
+            row.style.display = 'table-row';
+            tableVisibleCount++;
+          } else {
+            row.style.display = 'none';
+          }
+        });
+
+        const activeCount = (currentView === 'core') ? visibleCount : tableVisibleCount;
+        
+        if (resultsCount) {
+          const totalCore = resultsCount.getAttribute('data-total-core') || '45';
+          const totalTerms = resultsCount.getAttribute('data-total-terms') || '200';
+          if (currentView === 'core') {
+            resultsCount.textContent = `Showing ${activeCount} of ${totalCore} Core Essential Terms`;
+          } else {
+            resultsCount.textContent = `Showing ${activeCount} of ${totalTerms} Standard Canonical Terms`;
+          }
+        }
+
+        if (noResults) {
+          noResults.style.display = (activeCount === 0) ? 'block' : 'none';
+        }
+      }
+
+      btnCore?.addEventListener('click', () => {
+        currentView = 'core';
+        updateViewDisplay();
+      });
+
+      btnAll?.addEventListener('click', () => {
+        currentView = 'all';
+        updateViewDisplay();
+      });
+
+      searchInput?.addEventListener('input', (e) => {
+        searchKeyword = (e.target as HTMLInputElement).value;
+        if (btnClear) btnClear.style.display = searchKeyword ? 'block' : 'none';
+        
+        // Auto switch to all view if searching to avoid hiding non-core terms
+        if (searchKeyword.length >= 2 && currentView === 'core') {
+          currentView = 'all';
+          updateViewDisplay();
+          return;
+        }
+        filterTerms();
+      });
+
+      btnClear?.addEventListener('click', () => {
+        if (searchInput) searchInput.value = '';
+        searchKeyword = '';
+        if (btnClear) btnClear.style.display = 'none';
+        filterTerms();
+      });
+
+      chipButtons.forEach((btn) => {
+        btn.addEventListener('click', () => {
+          chipButtons.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          currentCat = btn.getAttribute('data-cat') || 'all';
+          filterTerms();
+        });
+      });
+
+      btnReset?.addEventListener('click', () => {
+        if (searchInput) searchInput.value = '';
+        searchKeyword = '';
+        currentCat = 'all';
+        chipButtons.forEach((b, idx) => {
+          if (idx === 0) b.classList.add('active');
+          else b.classList.remove('active');
+        });
+        currentView = 'core';
+        updateViewDisplay();
+      });
+
+      updateViewDisplay();
+    });
+  </script>
+</BaseLayout>

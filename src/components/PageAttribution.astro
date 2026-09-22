@@ -1,0 +1,87 @@
+---
+// PageAttribution.astro — 内容页统一署名卡：来源 / 协议 / 贡献者 / 校对者
+// 来源必带可点击 URL（RULES 来源标注红线）。校对者用印章署名：
+//   · 当前无志愿者印章 → 显示库方「衡」验证章
+//   · 未来登录/认证 + 个人主页上线后，proofreaders[].href 填个人主页 URL 即可跳转
+interface Source {
+  label: string;
+  url: string;
+}
+interface Proofreader {
+  char: string; // 印章字
+  name: string; // 显示名
+  href?: string; // 未来 → 个人主页（当前不填）
+}
+
+interface Props {
+  sources: Source[];
+  verified?: string; // 校验日期 YYYY-MM-DD
+  version?: string; // 内容版本号（RULES 版本号红线），如 '1.0.0'
+  license?: string; // 默认 'CC BY-SA 4.0'
+  licenseHref?: string; // 默认 '/license/'
+  agreementHref?: string; // 默认 '/contributor-agreement/'
+  contributionHref?: string; // 默认 '/contributors/'
+  proofreaders?: Proofreader[]; // 空 → 显示库方衡章
+}
+
+const {
+  sources,
+  verified,
+  version,
+  license = 'CC BY-SA 4.0',
+  licenseHref = '/license/',
+  agreementHref = '/contributor-agreement/',
+  contributionHref = '/contributors/',
+  proofreaders = [],
+} = Astro.props;
+---
+
+<div class="attrib">
+  <div class="attrib-row">
+    <span class="attrib-k">Sources · 來源</span>
+    <span class="attrib-v">
+      {sources.map((s, i) => (
+        <span class="attrib-item">
+          {i > 0 && <span class="attrib-sep">·</span>}
+          {/^https?:\/\//.test(s.url) ? (
+            <a href={s.url} target="_blank" rel="noopener noreferrer">{s.label}<span class="attrib-ext">↗</span></a>
+          ) : (
+            <a href={s.url}>{s.label}</a>
+          )}
+        </span>
+      ))}
+    </span>
+  </div>
+
+  <div class="attrib-row">
+    <span class="attrib-k">Agreement · 協議</span>
+    <span class="attrib-v">
+      <a href={licenseHref}>{license}</a>
+      <span class="attrib-sep">·</span>
+      <a href={agreementHref}>Contributor Agreement</a>
+    </span>
+  </div>
+
+  <div class="attrib-row">
+    <span class="attrib-k">Contribution · 貢獻</span>
+    <span class="attrib-v"><a href={contributionHref}>AstrologyLib</a></span>
+  </div>
+
+  <div class="attrib-row">
+    <span class="attrib-k">Proofread · 校對</span>
+    <span class="attrib-v">
+      {proofreaders.length > 0 ? (
+        proofreaders.map((p) =>
+          p.href ? (
+            <a class="attrib-seal" href={p.href} title={p.name}><span class="seal-mini"><span class="sq">{p.char}</span>{p.name}</span></a>
+          ) : (
+            <span class="seal-mini" title={p.name}><span class="sq">{p.char}</span>{p.name}</span>
+          )
+        )
+      ) : (
+        <span class="seal-mini"><span class="sq">衡</span>verified{verified ? ` ${verified}` : ''}</span>
+      )}
+      {version && <span class="attrib-ver">v{version}</span>}
+    </span>
+  </div>
+</div>

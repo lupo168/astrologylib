@@ -1,0 +1,93 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const title = "Contributor Agreement (v0.3) · AstrologyLib";
+const description = "The volunteer and contributor agreement of the AstrologyLib: licence into CC BY-SA 4.0, the copper-stone-jade seal system, governance, and red lines.";
+---
+
+<BaseLayout title={title} description={description} active="contribute">
+  <div class="article-head">
+    <div class="crumb"><a href="/">Home</a> › <a href="/contribute/">Contribute</a> › Contributor Agreement</div>
+    <h1><span class="zh">貢獻者協議</span>Contributor Agreement</h1>
+    <p class="sub">The full agreement, stated plainly. By submitting your first contribution you accept these terms.</p>
+  </div>
+
+  <div class="layout">
+    <aside class="toc">
+      <div class="t-label">On this page</div>
+      <ul>
+        <li><a href="#one-line">In one sentence</a></li>
+        <li><a href="#licence">1 · Licence of your contribution</a></li>
+        <li><a href="#seals">2 · The seal system</a></li>
+        <li><a href="#governance">3 · Governance</a></li>
+        <li><a href="#redlines">4 · Red lines</a></li>
+        <li><a href="#withdrawal">5 · Withdrawal &amp; deletion</a></li>
+        <li><a href="#version">6 · Version &amp; effect</a></li>
+      </ul>
+    </aside>
+
+    <article class="article-body">
+      <h2 id="one-line">In one sentence · 一句話</h2>
+      <p class="lead">Everything you contribute to the library enters the open commons under <strong>CC BY-SA 4.0</strong> - it can <strong>never</strong> be locked into any proprietary product. The library returns your contribution with transparent governance and a seal system of honour.</p>
+      <p>Your contribution is legally protected as an <em>always-open public asset</em> - a gift to everyone who reads, studies, or builds on the classical tradition.</p>
+
+      <h2 id="licence">1 · Licence of your contribution · 進入 CC BY-SA</h2>
+      <ol>
+        <li>Your translations, glossary entries, collations, corrections, and structured content are licensed <strong>CC BY-SA 4.0</strong> (ShareAlike).</li>
+        <li>Meaning: anyone (including third parties) may use, modify, and redistribute your contribution - but <strong>derivatives must stay equally open</strong>. This is the legal guarantee that contributions can never be locked in.</li>
+        <li>Public-domain classical texts themselves are not affected; the library only arranges them. The original text is not bound by this agreement.</li>
+        <li>Tool scripts / code: <strong>MIT</strong> (contributing code means agreeing to MIT).</li>
+      </ol>
+
+      <h2 id="seals">2 · The seal system · 印章三階（銅 · 石 · 玉）</h2>
+      <ol>
+        <li><strong>Seals can only be earned, never bought.</strong> A customer is not a contributor; paying for a seal would devalue it and feel unfair.</li>
+        <li><strong>Criteria (transparent, verifiable):</strong>
+          <ul>
+            <li><strong>銅 · Copper (digital seal)</strong> - your first <em>accepted</em> contribution is issued automatically: a digital badge and your name lights up on the <a href="/contributors/">contributors wall</a>.</li>
+            <li><strong>石 · Stone (carved seal)</strong> - a standing record of <em>accepted, peer-reviewed</em> contributions, issued as a physical carved seal in traditional seal stone, carved and mailed to you, plus wall honour (issued once a P2 supplier is confirmed).</li>
+            <li><strong>玉 · Jade (annual seal)</strong> - the annual award for long-term deep contribution or key roles, formally recorded in the CHANGELOG once a year (honour deserves ceremony).</li>
+          </ul>
+        </li>
+        <li><strong>How "accepted" is decided (verifiable, not vibes):</strong>
+          <ul>
+            <li>Every contribution is recorded on the public <strong>contributions log</strong> (title, chapter, type, date, contributor, reviewer) before a seal can be issued.</li>
+            <li>A contribution is <em>accepted</em> when a named reviewer signs it off against the quality bar in §4 (source line, own translation, guidance-only) — the reviewer is recorded next to the contribution.</li>
+            <li>Disputes on acceptance go to the dispute channel in §3; the log is the single source of truth for seals.</li>
+          </ul>
+        </li>
+        <li><em>Numerical thresholds (how many accepted contributions earn Stone, what counts as "key role" for Jade) are deliberately left open here — they are set by the founding team when the first cohort of contributors is active, published on this page, and applied equally to everyone.</em></li>
+        <li>Every seal is backed by the library's contribution records.</li>
+        <li>A <strong>digital name seal</strong> (your name carved, PNG/SVG) comes with the Copper seal - use it on your profile, GitHub avatar, or email signature.</li>
+      </ol>
+
+      <h2 id="governance">3 · Governance · 治理</h2>
+      <ol>
+        <li>Contributors <strong>Stone and above</strong>: roadmap voting rights + priority channel.</li>
+        <li>A <strong>public bounty board</strong>: translation / proofreading / structuring tasks open for claiming (from P2).</li>
+        <li><strong>Dispute channel:</strong> transparent statement + email contact (<a href="mailto:contact@astrologylib.org">contact@astrologylib.org</a>).</li>
+      </ol>
+
+      <h2 id="redlines">4 · Red lines · 紅線</h2>
+      <ol>
+        <li>Translations must be made <strong>from the classical original</strong> - never copied from modern English editions (Legge, Wilhelm, etc. are copyrighted). This is the project's credibility floor.</li>
+        <li>Content <strong>never promises outcomes</strong> (guidance only; uniform disclaimer).</li>
+        <li>Contributions must carry a source line (classical title + chapter + verification date).</li>
+      </ol>
+
+      <h2 id="withdrawal">5 · Withdrawal &amp; deletion · 退出與刪除</h2>
+      <ol>
+        <li>You may stop contributing at any time.</li>
+        <li>Contributions already in the commons <strong>cannot be withdrawn</strong> (CC BY-SA is irrevocable - the other side of "never locked in").</li>
+        <li>Your attribution / wall name / name seal may be removed on request (personal information), but already-published open content stays.</li>
+      </ol>
+
+      <h2 id="version">6 · Version &amp; effect · 版本與生效</h2>
+      <p>v0.3 (2026-08-28) — streamlined from v0.2: the agreement now covers contribution licensing (CC BY-SA), the seal system, governance and red lines. This agreement takes effect when you confirm it on your first contribution.</p>
+
+      <div class="note" style="margin-top:26px"><strong>Want to start?</strong> See the <a href="/contribute/">Contribute</a> page for the current proofreading tasks, how claiming works, and the contact address.</div>
+    </article>
+  </div>
+
+  <div class="back-row"><a class="btn btn-secondary" href="/contribute/">← Back to Contribute</a></div>
+</BaseLayout>

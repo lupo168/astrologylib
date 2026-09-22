@@ -1,0 +1,52 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { CONTRIBUTORS } from '../data/contributors';
+import Seal from '../components/Seal.astro';
+
+const title = "Contributors · The Hall of Seals - AstrologyLib";
+const description = "The volunteers who proofread and keep the AstrologyLib honest - each with a personal seal earned by accepted reviews.";
+
+const TIER = {
+  copper: { label: '銅 · Digital', cls: 'tier-copper' },
+  stone: { label: '石 · Carved', cls: 'tier-stone' },
+  jade: { label: '玉 · Jade', cls: 'tier-jade' },
+} as const;
+---
+
+<BaseLayout title={title} description={description} active="contribute">
+  <div class="article-head">
+    <div class="crumb"><a href="/">Home</a> › <a href="/contribute/">Contribute</a> › Contributors</div>
+    <h1><span class="zh">貢獻者名牆 · 印章之廳</span>The Hall of Seals</h1>
+    <p class="sub">Every seal here was earned - a volunteer who read the original against our English, submitted honest notes, and passed review. The seal grows with the work: copper for the first review, silver for a real carved one, gold for a whole text.</p>
+  </div>
+
+  {
+    CONTRIBUTORS.length === 0 ? (
+      <div class="empty-hall">
+        <div class="empty-seal">第一枚印章<br />awaiting</div>
+        <h2>The first seal awaits you</h2>
+        <p>No seals have been earned yet - which means the very first volunteer gets to set the example. One accepted review, and your name and seal hang here, beside the texts you helped make trustworthy.</p>
+        <a class="btn btn-primary" href="/contribute/">Claim your first task →</a>
+      </div>
+    ) : (
+      <div class="gloss" style="max-width:var(--content-max);margin:0 auto;padding:16px 24px 80px">
+        <div class="contrib-grid">
+          {CONTRIBUTORS.map((c) => (
+            <article class="contributor">
+              <a class="c-seal-link" href="/" title="AstrologyLib"><Seal c={c} cls="c-seal" /></a>
+              <div class="c-name">{c.name}</div>
+              <div class="c-note">{c.note}</div>
+              <div class="c-meta">
+                <span class:list={['tier-badge', TIER[c.tier].cls]}>{TIER[c.tier].label}</span>
+                <span>{c.reviews} reviews</span>
+                <span>since {c.joined}</span>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    )
+  }
+
+  <div class="back-row"><a class="btn btn-secondary" href="/contribute/">Back to Contribute →</a></div>
+</BaseLayout>

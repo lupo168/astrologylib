@@ -1,0 +1,299 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const title = "Classical Reader · 中華古典典籍在線閱讀器 - AstrologyLib";
+const description = "Open-access classical Chinese texts from the Yi Canon and Daoist Canon with historical dating, dynasty attribution, and public domain verification.";
+---
+
+<BaseLayout title={title} description={description} active="library">
+  <div class="reader-page" style="max-width:var(--content-max);margin:0 auto;padding:16px 24px 64px">
+    
+    <!-- 面包屑与返回 -->
+    <div class="reader-nav" style="margin-bottom:20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px">
+      <div class="crumb" style="font-size:14px;color:var(--ink-500)">
+        <a href="/">Home</a> › <a href="/library/">Library</a> › <a href="/library/classics/">Classics Archive</a> › <span id="crumb-book-title">Loading...</span>
+      </div>
+      <a href="/library/classics/" class="btn-back" style="font-size:14px;display:inline-flex;align-items:center;gap:6px;color:var(--ink-700);border:1px solid var(--ink-300);padding:4px 12px;border-radius:var(--radius-btn);background:rgba(255,255,255,0.6)">
+        ← Back to All Classics · 返回典籍庫
+      </a>
+    </div>
+
+    <!-- 典籍学术考据头部卡片 -->
+    <header class="book-header" id="book-header-card" style="background:var(--paper);border:var(--border-gold);border-radius:var(--radius-card);padding:24px 28px;margin-bottom:24px;box-shadow:0 4px 16px rgba(0,0,0,0.03)">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:16px">
+        <div>
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px">
+            <span id="badge-corpus" style="background:var(--red);color:#fff;font-size:12px;padding:2px 8px;border-radius:2px;font-weight:600">易藏</span>
+            <span id="badge-id" style="font-family:var(--font-numeric);font-size:12px;color:var(--ink-500)">YI-001</span>
+            <span id="badge-dynasty" style="background:var(--ink-100);color:var(--ink-700);border:1px solid var(--ink-300);font-size:12px;padding:2px 8px;border-radius:2px">北宋 · 公元 1097 年</span>
+          </div>
+          <h1 id="book-title" style="font-family:var(--font-heading);font-size:32px;font-weight:900;color:var(--ink);margin:0 0 8px">典籍載入中...</h1>
+          <p id="book-author" style="font-size:16px;color:var(--ink-700);margin-bottom:8px">著者考定：載入中</p>
+          <p id="book-summary" style="font-size:14px;color:var(--ink-500);line-height:1.6;max-width:800px;margin-bottom:8px">版本考據：文淵閣四庫全書本 / 明正統道藏本 · 100% 公有領域（Public Domain）</p>
+          <p style="font-size:12px;color:var(--ink-500);margin:0">
+            底本數位化來源：<a href="https://github.com/garychowcmu/daizhigev20" target="_blank" rel="noopener noreferrer" style="color:var(--red);text-decoration:underline">殆知閣古代文獻專案 (daizhigev20 by Gary Chow)</a>
+          </p>
+        </div>
+        <div style="text-align:right">
+          <button id="btn-cite" style="background:none;border:1px solid var(--gold);color:var(--ink);padding:6px 14px;font-size:13px;border-radius:var(--radius-btn);cursor:pointer;display:inline-flex;align-items:center;gap:6px">
+            📜 Copy Citation · 複製學術引用
+          </button>
+          <div style="margin-top:8px;font-size:12px;color:var(--success)">✓ Public Domain 永久開源文獻</div>
+        </div>
+      </div>
+    </header>
+
+    <!-- 阅读器浮动工具栏 -->
+    <div class="reader-toolbar" style="position:sticky;top:72px;z-index:90;background:rgba(245,241,232,0.95);backdrop-filter:blur(8px);border:1px solid var(--ink-300);border-radius:var(--radius-card);padding:10px 18px;margin-bottom:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px">
+      <div style="display:flex;align-items:center;gap:16px;font-size:14px">
+        <span style="color:var(--ink-500)">字號：</span>
+        <button id="btn-font-dec" style="background:none;border:1px solid var(--ink-300);width:28px;height:28px;border-radius:2px;cursor:pointer">A-</button>
+        <span id="font-size-label" style="font-family:var(--font-numeric);font-size:13px;min-width:32px;text-align:center">18px</span>
+        <button id="btn-font-inc" style="background:none;border:1px solid var(--ink-300);width:28px;height:28px;border-radius:2px;cursor:pointer">A+</button>
+      </div>
+
+      <div style="display:flex;align-items:center;gap:12px;font-size:14px">
+        <span style="color:var(--ink-500)">主題：</span>
+        <button class="theme-btn active" data-theme="paper" style="padding:4px 10px;font-size:13px;border:1px solid var(--ink-300);background:#F5F1E8;color:#2B2118;cursor:pointer;border-radius:2px">宣紙</button>
+        <button class="theme-btn" data-theme="ivory" style="padding:4px 10px;font-size:13px;border:1px solid var(--ink-300);background:#FAF8F5;color:#1A1A1A;cursor:pointer;border-radius:2px">雅白</button>
+        <button class="theme-btn" data-theme="night" style="padding:4px 10px;font-size:13px;border:1px solid #444;background:#1E1C1A;color:#E9E2D2;cursor:pointer;border-radius:2px">水墨夜讀</button>
+      </div>
+
+      <div style="display:flex;align-items:center;gap:12px;font-size:14px;flex-wrap:wrap">
+        <button id="btn-copy-all" style="background:none;border:1px solid var(--ink-300);padding:4px 12px;font-size:13px;cursor:pointer;border-radius:2px">
+          📋 複製全文
+        </button>
+        <button id="btn-download-txt" style="background:none;border:1px solid var(--ink-300);padding:4px 12px;font-size:13px;cursor:pointer;border-radius:2px;display:inline-flex;align-items:center;gap:4px">
+          💾 下載學術研究 TXT
+        </button>
+        <a id="btn-raw-cdn" href="#" target="_blank" rel="noopener noreferrer" style="font-size:13px;color:var(--ink-700);text-decoration:underline">
+          CDN 原檔 ↗
+        </a>
+      </div>
+    </div>
+
+    <!-- 正文展示区域 -->
+    <article id="reader-container" class="reader-content paper-theme" style="background:var(--paper);border:1px solid var(--ink-300);border-radius:var(--radius-card);padding:40px 48px;font-family:var(--font-heading);font-size:18px;line-height:2.0;color:var(--ink);min-height:500px;box-shadow:0 4px 20px rgba(0,0,0,0.04)">
+      <div id="reader-loading" style="text-align:center;padding:80px 20px;color:var(--ink-500)">
+        <div style="font-size:24px;margin-bottom:12px">📜</div>
+        <p>正在由 AstrologyLib 典藏庫載入古籍原文與考據卷軸...</p>
+      </div>
+      <div id="reader-text" style="display:none;white-space:pre-wrap;word-break:break-word"></div>
+    </article>
+
+    <!-- 免责与文献数字化来源致谢说明 -->
+    <div style="margin-top:32px;padding:24px 28px;background:var(--ink-100);border-left:4px solid var(--gold);border-radius:var(--radius-card);font-size:13px;color:var(--ink-700);line-height:1.7">
+      <div style="font-weight:700;color:var(--ink);margin-bottom:8px;font-size:14px">
+        📜 學術典藏、底本數位化來源與版權聲明 · Provenance & Open Source Attribution
+      </div>
+      <p style="margin-bottom:8px">
+        <strong>文獻版權性質：</strong>本典籍原文屬於中國古典文獻，處於 100% 公有領域（Public Domain），底本源自文淵閣《四庫全書》易藏、明正統《道藏》及歷代公版木刻善本。
+      </p>
+      <p style="margin-bottom:8px">
+        <strong>數位化底本致謝：</strong>本庫所收錄典籍之原始文字底本，誠摯感謝 <strong><a href="https://github.com/garychowcmu/daizhigev20" target="_blank" rel="noopener noreferrer" style="color:var(--red);text-decoration:underline">殆知閣古代文獻檢索專案（Gary Chow / daizhigev20）</a></strong> 志願團隊的整理、校勘與開源分享。AstrologyLib.org 在此數位化文本基礎上，全量完成了歷史年代與朝代考據、公元紀年（CE）編目、學術分類及在線古典水墨閱讀器適配。
+      </p>
+      <p style="margin-bottom:8px">
+        <strong>數位人文（Digital Humanities）開放數據聲明：</strong>本庫全量 2,064 部古典文獻面向全球高校、漢學研究機構、語言學者及 AI 研發團隊完全開放。支持直接下載純文本（.txt）用於計算漢學、語料庫對齊、字頻統計及學術訓練，零授權限制。
+      </p>
+      <p style="margin:0;color:var(--ink-500);font-size:12px">
+        * 本庫文獻僅供文化學術探討、漢學研究與哲學義理自知指引，不構成任何醫療、財務或法律實操建議。
+      </p>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .reader-content.paper-theme {
+    background: #F5F1E8 !important;
+    color: #2B2118 !important;
+  }
+  .reader-content.ivory-theme {
+    background: #FAF8F5 !important;
+    color: #1A1A1A !important;
+  }
+  .reader-content.night-theme {
+    background: #1C1A18 !important;
+    color: #D6CEBE !important;
+    border-color: #333 !important;
+  }
+  .theme-btn.active {
+    font-weight: 700;
+    border-color: var(--red) !important;
+    outline: 1px solid var(--red);
+  }
+  @media (max-width: 768px) {
+    .reader-content {
+      padding: 24px 18px !important;
+      font-size: 16px !important;
+    }
+    .book-header {
+      padding: 16px !important;
+    }
+  }
+</style>
+
+<script>
+  let currentBook = null;
+  let currentRawText = "";
+  let currentFontSize = 18;
+
+  async function initReader() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const corpusType = urlParams.get('type') || 'yicang'; // 'yicang' or 'daozang'
+    const bookId = urlParams.get('id') || 'YI-001';
+
+    try {
+      // 1. 载入对应藏部的结构化 JSON
+      const jsonUrl = corpusType === 'daozang' 
+        ? '/classics/daozang_catalog.json' 
+        : '/classics/yicang_catalog.json';
+      
+      const catRes = await fetch(jsonUrl);
+      if (!catRes.ok) throw new Error("Catalog fetch failed");
+      const catalog = await catRes.json();
+
+      // 查找对应书籍
+      currentBook = catalog.find(b => b.book_id === bookId) || catalog[0];
+
+      // 2. 渲染元数据信息
+      document.getElementById('crumb-book-title').textContent = currentBook.title;
+      document.getElementById('badge-corpus').textContent = corpusType === 'daozang' ? '道藏' : '易藏';
+      document.getElementById('badge-id').textContent = currentBook.book_id;
+      document.getElementById('badge-dynasty').textContent = `${currentBook.dynasty} · ${currentBook.approx_date}`;
+      document.getElementById('book-title').textContent = `《${currentBook.title}》`;
+      document.getElementById('book-author').textContent = `著者 / 考據：${currentBook.author} ｜ 部類：${currentBook.category}`;
+      document.getElementById('book-summary').textContent = `學術概要：${currentBook.summary}（版本考證：${currentBook.match_source || '歷代四庫/道藏公版刻本'}）`;
+
+      const cdnDomain = "https://cdn.astrologylib.org/classics";
+      // 修复路径中的斜杠不能被转义为 %2F
+      const safeRelPath = currentBook.rel_path.split('/').map(encodeURIComponent).join('/');
+      const relPath = `${corpusType}/${safeRelPath}`;
+      const cdnUrl = `${cdnDomain}/${relPath}`;
+      const localUrl = `/classics/${relPath}`;
+      const rawCdnEl = document.getElementById('btn-raw-cdn');
+      if (rawCdnEl) rawCdnEl.setAttribute('href', cdnUrl || localUrl);
+
+      // 3. 异步获取原文 (优先 Cloudflare R2 CDN，本地开发或 CDN 未就绪时平滑 fallback)
+      let textRes = null;
+      try {
+        textRes = await fetch(cdnUrl);
+        if (!textRes || !textRes.ok) {
+          textRes = await fetch(localUrl);
+        }
+      } catch (netErr) {
+        textRes = await fetch(localUrl);
+      }
+
+      if (!textRes || !textRes.ok) throw new Error("Text content fetch failed");
+      const fetchedText = await textRes.text();
+
+      // 拦截 404 或 SPA 回退的 HTML 页面（防止把 HTML 源码误当古籍原文显示为乱码）
+      if (fetchedText.trim().startsWith('<!DOCTYPE') || fetchedText.trim().startsWith('<html') || fetchedText.includes('<title>AstrologyLib')) {
+        throw new Error("Received HTML error/fallback page instead of text content");
+      }
+      currentRawText = fetchedText;
+
+      document.getElementById('reader-loading').style.display = 'none';
+      const textEl = document.getElementById('reader-text');
+      textEl.style.display = 'block';
+      textEl.textContent = currentRawText;
+
+      // 4. 绑定字号事件
+      document.getElementById('btn-font-dec').addEventListener('click', () => {
+        if (currentFontSize > 14) {
+          currentFontSize -= 2;
+          updateFontSize();
+        }
+      });
+      document.getElementById('btn-font-inc').addEventListener('click', () => {
+        if (currentFontSize < 32) {
+          currentFontSize += 2;
+          updateFontSize();
+        }
+      });
+
+      // 5. 绑定主题事件
+      document.querySelectorAll('.theme-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          document.querySelectorAll('.theme-btn').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          const theme = btn.getAttribute('data-theme');
+          const container = document.getElementById('reader-container');
+          container.className = `reader-content ${theme}-theme`;
+        });
+      });
+
+      // 6. 复制全文与引用
+      document.getElementById('btn-copy-all').addEventListener('click', () => {
+        navigator.clipboard.writeText(currentRawText).then(() => {
+          alert("✓ 古籍全文已複製到剪貼板！");
+        });
+      });
+
+      document.getElementById('btn-cite').addEventListener('click', () => {
+        const citeText = `[中國古典典籍引用] 《${currentBook.title}》，${currentBook.dynasty}（${currentBook.approx_date}），${currentBook.author}。公有領域（Public Domain）版本，收錄於 AstrologyLib.org 东方典藏庫，編號：${currentBook.book_id}。檢索鏈接：${window.location.href}`;
+        navigator.clipboard.writeText(citeText).then(() => {
+          alert("✓ 學術引用格式已複製：\n\n" + citeText);
+        });
+      });
+
+      // 7. 学术 TXT 原文下载（附带标准数字人文元数据头部）
+      const dlBtn = document.getElementById('btn-download-txt');
+      if (dlBtn) {
+        dlBtn.addEventListener('click', () => {
+          if (!currentRawText || !currentBook) return;
+          const academicHeader = [
+            `/* ============================================================`,
+            ` * AstrologyLib.org · Grand Classical Corpus (萬卷典藏)`,
+            ` * 典籍名稱: 《${currentBook.title}》`,
+            ` * 館藏編號: ${currentBook.book_id}`,
+            ` * 朝代歷程: ${currentBook.dynasty} (${currentBook.approx_date})`,
+            ` * 著者考定: ${currentBook.author}`,
+            ` * 版權屬性: 100% 公有領域 (Public Domain)`,
+            ` * 數位底本: 殆知閣 (daizhigev20 by Gary Chow)`,
+            ` * 引用檢索: ${window.location.href}`,
+            ` * 開放用途: 供全球漢學研究、計算語言學、數字人文及學術分析自由使用`,
+            ` * ============================================================ */\n\n`
+          ].join('\n');
+          const fullText = academicHeader + currentRawText;
+          const blob = new Blob([fullText], { type: 'text/plain;charset=utf-8' });
+          const blobUrl = URL.createObjectURL(blob);
+          const link = document.createElement('a');
+          link.href = blobUrl;
+          link.download = `[AstrologyLib]-${currentBook.book_id}-${currentBook.title}.txt`;
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+          URL.revokeObjectURL(blobUrl);
+        });
+      }
+
+      // 绑定 CDN 直链
+      const cdnLink = document.getElementById('btn-raw-cdn');
+      if (cdnLink && cdnUrl) {
+        cdnLink.href = cdnUrl;
+      }
+
+    } catch (err) {
+      console.error(err);
+      document.getElementById('reader-loading').innerHTML = `
+        <div style="color:var(--red)">
+          <h3>載入失敗</h3>
+          <p>抱歉，無法從伺服器取得本典籍的原始文字檔案。</p>
+          <a href="/library/classics/" style="text-decoration:underline">返回典籍庫總覽</a>
+        </div>
+      `;
+    }
+  }
+
+  function updateFontSize() {
+    document.getElementById('font-size-label').textContent = `${currentFontSize}px`;
+    document.getElementById('reader-text').style.fontSize = `${currentFontSize}px`;
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initReader);
+  } else {
+    initReader();
+  }
+</script>

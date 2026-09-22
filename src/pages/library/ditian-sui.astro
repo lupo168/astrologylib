@@ -1,0 +1,86 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageAttribution from '../../components/PageAttribution.astro';
+import { DI_TIAN } from '../../data/ditian-sui';
+
+const title = "Di Tian Sui (滴天髓) · The Marrow of Heaven - AstrologyLib";
+const description = "The Marrow of Heaven - the deepest of the BaZi classics, in the public-domain original with our bilingual translation. Chapters 5-21 of the Tong Shen Lun translated; the rest awaiting proofreading.";
+
+const SRC = [
+  { label: 'Di Tian Sui · Ren Tieqiao edition (public domain) via ctext/Wikisource', url: 'https://ctext.org' },
+];
+---
+
+<BaseLayout title={title} description={description} active="library">
+  <div class="article-head">
+    <div class="crumb"><a href="/">Home</a> › <a href="/library/">Library</a> › Di Tian Sui</div>
+    <h1><span class="zh">滴天髓 · 通神論</span>Di Tian Sui · Tong Shen Lun <span style="color:var(--ink-500);font-size:.5em">The Marrow of Heaven</span></h1>
+    <p class="sub">The deepest of the BaZi classics. The <em>Tong Shen Lun</em> (通神論, "Discourse on Penetrating the Spirit") is the theoretical heart of the Ziping method - how the day master relates to the chart around it. Here in the public-domain original with our own translation.</p>
+    <PageAttribution sources={SRC} verified="2026-08-19" version="0.7.0" />
+  </div>
+
+  <div class="layout">
+    <aside class="toc">
+      <div class="t-label">Contents</div>
+      <ul>
+        {DI_TIAN.map((c, i) => (
+          <li><a href={`#ch${i + 5}`}>Ch. {i + 5} · {c.zhTitle}</a></li>
+        ))}
+        <li><a href="#pending">Ch. 22-42 · awaiting proofread</a></li>
+      </ul>
+    </aside>
+
+    <article class="article-body">
+      <p class="lead">The Tong Shen Lun runs in forty-two short chapters. The first four - the Way of Heaven, Earth, Man, and Knowing Destiny - set the frame; chapters 5 through 21 below walk through the mechanics of direction, structure, following, transformation, years-and-cycles, and the decline and vigour of the elements. Each chapter is translated at this library from the public-domain Ren Tieqiao edition.</p>
+
+      {DI_TIAN.map((c, i) => (
+        <section class="dts-ch" id={`ch${i + 5}`}>
+          <h2><span class="ch-zh">{c.zhTitle}</span>{c.title}</h2>
+          <p class="ch-en">{c.en}</p>
+          <p class="ch-desc">{c.desc}</p>
+          <div class="dts-lines">
+            {c.lines.map((l) => (
+              <div class="dts-line">
+                <p class="l-zh">{l.zh}</p>
+                <p class="l-en">{l.en}</p>
+                {l.gloss && <p class="l-note"><em>gloss</em> · {l.gloss}</p>}
+                {l.note && <p class="l-note"><em>note</em> · {l.note}</p>}
+              </div>
+            ))}
+          </div>
+        </section>
+      ))}
+
+      <section class="dts-pending" id="pending">
+        <h2>Chapters 22-42 · 待校對</h2>
+        <p>The remaining chapters of the Tong Shen Lun are in the public-domain original (available on request), awaiting translation and proofreading. Chapters 1-4 (the Way of Heaven, Earth, Man, Knowing Destiny) are drafted and being verified. Watch the <a href="/library/">library shelf</a> as each chapter goes live.</p>
+      </section>
+
+      <div class="disclaimer">
+        <p><strong>For guidance and self-awareness purposes only.</strong> This text is presented as a cultural and philosophical tradition - the classical art of reading patterns. It is not a prediction of your future, a medical or financial opinion, or a substitute for professional advice.</p>
+      </div>
+
+      <div class="back-row" style="margin-top:28px">
+        <a class="btn btn-secondary" href="/library/">← The library</a>
+        <a class="btn btn-primary" href="/tools/bazi-chart/">Try the chart →</a>
+      </div>
+    </article>
+  </div>
+</BaseLayout>
+
+<style>
+  .dts-ch { margin-bottom:36px; padding-bottom:28px; border-bottom:1px solid var(--ink-300); }
+  .dts-ch h2 { font-family:var(--font-heading); font-size:22px; margin-bottom:4px; }
+  .dts-ch .ch-zh { color:var(--red); font-size:14px; font-weight:700; margin-right:8px; display:block; }
+  .dts-ch .ch-en { font-size:14px; color:var(--red); font-weight:600; margin-bottom:8px; }
+  .dts-ch .ch-desc { font-size:15px; color:var(--ink-700); line-height:1.7; margin-bottom:14px; }
+  .dts-lines { display:flex; flex-direction:column; gap:16px; }
+  .dts-line { padding:14px 16px; background:var(--ink-100); border-radius:var(--radius-card); }
+  .dts-line .l-zh { font-size:16px; color:var(--ink); line-height:1.8; margin-bottom:6px; }
+  .dts-line .l-en { font-size:15px; color:var(--ink-700); line-height:1.7; margin-bottom:6px; }
+  .dts-line .l-note { font-size:13px; color:var(--ink-500); line-height:1.6; }
+  .dts-line .l-note em { font-style:italic; }
+  .dts-pending { margin-top:32px; padding:18px 20px; border:1px dashed var(--ink-300); border-radius:var(--radius-card); }
+  .dts-pending h2 { font-family:var(--font-heading); font-size:18px; margin-bottom:8px; }
+  .dts-pending p { font-size:14px; color:var(--ink-700); line-height:1.7; }
+</style>

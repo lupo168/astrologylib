@@ -1,0 +1,46 @@
+name: Daily Operations Dispatcher
+
+on:
+  schedule:
+    # 每天北京时间早上 08:27 (UTC 00:27) 自动触发
+    # 采用非规整分钟（27分）错开整点/半点全球调度并发拥堵，保证 100% 准时触发
+    - cron: '27 0 * * *'
+  workflow_dispatch: # 支持在 GitHub 网页上手动一键点击触发测试
+
+jobs:
+  report:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install requests
+
+      - name: Run Daily Operations Reporter
+        env:
+          SMTP_HOST: ${{ secrets.SMTP_HOST || 'smtp.zoho.com' }}
+          SMTP_PORT: ${{ secrets.SMTP_PORT || '465' }}
+          SMTP_USER: ${{ secrets.SMTP_USER || 'contact@astrologylib.org' }}
+          SMTP_PASS: ${{ secrets.SMTP_PASS }}
+          REPORT_RECIPIENT: ${{ secrets.REPORT_RECIPIENT || 'lupo168@qq.com' }}
+          REPORT_CC: ${{ secrets.REPORT_CC || 'lupo168@hotmail.com' }}
+          REPORT_SENDER: ${{ secrets.REPORT_SENDER || 'contact@astrologylib.org' }}
+          CF_ZONE_ID: '5864c1fdb944112007dfb20a7942da9d'
+          CF_ACCOUNT_ID: '061528a2425fb7c777e2935a1e6a5cd7'
+        run: |
+          python scripts/daily_operations_reporter.py
+
+      - name: Upload Daily HTML Report
+        uses: actions/upload-artifact@v4
+        with:
+          name: daily-operations-report
+          path: reports/
+          retention-days: 30

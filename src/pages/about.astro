@@ -1,0 +1,82 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const title = "About - AstrologyLib";
+const description = "The mission, lineage, sources, and translation principles behind the AstrologyLib.";
+---
+
+<BaseLayout title={title} description={description} active="about">
+  <div class="article-head">
+    <div class="crumb"><a href="/">Home</a> › About</div>
+    <h1><span class="zh">關於 · 使命 · 譜系</span>About the Library</h1>
+    <p class="sub">What this library is, where its texts come from, and the principles behind every translation on the site.</p>
+  </div>
+
+  <div class="layout">
+    <aside class="toc">
+      <div class="t-label">On this page</div>
+      <ul>
+        <li><a href="#mission">Our mission</a></li>
+        <li><a href="#lineage">The lineage</a></li>
+        <li><a href="#sources">Our sources</a></li>
+        <li><a href="#principles">Translation principles</a></li>
+        <li><a href="#disclaimer">Disclaimer</a></li>
+        <li><a href="#legal">Legal &amp; policy</a></li>
+        <li><a href="#charter">Non-Commercial Charter</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </aside>
+
+    <article class="article-body">
+      <h2 id="mission">Our mission</h2>
+      <p class="lead">To translate the classical tradition of Chinese astrology and metaphysics - rooted in the <em>Yijing</em> philosophy of yin-yang and the five elements - into clear, structured, verifiable English insight. Scholarly, restrained, honest, and without promises.</p>
+      <p>Most English material on this subject is either a thin content mill or a sales page. We take the opposite route: the original classical text first, our own translation second, the source named, and the limits stated.</p>
+
+      <h2 id="lineage">The lineage · 譜系</h2>
+      <p>Chinese metaphysics is one continuous tradition, not a scattered set of tricks. In brief:</p>
+      <p><strong>The Zhou Yi</strong> (Book of Changes) supplies the framework - 64 hexagrams built from yin-yang lines, a divination text that became a philosophy. From it flow the <strong>Five Elements</strong>, the <strong>Heavenly Stems and Earthly Branches</strong>, and then the working schools: <strong>BaZi</strong> (four pillars of birth), <strong>Feng Shui</strong> (environmental alignment), <strong>Zi Wei Dou Shu</strong> (stellar charting), and the <strong>Yi Jing</strong> divination line that produced works like <em>Jiao Shi Yi Lin</em>.</p>
+      <p>This site presents the texts of that tradition as they were written - not modernized or smoothed into marketing copy.</p>
+
+      <h2 id="sources">Our sources · 數據來源</h2>
+      <p>All classical texts are public-domain originals. We source them from the major public-domain archives - Chinese Text Project (ctext), Wikisource, and print-faithful OCR editions - and transcribe them with the source and edition named on every page. A page without a source does not go live; that is a rule, not a preference.</p>
+      <p>Classical texts are shown in traditional characters, as they appear in the source editions.</p>
+
+      <h2 id="principles">Translation principles · 翻譯原則</h2>
+      <ul>
+        <li><strong>One term, one translation.</strong> Every translation follows our <a href="/glossary/">bilingual glossary</a>, so a term means the same thing on every page.</li>
+        <li><strong>Our own words.</strong> Translations are written at this library. We do not copy other translators - public-domain originals are free, but we make our own English.</li>
+        <li><strong>Honest about uncertainty.</strong> Where a character is missing or disputed, we mark it rather than fill it in silently.</li>
+        <li><strong>Interpretation labeled.</strong> The text and our reading of it are kept distinct. You can always see which is which.</li>
+      </ul>
+
+      <h2 id="disclaimer">Disclaimer</h2>
+      <p>This library exists for guidance and self-awareness, and for the study of a cultural tradition. It is not a substitute for medical, legal, financial, or psychological advice. We do not predict outcomes, and we will not tell you that any chart guarantees anything.</p>
+
+      <h2 id="legal">Legal &amp; policy · 法律與政策</h2>
+      <p>Three pages cover the formal side of the library. Each has a full page; here is the plain summary.</p>
+
+      <h3 id="license-summary">License · 許可 <a href="/license/" class="more">full →</a></h3>
+      <p>Everything on this site falls into one of three buckets: <strong>public-domain</strong> classical texts (free, with attribution); <strong>CC BY-SA 4.0</strong> translations, glossary and corpus (free to share and adapt, derivatives stay open); and <strong>MIT</strong> tool scripts. The ShareAlike clause is the structural guarantee that no contributor's work can ever be locked into a proprietary product.</p>
+
+      <h3 id="copyright-summary">Copyright · 版權 <a href="/copyright/" class="more">full →</a></h3>
+      <p>The Chinese classical texts are public domain, composed over two thousand years ago. Our English translations are original works published under CC BY-SA 4.0 - we do not reproduce the translations of others (for example the 19th-century Legge or Wilhelm). Typefaces are Source Han (SIL OFL 1.1); all images and diagrams are original SVG or public-domain.</p>
+
+      <h3 id="privacy-summary">Privacy · 隱私 <a href="/privacy/" class="more">full →</a></h3>
+      <p>You can read this library without an account. We do not collect, store, or sell your personal information - and we are explicit about birth data: <strong>we do not collect it</strong>. If we later offer an interactive chart tool, it will run in your browser and process birth data locally, never sent to our server.</p>
+
+      <h2 id="charter">Non-Commercial Charter &amp; Contribution Policy · 非商業憲章與貢獻政策</h2>
+      <p>AstrologyLib is operated as a <strong>strictly non-commercial, open-access public-domain preservation library</strong>. We uphold the pure ethos of academic digital humanities:</p>
+      <ul>
+        <li><strong>Strictly Zero Financial Donations · 絕不接受金錢贊助：</strong> We do not accept monetary contributions, financial sponsorships, grants, or wire transfers of any kind. There is no donation button or financial ledger on this library. We believe complete independence from monetary donations is essential to preserving unbiased scholarly integrity.</li>
+        <li><strong>Material &amp; Scholarly Contributions Welcomed · 唯一接受文獻與志願校對：</strong> We warmly welcome contributions of historical source texts, rare public-domain manuscript scans, research materials, and volunteer efforts in Chinese-English translation, glossary harmonization, and collation (see <a href="/contribute/">Contribute</a>).</li>
+        <li><strong>Zero Commercial Transactions · 零商業交易：</strong> We do not sell digital reports, courses, consultations, or physical products. AstrologyLib is an entirely free public-domain preservation project.</li>
+        <li><strong>Zero Paid Ad Tracking · 零廣告追蹤：</strong> No behavioral ad pixels, affiliate marketing popups, or user-tracking ad networks.</li>
+      </ul>
+
+      <h2 id="contact">Contact · 聯絡我們</h2>
+      <p>For scholarly inquiries, text correction suggestions, partnership, or general questions, write to us directly at <a href="mailto:contact@astrologylib.org">contact@astrologylib.org</a>. We answer every letter plainly.</p>
+    </article>
+  </div>
+
+  <div class="back-row"><a class="btn btn-primary" href="/">← Back home</a></div>
+</BaseLayout>

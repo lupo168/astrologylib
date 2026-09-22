@@ -1,0 +1,78 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const title = "License · CC BY-SA 4.0 · AstrologyLib";
+const description = "How the AstrologyLib is licensed: public-domain classical texts, CC BY-SA 4.0 translations and glossary, and MIT tooling. What you may reuse, and how to attribute.";
+---
+
+<BaseLayout title={title} description={description} active="about">
+  <div class="article-head">
+    <div class="crumb"><a href="/">Home</a> › License</div>
+    <h1><span class="zh">許可與署名 · CC BY-SA 4.0</span>License &amp; Attribution</h1>
+    <p class="sub">What is public domain, what is open-licensed, and how to credit the library when you reuse it.</p>
+  </div>
+
+  <div class="layout">
+    <aside class="toc">
+      <div class="t-label">On this page</div>
+      <ul>
+        <li><a href="#materials">Licensed materials</a></li>
+        <li><a href="#ccbysa">The short version of CC BY-SA 4.0</a></li>
+        <li><a href="#why">What this means for the library</a></li>
+        <li><a href="#attribute">How we expect attribution</a></li>
+        <li><a href="#sources">Public-domain source policy</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </aside>
+
+    <article class="article-body">
+      <h2 id="materials">Licensed materials · 各類內容的許可</h2>
+      <p>Everything on this site falls into one of three buckets. Each has its own terms:</p>
+      <table class="g-table">
+        <thead>
+          <tr><th>Material</th><th>Licence</th><th>Commercial use?</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Original classical texts (public-domain Chinese source)</td><td><strong>Public domain</strong></td><td>Yes - with attribution</td></tr>
+          <tr><td>The library's own translations, glossary, and bilingual corpus</td><td><strong>CC BY-SA 4.0</strong></td><td>Yes - but derivatives must stay open</td></tr>
+          <tr><td>Tool scripts / code</td><td><strong>MIT</strong></td><td>Yes</td></tr>
+        </tbody>
+      </table>
+      <p>See the full contributor terms, including what may and may not be charged for, on the <a href="/contributor-agreement/">Contributor Agreement</a> page.</p>
+
+      <h2 id="ccbysa">The short version of CC BY-SA 4.0 · 簡述</h2>
+      <p><strong>CC BY-SA 4.0</strong> (Attribution - ShareAlike) lets anyone <em>share</em> and <em>adapt</em> the licensed material for any purpose - including commercial use - on two conditions:</p>
+      <ul>
+        <li><strong>BY - Give credit.</strong> You must attribute the source in a reasonable way: title, the library, the licence link, and a note if you changed it.</li>
+        <li><strong>SA - Share alike.</strong> If you remix, transform, or build on the material, you must publish your contribution <strong>under the same licence</strong> - CC BY-SA 4.0.</li>
+      </ul>
+      <p>The authoritative legal text: <a href="https://creativecommons.org/licenses/by-sa/4.0/">creativecommons.org/licenses/by-sa/4.0</a>.</p>
+
+      <h2 id="why">What this means for the library · 意義</h2>
+      <ul>
+        <li><strong>The classical texts themselves are public domain.</strong> They are the historical record; the library only arranges and annotates them. The original Chinese stays free for everyone, forever.</li>
+        <li><strong>Our translations are deliberately open.</strong> Every translation, glossary entry, and corpus line is CC BY-SA 4.0 - so no contributor's work can ever be locked into a proprietary product. This is the structural guarantee behind the <a href="/contributor-agreement/">Contributor Agreement</a>.</li>
+        <li><strong>The ShareAlike clause is the trust mechanism.</strong> Any derivative work built <em>on</em> the corpus must keep the underlying material open under the same license. The open classical corpus itself can never be privatized or locked away.</li>
+        <li><strong>We translate from the classical originals.</strong> The library does not quote modern copyrighted translations (for example Legge or Wilhelm). Our English is made directly from the public-domain source text.</li>
+      </ul>
+
+      <h2 id="attribute">How we expect attribution · 署名格式</h2>
+      <p>When you reuse our content under CC BY-SA 4.0, please use a source line in this form:</p>
+      <div class="note">《title · chapter · passage》 - <em>translation &copy; AstrologyLib</em>, verified YYYY-MM-DD, CC BY-SA 4.0</div>
+      <p>Example:</p>
+      <div class="note">《滴天髓 · 通神論 · 第一章》 - <em>translation &copy; AstrologyLib</em>, verified 2026-08-18, CC BY-SA 4.0</div>
+
+      <h2 id="sources">Public-domain source policy · 公版來源</h2>
+      <ul>
+        <li>Source texts are taken from public-domain editions - primarily the Chinese Text Project (ctext.org) and Wikisource - and the edition is cited on each page.</li>
+        <li>The verification date is the date a passage was checked against the source edition.</li>
+        <li>If you believe a passage we quote is not public domain, tell us on the <a href="/about/">About</a> page's contact channel - we will correct or remove it.</li>
+      </ul>
+
+      <h2 id="contact">Contact · 聯絡</h2>
+      <p>Questions about licensing: see the <a href="/about/">About</a> page for the project contact. Questions about contributing: see the <a href="/contribute/">Contribute</a> page and the <a href="/contributor-agreement/">Contributor Agreement</a>.</p>
+    </article>
+  </div>
+
+  <div class="back-row"><a class="btn btn-primary" href="/">← Back home</a></div>
+</BaseLayout>

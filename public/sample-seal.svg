@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- 私人印章示例：CAL 标识 + 你的字 + 印 -->
+  <rect x="4" y="4" width="56" height="56" rx="3" fill="#950007"/>
+  <rect x="4" y="4" width="56" height="56" rx="3" fill="none" stroke="#6E0406" stroke-width="1"/>
+  <text x="32" y="13" text-anchor="middle" fill="#E8C766" font-size="8.5" font-family="sans-serif" font-weight="700" letter-spacing="2.5">CAL</text>
+  <text x="32" y="30" text-anchor="middle" fill="#FFFFFF" font-size="19" font-family="Noto Serif SC, 'Songti SC', serif" font-weight="700">義</text>
+  <text x="32" y="50" text-anchor="middle" fill="#FFFFFF" font-size="19" font-family="Noto Serif SC, 'Songti SC', serif" font-weight="700">印</text>
+</svg>

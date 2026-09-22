@@ -1,0 +1,29 @@
+﻿# ============================================================
+# AstrologyLib.org · Non-Commercial Scholarly Classical Library
+# https://astrologylib.org
+# ============================================================
+
+User-agent: *
+Allow: /
+
+# Canonical Sitemap Index
+Sitemap: https://astrologylib.org/sitemap-index.xml
+
+# AI & Academic Search Crawlers (AEO / GEO indexing welcome)
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /

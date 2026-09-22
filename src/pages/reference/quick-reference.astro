@@ -1,0 +1,140 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageAttribution from '../../components/PageAttribution.astro';
+
+const title = "Quick Reference · Stems, Branches & Zodiac - AstrologyLib";
+const description = "Quick lookup tables for the Chinese astrology tradition: the ten Heavenly Stems, twelve Earthly Branches with their elements and hidden stems, the Five Elements, and the zodiac year table 2024-2043.";
+
+// 十干
+const GAN = [
+  ['甲', 'Jia', 'Wood 木'], ['乙', 'Yi', 'Wood 木'],
+  ['丙', 'Bing', 'Fire 火'], ['丁', 'Ding', 'Fire 火'],
+  ['戊', 'Wu', 'Earth 土'], ['己', 'Ji', 'Earth 土'],
+  ['庚', 'Geng', 'Metal 金'], ['辛', 'Xin', 'Metal 金'],
+  ['壬', 'Ren', 'Water 水'], ['癸', 'Gui', 'Water 水'],
+];
+
+// 十二支
+const ZHI = [
+  ['子', 'Zi', 'Water 水', 'Rat'], ['丑', 'Chou', 'Earth 土', 'Ox'],
+  ['寅', 'Yin', 'Wood 木', 'Tiger'], ['卯', 'Mao', 'Wood 木', 'Rabbit'],
+  ['辰', 'Chen', 'Earth 土', 'Dragon'], ['巳', 'Si', 'Fire 火', 'Snake'],
+  ['午', 'Wu', 'Fire 火', 'Horse'], ['未', 'Wei', 'Earth 土', 'Goat'],
+  ['申', 'Shen', 'Metal 金', 'Monkey'], ['酉', 'You', 'Metal 金', 'Rooster'],
+  ['戌', 'Xu', 'Earth 土', 'Dog'], ['亥', 'Hai', 'Water 水', 'Pig'],
+];
+
+// 藏干
+const HIDDEN = {
+  '子': '癸', '丑': '己 癸 辛', '寅': '甲 丙 戊', '卯': '乙',
+  '辰': '戊 乙 癸', '巳': '丙 庚 戊', '午': '丁 己', '未': '己 丁 乙',
+  '申': '庚 壬 戊', '酉': '辛', '戌': '戊 辛 丁', '亥': '壬 甲',
+};
+
+// 五行对应
+const WUXING = [
+  ['Wood 木', 'east 東', 'spring 春', 'green 青', 'growing'],
+  ['Fire 火', 'south 南', 'summer 夏', 'red 赤', 'rising'],
+  ['Earth 土', 'centre 中', 'turning 四季之交', 'yellow 黄', 'settling'],
+  ['Metal 金', 'west 西', 'autumn 秋', 'white 白', 'refining'],
+  ['Water 水', 'north 北', 'winter 冬', 'black 黑', 'storing'],
+];
+
+// 生肖年份表 2024-2043
+const ZODIAC = [
+  { y: 2024, a: 'Dragon 龍', g: 'Jia-Chen 甲辰', n: 'covered lamp 覆燈火' },
+  { y: 2025, a: 'Snake 蛇', g: 'Yi-Si 乙巳', n: 'covered lamp 覆燈火' },
+  { y: 2026, a: 'Horse 馬', g: 'Bing-Wu 丙午', n: 'heavenly river 天河水' },
+  { y: 2027, a: 'Goat 羊', g: 'Ding-Wei 丁未', n: 'heavenly river 天河水' },
+  { y: 2028, a: 'Monkey 猴', g: 'Wu-Shen 戊申', n: 'great plain earth 大驛土' },
+  { y: 2029, a: 'Rooster 雞', g: 'Ji-You 己酉', n: 'great plain earth 大驛土' },
+  { y: 2030, a: 'Dog 狗', g: 'Geng-Xu 庚戌', n: 'hairpin metal 釵釧金' },
+  { y: 2031, a: 'Pig 豬', g: 'Xin-Hai 辛亥', n: 'hairpin metal 釵釧金' },
+  { y: 2032, a: 'Rat 鼠', g: 'Ren-Zi 壬子', n: 'mulberry wood 桑柘木' },
+  { y: 2033, a: 'Ox 牛', g: 'Gui-Chou 癸丑', n: 'mulberry wood 桑柘木' },
+  { y: 2034, a: 'Tiger 虎', g: 'Jia-Yin 甲寅', n: 'great stream water 大溪水' },
+  { y: 2035, a: 'Rabbit 兔', g: 'Yi-Mao 乙卯', n: 'great stream water 大溪水' },
+  { y: 2036, a: 'Dragon 龍', g: 'Bing-Chen 丙辰', n: 'sand earth 沙中土' },
+  { y: 2037, a: 'Snake 蛇', g: 'Ding-Si 丁巳', n: 'sand earth 沙中土' },
+  { y: 2038, a: 'Horse 馬', g: 'Wu-Wu 戊午', n: 'sky fire 天上火' },
+  { y: 2039, a: 'Goat 羊', g: 'Ji-Wei 己未', n: 'sky fire 天上火' },
+  { y: 2040, a: 'Monkey 猴', g: 'Geng-Shen 庚申', n: 'pomegranate wood 石榴木' },
+  { y: 2041, a: 'Rooster 雞', g: 'Xin-You 辛酉', n: 'pomegranate wood 石榴木' },
+  { y: 2042, a: 'Dog 狗', g: 'Ren-Xu 壬戌', n: 'ocean water 大海水' },
+  { y: 2043, a: 'Pig 豬', g: 'Gui-Hai 癸亥', n: 'ocean water 大海水' },
+];
+---
+
+<BaseLayout title={title} description={description} active="reference">
+  <div class="article-head">
+    <div class="crumb"><a href="/">Home</a> › <a href="/glossary/">Reference</a> › Quick Reference</div>
+    <h1><span class="zh">速查表</span>Quick Reference</h1>
+    <p class="sub">The tables behind every chart on this site - stems, branches, elements and the zodiac - at a glance.</p>
+    <PageAttribution
+      sources={[
+        { label: 'Compiled from the classical tradition; verified against the standard stem-branch calendar', url: '/reference/timeline/' },
+      ]}
+      verified="2026-08-19"
+      version="1.0.0"
+    />
+  </div>
+
+  <div class="layout">
+    <aside class="toc">
+      <div class="t-label">Contents</div>
+      <ul>
+        <li><a href="#stems">Heavenly Stems · 天干</a></li>
+        <li><a href="#branches">Earthly Branches · 地支</a></li>
+        <li><a href="#elements">Five Elements · 五行</a></li>
+        <li><a href="#zodiac">Zodiac Years 2024-2043 · 生肖</a></li>
+      </ul>
+    </aside>
+
+    <article class="article-body">
+      <h2 id="stems">Heavenly Stems · 天干</h2>
+      <p>The ten stems, each with its element. The stem of your day pillar is the <strong>Day Master</strong> - the anchor of a BaZi chart.</p>
+      <table class="g-table">
+        <thead><tr><th>Stem</th><th>Pinyin</th><th>Element</th></tr></thead>
+        <tbody>
+          {GAN.map((g) => <tr><td class="zh">{g[0]}</td><td>{g[1]}</td><td>{g[2]}</td></tr>)}
+        </tbody>
+      </table>
+
+      <h2 id="branches">Earthly Branches · 地支</h2>
+      <p>The twelve branches - each with an element, a zodiac animal, and the <strong>hidden stems</strong> (藏干) stored within it. The hidden stem in charge of the month branch decides the chart's structure.</p>
+      <table class="g-table">
+        <thead><tr><th>Branch</th><th>Pinyin</th><th>Element</th><th>Zodiac</th><th>Hidden stems 藏干</th></tr></thead>
+        <tbody>
+          {ZHI.map((z) => <tr><td class="zh">{z[0]}</td><td>{z[1]}</td><td>{z[2]}</td><td>{z[3]}</td><td class="zh">{HIDDEN[z[0]]}</td></tr>)}
+        </tbody>
+      </table>
+
+      <h2 id="elements">Five Elements · 五行</h2>
+      <p>Each element carries a direction, a season, a colour, and a quality.</p>
+      <table class="g-table">
+        <thead><tr><th>Element</th><th>Direction</th><th>Season</th><th>Colour</th><th>Quality</th></tr></thead>
+        <tbody>
+          {WUXING.map((w) => <tr><td><b>{w[0]}</b></td><td>{w[1]}</td><td>{w[2]}</td><td>{w[3]}</td><td>{w[4]}</td></tr>)}
+        </tbody>
+      </table>
+
+      <h2 id="zodiac">Zodiac Years 2024-2043 · 生肖年表</h2>
+      <p>Each year carries an animal, a stem-branch pair, and a <em>nayin</em> (納音) element. The year flips at Chinese New Year (lìchūn), so a birth in late January can fall on either side of the line.</p>
+      <table class="g-table">
+        <thead><tr><th>Year</th><th>Zodiac</th><th>Stem-Branch</th><th>Na Yin 納音</th></tr></thead>
+        <tbody>
+          {ZODIAC.map((z) => <tr><td>{z.y}</td><td>{z.a}</td><td>{z.g}</td><td>{z.n}</td></tr>)}
+        </tbody>
+      </table>
+
+      <div class="disclaimer">
+        <p><strong>For guidance and self-awareness purposes only.</strong> These are reference tables for a cultural tradition - the calendar facts behind the charts. They are not a prediction of outcomes or a substitute for professional advice.</p>
+      </div>
+
+      <div class="back-row" style="margin-top:28px">
+        <a class="btn btn-secondary" href="/glossary/">← Glossary</a>
+        <a class="btn btn-primary" href="/tools/bazi-chart/">Try the chart calculator →</a>
+      </div>
+    </article>
+  </div>
+</BaseLayout>

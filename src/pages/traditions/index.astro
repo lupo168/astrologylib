@@ -1,0 +1,292 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const title = "Major Metaphysical Traditions · 數術大宗流派 | AstrologyLib";
+const description = "Explore China's major classical metaphysical traditions: Four Pillars BaZi, Zi Wei Dou Shu, Liu Yao Divination, and The Zhou Yi. Core mechanics, classical lineages, and foundational canons.";
+
+const TRADITIONS = [
+  {
+    id: 'bazi',
+    zh: '四柱八字',
+    py: 'Sì Zhù Bā Zì',
+    en: 'Four Pillars of Destiny (BaZi)',
+    cat: 'Natal Astrology · 命理學',
+    badgeColor: 'var(--red)',
+    badgeBg: 'rgba(149,0,7,0.08)',
+    desc: 'The preeminent time-based astrological framework of China. Your exact birth year, month, day, and hour are encoded into four pairs of Heavenly Stems and Earthly Branches. By evaluating the Day Master against the surrounding seasonal command, five-element balance, and Ten Gods interactions, BaZi charts a complete roadmap of character, life cycles, and timing.',
+    coreConcepts: [
+      { zh: '日主', en: 'Day Master' },
+      { zh: '十神', en: 'Ten Gods' },
+      { zh: '藏干', en: 'Hidden Stems' },
+      { zh: '月令', en: 'Seasonal Command' },
+      { zh: '大運', en: '10-Year Luck Pillars' }
+    ],
+    canons: [
+      { name: '淵海子平 (Yuan Hai Zi Ping)', url: '/library/read/?type=yicang&id=YI-299' },
+      { name: '滴天髓 (Di Tian Sui)', url: '/library/ditian-sui/' },
+      { name: '窮通寶鑑 (Qiong Tong Bao Jian)', url: '/library/read/?type=yicang&id=YI-327' },
+      { name: '子平真詮 (Zi Ping Zhen Quan)', url: '/library/read/?type=yicang&id=YI-263' }
+    ],
+    guideUrl: '/learn/bazi/',
+    toolUrl: '/tools/bazi-chart/',
+    toolLabel: 'True Solar Time Chart Tool 🧭'
+  },
+  {
+    id: 'ziwei',
+    zh: '紫微斗數',
+    py: 'Zǐ Wēi Dǒu Shù',
+    en: 'Purple Star Astrology (Zi Wei Dou Shu)',
+    cat: 'Celestial Horoscopes · 虛星命理',
+    badgeColor: 'var(--gold)',
+    badgeBg: 'rgba(212,175,55,0.12)',
+    desc: 'The sophisticated celestial astrology rooted in Daoist star lore. Rather than tracking physical planets, it maps an intricate constellation of 14 Major Stars (led by the Emperor Star Zi Wei) and dozens of auxiliary stars across Twelve Life Palaces arranged in a circular or square chart. It excels at revealing psychological archetypes, relational dynamics, and catalytic events through Four Transformations.',
+    coreConcepts: [
+      { zh: '紫微星', en: 'Emperor Star' },
+      { zh: '十二宮', en: 'Twelve Palaces' },
+      { zh: '三方四正', en: 'Three-Direction Alignment' },
+      { zh: '四化飛星', en: 'Four Transformations' },
+      { zh: '大限流年', en: 'Decennial & Annual Cycles' }
+    ],
+    canons: [
+      { name: '續道藏·紫微斗數 (Wanli Xu Daozang DAO-1496)', url: '/library/read/?type=daozang&id=DAO-1496' },
+      { name: '紫微斗數全書 (Complete Zi Wei Canon)', url: '/glossary/' }
+    ],
+    guideUrl: '/traditions/ziwei/',
+    toolUrl: '/tools/ziwei/',
+    toolLabel: 'Zi Wei Chart Tool 🧭'
+  },
+  {
+    id: 'liuyao',
+    zh: '六爻神卦',
+    py: 'Liù Yáo Shén Guà',
+    en: 'Six Lines Divination (Liu Yao)',
+    cat: 'Horary & Decisions · 卜筮決策',
+    badgeColor: 'var(--info)',
+    badgeBg: 'rgba(30,90,120,0.1)',
+    desc: 'The premier situational inquiry and decision-making system in Chinese metaphysics, formalized by Han dynasty master Jing Fang. By tossing three coins six times, an hexagram is cast and layered with Heavenly Stems, Earthly Branches, the Six Kinships (Parents, Wealth, Officer, Offspring, Siblings), and the Six Celestial Spirits. It gives pinpoint situational forecasts and timing for real-world dilemmas.',
+    coreConcepts: [
+      { zh: '世應主客', en: 'Self & Other (Shi-Ying)' },
+      { zh: '六親取用', en: 'Six Kinships (Liu Qin)' },
+      { zh: '用神動靜', en: 'Focus Spirit & Moving Lines' },
+      { zh: '月破旬空', en: 'Month Clash & Void' },
+      { zh: '六神質地', en: 'Six Celestial Spirits' }
+    ],
+    canons: [
+      { name: '卜筮正宗 (Bu Shi Zheng Zong · YI-233)', url: '/library/read/?type=yicang&id=YI-233' },
+      { name: '增刪卜易 (Zeng Shan Bu Yi · YI-245)', url: '/library/read/?type=yicang&id=YI-245' },
+      { name: '易林 (Jiao Shi Yi Lin · YI-308)', url: '/library/read/?type=yicang&id=YI-308' }
+    ],
+    guideUrl: '/traditions/liuyao/',
+    toolUrl: '/tools/hexagram/',
+    toolLabel: 'Coin Cast Divination Tool 🪙'
+  },
+  {
+    id: 'zhouyi',
+    zh: '周易象數',
+    py: 'Zhōu Yì Xiàng Shù',
+    en: 'The Zhou Yi (I Ching) & Ten Wings',
+    cat: 'Cosmic Philosophy · 易道元典',
+    badgeColor: 'var(--ink)',
+    badgeBg: 'var(--ink-200)',
+    desc: 'The philosophical and cosmological foundation of all Chinese metaphysics. Originating in the Western Zhou dynasty and augmented by Confucius and the Ten Wings commentaries, it models the entire universe through 64 hexagrams and 386 line texts. It serves both as an oracle of ultimate ethical wisdom and as the mathematical root of yin-yang and cyclical polarity.',
+    coreConcepts: [
+      { zh: '六十四卦', en: '64 Hexagrams' },
+      { zh: '三百八十六爻', en: '386 Line Texts' },
+      { zh: '十翼經傳', en: 'The Ten Wings' },
+      { zh: '錯綜複雜', en: 'Hexagram Mutation Laws' },
+      { zh: '極數知來', en: 'Fathoming the Future' }
+    ],
+    canons: [
+      { name: '周易經傳 (The Zhou Yi · 386 爻全注全譯)', url: '/zhouyi/' },
+      { name: '十翼 (The Ten Wings · 繫辭傳在線)', url: '/ten-wings/' }
+    ],
+    guideUrl: '/zhouyi/',
+    toolUrl: '/zhouyi/',
+    toolLabel: 'Open 64 Hexagrams Archive 📖'
+  }
+];
+
+const FUTURE_TRADITIONS = [
+  {
+    zh: '奇門遁甲',
+    en: 'Qi Men Dun Jia',
+    type: 'The Three Styles (San Shi) · 三式之首',
+    desc: 'The ultimate art of spatial-temporal strategy, calculating cosmic boards through Nine Stars, Eight Gates, and Eight Deities.'
+  },
+  {
+    zh: '大六壬',
+    en: 'Da Liu Ren',
+    type: 'Human Affairs Divination · 人事絕詣',
+    desc: 'Classical astrology of the Earthly Branches, using Heaven and Earth plates, Four Lessons and Three Transmissions to predict complex human dynamics.'
+  },
+  {
+    zh: '堪輿風水',
+    en: 'Feng Shui',
+    type: 'Environmental Topography & Qi · 堪輿形理',
+    desc: 'Form School (mountains, dragons, water veins) combined with Compass School (Flying Stars and Xuan Kong) to harmonize dwelling spaces.'
+  },
+  {
+    zh: '梅花易數',
+    en: 'Plum Blossom Numerology',
+    type: 'Spontaneous Mind-Image · 心易象數',
+    desc: 'Song dynasty master Shao Yong’s lightning-fast method of deducing hexagrams from sudden real-world sights, sounds, and temporal numbers.'
+  }
+];
+---
+
+<BaseLayout title={title} description={description} active="traditions">
+  <div class="article-head" style="border-bottom:1px solid var(--ink-200);background:linear-gradient(to bottom, var(--paper-warm), var(--paper));padding-bottom:28px">
+    <div class="crumb" style="font-size:13px;color:var(--ink-500);margin-bottom:8px">
+      <a href="/" style="color:var(--ink-500);text-decoration:none">Home</a> › 
+      <span style="color:var(--gold);font-weight:600">Traditions · 數術大宗流派</span>
+    </div>
+
+    <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(212,175,55,0.12);border:1px solid rgba(212,175,55,0.3);padding:4px 12px;border-radius:20px;font-size:12px;font-weight:700;color:var(--gold);margin-bottom:12px;letter-spacing:0.04em">
+      <span>STEP 2 OF 4</span> · 認知階梯第二階：大宗專科推演流派全景
+    </div>
+
+    <h1><span class="zh" style="display:block;font-size:18px;color:var(--red);margin-bottom:4px;letter-spacing:0.06em">數術大宗 · 專科流派</span>Major Metaphysical Traditions</h1>
+    <p class="sub" style="max-width:780px;margin:0 auto 16px;font-size:16px;line-height:1.7;color:var(--ink-700)">
+      Chinese metaphysics is not a monolithic doctrine, but a constellation of rigorous, specialized schools developed across thousands of years. While they share common roots in Yin-Yang and the Five Elements, each tradition has its own mathematical grammar, diagnostic purpose, and canonical corpus.
+    </p>
+
+    <!-- 全站四大階梯橫幅 -->
+    <div style="max-width:900px;margin:24px auto 0;background:var(--paper);border:1px solid var(--ink-300);border-radius:var(--radius-card);padding:14px 20px;display:grid;grid-template-columns:repeat(auto-fit, minmax(180px, 1fr));gap:12px;box-shadow:0 2px 8px rgba(0,0,0,0.02)">
+      <a href="/learn/" style="text-decoration:none;display:flex;align-items:center;gap:8px;color:var(--ink-700)">
+        <span style="width:22px;height:22px;border-radius:50%;background:var(--ink-200);color:var(--ink-700);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700">1</span>
+        <div>
+          <div style="font-size:10px;color:var(--ink-500);text-transform:uppercase">Step 1 · 通識</div>
+          <div style="font-size:12px;font-weight:600">Learn (Foundations) →</div>
+        </div>
+      </a>
+      <div style="color:var(--gold);font-weight:700;display:flex;align-items:center;gap:8px;background:rgba(212,175,55,0.08);padding:4px 10px;border-radius:6px;border:1px solid rgba(212,175,55,0.25)">
+        <span style="width:22px;height:22px;border-radius:50%;background:var(--gold);color:#fff;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700">2</span>
+        <div>
+          <div style="font-size:10px;color:var(--gold);text-transform:uppercase">Current · 流派</div>
+          <div style="font-size:12px;font-weight:700;color:var(--ink)">Traditions (Schools)</div>
+        </div>
+      </div>
+      <a href="/glossary/" style="text-decoration:none;display:flex;align-items:center;gap:8px;color:var(--ink-700)">
+        <span style="width:22px;height:22px;border-radius:50%;background:var(--ink-200);color:var(--ink-700);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700">3</span>
+        <div>
+          <div style="font-size:10px;color:var(--ink-500);text-transform:uppercase">Step 3 · 查詞</div>
+          <div style="font-size:12px;font-weight:600">Glossary (Terms) →</div>
+        </div>
+      </a>
+      <a href="/library/classics/" style="text-decoration:none;display:flex;align-items:center;gap:8px;color:var(--ink-700)">
+        <span style="width:22px;height:22px;border-radius:50%;background:var(--ink-200);color:var(--ink-700);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700">4</span>
+        <div>
+          <div style="font-size:10px;color:var(--ink-500);text-transform:uppercase">Step 4 · 原典</div>
+          <div style="font-size:12px;font-weight:600">Grand Corpus (2,064) →</div>
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <!-- 四大核心流派详析 -->
+  <section style="max-width:var(--content-max);margin:36px auto;padding:0 24px">
+    <div style="margin-bottom:24px">
+      <h2 style="font-size:22px;color:var(--ink);font-family:var(--font-heading);margin:0 0 6px">
+        The Four Foundational Traditions · 四大核心大宗體系
+      </h2>
+      <p style="font-size:14px;color:var(--ink-500);margin:0">
+        Each system below has complete bilingual pedagogy, verified classical literature, and integrated tools on AstrologyLib.
+      </p>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:32px">
+      {TRADITIONS.map((t) => (
+        <div style="background:var(--paper);border:1px solid var(--ink-300);border-radius:var(--radius-card);padding:28px 32px;box-shadow:0 3px 14px rgba(0,0,0,0.03);position:relative">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:12px;margin-bottom:14px">
+            <div>
+              <div style={`display:inline-block;font-size:12px;font-weight:700;color:${t.badgeColor};background:${t.badgeBg};padding:2px 10px;border-radius:4px;letter-spacing:0.04em;margin-bottom:6px`}>
+                {t.cat}
+              </div>
+              <h3 style="font-family:var(--font-heading);font-size:24px;margin:0;color:var(--ink)">
+                {t.en} <span style="color:var(--red);font-size:18px;margin-left:8px">{t.zh}</span>
+              </h3>
+            </div>
+            <div style="display:flex;gap:10px;flex-wrap:wrap">
+              <a class="btn btn-secondary" href={t.guideUrl} style="font-size:13px;padding:7px 14px">
+                Read Intro Guide →
+              </a>
+              <a class="btn btn-primary" href={t.toolUrl} style="font-size:13px;padding:7px 14px">
+                {t.toolLabel}
+              </a>
+            </div>
+          </div>
+
+          <p style="font-size:15px;line-height:1.7;color:var(--ink-700);margin:0 0 20px">
+            {t.desc}
+          </p>
+
+          <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(260px, 1fr));gap:20px;background:var(--paper-warm);border:1px solid var(--ink-200);border-radius:8px;padding:16px 20px">
+            <div>
+              <div style="font-size:11px;font-weight:700;color:var(--ink-500);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:8px">
+                Core Mechanics &amp; Concepts (核心範疇)
+              </div>
+              <div style="display:flex;flex-wrap:wrap;gap:6px">
+                {t.coreConcepts.map((c) => (
+                  <span style="background:#fff;border:1px solid var(--ink-300);padding:3px 8px;border-radius:4px;font-size:12px;color:var(--ink)">
+                    <strong>{c.zh}</strong> · {c.en}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            <div>
+              <div style="font-size:11px;font-weight:700;color:var(--ink-500);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:8px">
+                Primary Canons &amp; Editions (傳世經典底本)
+              </div>
+              <ul style="list-style:none;padding:0;margin:0;font-size:13px;line-height:1.7">
+                {t.canons.map((canon) => (
+                  <li>
+                    <a href={canon.url} style="color:var(--red);text-decoration:underline;text-underline-offset:2px">
+                      📜 {canon.name}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- 未来即将纳编的流派储备库 -->
+  <section style="max-width:var(--content-max);margin:0 auto 48px;padding:0 24px">
+    <div style="background:var(--paper-warm);border:1px solid var(--ink-300);border-left:4px solid var(--gold);border-radius:var(--radius-card);padding:24px 28px">
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-bottom:14px;border-bottom:1px solid var(--ink-200);padding-bottom:10px">
+        <div>
+          <span style="font-size:11px;font-weight:700;color:var(--gold);text-transform:uppercase;letter-spacing:0.06em">Traditions In Preparation</span>
+          <h3 style="font-family:var(--font-heading);font-size:18px;margin:2px 0 0;color:var(--ink)">
+            Upcoming Traditions · 即將納編之大宗流派
+          </h3>
+        </div>
+        <span style="font-size:12px;color:var(--ink-500)">Public domain literature cataloged in Grand Corpus</span>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(240px, 1fr));gap:16px">
+        {FUTURE_TRADITIONS.map((f) => (
+          <div style="background:#fff;border:1px solid var(--ink-200);border-radius:6px;padding:14px">
+            <div style="font-weight:700;font-size:14px;color:var(--ink);margin-bottom:2px">
+              {f.en} <span style="color:var(--red)">({f.zh})</span>
+            </div>
+            <div style="font-size:11px;color:var(--gold);font-weight:600;margin-bottom:6px">
+              {f.type}
+            </div>
+            <p style="font-size:12px;color:var(--ink-700);line-height:1.5;margin:0">
+              {f.desc}
+            </p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <div class="back-row" style="margin-bottom:60px">
+    <a class="btn btn-secondary" href="/learn/">← Back to Foundations (Learn)</a>
+    <a class="btn btn-primary" href="/glossary/">Next: Canonical Glossary (Step 3) →</a>
+  </div>
+</BaseLayout>

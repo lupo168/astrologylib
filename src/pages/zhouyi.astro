@@ -1,0 +1,82 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { SHANGJING, XIACJING } from '../data/zhouyi';
+import HexCard from '../components/HexCard.astro';
+import PageAttribution from '../components/PageAttribution.astro';
+
+const title = "Zhou Yi (I Ching) · Full Text - AstrologyLib";
+const description = "The Zhou Yi (I Ching / Book of Changes) in full - all 64 hexagrams and the Ten Wings - from public-domain editions, translated with sources and verified seals.";
+---
+
+<BaseLayout title={title} description={description} active="library">
+  <div class="article-head">
+    <div class="crumb"><a href="/">Library</a> › Zhou Yi</div>
+    <h1><span class="zh">周易 · 經傳全本</span>Zhou Yi · The Book of Changes</h1>
+    <p class="sub">The complete classic - all 64 hexagrams and the Ten Wings - in the original with our own translation. The root text of Chinese metaphysics.</p>
+    <PageAttribution
+      sources={[
+        { label: 'Zhou Yi (周易) · Sibu Congkan via Wikisource', url: 'https://zh.wikisource.org/wiki/周易' },
+        { label: 'ctext · Book of Changes', url: 'http://ctext.org/book-of-changes' },
+      ]}
+      verified="2026-08-18"
+      version="1.0.0"
+    />
+  </div>
+
+  <div class="layout">
+    <aside class="toc">
+      <div class="t-label">Contents</div>
+      <ul>
+        <li><a href="#how">How to read this <span class="t-zh">讀法</span></a></li>
+        <li><a href="#shangjing">Upper Canon · 1-30 <span class="t-zh">上經</span></a></li>
+        <li><a href="#xiacia">Lower Canon · 31-64 <span class="t-zh">下經</span></a></li>
+        <li><a href="#example">A Hexagram, Read <span class="t-zh">示例</span></a></li>
+        <li><a href="#zhuan">The Ten Wings <span class="t-zh">傳</span></a></li>
+      </ul>
+    </aside>
+
+    <article class="article-body">
+      <p class="lead">The Zhou Yi is the oldest of the Chinese classics and the root of every school of Chinese metaphysics. Its core is a set of 64 hexagrams - each built from six yin/yang lines - together with their judgments and line texts. All 64 are below, in the original with our translation.</p>
+      <p>What you read here is the public-domain original, translated at this library following our <a href="/glossary/">bilingual glossary</a>. Where the received text has gaps or variants, we mark them honestly rather than smoothing them over.</p>
+
+      <div class="note">A note on this text: the <strong>Zhou Yi</strong> did not begin as a philosophy book - its core text was a divination manual. The philosophical reading (yin-yang, change, the noble person) came later in the commentaries known as the Ten Wings. Both layers are here.</div>
+
+      <h2 id="how">How to read this · 讀法</h2>
+      <p>A hexagram is six lines stacked from the bottom up. Each line is either yang (a solid line, called "9") or yin (a broken line, called "6"). The judgment (<em>卦辭</em>) sums up the whole hexagram; the line texts (<em>爻辭</em>) walk through its six stages. Line translations are being added hexagram by hexagram - the judgments of all 64 are below.</p>
+
+      <h2 id="shangjing">Upper Canon · 上經 · Hexagrams 1-30</h2>
+      <p>Qian (Heaven) through Li (Fire). The thirty hexagrams of the upper canon begin with Heaven and Earth and trace the arising of all things.</p>
+      <div class="hex-cards">
+        {SHANGJING.map((h) => <HexCard h={h} />)}
+      </div>
+
+      <h2 id="xiacia">Lower Canon · 下經 · Hexagrams 31-64</h2>
+      <p>Xian (Influence) through Wei Ji (Before Completion). The lower canon turns to human affairs - relationship, family, and the working of society.</p>
+      <div class="hex-cards">
+        {XIACJING.map((h) => <HexCard h={h} />)}
+      </div>
+
+      <h2 id="example">A Hexagram, Read · 示例</h2>
+      <p>Take Hexagram 1, Qian - six yang lines, pure creative force. Its image: <em>Heaven moves on; the noble person strengthens themselves without rest.</em> The line texts move from hidden dragon to flying dragon, which is a picture of development, not a prediction.</p>
+      <table class="g-table">
+        <thead>
+          <tr><th>Line <small style="display:block;font-weight:400;font-size:11px;color:var(--ink-500)">Yáo</small></th><th>Original <small style="display:block;font-weight:400;font-size:11px;color:var(--ink-500)">原文</small></th><th>Translation <small style="display:block;font-weight:400;font-size:11px;color:var(--ink-500)">英譯</small></th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="center">9 at 5th</td><td class="zh">九五：飛龍在天，利見大人。</td><td>The flying dragon is in the heavens. Favorable to see the great person.</td></tr>
+          <tr><td class="center">9 at 4th</td><td class="zh">九四：或躍在淵，无咎。</td><td>One may leap from the deep - no blame.</td></tr>
+          <tr><td class="center">9 at 3rd</td><td class="zh">九三：君子終日乾乾，夕惕若；厲，无咎。</td><td>The noble person is active all day, alert in the evening - though perilous, no blame.</td></tr>
+          <tr><td class="center">9 at 2nd</td><td class="zh">九二：見龍在田，利見大人。</td><td>The dragon appears in the field. Favorable to see the great person.</td></tr>
+          <tr><td class="center">9 at 1st</td><td class="zh">初九：潛龍勿用。</td><td>The hidden dragon - do not act yet.</td></tr>
+        </tbody>
+      </table>
+
+      <div class="note"><strong>How to read this:</strong> hexagrams are read from the bottom line upward. The "9" marks a yang line; the position (1st to 6th) places it in a stage - beginning, rising, perilous, and so on. This is the pattern language the whole tradition is built on.</div>
+
+      <h2 id="zhuan">The Ten Wings · 傳</h2>
+      <p>The Ten Wings are the later commentaries - on the images, the judgments, the Great Treatise, and the ordering of the hexagrams. They are where the Zhou Yi becomes philosophy. Full texts of the Ten Wings are coming in a dedicated page; the judgments above are the classic core.</p>
+    </article>
+  </div>
+
+  <div class="back-row"><a class="btn btn-primary" href="/">← Back to the Library home</a></div>
+</BaseLayout>

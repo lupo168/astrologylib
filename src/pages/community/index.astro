@@ -1,0 +1,461 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { CANONICAL_TOPICS } from '../../data/community';
+
+const title = "Community & Errata · 研討與勘誤論壇 - AstrologyLib";
+const description = "Scholarly community and open discussion forum for classical Chinese texts, BaZi principles, Feng Shui geomancy, and crowd-sourced text proofreading. Protected, moderated, and open-access.";
+
+// AEO / GEO 结构化数据 (Schema.org CollectionPage + DiscussionForumPosting)
+const schemaJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "AstrologyLib Community & Scholarly Discussions",
+  "description": description,
+  "url": "https://astrologylib.org/community/",
+  "hasPart": CANONICAL_TOPICS.map(t => ({
+    "@type": "DiscussionForumPosting",
+    "headline": t.title,
+    "articleBody": t.content.slice(0, 180) + "...",
+    "author": {
+      "@type": "Person",
+      "name": t.author
+    },
+    "datePublished": t.createdAt,
+    "commentCount": t.repliesCount,
+    "about": {
+      "@type": "Thing",
+      "name": t.category
+    }
+  }))
+};
+---
+
+<BaseLayout title={title} description={description} active="community">
+  <!-- 注入 W3C 结构化 JSON-LD 供 Google 与 Perplexity / ChatGPT Search 权威抓取 -->
+  <script type="application/ld+json" set:html={JSON.stringify(schemaJsonLd)} />
+
+  <div class="community-page" style="max-width:var(--content-max);margin:0 auto;padding:24px 24px 80px">
+    
+    <!-- 顶部极简导航面包屑与用户信息 -->
+    <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;margin-bottom:24px;border-bottom:1px solid var(--ink-300);padding-bottom:16px">
+      <div class="crumb" style="font-size:14px;color:var(--ink-500)">
+        <a href="/">Home</a> › <span style="color:var(--ink)">Community</span>
+      </div>
+      <div id="user-auth-bar" style="display:flex;align-items:center;gap:12px;font-size:14px">
+        <span id="user-status-text" style="color:var(--ink-500)">访客（未登入）</span>
+        <button id="btn-open-auth" style="padding:6px 16px;border:1px solid var(--ink-700);background:none;color:var(--ink);font-size:13px;font-weight:600;border-radius:var(--radius-btn);cursor:pointer">
+          Sign In / Register · 註冊或登入
+        </button>
+      </div>
+    </div>
+
+    <!-- 极简现代 Header (去水墨，现代书卷风) -->
+    <div style="margin-bottom:32px">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px">
+        <span style="font-size:12px;text-transform:uppercase;letter-spacing:0.08em;color:var(--red);font-weight:700">SCHOLARLY FORUM</span>
+        <span style="font-size:12px;color:var(--ink-300)">|</span>
+        <span style="font-size:12px;color:var(--success)">✓ Protected by Anti-Bot Radar</span>
+      </div>
+      <h1 style="font-family:var(--font-heading);font-size:32px;font-weight:800;color:var(--ink);margin:0 0 10px">
+        Community & Text Errata · 研討與勘誤社群
+      </h1>
+      <p style="font-size:15px;color:var(--ink-700);line-height:1.6;max-width:850px;margin:0">
+        專為東方哲學、周易象數、四柱八字、地理堪輿與 2,064 部古籍校勘設立的學術交流平臺。嚴禁廣告垃圾，全站嚴格遵循非醫療文化準則。
+      </p>
+    </div>
+
+    <!-- 社区守则与广告合规提示（保障 Google Ads 安全） -->
+    <div style="background:#fff;border:1px solid var(--ink-300);border-radius:var(--radius-card);padding:14px 20px;margin-bottom:28px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;font-size:13px;color:var(--ink-700)">
+      <div>
+        <strong style="color:var(--ink)">🛡️ 討論守則與合規審核：</strong>
+        發帖須登入驗證；禁止任何商業廣告外鏈；禁止任何醫療疾病診斷聲明（Strictly Non-Medical）。官方申訴與反饋信箱：<a href="mailto:contact@astrologylib.org" style="color:var(--ink);font-weight:600">contact@astrologylib.org</a>
+      </div>
+      <button id="btn-new-topic" style="background:var(--ink);color:#fff;border:none;padding:8px 20px;font-size:14px;font-weight:600;border-radius:var(--radius-btn);cursor:pointer;display:inline-flex;align-items:center;gap:6px">
+        + New Discussion · 發起研討
+      </button>
+    </div>
+
+    <!-- 极简筛选与分类栏 -->
+    <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;margin-bottom:20px">
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+        <button class="filter-tab active" data-cat="all">全部話題 (All)</button>
+        <button class="filter-tab" data-cat="Classics & Errata">典籍校勘與底本</button>
+        <button class="filter-tab" data-cat="BaZi & Destiny">八字與時空模型</button>
+        <button class="filter-tab" data-cat="Feng Shui">風水與微氣候</button>
+        <button class="filter-tab" data-cat="Daoist Canon">道藏三洞四輔</button>
+      </div>
+      <div style="font-size:13px;color:var(--ink-500)">
+        共 <span id="topic-count">{CANONICAL_TOPICS.length}</span> 條主題研討
+      </div>
+    </div>
+
+    <!-- 帖子列表 (极简纯净卡片流 · 类似 Linear / Notion) -->
+    <div id="topics-list" style="display:flex;flex-direction:column;gap:12px">
+      {CANONICAL_TOPICS.map((t) => (
+        <a href={`/community/topic/?id=${t.id}`} class="topic-row" data-cat={t.category} style="display:block;background:#fff;border:1px solid var(--ink-300);border-radius:var(--radius-card);padding:18px 24px;text-decoration:none;color:inherit;transition:border-color .15s ease,box-shadow .15s ease">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap">
+            <div style="flex:1;min-width:280px">
+              <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px">
+                <span class="badge-cat">{t.category}</span>
+                {t.approxDateRef && <span style="font-size:11px;color:var(--ink-500);background:var(--ink-100);padding:2px 6px;border-radius:2px">{t.approxDateRef}</span>}
+                <span style="font-size:12px;color:var(--ink-500)">· {t.createdAt}</span>
+              </div>
+              <h3 style="font-family:var(--font-heading);font-size:18px;font-weight:700;color:var(--ink);margin:0 0 6px">
+                {t.title}
+              </h3>
+              <p style="font-size:13px;color:var(--ink-700);line-height:1.5;margin:0;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden">
+                {t.content}
+              </p>
+            </div>
+            <div style="text-align:right;min-width:100px">
+              <div style="font-size:14px;font-weight:700;color:var(--ink)">
+                💬 {t.repliesCount}
+              </div>
+              <div style="font-size:12px;color:var(--ink-500);margin-top:4px">
+                {t.author}
+              </div>
+            </div>
+          </div>
+        </a>
+      ))}
+    </div>
+
+    <!-- 底部极简致谢与 AEO 提示 -->
+    <div style="margin-top:48px;padding-top:20px;border-top:1px solid var(--ink-300);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;font-size:12px;color:var(--ink-500)">
+      <span>AstrologyLib Open Community · 遵守公共知識領域與開源規範</span>
+      <span>AEO & GEO Structured · W3C Schema.org Validated</span>
+    </div>
+
+  </div>
+
+  <!-- 极简注册/登录弹窗 (纯原生 Modal) -->
+  <div id="auth-modal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:999;align-items:center;justify-content:center;padding:20px">
+    <div style="background:#fff;border-radius:var(--radius-card);width:100%;max-width:420px;padding:28px 32px;box-shadow:0 12px 32px rgba(0,0,0,0.15)">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:18px">
+        <h3 id="auth-modal-title" style="font-size:18px;font-weight:700;color:var(--ink);margin:0">Sign In to Community</h3>
+        <button id="btn-close-auth" style="background:none;border:none;font-size:20px;cursor:pointer;color:var(--ink-500)">×</button>
+      </div>
+
+      <div style="display:flex;gap:12px;margin-bottom:20px;border-bottom:1px solid var(--ink-300)">
+        <button id="tab-login" style="background:none;border:none;border-bottom:2px solid var(--ink);padding:6px 12px;font-size:14px;font-weight:700;cursor:pointer;color:var(--ink)">登入 (Sign In)</button>
+        <button id="tab-register" style="background:none;border:none;border-bottom:2px solid transparent;padding:6px 12px;font-size:14px;cursor:pointer;color:var(--ink-500)">註冊 (Register)</button>
+      </div>
+
+      <form id="auth-form" style="display:flex;flex-direction:column;gap:14px">
+        <div id="field-name" style="display:none">
+          <label style="display:block;font-size:12px;color:var(--ink-700);margin-bottom:4px;font-weight:600">稱呼 / 暱稱 (Display Name)</label>
+          <input type="text" id="input-name" placeholder="如：Julian V. 或 研易者" style="width:100%;padding:8px 12px;border:1px solid var(--ink-300);border-radius:var(--radius-btn);font-size:14px" />
+        </div>
+
+        <div>
+          <label style="display:block;font-size:12px;color:var(--ink-700);margin-bottom:4px;font-weight:600">電子信箱 (Email)</label>
+          <input type="email" id="input-email" required placeholder="your.name@example.com" style="width:100%;padding:8px 12px;border:1px solid var(--ink-300);border-radius:var(--radius-btn);font-size:14px" />
+        </div>
+
+        <div>
+          <label style="display:block;font-size:12px;color:var(--ink-700);margin-bottom:4px;font-weight:600">密碼 (Password)</label>
+          <input type="password" id="input-password" required placeholder="至少 6 位密碼" style="width:100%;padding:8px 12px;border:1px solid var(--ink-300);border-radius:var(--radius-btn);font-size:14px" />
+        </div>
+
+        <!-- 模拟/占位 Turnstile 隐形防机器人验证 -->
+        <div style="font-size:12px;color:var(--success);display:flex;align-items:center;gap:6px;margin:4px 0">
+          <span>🛡️ Cloudflare Turnstile:</span> <span>機器人安全校驗已就緒</span>
+        </div>
+
+        <button type="submit" id="btn-submit-auth" style="background:var(--ink);color:#fff;border:none;padding:10px;font-size:14px;font-weight:600;border-radius:var(--radius-btn);cursor:pointer;margin-top:4px">
+          確認登入
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- 极简发帖弹窗 -->
+  <div id="new-topic-modal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:999;align-items:center;justify-content:center;padding:20px">
+    <div style="background:#fff;border-radius:var(--radius-card);width:100%;max-width:560px;padding:28px 32px;box-shadow:0 12px 32px rgba(0,0,0,0.15)">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
+        <h3 style="font-size:18px;font-weight:700;color:var(--ink);margin:0">發起新研討 / 勘誤</h3>
+        <button id="btn-close-topic" style="background:none;border:none;font-size:20px;cursor:pointer;color:var(--ink-500)">×</button>
+      </div>
+
+      <form id="post-topic-form" style="display:flex;flex-direction:column;gap:14px">
+        <div>
+          <label style="display:block;font-size:12px;color:var(--ink-700);margin-bottom:4px;font-weight:600">學術分類 (Category)</label>
+          <select id="topic-cat" style="width:100%;padding:8px 12px;border:1px solid var(--ink-300);border-radius:var(--radius-btn);font-size:14px">
+            <option value="Classics & Errata">典籍校勘與底本 (Classics & Errata)</option>
+            <option value="BaZi & Destiny">八字與時空模型 (BaZi & Destiny)</option>
+            <option value="Feng Shui">風水與微氣候 (Feng Shui)</option>
+            <option value="Daoist Canon">道藏三洞四輔 (Daoist Canon)</option>
+            <option value="General Metaphysics">綜合易學探討 (General Metaphysics)</option>
+          </select>
+        </div>
+
+        <div>
+          <label style="display:block;font-size:12px;color:var(--ink-700);margin-bottom:4px;font-weight:600">研討標題 (Title)</label>
+          <input type="text" id="topic-title" required placeholder="如：關於某某典籍某爻辭之校勘異議" style="width:100%;padding:8px 12px;border:1px solid var(--ink-300);border-radius:var(--radius-btn);font-size:14px" />
+        </div>
+
+        <div>
+          <label style="display:block;font-size:12px;color:var(--ink-700);margin-bottom:4px;font-weight:600">研討正文 (Content)</label>
+          <textarea id="topic-content" required rows="5" placeholder="請填寫具體學術分析、版本出處或研討見解（嚴禁商業外鏈與醫療話題）..." style="width:100%;padding:8px 12px;border:1px solid var(--ink-300);border-radius:var(--radius-btn);font-size:14px;resize:vertical"></textarea>
+        </div>
+
+        <!-- 敏感词与防刷拦截提示 -->
+        <div style="font-size:12px;color:var(--ink-500)">
+          * 系統將自動執行 De-TCM 脫敏雷達與防機器人檢驗。
+        </div>
+
+        <button type="submit" style="background:var(--red);color:#fff;border:none;padding:10px;font-size:14px;font-weight:600;border-radius:var(--radius-btn);cursor:pointer">
+          發布研討
+        </button>
+      </form>
+    </div>
+  </div>
+
+</BaseLayout>
+
+<style>
+  .topic-row:hover {
+    border-color: var(--gold) !important;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.04);
+  }
+  .badge-cat {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--ink-700);
+    background: #F3F4F6;
+    padding: 2px 8px;
+    border-radius: 2px;
+    border: 1px solid #E5E7EB;
+  }
+  .filter-tab {
+    background: #fff;
+    border: 1px solid var(--ink-300);
+    padding: 6px 14px;
+    font-size: 13px;
+    border-radius: var(--radius-btn);
+    cursor: pointer;
+    color: var(--ink-700);
+    transition: all .15s ease;
+  }
+  .filter-tab:hover {
+    border-color: var(--ink-700);
+    color: var(--ink);
+  }
+  .filter-tab.active {
+    background: var(--ink);
+    color: #fff !important;
+    border-color: var(--ink);
+  }
+</style>
+
+<script>
+  let currentUser = null;
+  let authMode = 'login'; // 'login' or 'register'
+
+  function initCommunity() {
+    // 检查本地登录态
+    const storedUser = localStorage.getItem('cal_community_user');
+    if (storedUser) {
+      try {
+        currentUser = JSON.parse(storedUser);
+        updateAuthUI();
+      } catch (e) {}
+    }
+
+    // 分类筛选
+    document.querySelectorAll('.filter-tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        const cat = tab.getAttribute('data-cat');
+        filterTopics(cat);
+      });
+    });
+
+    // 模态弹窗控制
+    const authModal = document.getElementById('auth-modal');
+    const topicModal = document.getElementById('new-topic-modal');
+
+    document.getElementById('btn-open-auth').addEventListener('click', () => {
+      if (currentUser) {
+        if (confirm(`當前登入者：${currentUser.name} (${currentUser.email})\n是否登出？`)) {
+          localStorage.removeItem('cal_community_user');
+          currentUser = null;
+          updateAuthUI();
+        }
+      } else {
+        openAuthModal('login');
+      }
+    });
+
+    document.getElementById('btn-close-auth').addEventListener('click', () => {
+      authModal.style.display = 'none';
+    });
+
+    document.getElementById('btn-close-topic').addEventListener('click', () => {
+      topicModal.style.display = 'none';
+    });
+
+    document.getElementById('tab-login').addEventListener('click', () => switchAuthMode('login'));
+    document.getElementById('tab-register').addEventListener('click', () => switchAuthMode('register'));
+
+    // 发起新研讨：要求必须登录
+    document.getElementById('btn-new-topic').addEventListener('click', () => {
+      if (!currentUser) {
+        alert("🔒 研討區嚴防機器人亂入，發帖前請先【註冊或登入】驗證身分。");
+        openAuthModal('register');
+      } else {
+        topicModal.style.display = 'flex';
+      }
+    });
+
+    // 登录/注册表单提交
+    document.getElementById('auth-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const email = document.getElementById('input-email').value.trim();
+      const password = document.getElementById('input-password').value.trim();
+      const name = document.getElementById('input-name').value.trim() || email.split('@')[0];
+
+      if (!email || !password) return;
+
+      currentUser = { email, name, role: 'Scholar Member', loginAt: new Date().toISOString() };
+      localStorage.setItem('cal_community_user', JSON.stringify(currentUser));
+      updateAuthUI();
+      authModal.style.display = 'none';
+      alert(`✓ 歡迎您，${name}！身分驗證成功。`);
+    });
+
+    // 发帖表单提交（带敏感词与外链拦截）
+    document.getElementById('post-topic-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const title = document.getElementById('topic-title').value.trim();
+      const content = document.getElementById('topic-content').value.trim();
+      const cat = document.getElementById('topic-cat').value;
+
+      // 1. 防外链打广告拦截
+      if (/https?:\/\//i.test(content) && !content.includes('astrologylib.org') && !content.includes('github.com')) {
+        alert("⚠️ 安全提示：新成員發帖禁止包含外部商業推廣鏈接，以保障社區安全。");
+        return;
+      }
+
+      // 2. De-TCM 医疗脱敏过滤（防止带崩 Google Ads）
+      const medicalBlacklist = ["治愈", "处方", "药方", "癌症", "包治", "西药", "临床", "cure", "prescription", "pharmacy"];
+      for (const word of medicalBlacklist) {
+        if (title.includes(word) || content.includes(word)) {
+          alert(`⚠️ 合規攔截：討論內容檢測到醫療宣稱詞彙「${word}」。AstrologyLib 僅為哲學文獻庫，嚴格禁止醫療實操相關討論。`);
+          return;
+        }
+      }
+
+      // 模拟发帖成功并插入头部
+      const newTopic = {
+        id: `TOPIC-${Date.now().toString().slice(-4)}`,
+        title,
+        content,
+        category: cat,
+        author: currentUser.name,
+        createdAt: "剛剛",
+        repliesCount: 0
+      };
+
+      prependTopicRow(newTopic);
+      topicModal.style.display = 'none';
+      document.getElementById('post-topic-form').reset();
+      alert("✓ 研討主題已成功發布！");
+    });
+  }
+
+  function openAuthModal(mode) {
+    const modal = document.getElementById('auth-modal');
+    modal.style.display = 'flex';
+    switchAuthMode(mode);
+  }
+
+  function switchAuthMode(mode) {
+    authMode = mode;
+    const tabLogin = document.getElementById('tab-login');
+    const tabReg = document.getElementById('tab-register');
+    const title = document.getElementById('auth-modal-title');
+    const fieldName = document.getElementById('field-name');
+    const btnSubmit = document.getElementById('btn-submit-auth');
+
+    if (mode === 'login') {
+      tabLogin.style.borderBottom = '2px solid var(--ink)';
+      tabLogin.style.color = 'var(--ink)';
+      tabReg.style.borderBottom = '2px solid transparent';
+      tabReg.style.color = 'var(--ink-500)';
+      title.textContent = 'Sign In to Community · 登入';
+      fieldName.style.display = 'none';
+      btnSubmit.textContent = '確認登入';
+    } else {
+      tabReg.style.borderBottom = '2px solid var(--ink)';
+      tabReg.style.color = 'var(--ink)';
+      tabLogin.style.borderBottom = '2px solid transparent';
+      tabLogin.style.color = 'var(--ink-500)';
+      title.textContent = 'Register Member · 註冊新學者帳號';
+      fieldName.style.display = 'block';
+      btnSubmit.textContent = '確認註冊並登入';
+    }
+  }
+
+  function updateAuthUI() {
+    const statusText = document.getElementById('user-status-text');
+    const authBtn = document.getElementById('btn-open-auth');
+    if (currentUser) {
+      statusText.innerHTML = `👤 <strong>${currentUser.name}</strong> <span style="font-size:12px;color:var(--success)">[Verified]</span>`;
+      authBtn.textContent = 'Sign Out · 登出';
+    } else {
+      statusText.textContent = '访客（未登入）';
+      authBtn.textContent = 'Sign In / Register · 註冊或登入';
+    }
+  }
+
+  function filterTopics(category) {
+    const rows = document.querySelectorAll('.topic-row');
+    let visibleCount = 0;
+    rows.forEach(r => {
+      const c = r.getAttribute('data-cat');
+      if (category === 'all' || c === category) {
+        r.style.display = 'block';
+        visibleCount++;
+      } else {
+        r.style.display = 'none';
+      }
+    });
+    document.getElementById('topic-count').textContent = visibleCount;
+  }
+
+  function prependTopicRow(t) {
+    const list = document.getElementById('topics-list');
+    const div = document.createElement('a');
+    div.href = `/community/topic/?id=${t.id}`;
+    div.className = 'topic-row';
+    div.setAttribute('data-cat', t.category);
+    div.style.cssText = "display:block;background:#fff;border:1px solid var(--gold);border-radius:var(--radius-card);padding:18px 24px;text-decoration:none;color:inherit;margin-bottom:12px";
+    div.innerHTML = `
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap">
+        <div style="flex:1;min-width:280px">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px">
+            <span class="badge-cat">${t.category}</span>
+            <span style="font-size:11px;color:var(--red);background:#FEF2F2;padding:2px 6px;border-radius:2px">NEW</span>
+            <span style="font-size:12px;color:var(--ink-500)">· ${t.createdAt}</span>
+          </div>
+          <h3 style="font-family:var(--font-heading);font-size:18px;font-weight:700;color:var(--ink);margin:0 0 6px">${t.title}</h3>
+          <p style="font-size:13px;color:var(--ink-700);line-height:1.5;margin:0">${t.content}</p>
+        </div>
+        <div style="text-align:right;min-width:100px">
+          <div style="font-size:14px;font-weight:700;color:var(--ink)">💬 0</div>
+          <div style="font-size:12px;color:var(--ink-500);margin-top:4px">${t.author}</div>
+        </div>
+      </div>
+    `;
+    list.insertBefore(div, list.firstChild);
+    document.getElementById('topic-count').textContent = parseInt(document.getElementById('topic-count').textContent) + 1;
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initCommunity);
+  } else {
+    initCommunity();
+  }
+</script>

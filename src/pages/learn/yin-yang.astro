@@ -1,0 +1,63 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageAttribution from '../../components/PageAttribution.astro';
+
+const title = "Yin & Yang, Explained Simply - AstrologyLib";
+const description = "Yin and Yang, explained in plain language - the two complementary forces at the root of Chinese astrology, with a daily-life analogy and a 30-second example.";
+---
+
+<BaseLayout title={title} description={description} active="learn">
+  <div class="article-head">
+    <div class="crumb"><a href="/">Home</a> › <a href="/learn/">Learn</a> › Yin &amp; Yang</div>
+    <h1><span class="zh">陰陽</span>Yin &amp; Yang, Explained Simply</h1>
+  </div>
+
+  <div class="layout">
+    <aside class="toc">
+      <div class="t-label">In this lesson</div>
+      <ul>
+        <li><a href="#why">Why read this</a></li>
+        <li><a href="#what">What Yin and Yang are</a></li>
+        <li><a href="#analogy">A daily-life analogy</a></li>
+        <li><a href="#example">A 30-second example</a></li>
+        <li><a href="#where">Where this leads</a></li>
+      </ul>
+    </aside>
+
+    <article class="article-body">
+      <PageAttribution
+        sources={[
+          { label: 'Zhou Yi, Xi Ci (繫辭) · ctext', url: 'http://ctext.org/book-of-changes' },
+          { label: 'Laozi ch. 42 · ctext', url: 'http://ctext.org/dao-de-jing' },
+        ]}
+        verified="2026-08-19"
+        version="1.0.0"
+      />
+
+      <h2 id="why">Why read this</h2>
+      <p class="lead">If you have ever stared at a BaZi chart or an I Ching reading and thought "I have no idea what I'm looking at" - this lesson is the antidote. Yin and Yang is the single idea underneath every school of Chinese metaphysics, and it is much simpler than most explanations make it.</p>
+
+      <h2 id="what">What Yin and Yang are</h2>
+      <p>Yin and Yang are not good and evil, not male and female, not a duality to pick a side of. They are two complementary forces that describe how anything moves, changes, and balances.</p>
+      <p><strong>Yang</strong> is the outward, active, bright, rising side. Day is yang relative to night. <strong>Yin</strong> is the inward, receptive, still, gathering side. Night is yin relative to day. Notice: neither is better - each is simply the other's partner in a cycle.</p>
+
+      <h2 id="analogy">A daily-life analogy</h2>
+      <div class="analogy"><b>Everyday analogy.</b> Think of a breath. Inhale - expanding, taking in, yang. Exhale - releasing, settling, yin. You never hold only one. A life is a series of breaths, and Chinese metaphysics reads patterns the same way - as cycles of yin and yang, not as fixed states.</div>
+
+      <h2 id="example">A 30-second example</h2>
+      <p>The Zhou Yi's very first line of commentary says: <em>"One yin, one yang - this is called the Way."</em> It is not a definition you memorize; it is a rhythm you notice. A chart, a year, a personality - each is some particular balance of the two forces at a given moment.</p>
+
+      <h2 id="where">Where this leads</h2>
+      <p>The next lesson adds the Five Elements - the five ways that balance can be made of. Then the Zodiac gives each a face, and BaZi shows how the four pillars of your birth moment hold all of it together. One step at a time, no jargon required.</p>
+
+      <div class="disclaimer">
+        <p><strong>For guidance and self-awareness purposes only.</strong> This lesson explains Chinese astrology as a cultural and philosophical framework - what it is, where it came from, and how its vocabulary works. It is not a prediction of your future, a medical or financial opinion, or a substitute for professional advice.</p>
+      </div>
+
+      <div class="back-row" style="margin-top:28px">
+        <a class="btn btn-secondary" href="/learn/">← All lessons</a>
+        <a class="btn btn-primary" href="/learn/five-elements/">Next: The Five Elements →</a>
+      </div>
+    </article>
+  </div>
+</BaseLayout>

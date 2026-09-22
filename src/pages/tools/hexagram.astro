@@ -1,0 +1,166 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { ZHOUYI } from '../../data/zhouyi';
+
+const title = "Zhou Yi Hexagram Divination · Free Cast - AstrologyLib";
+const description = "A free, transparent Zhou Yi (I Ching) hexagram casting tool - toss the coins or enter numbers, get your hexagram with its judgment and line texts, translated at this library. Guidance only.";
+---
+
+<BaseLayout title={title} description={description} active="tools">
+  <div class="article-head">
+    <div class="crumb"><a href="/">Home</a> › <a href="/tools/bazi-chart/">Tools</a> › Hexagram</div>
+    <h1><span class="zh">周易起卦</span>Hexagram Divination</h1>
+    <p class="sub">The Zhou Yi was used as a divination manual before it became a philosophy. Cast a hexagram below - toss coins or enter numbers - and read it with our translation, in the original classical spirit.</p>
+  </div>
+
+  <div class="tool-wrap" style="max-width:var(--content-max);margin:0 auto;padding:0 24px 40px">
+    <div class="tool-card" style="border:1px solid var(--ink-300);border-left:3px solid var(--gold);border-radius:var(--radius-card);padding:20px 22px;background:var(--paper)">
+      <p style="font-size:14px;color:var(--ink-700);line-height:1.7;margin:0 0 14px"><strong>How to cast:</strong> build six lines from the bottom up. Each line is <em>yin</em> (broken) or <em>yang</em> (solid), possibly <em>moving</em>. Toss one coin three times per line, or just press <b>Cast</b> and let the tool toss for you.</p>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-bottom:16px">
+        <button class="btn btn-primary" id="cast-btn" style="cursor:pointer">Cast six lines</button>
+        <span style="font-size:13px;color:var(--ink-500)">or</span>
+        <input type="number" id="num-input" placeholder="Enter 6 numbers (6-9)" style="padding:8px 10px;border:1px solid var(--ink-300);border-radius:6px;font-size:14px;background:var(--paper);color:var(--ink)" />
+        <button class="btn btn-secondary" id="num-btn" style="cursor:pointer">Use numbers</button>
+      </div>
+      <div id="lines-area" style="display:flex;flex-direction:column;gap:4px;align-items:center;margin:18px 0"></div>
+    </div>
+
+    <div id="result" class="result-card" hidden style="margin-top:24px;border:1px solid var(--ink-300);border-left:3px solid var(--red);border-radius:var(--radius-card);padding:20px 22px;background:var(--paper)">
+      <h2 style="font-family:var(--font-heading);font-size:20px;margin:0 0 8px"><span class="zh">本卦</span>Your Hexagram</h2>
+      <p id="hex-name" class="result-line" style="font-family:var(--font-heading);font-size:24px;color:var(--red);font-weight:700"></p>
+      <p id="hex-judgment" class="result-line"></p>
+      <p id="hex-judgment-en" class="result-line" style="color:var(--ink-700)"></p>
+      <div id="moving" class="result-line" style="margin-top:10px"></div>
+      <p id="hex-note" class="note" style="margin-top:14px"></p>
+
+      <!-- 经典学术溯源与经传原典直跳 -->
+      <div id="hex-sources" style="margin-top:20px;padding:18px 20px;background:rgba(212,175,55,0.06);border:1px solid var(--gold);border-radius:var(--radius-card)">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px">
+          <span style="font-size:18px">📜</span>
+          <h3 style="font-family:var(--font-heading);font-size:16px;margin:0;color:var(--ink)">
+            <span class="zh">原典學術溯源</span>Classical Canon Primary Sources for This Hexagram
+          </h3>
+        </div>
+        <p style="font-size:13px;color:var(--ink-700);margin:0 0 12px;line-height:1.6">
+          Every hexagram is anchored in the Western Zhou original text and historical commentaries. Explore the full classical judgment, line verses, and associated ancient divination treatises in our library:
+        </p>
+        <div id="hex-links" style="display:flex;gap:10px;flex-wrap:wrap"></div>
+      </div>
+    </div>
+
+    <div class="disclaimer" style="margin-top:24px;padding:14px 16px;border:1px solid var(--ink-300);border-left:3px solid var(--red);border-radius:var(--radius-card);font-size:13px;color:var(--ink-700);line-height:1.7">
+      <p style="margin:0"><strong>For guidance and self-awareness purposes only.</strong> Casting a hexagram is a way of focusing a question and reading patterns - it does not predict outcomes, diagnose anything, or replace professional advice. The translation here is ours, made from the public-domain original. Runs entirely in your browser; no data leaves this page.</p>
+    </div>
+
+    <div class="back-row" style="margin-top:24px">
+      <a class="btn btn-secondary" href="/zhouyi/">Read all 64 hexagrams →</a>
+      <a class="btn btn-primary" href="/tools/bazi-chart/">Try the BaZi chart →</a>
+    </div>
+  </div>
+</BaseLayout>
+
+<script>
+  import { ZHOUYI } from '../../data/zhouyi';
+
+  // Coin toss: three coins, heads=3 tails=2 → 6/7/8/9
+  function tossCoin() {
+    const coin = () => (Math.random() < 0.5 ? 3 : 2);
+    return coin() + coin() + coin();
+  }
+
+  // 6/7/8/9 → yin/yang with moving
+  function lineInfo(val) {
+    if (val === 6) return { bit: 0, moving: true, label: 'old yin 老陰 · moving' };
+    if (val === 7) return { bit: 1, moving: false, label: 'young yang 少陽' };
+    if (val === 8) return { bit: 0, moving: false, label: 'young yin 少陰' };
+    if (val === 9) return { bit: 1, moving: true, label: 'old yang 老陽 · moving' };
+    return { bit: 0, moving: false, label: '?' };
+  }
+
+  const linesArea = document.getElementById('lines-area');
+  const resultCard = document.getElementById('result');
+  const [nameEl, judgEl, judgEnEl, movingEl, noteEl] = [
+    'hex-name','hex-judgment','hex-judgment-en','moving','hex-note',
+  ].map((id) => document.getElementById(id));
+
+  function renderLines(bits) {
+    linesArea.innerHTML = '';
+    for (let i = 5; i >= 0; i--) {
+      const d = document.createElement('div');
+      d.style.cssText = 'display:flex;gap:6px;align-items:center';
+      const bar = document.createElement('span');
+      bar.style.cssText = 'display:inline-block;height:8px;background:var(--ink);border-radius:2px';
+      if (bits[i] === 1) { bar.style.width = '60px'; }
+      else { bar.style.width = '28px'; }
+      const lineLabel = document.createElement('span');
+      lineLabel.style.cssText = 'font-size:12px;color:var(--ink-500);margin-left:8px;width:150px';
+      // 爻位名
+      const positions = ['sixth 上','fifth 五','fourth 四','third 三','second 二','first 初'];
+      lineLabel.textContent = positions[i] + (bits[i] === 1 ? ' · yang' : ' · yin');
+      d.appendChild(bar); d.appendChild(lineLabel);
+      linesArea.appendChild(d);
+    }
+  }
+
+  function showResult(bits, values) {
+    const hex = ZHOUYI.find((h) => h.lines === bits.join(''));
+    if (!hex) { alert('Something went wrong - try again.'); return; }
+    nameEl.textContent = `${hex.n} · ${hex.zh} ${hex.py} — ${hex.en}`;
+    judgEl.textContent = hex.gua;
+    judgEnEl.textContent = hex.guaEn;
+    // moving lines
+    const mov = values.map((v, i) => ({ v, i })).filter((x) => x.v === 6 || x.v === 9);
+    if (mov.length) {
+      const pos = ['sixth','fifth','fourth','third','second','first'];
+      movingEl.innerHTML = '<strong>Moving line' + (mov.length>1?'s':'') + ' (動爻):</strong> ' +
+        mov.map((m) => `${pos[5-m.i]} ${m.v===6?'yin 陰':'yang 陽'}`).join(' · ');
+      noteEl.textContent = 'Moving lines indicate change. Reading them is where the classical tradition distinguishes "this is the situation" from "this is where it is going" - a point a full reading explores carefully.';
+    } else {
+      movingEl.innerHTML = '<strong>No moving lines</strong> - the hexagram stands as cast.';
+      noteEl.textContent = 'When no line moves, the classical reading stays with the hexagram\'s judgment as a whole.';
+    }
+    const hexLinks = document.getElementById('hex-links');
+    if (hexLinks) {
+      hexLinks.innerHTML = `
+        <a href="/zhouyi/#hex-${hex.n}" class="btn btn-primary" style="font-size:13px;padding:8px 16px;display:inline-flex;align-items:center;gap:6px">
+          📖 Read Full Commentary for Hexagram ${hex.n} (${hex.zh}) in Zhou Yi →
+        </a>
+        <a href="/ten-wings/" class="btn btn-secondary" style="font-size:13px;padding:8px 16px;display:inline-flex;align-items:center;gap:6px">
+          🕊️ The Ten Wings (十翼·繫辭) Commentary →
+        </a>
+        <a href="/library/read/?type=yicang&id=YI-308" style="background:#fff;border:1px solid var(--gold);color:var(--ink);padding:6px 12px;font-size:12px;border-radius:var(--radius-btn);text-decoration:none;display:inline-flex;align-items:center;gap:4px">
+          📜 焦氏易林 · 4,096 變卦卦辭 (YI-308) →
+        </a>
+        <a href="/library/read/?type=yicang&id=YI-294" style="background:#fff;border:1px solid var(--gold);color:var(--ink);padding:6px 12px;font-size:12px;border-radius:var(--radius-btn);text-decoration:none;display:inline-flex;align-items:center;gap:4px">
+          📜 梅花易數 · 邵雍心法 (YI-294) →
+        </a>
+        <a href="/library/read/?type=yicang&id=YI-233" style="background:#fff;border:1px solid var(--gold);color:var(--ink);padding:6px 12px;font-size:12px;border-radius:var(--radius-btn);text-decoration:none;display:inline-flex;align-items:center;gap:4px">
+          📜 卜筮正宗 · 六爻正宗 (YI-233) →
+        </a>
+      `;
+    }
+
+    resultCard.hidden = false;
+    resultCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  document.getElementById('cast-btn').addEventListener('click', () => {
+    const values = Array.from({ length: 6 }, () => tossCoin());
+    const bits = values.map(lineInfo).map((l) => l.bit);
+    renderLines(bits);
+    showResult(bits, values);
+  });
+
+  document.getElementById('num-btn').addEventListener('click', () => {
+    const raw = document.getElementById('num-input').value.trim().split(/[,\s]+/);
+    if (raw.length !== 6) { alert('Enter exactly 6 numbers (each 6, 7, 8 or 9).'); return; }
+    const values = raw.map((n) => parseInt(n, 10));
+    if (values.some((v) => ![6,7,8,9].includes(v))) { alert('Each number must be 6, 7, 8 or 9.'); return; }
+    const bits = values.map(lineInfo).map((l) => l.bit);
+    renderLines(bits);
+    showResult(bits, values);
+  });
+
+  // 首次进入自动起一卦（示例）
+  document.getElementById('cast-btn').click();
+</script>

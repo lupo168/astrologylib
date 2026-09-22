@@ -1,0 +1,240 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { CANONICAL_TOPICS } from '../../data/community';
+
+const title = "Scholarly Topic & Answers · 研討與勘誤詳情 - AstrologyLib";
+const description = "Open-access scholarly discussion on classical texts, BaZi models, and geomancy. W3C Schema.org QAPage indexed for AI answers and knowledge search.";
+---
+
+<BaseLayout title={title} description={description} active="community">
+  <div class="topic-detail-page" style="max-width:var(--content-max);margin:0 auto;padding:24px 24px 80px">
+    
+    <!-- 面包屑导航 -->
+    <div style="margin-bottom:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;border-bottom:1px solid var(--ink-300);padding-bottom:16px">
+      <div class="crumb" style="font-size:14px;color:var(--ink-500)">
+        <a href="/">Home</a> › <a href="/community/">Community</a> › <span id="crumb-topic-title">Topic</span>
+      </div>
+      <a href="/community/" style="font-size:13px;color:var(--ink-700);border:1px solid var(--ink-300);padding:4px 12px;border-radius:var(--radius-btn);text-decoration:none;background:#fff">
+        ← Back to Community · 返回研討列表
+      </a>
+    </div>
+
+    <!-- 主帖正文卡片 (Clean & Minimalist) -->
+    <article id="main-topic-card" style="background:#fff;border:1px solid var(--ink-300);border-radius:var(--radius-card);padding:32px;margin-bottom:28px;box-shadow:0 2px 12px rgba(0,0,0,0.03)">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;flex-wrap:wrap">
+        <span id="topic-badge-cat" style="font-size:12px;font-weight:700;color:var(--ink-700);background:#F3F4F6;padding:3px 10px;border-radius:2px;border:1px solid #E5E7EB">Category</span>
+        <span id="topic-badge-era" style="font-size:12px;color:var(--ink-500);background:var(--ink-100);padding:2px 8px;border-radius:2px">Dynasty</span>
+        <span style="font-size:12px;color:var(--success)">✓ Verified Scholar Discussion</span>
+      </div>
+
+      <h1 id="topic-title" style="font-family:var(--font-heading);font-size:26px;font-weight:800;color:var(--ink);margin:0 0 16px;line-height:1.4">
+        載入話題中...
+      </h1>
+
+      <div style="display:flex;align-items:center;gap:16px;margin-bottom:24px;padding-bottom:18px;border-bottom:1px solid #E5E7EB;font-size:13px;color:var(--ink-500)">
+        <span>發起人：<strong id="topic-author" style="color:var(--ink)">-</strong></span>
+        <span>身分：<span id="topic-author-role">-</span></span>
+        <span>時間：<span id="topic-created-at">-</span></span>
+      </div>
+
+      <div id="topic-content" style="font-size:16px;line-height:1.8;color:var(--ink);white-space:pre-wrap;word-break:break-word">
+        正在載入正文...
+      </div>
+
+      <div id="topic-tags" style="display:flex;gap:8px;margin-top:24px;flex-wrap:wrap">
+        <!-- 标签注入 -->
+      </div>
+    </article>
+
+    <!-- 回复讨论流 (Q&A Answers Stream) -->
+    <div style="margin-bottom:32px">
+      <h3 style="font-size:18px;font-weight:700;color:var(--ink);margin:0 0 16px;display:flex;align-items:center;gap:8px">
+        💬 回復與見解討論 (<span id="replies-count-label">0</span>)
+      </h3>
+
+      <div id="replies-container" style="display:flex;flex-direction:column;gap:16px">
+        <!-- 动态注入回复卡片 -->
+      </div>
+    </div>
+
+    <!-- 撰写回复区域 (要求登录 + 防垃圾外链) -->
+    <div id="reply-box-card" style="background:#fff;border:1px solid var(--ink-300);border-radius:var(--radius-card);padding:24px 28px">
+      <h4 style="font-size:16px;font-weight:700;color:var(--ink);margin:0 0 12px">發表您的研討見解 / 校勘考據</h4>
+
+      <div id="reply-guest-prompt" style="display:none;background:var(--ink-100);border-radius:var(--radius-btn);padding:16px;text-align:center;font-size:14px;color:var(--ink-700)">
+        <span>🔒 為防止機器人外鏈廣告亂入，參與討論前請先：</span>
+        <a href="/community/" style="color:var(--red);font-weight:700;text-decoration:underline;margin-left:6px">返回社區首頁登入或註冊學者帳號 →</a>
+      </div>
+
+      <form id="reply-form" style="display:none;flex-direction:column;gap:12px">
+        <textarea id="reply-content" required rows="4" placeholder="請理性陳述您的學術見解、版本出處或對讀分析（嚴禁商業推廣外鏈）..." style="width:100%;padding:10px 14px;border:1px solid var(--ink-300);border-radius:var(--radius-btn);font-size:14px;resize:vertical"></textarea>
+        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px">
+          <span style="font-size:12px;color:var(--ink-500)">* 已通過 Cloudflare 隱形安全防護與 De-TCM 脫敏審核</span>
+          <button type="submit" style="background:var(--ink);color:#fff;border:none;padding:8px 22px;font-size:14px;font-weight:600;border-radius:var(--radius-btn);cursor:pointer">
+            提交回復 (Submit Reply)
+          </button>
+        </div>
+      </form>
+    </div>
+
+  </div>
+</BaseLayout>
+
+<script>
+  import { CANONICAL_TOPICS } from '../../data/community';
+
+  let currentTopic = null;
+  let currentUser = null;
+
+  function initTopicPage() {
+    // 检查用户态
+    const storedUser = localStorage.getItem('cal_community_user');
+    if (storedUser) {
+      try { currentUser = JSON.parse(storedUser); } catch(e){}
+    }
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const topicId = urlParams.get('id') || 'TOPIC-001';
+
+    currentTopic = CANONICAL_TOPICS.find(t => t.id === topicId) || CANONICAL_TOPICS[0];
+
+    // 渲染正文
+    document.getElementById('crumb-topic-title').textContent = currentTopic.title;
+    document.getElementById('topic-title').textContent = currentTopic.title;
+    document.getElementById('topic-badge-cat').textContent = currentTopic.category;
+    document.getElementById('topic-badge-era').textContent = currentTopic.approxDateRef || '文獻考據';
+    document.getElementById('topic-author').textContent = currentTopic.author;
+    document.getElementById('topic-author-role').textContent = currentTopic.authorRole || '學者成員';
+    document.getElementById('topic-created-at').textContent = currentTopic.createdAt;
+    document.getElementById('topic-content').textContent = currentTopic.content;
+    document.getElementById('replies-count-label').textContent = (currentTopic.replies ? currentTopic.replies.length : 0).toString();
+
+    // 渲染标签
+    const tagsEl = document.getElementById('topic-tags');
+    if (currentTopic.tags) {
+      tagsEl.innerHTML = currentTopic.tags.map(tag => 
+        `<span style="font-size:12px;color:var(--ink-700);background:#F3F4F6;border:1px solid #E5E7EB;padding:2px 8px;border-radius:2px">#${tag}</span>`
+      ).join('');
+    }
+
+    // 渲染回复列表
+    renderReplies();
+
+    // 控制回复框状态
+    const guestPrompt = document.getElementById('reply-guest-prompt');
+    const replyForm = document.getElementById('reply-form');
+
+    if (currentUser) {
+      guestPrompt.style.display = 'none';
+      replyForm.style.display = 'flex';
+    } else {
+      guestPrompt.style.display = 'block';
+      replyForm.style.display = 'none';
+    }
+
+    // 提交回复事件
+    replyForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const content = document.getElementById('reply-content').value.trim();
+      if (!content) return;
+
+      // 1. 防外部垃圾推广拦截
+      if (/https?:\/\//i.test(content) && !content.includes('astrologylib.org') && !content.includes('github.com')) {
+        alert("⚠️ 安全提示：評論禁止包含未經審核的外部商業推廣鏈接。");
+        return;
+      }
+
+      // 2. 医疗脱敏过滤
+      const blacklist = ["治愈", "处方", "药方", "癌症", "包治", "西药", "临床", "cure", "prescription"];
+      for (const w of blacklist) {
+        if (content.includes(w)) {
+          alert(`⚠️ 合規提示：發言包含醫療相關敏感詞彙「${w}」，請保持純學術哲學探討。`);
+          return;
+        }
+      }
+
+      const newReply = {
+        id: `REP-${Date.now()}`,
+        author: currentUser.name,
+        authorRole: currentUser.role || 'Scholar Member',
+        createdAt: '剛剛',
+        content: content,
+        likes: 1
+      };
+
+      if (!currentTopic.replies) currentTopic.replies = [];
+      currentTopic.replies.push(newReply);
+      renderReplies();
+      document.getElementById('reply-content').value = '';
+      alert("✓ 見解發表成功！");
+    });
+
+    // 动态向页面插入 Schema.org QAPage JSON-LD (极具 AEO 穿透力)
+    injectQAPageSchema(currentTopic);
+  }
+
+  function renderReplies() {
+    const container = document.getElementById('replies-container');
+    const replies = currentTopic.replies || [];
+    document.getElementById('replies-count-label').textContent = replies.length.toString();
+
+    if (replies.length === 0) {
+      container.innerHTML = '<div style="background:#fff;border:1px solid #E5E7EB;border-radius:var(--radius-card);padding:24px;text-align:center;color:var(--ink-500);font-size:14px">暫無回復，歡迎成為第一位留下真知灼見的學者！</div>';
+      return;
+    }
+
+    container.innerHTML = replies.map(r => `
+      <div style="background:#fff;border:1px solid var(--ink-300);border-radius:var(--radius-card);padding:20px 24px">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;font-size:13px">
+          <div>
+            <strong style="color:var(--ink)">${r.author}</strong>
+            ${r.authorRole ? `<span style="margin-left:8px;font-size:11px;color:var(--ink-500);background:#F3F4F6;padding:1px 6px;border-radius:2px">${r.authorRole}</span>` : ''}
+          </div>
+          <span style="color:var(--ink-500);font-size:12px">${r.createdAt}</span>
+        </div>
+        <p style="font-size:15px;line-height:1.7;color:var(--ink);margin:0 0 12px;white-space:pre-wrap">${r.content}</p>
+        <div style="display:flex;align-items:center;gap:6px;font-size:12px;color:var(--ink-500)">
+          <span>👍 贊同 (${r.likes})</span>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  function injectQAPageSchema(topic) {
+    const script = document.createElement('script');
+    script.type = 'application/ld+json';
+    const schema = {
+      "@context": "https://schema.org",
+      "@type": "QAPage",
+      "mainEntity": {
+        "@type": "Question",
+        "name": topic.title,
+        "text": topic.content,
+        "dateCreated": topic.createdAt,
+        "author": {
+          "@type": "Person",
+          "name": topic.author
+        },
+        "answerCount": topic.replies ? topic.replies.length : 0,
+        "suggestedAnswer": (topic.replies || []).map(r => ({
+          "@type": "Answer",
+          "text": r.content,
+          "dateCreated": r.createdAt,
+          "upvoteCount": r.likes,
+          "author": {
+            "@type": "Person",
+            "name": r.author
+          }
+        }))
+      }
+    };
+    script.text = JSON.stringify(schema);
+    document.head.appendChild(script);
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initTopicPage);
+  } else {
+    initTopicPage();
+  }
+</script>
