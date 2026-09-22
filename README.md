@@ -1,33 +1,37 @@
-# Chinese Astrology Library（CAL）· AstrologyLib
+# Chinese Astrology Library（CAL）· 中華古典術數中英校對與典籍英譯工程
 
-> **Project Name**: Chinese Astrology Library (CAL / 萬卷東方典藏庫)  
-> **Public Identity**: **AstrologyLib**  
+> **Project Identity**: Chinese Astrology Library (CAL · 中英校對與典籍英譯工程)  
+> **Public Identity**: **AstrologyLib · Classical Chinese-to-English Collation & Translation Initiative**  
 > **Official Website**: https://astrologylib.org  
 > **GitHub Repository**: https://github.com/lupo168/astrologylib  
 > **Seal & Trademark**: “易” (Drawn from [Chong Xi Small Seal 崇羲篆體](https://xiaoxue.iis.sinica.edu.tw/chongxi/) · Academia Sinica 中央研究院小學堂 CC BY-ND 3.0 TW)  
 > **License**: CC BY-SA 4.0 (Translations & Lexicon) / MIT (Software Code)  
 
-An open-access digital humanities archive, concordance, and translation project dedicated to classical Chinese astrology, cosmology, and the I Ching (*Zhouyi*) tradition. 
+An open-access digital humanities collation, peer review, and translation initiative dedicated to classical Chinese astrology, cosmology, and the I Ching (*Zhouyi*) tradition. 
 
-The project translates foundational ancient texts into clear, structured, verifiable English editions. Grounded in original woodblock editions, scholarly restraint, and philological fidelity.
+The project brings together sinologists, translators, and students to translate foundational ancient texts into clear, structured, verifiable English editions—grounded in original woodblock editions, line-by-line bilingual collation, and philological fidelity.
 
 ---
 
 ## 🏛️ Project Pillars · 核心基石
 
-1. **The Grand Corpus · 萬卷典藏 (2,064 Works)**
-   - Complete digital editions of classical Chinese cosmological texts, including 1,721 texts from the Daoist Canon (*Zhengtong Daozang*) and 343 treatises from the Yi Canon (*Yicang*).
-   - Distributed open storage ensuring zero-egress, low-latency access for global researchers and students.
+1. **Chinese-to-English Collation & Peer Review · 典籍英譯與中英校對**
+   - Rigorous line-by-line bilingual collation translating foundational metaphysical texts into clear, idiomatic English editions.
+   - An open community proofreading board ([Proofreading Tasks](https://astrologylib.org/contribute/)) where scholars and volunteers claim passages, submit annotations, correct OCR variants, and earn credited editorial seals.
 
-2. **Standardized Bilingual Lexicon · 術語規範與辭典**
+2. **The Grand Corpus · 萬卷典藏底本 (2,064 Works)**
+   - Complete digital base texts of classical Chinese cosmological texts, including 1,721 works from the Daoist Canon (*Zhengtong Daozang*) and 343 treatises from the Yi Canon (*Yicang*).
+   - Distributed open storage ensuring zero-egress, low-latency raw text access for global researchers.
+
+3. **Standardized Bilingual Lexicon · 術語規範與辭典**
    - Harmonized English terminology for complex classical metaphysical concepts (Yin-Yang, Wu Xing, BaZi, Heavenly Stems, Earthly Branches, Ten Gods, 64 Hexagrams).
    - Each term cross-referenced with classical citations, dynasty origin, and pronunciation guides.
 
-3. **Client-Side Astronomical Tools · 純前端排盤工具**
+4. **Client-Side Astronomical Tools · 純前端排盤工具**
    - Transparent, open-source calculation engines for True Solar Time BaZi charts, Zi Wei Dou Shu celestial placements, and Zhouyi hexagram casting.
    - 100% client-side computation: zero user data stored, zero birth dates transmitted, zero tracking cookies.
 
-4. **Non-Commercial Academic Charter · 純粹學術獨立**
+5. **Non-Commercial Academic Charter · 純粹學術獨立**
    - **Zero Commercial Transactions**: Free, open access forever. No paywalls, no sponsored promotions, no paid consultations.
    - **Strictly Zero Financial Donations**: We do not solicit or accept monetary donations, wire transfers, or grants. We accept only historical manuscript scans, edition collation, and voluntary translation contributions.
 
