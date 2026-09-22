@@ -33,6 +33,46 @@ The project translates foundational ancient texts into clear, structured, verifi
 
 ---
 
+## 📥 Grand Corpus Direct Downloads · 古籍原文下載通道 (2,064 Volumes)
+
+All 2,064 classical Chinese texts (Daoist Canon & I Ching Canon) are 100% public domain and free to download for open scholarly research, algorithmic text-mining, and digital humanities collation.
+
+### 1. Web Portal & Online Reader · 官方在線檢索與水墨閱讀器
+- **Interactive Grand Corpus Catalog (2,064 Works)**:  
+  👉 [https://astrologylib.org/library/classics/](https://astrologylib.org/library/classics/)  
+  *Features real-time search across title, author, historical dynasty, CE Gregorian year, and classical section classification.*
+- **Classical Online Reader with Academic Citation Generator**:  
+  👉 [https://astrologylib.org/library/read/](https://astrologylib.org/library/read/)
+
+### 2. GitHub Raw Text Downloads · 本倉庫原文直下目錄
+All raw UTF-8 `.txt` manuscript transcriptions are directly tracked and hosted within this repository:
+- **Daoist Canon (正統道藏與續道藏 · 1,721 Volumes)**:  
+  📁 [`public/classics/daozang/`](https://github.com/lupo168/astrologylib/tree/main/public/classics/daozang)  
+  *Covers Dongzhen, Dongxuan, Dongshen, Taiping, Taiqing, Zhengyi, and Xudaozang sections.*
+- **Yi Canon (易藏與術數典籍 · 343 Volumes)**:  
+  📁 [`public/classics/yicang/`](https://github.com/lupo168/astrologylib/tree/main/public/classics/yicang)  
+  *Covers Zhouyi Commentaries (易經義理), Shushu / Divination (術數經典), Astronomy & Calendar (天文曆算), and Philosophical Treatises (哲學演繹).*
+
+### 3. Machine-Readable Metadata Catalogs · 結構化典籍目錄 (JSON)
+For programmatic ingestion, machine learning, and digital humanities pipelines:
+- **Daoist Canon Metadata (1,721 entries)**:  
+  📄 [`public/classics/daozang_catalog.json`](https://github.com/lupo168/astrologylib/blob/main/public/classics/daozang_catalog.json) ｜ [Direct API Link](https://astrologylib.org/classics/daozang_catalog.json)
+- **Yi Canon Metadata (343 entries)**:  
+  📄 [`public/classics/yicang_catalog.json`](https://github.com/lupo168/astrologylib/blob/main/public/classics/yicang_catalog.json) ｜ [Direct API Link](https://astrologylib.org/classics/yicang_catalog.json)
+
+### 4. Git Bulk Download Command · 批量克隆下載指令
+To download the entire 2,064 texts archive locally in one command:
+```bash
+# Clone the complete repository including all 2,064 classical texts
+git clone https://github.com/lupo168/astrologylib.git
+
+# Navigate directly to the classical texts corpus
+cd astrologylib/public/classics
+ls -lh daozang yicang
+```
+
+---
+
 ## 🛠️ Technical Stack · 技術棧
 
 - **Static Site Generator**: [Astro](https://astro.build/) (Static Site Generation / Island Architecture)
