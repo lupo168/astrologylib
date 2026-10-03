@@ -1,0 +1,138 @@
+---
+/**
+ * SSG book page: /library/read/:corpus/:id/
+ * Pre-renders all 2,064 classical texts at build time so search engines
+ * can index every book (title, metadata, full text in HTML source).
+ * Replaces the old JS-only reader at /library/read/?type=&id= .
+ */
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import fs from 'node:fs';
+import path from 'node:path';
+
+interface Book {
+  title: string;
+  dynasty: string;
+  author: string;
+  approx_date: string;
+  category: string;
+  section?: string;
+  summary: string;
+  match_source: string;
+  book_id: string;
+  rel_path: string;
+  file_size_kb: number;
+}
+
+export async function getStaticPaths() {
+  // NOTE: all imports live inside getStaticPaths — Astro bundles it separately
+  // and module-scope variables are not visible there.
+  const yicangCatalog = (await import('../../../../data/yicang_catalog.json')).default as Book[];
+  const daozangCatalog = (await import('../../../../data/daozang_catalog.json')).default as Book[];
+  const corpora: Record<string, { name: string; nameEn: string; catalog: Book[] }> = {
+    yicang: { name: '易藏', nameEn: 'Yi Canon', catalog: yicangCatalog },
+    daozang: { name: '道藏', nameEn: 'Daoist Canon', catalog: daozangCatalog },
+  };
+  const paths: { params: { corpus: string; id: string }; props: { book: Book; corpus: string; corpusName: string; corpusNameEn: string; prev: Book | null; next: Book | null } }[] = [];
+  for (const [corpus, meta] of Object.entries(corpora)) {
+    meta.catalog.forEach((book, i) => {
+      paths.push({
+        params: { corpus, id: book.book_id },
+        props: {
+          book,
+          corpus,
+          corpusName: meta.name,
+          corpusNameEn: meta.nameEn,
+          prev: i > 0 ? meta.catalog[i - 1] : null,
+          next: i < meta.catalog.length - 1 ? meta.catalog[i + 1] : null,
+        },
+      });
+    });
+  }
+  return paths;
+}
+
+const { book, corpus, corpusName, corpusNameEn, prev, next } = Astro.props;
+
+// Load full text at build time
+let bookText = '';
+try {
+  const txtPath = path.join(process.cwd(), 'public', 'classics', corpus, book.rel_path);
+  bookText = fs.readFileSync(txtPath, 'utf-8');
+} catch {
+  bookText = '';
+}
+
+const pageTitle = `${book.title} · ${corpusName}${corpusNameEn} - AstrologyLib`;
+const pageDesc = `${book.title}（${book.dynasty} · ${book.author}）：${book.summary}`.slice(0, 160);
+const pageUrl = `https://astrologylib.org/library/read/${corpus}/${book.book_id}/`;
+
+const bookSchema = {
+  '@type': 'Book',
+  '@id': `${pageUrl}#book`,
+  name: book.title,
+  author: { '@type': 'Person', name: book.author },
+  inLanguage: ['zh-Hant', 'en'],
+  bookFormat: 'https://schema.org/EBook',
+  datePublished: book.approx_date,
+  description: book.summary,
+  isPartOf: { '@id': 'https://astrologylib.org/#website' },
+  url: pageUrl,
+};
+---
+
+<BaseLayout
+  title={pageTitle}
+  description={pageDesc}
+  active="library"
+  ogType="book"
+  canonicalUrl={pageUrl}
+  schemaJson={bookSchema}
+>
+  <div style="max-width:var(--content-max);margin:0 auto;padding:16px 24px 64px">
+
+    <!-- Breadcrumb -->
+    <nav aria-label="Breadcrumb" style="margin-bottom:20px;font-size:14px;color:var(--ink-500)">
+      <a href="/">Home</a> › <a href="/library/">Library</a> ›
+      <a href="/library/classics/">Classics Archive</a> ›
+      <span>{book.title}</span>
+    </nav>
+
+    <!-- Book header card -->
+    <header style="background:var(--paper);border:var(--border-gold);border-radius:var(--radius-card);padding:24px 28px;margin-bottom:24px;box-shadow:0 4px 16px rgba(0,0,0,0.03)">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;flex-wrap:wrap">
+        <span style="background:var(--red);color:#fff;font-size:12px;padding:2px 8px;border-radius:2px;font-weight:600">{corpusName}</span>
+        <span style="font-family:var(--font-numeric);font-size:12px;color:var(--ink-500)">{book.book_id}</span>
+        <span style="background:var(--ink-100);color:var(--ink-700);border:1px solid var(--ink-300);font-size:12px;padding:2px 8px;border-radius:2px">{book.dynasty} · {book.approx_date}</span>
+        <span style="font-size:12px;color:var(--ink-500)">{book.category}</span>
+      </div>
+      <h1 style="font-family:var(--font-heading);font-size:32px;font-weight:900;color:var(--ink);margin:0 0 8px">{book.title}</h1>
+      <p style="font-size:16px;color:var(--ink-700);margin-bottom:8px">著者考定：{book.author}</p>
+      <p style="font-size:14px;color:var(--ink-500);line-height:1.6;max-width:800px">{book.summary}</p>
+      <p style="font-size:12px;color:var(--ink-500);margin-top:8px">底本來源：{book.match_source} · 公版原文，CC BY-SA 4.0 翻譯</p>
+    </header>
+
+    <!-- Full text (pre-rendered for SEO) -->
+    <article style="background:var(--paper);border:1px solid var(--ink-200);border-radius:var(--radius-card);padding:28px 32px;margin-bottom:24px">
+      <div style="white-space:pre-wrap;word-break:break-word;font-family:var(--font-heading);font-size:18px;line-height:2;color:var(--ink)">{bookText}</div>
+    </article>
+
+    <!-- Prev / Next (crawl chain) -->
+    <nav style="display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:24px" aria-label="Book navigation">
+      <div>
+        {prev && (
+          <a href={`/library/read/${corpus}/${prev.book_id}/`} style="font-size:14px;color:var(--ink-700)">← 上一卷 · {prev.title}</a>
+        )}
+      </div>
+      <div>
+        {next && (
+          <a href={`/library/read/${corpus}/${next.book_id}/`} style="font-size:14px;color:var(--ink-700)">下一卷 · {next.title} →</a>
+        )}
+      </div>
+    </nav>
+
+    <p style="font-size:13px;color:var(--ink-500)">
+      <a href="/library/classics/">← 返回萬卷典藏總庫</a> ·
+      本頁原文為公版古籍，英文翻譯採用 <a href="/license/">CC BY-SA 4.0</a>。
+    </p>
+  </div>
+</BaseLayout>

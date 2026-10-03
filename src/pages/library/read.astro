@@ -6,6 +6,17 @@ const description = "Open-access classical Chinese texts from the Yi Canon and D
 ---
 
 <BaseLayout title={title} description={description} active="library">
+  <!-- Legacy ?type=&id= URLs → canonical static book pages (SEO migration 2026-10-03) -->
+  <script is:inline>
+    (function () {
+      var p = new URLSearchParams(window.location.search);
+      var t = p.get('type') || 'yicang';
+      var id = p.get('id');
+      if (id && /^(YI|DAO)-[0-9]+$/i.test(id)) {
+        window.location.replace('/library/read/' + t + '/' + id.toUpperCase() + '/');
+      }
+    })();
+  </script>
   <div class="reader-page" style="max-width:var(--content-max);margin:0 auto;padding:16px 24px 64px">
     
     <!-- 面包屑与返回 -->
