@@ -1,0 +1,49 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageAttribution from '../../components/PageAttribution.astro';
+
+const title = "Free Chinese Astrology Tools · AstrologyLib";
+const description = "Free, transparent Chinese astrology tools: BaZi chart calculator, Zi Wei Dou Shu celestial chart, and Zhou Yi hexagram divination. No account, no cost.";
+---
+
+<BaseLayout title={title} description={description} active="tools">
+  <div class="article-head">
+    <div class="crumb"><a href="/">Home</a> › Tools</div>
+    <h1><span class="zh">免費工具</span>Free Astrology Tools</h1>
+    <p class="sub">Transparent calculators grounded in the same classical methods this library documents. Free forever, no account needed.</p>
+  </div>
+
+  <div style="max-width:var(--content-max);margin:0 auto;padding:0 24px 40px">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px">
+      <a href="/tools/bazi-chart/" style="text-decoration:none">
+        <div style="border:1px solid var(--ink-300);border-left:3px solid var(--gold);border-radius:var(--radius-card);padding:20px 22px;background:var(--paper);height:100%">
+          <h2 style="font-family:var(--font-heading);font-size:19px;margin:0 0 8px;color:var(--ink-900)"><span class="zh">八字排盤</span> BaZi Chart Calculator</h2>
+          <p style="font-size:14px;color:var(--ink-700);margin:0;line-height:1.6">Compute your Four Pillars - the eight stem-branch characters of your birth moment - with true solar time correction.</p>
+        </div>
+      </a>
+      <a href="/tools/ziwei/" style="text-decoration:none">
+        <div style="border:1px solid var(--ink-300);border-left:3px solid var(--gold);border-radius:var(--radius-card);padding:20px 22px;background:var(--paper);height:100%">
+          <h2 style="font-family:var(--font-heading);font-size:19px;margin:0 0 8px;color:var(--ink-900)"><span class="zh">紫微排盤</span> Zi Wei Dou Shu Chart</h2>
+          <p style="font-size:14px;color:var(--ink-700);margin:0;line-height:1.6">Generate your Purple Star celestial chart - fourteen major stars across the twelve life palaces.</p>
+        </div>
+      </a>
+      <a href="/tools/hexagram/" style="text-decoration:none">
+        <div style="border:1px solid var(--ink-300);border-left:3px solid var(--gold);border-radius:var(--radius-card);padding:20px 22px;background:var(--paper);height:100%">
+          <h2 style="font-family:var(--font-heading);font-size:19px;margin:0 0 8px;color:var(--ink-900)"><span class="zh">周易起卦</span> Hexagram Divination</h2>
+          <p style="font-size:14px;color:var(--ink-700);margin:0;line-height:1.6">Cast a Zhou Yi hexagram by coin toss or manual lines, with full judgment and line texts.</p>
+        </div>
+      </a>
+    </div>
+
+    <PageAttribution
+      sources={[
+        { label: 'Open Access CC BY-SA 4.0 License', url: '/license/' }
+      ]}
+      verified="2026-10-05"
+      version="1.0.0"
+      proofreaders={[
+        { char: 'COCO', name: 'verified 2026-10-05' },
+      ]}
+    />
+  </div>
+</BaseLayout>
