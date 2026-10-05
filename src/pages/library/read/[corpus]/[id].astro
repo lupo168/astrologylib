@@ -78,6 +78,40 @@ const bookSchema = {
   isPartOf: { '@id': 'https://astrologylib.org/#website' },
   url: pageUrl,
 };
+
+// Strip a trailing role suffix (" 撰" etc.) for the schema author name
+const cleanAuthor = book.author.replace(/\s+(撰|編|編註|注|註|輯|修|纂|述|集|評|者)\s*$/, '');
+
+const faqSchema = {
+  '@type': 'FAQPage',
+  '@id': `${pageUrl}#faq`,
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: `《${book.title}》的作者是誰？`,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: `《${book.title}》由${book.dynasty}${cleanAuthor}所著。`,
+      },
+    },
+    {
+      '@type': 'Question',
+      name: `《${book.title}》屬於哪部典籍？`,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: `《${book.title}》收錄於《${corpusName}》（${corpusNameEn}），在 AstrologyLib 古籍總庫中的編號為 ${book.book_id}，分類為${book.category}。`,
+      },
+    },
+    {
+      '@type': 'Question',
+      name: `《${book.title}》的底本來源與使用許可？`,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: `底本來源：${book.match_source}。原文為公版古籍，英文翻譯採用 CC BY-SA 4.0 許可。`,
+      },
+    },
+  ],
+};
 ---
 
 <BaseLayout
@@ -86,7 +120,7 @@ const bookSchema = {
   active="library"
   ogType="book"
   canonicalUrl={pageUrl}
-  schemaJson={bookSchema}
+  schemaJson={[bookSchema, faqSchema]}
 >
   <div style="max-width:var(--content-max);margin:0 auto;padding:16px 24px 64px">
 
@@ -129,6 +163,23 @@ const bookSchema = {
         )}
       </div>
     </nav>
+
+    <!-- FAQ (visible Q&A for AEO/GEO citation; mirrors FAQPage schema) -->
+    <section style="background:var(--paper);border:1px solid var(--ink-200);border-radius:var(--radius-card);padding:24px 28px;margin-bottom:24px" aria-label="常見問題">
+      <h2 style="font-family:var(--font-heading);font-size:22px;font-weight:700;color:var(--ink);margin:0 0 16px">常見問題</h2>
+      <div style="margin-bottom:14px">
+        <h3 style="font-size:16px;font-weight:700;color:var(--ink);margin:0 0 6px">《{book.title}》的作者是誰？</h3>
+        <p style="font-size:14px;color:var(--ink-700);margin:0">《{book.title}》由{book.dynasty}{cleanAuthor}所著。</p>
+      </div>
+      <div style="margin-bottom:14px">
+        <h3 style="font-size:16px;font-weight:700;color:var(--ink);margin:0 0 6px">《{book.title}》屬於哪部典籍？</h3>
+        <p style="font-size:14px;color:var(--ink-700);margin:0">《{book.title}》收錄於《{corpusName}》（{corpusNameEn}），在 AstrologyLib 古籍總庫中的編號為 {book.book_id}，分類為{book.category}。</p>
+      </div>
+      <div>
+        <h3 style="font-size:16px;font-weight:700;color:var(--ink);margin:0 0 6px">《{book.title}》的底本來源與使用許可？</h3>
+        <p style="font-size:14px;color:var(--ink-700);margin:0">底本來源：{book.match_source}。原文為公版古籍，英文翻譯採用 CC BY-SA 4.0 許可。</p>
+      </div>
+    </section>
 
     <p style="font-size:13px;color:var(--ink-500)">
       <a href="/library/classics/">← 返回萬卷典藏總庫</a> ·
