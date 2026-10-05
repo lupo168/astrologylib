@@ -45,7 +45,7 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
     "detailedDef": "The computational foundation of classical Chinese astrology, analyzing the energetic distribution at first breath.",
     "practicalNote": "Not fatalistic determinism, but a structural weather report of innate endowments and timing advantages.",
     "source": "Yuan Hai Zi Ping: Foundational treatise of the Eight Character methodology.",
-    "sourceLink": "/library/ditian-sui/",
+    "sourceLink": "/library/read/yicang/YI-299/",
     "learnLink": "/learn/bazi/"
   },
   {
@@ -60,7 +60,7 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
     "detailedDef": "Each pillar pairs one Heavenly Stem and one Earthly Branch, mapping social environment, career season, core self, and future vision.",
     "practicalNote": "Year = Heritage; Month = Career & Climate; Day = Self & Intimacy; Hour = Aspirations & Legacy.",
     "source": "San Ming Tong Hui: \"The four pillars establish the cosmic framework of human embodiment.\"",
-    "sourceLink": "/library/ditian-sui/",
+    "sourceLink": "/library/read/yicang/YI-190/",
     "learnLink": "/learn/bazi/"
   },
   {
@@ -120,7 +120,7 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
     "detailedDef": "Acts as the triggering event clock, introducing dynamic forces that ignite or clash with natal elements.",
     "practicalNote": "Provides concrete tactical insight for annual financial and career decisions.",
     "source": "Yuan Hai Zi Ping: \"The annual pillar acts as the executive magistrate of the passing year.\"",
-    "sourceLink": "/library/ditian-sui/",
+    "sourceLink": "/library/read/yicang/YI-299/",
     "learnLink": "/learn/zodiac/"
   },
   {
@@ -225,7 +225,7 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
     "detailedDef": "Reveals that terrestrial branches are multi-layered repositories rather than single elements. Essential for finding latent talents.",
     "practicalNote": "Crucial for calculating Ten Gods and discovering buried resources and inner motives.",
     "source": "Yuan Hai Zi Ping: \"Inside the terrestrial caves of the twelve branches reside the celestial spirits.\"",
-    "sourceLink": "/library/ditian-sui/",
+    "sourceLink": "/library/read/yicang/YI-299/",
     "learnLink": "/learn/bazi/"
   },
   {
@@ -277,12 +277,12 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
     "id": "yong-shen",
     "zh": "用神",
     "py": "Yòng Shén",
-    "en": "Useful God / Balancing Key (Yong Shen)",
+    "en": "Useful God (Yong Shen)",
     "category": "core",
     "categoryZh": "核心概念",
     "isCore": true,
     "shortDef": "The single most critical element required to resolve systemic conflict and establish chart equilibrium.",
-    "detailedDef": "The central keystone of classical Zi Ping analysis. If a chart is frozen, Fire is the Useful God; if scorched, Water is the Useful God.",
+    "detailedDef": "The central keystone of classical Zi Ping analysis. If a chart is frozen, Fire is the Useful God; if scorched, Water is the Useful God. In Liu Yao divination contexts, the equivalent functional role is rendered 'Functional Focus Spirit' (see yong-shen-liuyao).",
     "practicalNote": "Locating the genuine Useful God is the ultimate hallmark of high-precision classical diagnosis.",
     "source": "Di Tian Sui: \"He who grasps the Useful God can discern the rise and fall of ten thousand fates in an instant.\"",
     "sourceLink": "/library/ditian-sui/",
@@ -300,19 +300,19 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
     "detailedDef": "Acts as a protective buffer, mitigating sudden setbacks and bolstering resilience during challenging years.",
     "practicalNote": "Aligning career pathways and locations with your Xi Shen supports sustained flow.",
     "source": "Zi Ping Zhen Quan: \"Favorable elements act as loyal guardians to the sovereign Useful God.\"",
-    "sourceLink": "/library/ditian-sui/",
+    "sourceLink": "/library/read/yicang/YI-263/",
     "learnLink": "/learn/bazi/"
   },
   {
     "id": "ji-shen",
     "zh": "忌神",
     "py": "Jì Shén",
-    "en": "Unfavorable Element (Ji Shen)",
+    "en": "Unfavorable God (Ji Shen)",
     "category": "core",
     "categoryZh": "核心概念",
     "isCore": true,
     "shortDef": "An element that directly attacks, suppresses, or severely unbalances the Useful God.",
-    "detailedDef": "Highlights areas of chronic psychological vulnerability, friction, or external volatility.",
+    "detailedDef": "Highlights areas of chronic psychological vulnerability, friction, or external volatility. In Liu Yao divination contexts, the antagonistic counterpart is called 'Dread Spirit' or 'Inimical Spirit' (see ji-shen-liuyao).",
     "practicalNote": "Informs risk management: exercise defensive prudence when annual cycles bring this element.",
     "source": "Di Tian Sui: \"Fearsome is not the presence of obstacles, but the relentless rampage of the unfavorable element.\"",
     "sourceLink": "/library/ditian-sui/",
@@ -342,7 +342,7 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
     "categoryZh": "核心概念",
     "isCore": false,
     "shortDef": "克制喜用之神",
-    "detailedDef": "",
+    "detailedDef": "The antagonistic god that opposes the Useful God. In Liu Yao divination contexts also called 'Hostile Spirit' (see chou-shen-liuyao).",
     "practicalNote": "",
     "source": "",
     "sourceLink": "",
@@ -964,7 +964,7 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
     "learnLink": ""
   },
   {
-    "id": "wu",
+    "id": "wu-horse",
     "zh": "午",
     "py": "Wǔ",
     "en": "Wu (Horse · Yang Fire)",
@@ -1039,7 +1039,7 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
     "learnLink": ""
   },
   {
-    "id": "hai",
+    "id": "hai-pig",
     "zh": "亥",
     "py": "Hài",
     "en": "Hai (Pig · Yin Water)",
@@ -1095,7 +1095,7 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
     "detailedDef": "Transforms elemental physics into human psychology: Officer, Killings, Wealth, Seal, Output, and Peers.",
     "practicalNote": "The universal language of cognitive aptitude, leadership style, and interpersonal dynamics.",
     "source": "Zi Ping Zhen Quan: \"The Ten Gods govern the entirety of human social order.\"",
-    "sourceLink": "/library/ditian-sui/",
+    "sourceLink": "/library/read/yicang/YI-263/",
     "learnLink": "/learn/bazi/"
   },
   {
@@ -1110,7 +1110,7 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
     "detailedDef": "Signifies self-reliance, egalitarian camaraderie, athletic stamina, and steadfast inner pride.",
     "practicalNote": "Strengthens a weak Day Master; in excess, can manifest as stubborn independence.",
     "source": "Yuan Hai Zi Ping: \"Shoulder to shoulder, friends share burdens and venture side by side.\"",
-    "sourceLink": "/library/ditian-sui/",
+    "sourceLink": "/library/read/yicang/YI-299/",
     "learnLink": "/learn/bazi/"
   },
   {
@@ -1125,11 +1125,11 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
     "detailedDef": "Governs intense competitive drive, team rally power, willingness to take bold leaps, and social charisma.",
     "practicalNote": "Essential for competitive scaling; requires strict financial risk controls.",
     "source": "Zi Ping Zhen Quan: \"Rob Wealth shares breath but diverges in intent; keen in competition.\"",
-    "sourceLink": "/library/ditian-sui/",
+    "sourceLink": "/library/read/yicang/YI-263/",
     "learnLink": "/learn/bazi/"
   },
   {
-    "id": "shi-shen",
+    "id": "shi-shen-eating-god",
     "zh": "食神",
     "py": "Shí Shén",
     "en": "Eating God (Gentle Creativity & Flow)",
@@ -1140,7 +1140,7 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
     "detailedDef": "Embodies relaxed creativity, aesthetic refinement, joyful expression, and the soft strength to tame harsh crises.",
     "practicalNote": "Associated with longevity, happiness, and effortless attraction of abundance.",
     "source": "Zi Ping Zhen Quan: \"The Eating God is the harbinger of longevity and peaceful abundance.\"",
-    "sourceLink": "/library/ditian-sui/",
+    "sourceLink": "/library/read/yicang/YI-263/",
     "learnLink": "/learn/bazi/"
   },
   {
@@ -1170,7 +1170,7 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
     "detailedDef": "Governs opportunistic capital, entrepreneurship, speculative windfalls, charisma, and market trade.",
     "practicalNote": "The archetype of founders, dealmakers, and strategic risk-takers.",
     "source": "Yuan Hai Zi Ping: \"Indirect Wealth is wealth common to all under heaven; he who has courage seizes it.\"",
-    "sourceLink": "/library/ditian-sui/",
+    "sourceLink": "/library/read/yicang/YI-299/",
     "learnLink": "/learn/bazi/"
   },
   {
@@ -1185,7 +1185,7 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
     "detailedDef": "Represents earned income from disciplined labor, realism, operational patience, and steady stewardship.",
     "practicalNote": "The foundation of compounding capital, predictable operations, and domestic stability.",
     "source": "San Ming Tong Hui: \"Direct Wealth thrives through steady diligence and unhurried custody.\"",
-    "sourceLink": "/library/ditian-sui/",
+    "sourceLink": "/library/read/yicang/YI-190/",
     "learnLink": "/learn/bazi/"
   },
   {
@@ -1215,7 +1215,7 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
     "detailedDef": "Embodies integrity, institutional respect, discipline, legitimate authority, and ethical stewardship.",
     "practicalNote": "High Direct Officer indicates dependable executives and trustworthy public leaders.",
     "source": "Zi Ping Zhen Quan: \"The Direct Officer is the star of nobility and righteous governance.\"",
-    "sourceLink": "/library/ditian-sui/",
+    "sourceLink": "/library/read/yicang/YI-263/",
     "learnLink": "/learn/bazi/"
   },
   {
@@ -1230,7 +1230,7 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
     "detailedDef": "Governs unconventional intelligence, solitude, metaphysical insight, skepticism, and lateral problem-solving.",
     "practicalNote": "Excels in research, programming, strategy, and avant-garde arts.",
     "source": "San Ming Tong Hui: \"The Indirect Seal looks beyond mundane conventions to grasp unseen laws.\"",
-    "sourceLink": "/library/ditian-sui/",
+    "sourceLink": "/library/read/yicang/YI-190/",
     "learnLink": "/learn/bazi/"
   },
   {
@@ -1245,7 +1245,7 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
     "detailedDef": "Represents mentorship, academic scholarship, protective sanctuary, deep compassion, and moral credibility.",
     "practicalNote": "Provides steady psychological equanimity and immunity from acute stress.",
     "source": "Zi Ping Zhen Quan: \"The Direct Seal is the benevolent parent of the Day Master.\"",
-    "sourceLink": "/library/ditian-sui/",
+    "sourceLink": "/library/read/yicang/YI-263/",
     "learnLink": "/learn/bazi/"
   },
   {
@@ -2119,7 +2119,7 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
     "learnLink": ""
   },
   {
-    "id": "cong-ge-ge",
+    "id": "cong-ge-jin",
     "zh": "从革格",
     "py": "Cóng Gé Gé",
     "en": "Metal Concentration (Cong Ge)",
@@ -2325,7 +2325,7 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
     "detailedDef": "Signifies organic alliances, mutual attraction, diplomatic resolution of disputes, and cooperative cohesion.",
     "practicalNote": "Smooths abrasive clashes and creates lasting contractual and romantic bonds.",
     "source": "San Ming Tong Hui",
-    "sourceLink": "/library/ditian-sui/",
+    "sourceLink": "/library/read/yicang/YI-190/",
     "learnLink": "/learn/bazi/"
   },
   {
@@ -2370,7 +2370,7 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
     "detailedDef": "Zi-Wu, Chou-Wei, Yin-Shen, Mao-You, Chen-Xu, Si-Hai. Triggers sudden changes, movement, and friction.",
     "practicalNote": "Not inherently catastrophic; clashes clear old deadlocks and initiate decisive breakthroughs.",
     "source": "San Ming Tong Hui",
-    "sourceLink": "/library/ditian-sui/",
+    "sourceLink": "/library/read/yicang/YI-190/",
     "learnLink": "/learn/bazi/"
   },
   {
@@ -2599,7 +2599,7 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
       "learnLink": "/learn/ziwei/"
   },
   {
-      "id": "ming-gong",
+      "id": "ming-gong-ziwei",
       "zh": "命宫",
       "py": "Mìng Gōng",
       "en": "Life Palace (Ming Gong)",
@@ -2614,7 +2614,7 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
       "learnLink": "/learn/ziwei/"
   },
   {
-      "id": "shen-gong",
+      "id": "shen-gong-ziwei",
       "zh": "身宫",
       "py": "Shēn Gōng",
       "en": "Body Palace (Shen Gong)",
@@ -2839,7 +2839,7 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
       "learnLink": "/learn/liuyao/"
   },
   {
-      "id": "liu-qin",
+      "id": "liu-qin-liuyao",
       "zh": "六亲",
       "py": "Liù Qīn",
       "en": "Six Kinships Relational Dynamics",
@@ -3004,7 +3004,7 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
       "learnLink": "/learn/liuyao/"
   },
   {
-      "id": "chou-shen",
+      "id": "chou-shen-liuyao",
       "zh": "仇神",
       "py": "Chóu Shén",
       "en": "Hostile Spirit (Chou Shen)",
