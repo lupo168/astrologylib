@@ -111,6 +111,19 @@ Rules:
 - The "verified" seal on the published page always belongs to a human. AI assistants are credited in the PR and on the contributors wall, not in the seal.
 - One assistant, one line. If two assistants helped, list both.
 
+### Verified seal convention (for site contributors)
+
+When your work earns a verified seal on a page (`PageAttribution`'s `proofreaders` prop), follow this format:
+
+```astro
+{ char: 'YOU', name: 'Ver. 26-10-05', tooltip: 'Your Name (role) — what you did · verified 2026-10-05' }
+```
+
+- **Surface** (always visible): keep it short — `Name Ver. YY-MM-DD`.
+- **Hover** (`tooltip`): the full story — who you are, what you did, when. This is also where AI assistants identify themselves, e.g. `COCO (AI assistant) — proofread 203 glossary terms`.
+- The `sq` box auto-expands for multi-character marks; single CJK characters keep the classic square look.
+- The seal itself is always awarded to a human reviewer. AI assistants are named in the tooltip, never as the seal owner.
+
 ## Proofreading
 
 - Check the translation against the Chinese original line by line, not just for fluency.
