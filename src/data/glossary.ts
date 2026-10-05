@@ -2549,7 +2549,7 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
     "shortDef": "The overarching judgment text attributed to King Wen summarizing the auspiciousness of the whole hexagram.",
     "detailedDef": "",
     "practicalNote": "",
-    "source": "",
+    "source": "Zhou Yi",
     "sourceLink": "/zhouyi/",
     "learnLink": ""
   },
@@ -2564,7 +2564,7 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
     "shortDef": "The specific poetic aphorism attributed to the Duke of Zhou for each individual line.",
     "detailedDef": "",
     "practicalNote": "",
-    "source": "",
+    "source": "Zhou Yi",
     "sourceLink": "/zhouyi/",
     "learnLink": ""
   },
@@ -2580,13 +2580,13 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
       "detailedDef": "Belonging to Yin Earth, Zi Wei is the supreme imperial archetype in Chinese stellar astrology. It sets the orientation of the Twelve Palaces and reveals where one seeks sovereignty, authority, and high moral standards.",
       "practicalNote": "Needs auxiliary ministers (Zuo Fu, You Bi) to flourish. Alone without assistance, it feels solitary and isolated.",
       "source": "Wanli Xu Daozang: Zi Wei Dou Shu (DAO-1496): 'Zi Wei belongs to Earth, ruling the northern culmen and governing destiny.'",
-      "sourceLink": "/library/read/?type=daozang&id=DAO-1496",
+      "sourceLink": "/library/read/daozang/DAO-1496/",
       "learnLink": "/learn/ziwei/"
   },
   {
       "id": "shisi-zhuxing",
       "zh": "十四主星",
-      "py": "Shí Sī Zhǔ Xīng",
+      "py": "Shí Sì Zhǔ Xīng",
       "en": "Fourteen Major Stars",
       "category": "ziwei",
       "categoryZh": "紫微斗數",
@@ -2595,7 +2595,7 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
       "detailedDef": "Divided into the Northern Group (Zi Wei, Tian Ji, Tai Yang, Wu Qu, Tian Tong, Lian Zhen) and Southern Group (Tian Fu, Tai Yin, Tan Lang, Ju Men, Tian Xiang, Tian Liang, Qi Sha, Po Jun), mapping all human inclinations and archetypal drives.",
       "practicalNote": "Every chart distributes these fourteen stars into 12 distinct functional life areas.",
       "source": "Zi Wei Dou Shu Quan Shu",
-      "sourceLink": "/library/read/?type=daozang&id=DAO-1496",
+      "sourceLink": "/library/read/daozang/DAO-1496/",
       "learnLink": "/learn/ziwei/"
   },
   {
@@ -2610,7 +2610,7 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
       "detailedDef": "Calculated from the birth month and birth hour, Ming Gong serves as the anchor of the self, akin to the Day Master in BaZi or Ascendant in Western astrology.",
       "practicalNote": "Examine the stars resident inside Ming Gong along with its opposite palace (Migration) and trine palaces (Wealth, Career).",
       "source": "Wanli Xu Daozang: Zi Wei Dou Shu",
-      "sourceLink": "/library/read/?type=daozang&id=DAO-1496",
+      "sourceLink": "/library/read/daozang/DAO-1496/",
       "learnLink": "/learn/ziwei/"
   },
   {
@@ -2625,7 +2625,7 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
       "detailedDef": "Coincides with one of six palaces (Ming, Wealth, Career, Migration, Marriage, or Blessings), showing where one invests personal effort and physical energy in adulthood.",
       "practicalNote": "Ming Gong is the seed at birth; Shen Gong is how the tree branches out through lived choices.",
       "source": "Zi Wei Dou Shu Quan Shu",
-      "sourceLink": "/library/read/?type=daozang&id=DAO-1496",
+      "sourceLink": "/library/read/daozang/DAO-1496/",
       "learnLink": "/learn/ziwei/"
   },
   {
@@ -2640,7 +2640,7 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
       "detailedDef": "Organized counter-clockwise or clockwise, these twelve sectors structure the entire universe of human relationships, resources, vulnerabilities, and aspirations.",
       "practicalNote": "Interconnected through tripartite and polar relationships rather than functioning as isolated silos.",
       "source": "Wanli Xu Daozang: Zi Wei Dou Shu",
-      "sourceLink": "/library/read/?type=daozang&id=DAO-1496",
+      "sourceLink": "/library/read/daozang/DAO-1496/",
       "learnLink": "/learn/ziwei/"
   },
   {
@@ -2655,7 +2655,7 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
       "detailedDef": "Hua Lu represents abundance and desire; Hua Quan represents authority and drive; Hua Ke represents intellect and acclaim; Hua Ji represents fixation, deficit, and karmic refinement.",
       "practicalNote": "The engine that transforms static stars into dynamic psychological drama and life events.",
       "source": "Zi Wei Dou Shu Quan Shu",
-      "sourceLink": "/library/read/?type=daozang&id=DAO-1496",
+      "sourceLink": "/library/read/daozang/DAO-1496/",
       "learnLink": "/learn/ziwei/"
   },
   {
@@ -2670,7 +2670,7 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
       "detailedDef": "Associated with Wood and Spring energy, Hua Lu brings resource abundance, pleasant dispositions, and effortless access to wealth or favor.",
       "practicalNote": "Where Hua Lu sits is where opportunities and enjoyment flow naturally.",
       "source": "Wanli Xu Daozang: Zi Wei Dou Shu",
-      "sourceLink": "/library/read/?type=daozang&id=DAO-1496",
+      "sourceLink": "/library/read/daozang/DAO-1496/",
       "learnLink": "/learn/ziwei/"
   },
   {
@@ -2685,7 +2685,7 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
       "detailedDef": "Associated with Fire and Summer energy, Hua Quan drives mastery, self-assertion, dominance, and tangible organizational responsibility.",
       "practicalNote": "Where Hua Quan sits is where you seek to control outcomes and exercise decisive influence.",
       "source": "Zi Wei Dou Shu Quan Shu",
-      "sourceLink": "/library/read/?type=daozang&id=DAO-1496",
+      "sourceLink": "/library/read/daozang/DAO-1496/",
       "learnLink": "/learn/ziwei/"
   },
   {
@@ -2700,7 +2700,7 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
       "detailedDef": "Associated with Metal and Autumn energy, Hua Ke represents academic honors, clean reputation, institutional recognition, and diplomatic resolution of disputes.",
       "practicalNote": "Serves as an intellectual shield against crises, turning disasters into learning experiences.",
       "source": "Zi Wei Dou Shu Quan Shu",
-      "sourceLink": "/library/read/?type=daozang&id=DAO-1496",
+      "sourceLink": "/library/read/daozang/DAO-1496/",
       "learnLink": "/learn/ziwei/"
   },
   {
@@ -2715,7 +2715,7 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
       "detailedDef": "Associated with Water and Winter energy, Hua Ji concentrates attention on lack, anxiety, or emotional burden, forcing deep self-examination and structural mastery.",
       "practicalNote": "Not a curse, but your soul's focal curriculum. Where Hua Ji sits is where you are bound to care the most and grow the deepest.",
       "source": "Wanli Xu Daozang: Zi Wei Dou Shu",
-      "sourceLink": "/library/read/?type=daozang&id=DAO-1496",
+      "sourceLink": "/library/read/daozang/DAO-1496/",
       "learnLink": "/learn/ziwei/"
   },
   {
@@ -2730,7 +2730,7 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
       "detailedDef": "Forms a tetrahedron of influence: the target palace (Self), its opposite palace (Environment/Other), and its two 120-degree trines (Action & Resources).",
       "practicalNote": "Never judge a palace in isolation; always synthesize the four palaces of the San Fang Si Zheng.",
       "source": "Zi Wei Dou Shu Quan Shu",
-      "sourceLink": "/library/read/?type=daozang&id=DAO-1496",
+      "sourceLink": "/library/read/daozang/DAO-1496/",
       "learnLink": "/learn/ziwei/"
   },
   {
@@ -2745,7 +2745,7 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
       "detailedDef": "Provide peer support, artistic talent, bureaucratic aptitude, and noble mentors across the life journey.",
       "practicalNote": "Magnify the positive expressions of major stars and cushion life shocks.",
       "source": "Zi Wei Dou Shu Quan Shu",
-      "sourceLink": "/library/read/?type=daozang&id=DAO-1496",
+      "sourceLink": "/library/read/daozang/DAO-1496/",
       "learnLink": "/learn/ziwei/"
   },
   {
@@ -2760,7 +2760,7 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
       "detailedDef": "Represent friction, sudden turbulence, mental obsession, structural breakdown, and rapid breakthrough forces.",
       "practicalNote": "Act as catalysts for specialized careers (surgeons, litigators, engineers, martial artists, innovators).",
       "source": "Wanli Xu Daozang: Zi Wei Dou Shu",
-      "sourceLink": "/library/read/?type=daozang&id=DAO-1496",
+      "sourceLink": "/library/read/daozang/DAO-1496/",
       "learnLink": "/learn/ziwei/"
   },
   {
@@ -2775,7 +2775,7 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
       "detailedDef": "Traverses through the twelve palaces sequentially according to gender and Yin/Yang stem polarity, determining decennial priorities.",
       "practicalNote": "Overlay the natal palace stars with the temporary decennial transformations to gauge season-long trends.",
       "source": "Zi Wei Dou Shu Quan Shu",
-      "sourceLink": "/library/read/?type=daozang&id=DAO-1496",
+      "sourceLink": "/library/read/daozang/DAO-1496/",
       "learnLink": "/learn/ziwei/"
   },
   {
@@ -2790,7 +2790,7 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
       "detailedDef": "Corresponds to the Earthly Branch of the current calendar year (e.g. Chen year activates Chen palace), triggering precise annual events.",
       "practicalNote": "Provides immediate, annual situational timing layered on top of the 10-year major limit.",
       "source": "Wanli Xu Daozang: Zi Wei Dou Shu",
-      "sourceLink": "/library/read/?type=daozang&id=DAO-1496",
+      "sourceLink": "/library/read/daozang/DAO-1496/",
       "learnLink": "/learn/ziwei/"
   },
   {
@@ -2805,7 +2805,7 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
       "detailedDef": "Identified according to the Eight Palaces (八宫) structural formula, the Shi Yao acts as the anchor of the inquiry. Its strength determines the querent's capacity to handle the matter.",
       "practicalNote": "If the Shi Yao is strong and supported by the day and month, the querent holds agency and confidence.",
       "source": "Bu Shi Zheng Zong (YI-233): 'The Shi line is the master of the hexagram, embodying the person of the querent.'",
-      "sourceLink": "/library/read/?type=yicang&id=YI-233",
+      "sourceLink": "/library/read/yicang/YI-233/",
       "learnLink": "/learn/liuyao/"
   },
   {
@@ -2820,7 +2820,7 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
       "detailedDef": "Always positioned three lines away from the Shi Yao (e.g., line 1 pairs with line 4; line 2 pairs with line 5; line 3 pairs with line 6). Represents counterparties in negotiations, relationships, or destinations.",
       "practicalNote": "Harmony or clash between Shi and Ying reveals mutual goodwill or fundamental discord.",
       "source": "Bu Shi Zheng Zong (YI-233)",
-      "sourceLink": "/library/read/?type=yicang&id=YI-233",
+      "sourceLink": "/library/read/yicang/YI-233/",
       "learnLink": "/learn/liuyao/"
   },
   {
@@ -2835,7 +2835,7 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
       "detailedDef": "Selected from the Six Kinships (Parents, Officer, Siblings, Wealth, Children). For career inquiries, Officer is Yong Shen; for finance, Wealth is Yong Shen; for tests/deeds, Parents is Yong Shen; for peace/health, Offspring is Yong Shen.",
       "practicalNote": "The entire divination hinges on evaluating the prosperity, decline, motion, and clashes of this single line.",
       "source": "Zeng Shan Bu Yi (YI-245): 'Divination begins with establishing the Yong Shen; if the focus is mistaken, the judgment wanders.'",
-      "sourceLink": "/library/read/?type=yicang&id=YI-245",
+      "sourceLink": "/library/read/yicang/YI-245/",
       "learnLink": "/learn/liuyao/"
   },
   {
@@ -2850,7 +2850,7 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
       "detailedDef": "Originating in Jing Fang's Han dynasty Yi commentary and codified in Wen Wang Ba Gua divination, it categorizes all existential concerns into five familial archetypes.",
       "practicalNote": "What generates Palace = Parents; what overcomes Palace = Officer; what Palace overcomes = Wealth; what Palace generates = Offspring; same element = Siblings.",
       "source": "Bu Shi Zheng Zong (YI-233)",
-      "sourceLink": "/library/read/?type=yicang&id=YI-233",
+      "sourceLink": "/library/read/yicang/YI-233/",
       "learnLink": "/learn/liuyao/"
   },
   {
@@ -2865,7 +2865,7 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
       "detailedDef": "Generated by the element that produces the Palace Master. Overcomes Offspring (curbing joy) and generates Siblings.",
       "practicalNote": "Primary Yong Shen for property transactions, academic examinations, publishing, and legal contracts.",
       "source": "Zeng Shan Bu Yi (YI-245)",
-      "sourceLink": "/library/read/?type=yicang&id=YI-245",
+      "sourceLink": "/library/read/yicang/YI-245/",
       "learnLink": "/learn/liuyao/"
   },
   {
@@ -2880,7 +2880,7 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
       "detailedDef": "The element that overcomes the Palace Master. In business or life questions it denotes regulatory oversight or worry; in career questions it denotes rank and title.",
       "practicalNote": "In marriage readings for women, historically represents the husband or romantic partner.",
       "source": "Bu Shi Zheng Zong (YI-233)",
-      "sourceLink": "/library/read/?type=yicang&id=YI-233",
+      "sourceLink": "/library/read/yicang/YI-233/",
       "learnLink": "/learn/liuyao/"
   },
   {
@@ -2895,7 +2895,7 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
       "detailedDef": "Matches the element of the Palace Master. Clashes with and overcomes Wealth (Qi Cai), while generating Offspring (Zi Sun).",
       "practicalNote": "Favorable for team sports and camaraderie; unfavorable for profit extraction and capital investment.",
       "source": "Zeng Shan Bu Yi (YI-245)",
-      "sourceLink": "/library/read/?type=yicang&id=YI-245",
+      "sourceLink": "/library/read/yicang/YI-245/",
       "learnLink": "/learn/liuyao/"
   },
   {
@@ -2910,7 +2910,7 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
       "detailedDef": "The element overcome by the Palace Master. Generates Officer/Ghost and overcomes Parents. In marriage readings for men, historically represents the wife.",
       "practicalNote": "A thriving Qi Cai supported by Day and Month signifies tangible cash flow and commercial feasibility.",
       "source": "Bu Shi Zheng Zong (YI-233)",
-      "sourceLink": "/library/read/?type=yicang&id=YI-233",
+      "sourceLink": "/library/read/yicang/YI-233/",
       "learnLink": "/learn/liuyao/"
   },
   {
@@ -2925,7 +2925,7 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
       "detailedDef": "The element generated by the Palace Master. Overcomes Officer/Ghost (dissolving fear and lawsuits) and feeds Wealth (as the origin of income).",
       "practicalNote": "The supreme line of reassurance in medical recovery, spiritual relief, and leisure.",
       "source": "Zeng Shan Bu Yi (YI-245)",
-      "sourceLink": "/library/read/?type=yicang&id=YI-245",
+      "sourceLink": "/library/read/yicang/YI-245/",
       "learnLink": "/learn/liuyao/"
   },
   {
@@ -2940,7 +2940,7 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
       "detailedDef": "Qing Long (joy, nobility), Zhu Que (speech, debate, documents), Gou Chen (delay, land, bureaucracy), Teng She (anxiety, deceit, nightmares), Bai Hu (urgency, surgery, bloodshed, raw power), Xuan Wu (stealth, ambiguity, hidden agendas).",
       "practicalNote": "Adds psychological nuance and situational color to the structural interaction of the Five Elements.",
       "source": "Bu Shi Zheng Zong (YI-233)",
-      "sourceLink": "/library/read/?type=yicang&id=YI-233",
+      "sourceLink": "/library/read/yicang/YI-233/",
       "learnLink": "/learn/liuyao/"
   },
   {
@@ -2955,7 +2955,7 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
       "detailedDef": "Hides underneath an existing line (the Flying Spirit). It indicates dormant, delayed, or latent matters waiting for the right timing to emerge.",
       "practicalNote": "Can emerge when the day or month brings it into season or breaks through the covering line.",
       "source": "Zeng Shan Bu Yi (YI-245)",
-      "sourceLink": "/library/read/?type=yicang&id=YI-245",
+      "sourceLink": "/library/read/yicang/YI-245/",
       "learnLink": "/learn/liuyao/"
   },
   {
@@ -2970,7 +2970,7 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
       "detailedDef": "Acts as a cover or obstacle to the hidden spirit. If the Fei Shen nourishes or generates the Fu Shen, the hidden matter emerges easily.",
       "practicalNote": "Analyzing the relationship between Fei and Fu reveals whether latent resources can be unlocked.",
       "source": "Bu Shi Zheng Zong (YI-233)",
-      "sourceLink": "/library/read/?type=yicang&id=YI-233",
+      "sourceLink": "/library/read/yicang/YI-233/",
       "learnLink": "/learn/liuyao/"
   },
   {
@@ -2985,7 +2985,7 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
       "detailedDef": "Acts as the source of vitality for the matter. For example, if Wealth is Yong Shen, Offspring is its Yuan Shen.",
       "practicalNote": "Even if the Yong Shen is currently weak, a vigorous Yuan Shen ensures ultimate success.",
       "source": "Zeng Shan Bu Yi (YI-245)",
-      "sourceLink": "/library/read/?type=yicang&id=YI-245",
+      "sourceLink": "/library/read/yicang/YI-245/",
       "learnLink": "/learn/liuyao/"
   },
   {
@@ -3000,7 +3000,7 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
       "detailedDef": "Acts as the obstruction or adversary of the goal. If Wealth is Yong Shen, Siblings is its Ji Shen.",
       "practicalNote": "Must be neutralized, constrained, or drained for the undertaking to thrive.",
       "source": "Bu Shi Zheng Zong (YI-233)",
-      "sourceLink": "/library/read/?type=yicang&id=YI-233",
+      "sourceLink": "/library/read/yicang/YI-233/",
       "learnLink": "/learn/liuyao/"
   },
   {
@@ -3015,7 +3015,7 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
       "detailedDef": "Acts as the secondary antagonistic force in a hexagram, amplifying obstacles behind the scenes.",
       "practicalNote": "Neutralizing the Chou Shen often cuts off the fuel feeding the crisis.",
       "source": "Zeng Shan Bu Yi (YI-245)",
-      "sourceLink": "/library/read/?type=yicang&id=YI-245",
+      "sourceLink": "/library/read/yicang/YI-245/",
       "learnLink": "/learn/liuyao/"
   },
   {
@@ -3030,7 +3030,7 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
       "detailedDef": "Signifies a state of temporary collapse, severe vulnerability, and inability to exercise influence during that month.",
       "practicalNote": "Becomes effective again ('out of brokenness') once the conflicting month passes or upon reaching an auspicious day.",
       "source": "Zeng Shan Bu Yi (YI-245)",
-      "sourceLink": "/library/read/?type=yicang&id=YI-245",
+      "sourceLink": "/library/read/yicang/YI-245/",
       "learnLink": "/learn/liuyao/"
   },
   {
@@ -3045,7 +3045,7 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
       "detailedDef": "Represents absence, unreadiness, hollow promises, or lack of substance in the present moment.",
       "practicalNote": "'Empty now does not mean forever empty.' When the calendar reaches the void branch day, the energy fills and manifests.",
       "source": "Bu Shi Zheng Zong (YI-233)",
-      "sourceLink": "/library/read/?type=yicang&id=YI-233",
+      "sourceLink": "/library/read/yicang/YI-233/",
       "learnLink": "/learn/liuyao/"
   },
   {
@@ -3060,7 +3060,7 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
       "detailedDef": "Moving lines represent the causes, developments, and catalysts of change in the situation.",
       "practicalNote": "The transformed line directly reveals the trajectory and eventual outcome of the moving line.",
       "source": "Bu Shi Zheng Zong (YI-233)",
-      "sourceLink": "/library/read/?type=yicang&id=YI-233",
+      "sourceLink": "/library/read/yicang/YI-233/",
       "learnLink": "/learn/liuyao/"
   },
   {
@@ -3075,7 +3075,7 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
       "detailedDef": "For example, Hai transforming into Zi is Advancing (progress, momentum, expanding scope); Zi transforming into Hai is Retiring (retreat, fatigue, winding down).",
       "practicalNote": "Crucial for determining whether momentum is accelerating or dissipating over time.",
       "source": "Zeng Shan Bu Yi (YI-245)",
-      "sourceLink": "/library/read/?type=yicang&id=YI-245",
+      "sourceLink": "/library/read/yicang/YI-245/",
       "learnLink": "/learn/liuyao/"
   }
 ];
