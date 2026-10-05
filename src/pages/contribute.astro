@@ -100,7 +100,7 @@ const STATUS = {
       <h2 id="tasks">Work in progress · 待校對清單</h2>
       <p>While our digital archives house <strong>2,000+ classical Chinese works</strong> in complete transcriptions, our Chinese-to-English translation effort has only just begun. We have established foundational bilingual terminology in our <a href="/glossary/">Glossary</a> and completed initial foundational texts, but the vast majority of volumes are awaiting line-by-line translation and rigorous human collation.</p>
       <p>Here is what is claimable right now. Each task is a classical passage waiting for a careful eye; pick one, read the original against our draft English, and submit your review.</p>
-      <div class="note" style="margin-bottom:20px"><strong>How claiming works:</strong> email us the task id (or post in the <a href="/community/?cat=classics">Errata forum</a>) and we confirm it is yours. When your notes pass review, your name goes on the page with a verified seal. The <a href="/glossary/">glossary</a> is the standard every task checks against.</div>
+      <div class="note" style="margin-bottom:20px"><strong>How claiming works:</strong> click 認領 Claim on a task to open a GitHub Issue (or post in the <a href="/community/?cat=classics">Errata forum</a>) and we confirm it is yours. When your notes pass review, your name goes on the page with a verified seal. The <a href="/glossary/">glossary</a> is the standard every task checks against.</div>
 
       {CATEGORIES.map((cat) => {
         const catTasks = TASKS.filter(t => t.category === cat.key);
@@ -125,7 +125,7 @@ const STATUS = {
                   <span class:list={['badge', STATUS[t.status].cls]}><span class="dot"></span>{STATUS[t.status].label}</span>
                   {t.status === 'open' && (
                     <a
-                      href={`mailto:contact@astrologylib.org?subject=Claim%20Task%3A%20${t.id}&body=Hello%20AstrologyLib%20Editors%2C%0A%0AI%20would%20like%20to%20claim%20proofreading%20task%20%5B${t.id}%5D%3A%20${encodeURIComponent(t.title)}.%0A%0AMy%20background%3A%0A%0AThank%20you.`}
+                      href={`https://github.com/lupo168/astrologylib/issues/new?template=claim-translation.md&title=${encodeURIComponent(`Claim translation: ${t.title}`)}`}
                       class="btn btn-secondary"
                       style="font-size:12px;padding:3px 10px;text-decoration:none"
                     >
@@ -140,14 +140,14 @@ const STATUS = {
       })}
 
       <h2 id="join">How to join · 加入</h2>
-      <p>Write to us with a sentence about which of the three profiles fits you and which text you would like to start with. We answer everyone, and the first text usually goes out the same week.</p>
+      <p>Open a <a href="https://github.com/lupo168/astrologylib/issues/new?template=claim-translation.md">Claim a translation Issue</a> telling us which text you would like to start with and a sentence about your classical Chinese background. We answer everyone, and the first text usually goes out the same week.</p>
 
       <div class="note" style="margin-top:26px"><strong>Scholarly Independence · 學術獨立性</strong>
         <p style="margin-top:8px">The library - the original texts, our translations, the glossary, and the introductory articles - is <strong>free, forever</strong>. We <strong>do not solicit or accept any monetary donations, grants, or financial sponsorships</strong>. There is no bank account or donation button.</p>
         <p>Your volunteer work enters the public commons and is never privatized or sold. The full terms are in the <a href="/contributor-agreement/">Contributor Agreement</a>.</p>
       </div>
-      <p class="lead" style="margin-top:18px"><a class="btn btn-primary" href="mailto:contact@astrologylib.org?subject=Volunteer%20proofreader">Email contact@astrologylib.org →</a></p>
-      <p style="font-size:14px;color:var(--ink-500)">(Official communication address: contact@astrologylib.org)</p>
+      <p class="lead" style="margin-top:18px"><a class="btn btn-primary" href="https://github.com/lupo168/astrologylib/issues/new?template=claim-translation.md">Claim a translation on GitHub →</a></p>
+      <p style="font-size:14px;color:var(--ink-500)">Prefer email? Write to info@astrologylib.org</p>
     </article>
   </div>
 
