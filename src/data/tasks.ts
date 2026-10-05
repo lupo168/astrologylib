@@ -19,8 +19,8 @@ export const TASKS: ProofTask[] = [
   {
     id: 'glossary-core',
     category: 'glossary',
-    title: 'Glossary · Core Metaphysical Terms (164 entries)',
-    zh: '術語表 · 核心哲學術語庫 (164 詞條)',
+    title: 'Glossary · Core Metaphysical Terms (203 entries)',
+    zh: '術語表 · 核心哲學術語庫 (203 詞條)',
     scope: 'Verification of Taiji, Yin-Yang, Five Elements, Heavenly Stems, Earthly Branches',
     status: 'verified',
     priority: 'high',
