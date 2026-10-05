@@ -82,6 +82,17 @@ Rules for the `.en.txt` file:
 6. **Do not modernize the philosophy.** Translate what the text says, not what you think it should mean.
    Save interpretation for the forum.
 
+## AI assistance policy
+
+AI translation tools (machine translation, LLMs) are welcome as drafting aids — with 2,064 texts to go, we need the leverage. But:
+
+- Every AI-assisted translation must be disclosed in the PR description (`AI-assisted draft: <tool/model>`).
+- The human reviewer must read classical Chinese and must check the draft against the original **line by line**, not just for fluency. A reviewer who cannot read the original cannot approve.
+- Final merge always requires a human's explicit approval. AI output never goes live on its own.
+- The published page credits the human translator and reviewer. AI involvement is disclosed in the PR, never hidden.
+
+Why this rule: classical Chinese is full of variant readings and context-dependent meanings where AI hallucinates confidently. Our "verified" seal is a promise to readers — it must mean a human stood behind it.
+
 ## Proofreading
 
 - Check the translation against the Chinese original line by line, not just for fluency.
