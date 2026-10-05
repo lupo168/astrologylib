@@ -1,9 +1,10 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import PageAttribution from '../components/PageAttribution.astro';
 import { TASKS, CATEGORIES } from '../data/tasks';
 
-const title = "Contribute - Proofread the Translations · AstrologyLib";
-const description = "Volunteer to proofread and maintain the Chinese-English translations at the AstrologyLib. Named credit, honest work, a public good.";
+const title = "Contribute - Translate the Classics · 共译典籍 · AstrologyLib";
+const description = "Volunteer to translate classical Chinese astrology texts into English, from scratch, at the AstrologyLib. Named credit, honest work, a public good.";
 
 const STATUS = {
   open: { label: '待認領', cls: 'badge-open' },
@@ -15,8 +16,8 @@ const STATUS = {
 <BaseLayout title={title} description={description} active="contribute">
   <div class="article-head">
     <div class="crumb"><a href="/">Home</a> › Contribute</div>
-    <h1><span class="zh">志願者招募 · 譯文校對</span>Proofread the Translations</h1>
-    <p class="sub">Every translation on this site carries a verified seal. Keeping that seal honest takes human eyes - and that is where you come in.</p>
+    <h1><span class="zh">共译典籍</span>Translate the Classics</h1>
+    <p class="sub">2,064 texts, Chinese originals, English translations from scratch by volunteers.</p>
   </div>
 
   <div class="layout">
@@ -91,7 +92,7 @@ const STATUS = {
       <ol>
         <li><strong>Claim a text</strong> - pick a hexagram, chapter, or passage from the <a href="#tasks">work-in-progress list</a> below.</li>
         <li><strong>Compare and annotate</strong> - read the original against our translation; note what should change and why.</li>
-        <li><strong>Submit your notes</strong> - submit via email or discuss on the <a href="/community/?cat=classics">Classics & Errata forum</a>.</li>
+        <li><strong>Submit your translation</strong> - open a pull request on <a href="https://github.com/lupo168/astrologylib">GitHub</a> or discuss on the <a href="/community/?cat=classics">Classics & Errata forum</a>.</li>
         <li><strong>Review and seal</strong> - an editor reviews; accepted changes are applied, and the page's verified seal is updated with your name.</li>
       </ol>
 
@@ -148,6 +149,17 @@ const STATUS = {
       </div>
       <p class="lead" style="margin-top:18px"><a class="btn btn-primary" href="https://github.com/lupo168/astrologylib/issues/new?template=claim-translation.md">Claim a translation on GitHub →</a></p>
       <p style="font-size:14px;color:var(--ink-500)">Prefer email? Write to info@astrologylib.org</p>
+      <PageAttribution
+        sources={[
+          { label: 'Contributor Agreement', url: '/contributor-agreement/' },
+          { label: 'Open Access CC BY-SA 4.0 License', url: '/license/' }
+        ]}
+        verified="2026-10-05"
+        version="2.0.0"
+        proofreaders={[
+          { char: 'COCO', name: 'verified 2026-10-05' },
+        ]}
+      />
     </article>
   </div>
 
