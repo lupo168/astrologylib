@@ -93,6 +93,24 @@ AI translation tools (machine translation, LLMs) are welcome as drafting aids �
 
 Why this rule: classical Chinese is full of variant readings and context-dependent meanings where AI hallucinates confidently. Our "verified" seal is a promise to readers — it must mean a human stood behind it.
 
+### AI assistant attribution standard
+
+AI assistants that contribute deserve credit too — under their own names, in a standard format. When an AI assistant helps with a translation, add a Credits block to the PR description:
+
+```
+Credits:
+- Translator (human): <name> — translated from the classical original
+- Reviewer (human): <name> — line-by-line review against the original
+- AI: <assistant name> (<model>, <provider>) — <what it did, e.g. drafted EN translation>
+```
+
+If the assistant has no personal name, use the model instead: `AI: <model> (<provider>)`. Example: `AI: COCO (Muse Spark, Meta) — drafted EN translation of Baizibei`.
+
+Rules:
+- AI credit is **additional**, never a replacement: every merged translation still needs its human translator and reviewer named.
+- The "verified" seal on the published page always belongs to a human. AI assistants are credited in the PR and on the contributors wall, not in the seal.
+- One assistant, one line. If two assistants helped, list both.
+
 ## Proofreading
 
 - Check the translation against the Chinese original line by line, not just for fluency.
