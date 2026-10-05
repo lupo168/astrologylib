@@ -73,7 +73,7 @@ const {
       {proofreaders.length > 0 ? (
         proofreaders.map((p) =>
           p.href ? (
-            <a class="attrib-seal" href={p.href} title={p.name}><span class="seal-mini"><span class="sq">{p.char}</span>{p.name}</span></a>
+            <a class="attrib-seal" href={p.href} title={p.tooltip || p.name}><span class="seal-mini"><span class="sq">{p.char}</span>{p.name}</span></a>
           ) : (
             <span class="seal-mini" title={p.name}><span class="sq">{p.char}</span>{p.name}</span>
           )
