@@ -1,5 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import yicangCatalog from '../../data/yicang_catalog.json';
+import daozangCatalog from '../../data/daozang_catalog.json';
 
 const title = "Classical Reader · 中華古典典籍在線閱讀器 - AstrologyLib";
 const description = "Open-access classical Chinese texts from the Yi Canon and Daoist Canon with historical dating, dynasty attribution, and public domain verification.";
@@ -111,6 +113,25 @@ const description = "Open-access classical Chinese texts from the Yi Canon and D
       </p>
     </div>
   </div>
+
+  <!-- SSG 完整書目索引（SEO 2026-10-06：閱讀器為客戶端渲染，此處在 HTML 層直接輸出全部 2,064 部典籍內鏈；默認折疊不打擾閱讀） -->
+  <section style="max-width:var(--content-max);margin:0 auto;padding:8px 24px 64px">
+    <details>
+      <summary style="font-family:var(--font-heading);font-size:18px;font-weight:700;color:var(--ink);cursor:pointer;margin-bottom:12px">瀏覽全部典籍 · Browse All 2,064 Texts（易藏 343 · 道藏 1,721）</summary>
+      <h3 style="font-family:var(--font-heading);font-size:16px;font-weight:700;color:var(--ink);margin:12px 0 8px">易藏 · Yi Canon</h3>
+      <ul style="columns:3;column-gap:24px;list-style:none;margin:0 0 20px;padding:0;font-size:13px;line-height:1.6">
+        {yicangCatalog.map((b) => (
+          <li style="break-inside:avoid;margin-bottom:3px"><a href={`/library/read/yicang/${b.book_id}/`} style="color:var(--ink-700);text-decoration:none">《{b.title}》</a></li>
+        ))}
+      </ul>
+      <h3 style="font-family:var(--font-heading);font-size:16px;font-weight:700;color:var(--ink);margin:0 0 8px">道藏 · Daoist Canon</h3>
+      <ul style="columns:3;column-gap:24px;list-style:none;margin:0;padding:0;font-size:13px;line-height:1.6">
+        {daozangCatalog.map((b) => (
+          <li style="break-inside:avoid;margin-bottom:3px"><a href={`/library/read/daozang/${b.book_id}/`} style="color:var(--ink-700);text-decoration:none">《{b.title}》</a></li>
+        ))}
+      </ul>
+    </details>
+  </section>
 </BaseLayout>
 
 <style>
