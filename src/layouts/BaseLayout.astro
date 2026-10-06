@@ -9,6 +9,7 @@ interface Props {
   ogImage?: string;
   canonicalUrl?: string;
   schemaJson?: Record<string, any> | Record<string, any>[];
+  robots?: string;
 }
 
 const {
@@ -18,7 +19,8 @@ const {
   ogType = 'website',
   ogImage = 'https://astrologylib.org/logo.png',
   canonicalUrl,
-  schemaJson
+  schemaJson,
+  robots = "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
 } = Astro.props;
 
 const canonical = canonicalUrl || new URL(Astro.url.pathname, Astro.site || 'https://astrologylib.org').href;
@@ -187,7 +189,7 @@ const NAV: NavItem[] = [
   <meta name="google-site-verification" content={import.meta.env.PUBLIC_GOOGLE_SITE_VERIFICATION || "googlee793910c2688ec13"} />
 
   <!-- Robots & Directives -->
-  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+  <meta name="robots" content={robots} />
   <meta name="theme-color" content="#1A1A1A" />
   <meta name="format-detection" content="telephone=no" />
 
