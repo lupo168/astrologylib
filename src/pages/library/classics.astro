@@ -1,5 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import yicangCatalog from '../../data/yicang_catalog.json';
+import daozangCatalog from '../../data/daozang_catalog.json';
 
 const title = "Grand Classical Corpus · 萬卷典藏總庫 (2,064 Volumes) - AstrologyLib";
 const description = "Explore the complete unified collection of 2,064 classical Chinese texts across Eastern cosmology, divination, philosophy, and inner cultivation. 100% Public Domain.";
@@ -107,6 +109,24 @@ const description = "Explore the complete unified collection of 2,064 classical 
       </p>
     </div>
 
+  </section>
+
+  <!-- SSG 完整書目索引（SEO 2026-10-06：讓搜索引擎在 HTML 層直接看到全部 2,064 部典籍內鏈；上方互動檢索為客戶端渲染） -->
+  <section style="max-width:var(--content-max);margin:0 auto;padding:8px 24px 64px">
+    <h2 style="font-family:var(--font-heading);font-size:22px;font-weight:900;color:var(--ink);margin:0 0 6px">完整書目索引 · Complete Book Index</h2>
+    <p style="font-size:13px;color:var(--ink-500);margin:0 0 16px">易藏 343 部 · 道藏 1,721 部，共 2,064 部公有領域典籍，按藏部分列如下。</p>
+    <h3 style="font-family:var(--font-heading);font-size:17px;font-weight:700;color:var(--ink);margin:0 0 10px">易藏 · Yi Canon（343）</h3>
+    <ul style="columns:3;column-gap:24px;list-style:none;margin:0 0 28px;padding:0;font-size:13px;line-height:1.6">
+      {yicangCatalog.map((b) => (
+        <li style="break-inside:avoid;margin-bottom:3px"><a href={`/library/read/yicang/${b.book_id}/`} style="color:var(--ink-700);text-decoration:none">《{b.title}》</a> <span style="color:var(--ink-500);font-size:12px">{b.dynasty}</span></li>
+      ))}
+    </ul>
+    <h3 style="font-family:var(--font-heading);font-size:17px;font-weight:700;color:var(--ink);margin:0 0 10px">道藏 · Daoist Canon（1,721）</h3>
+    <ul style="columns:3;column-gap:24px;list-style:none;margin:0;padding:0;font-size:13px;line-height:1.6">
+      {daozangCatalog.map((b) => (
+        <li style="break-inside:avoid;margin-bottom:3px"><a href={`/library/read/daozang/${b.book_id}/`} style="color:var(--ink-700);text-decoration:none">《{b.title}》</a> <span style="color:var(--ink-500);font-size:12px">{b.dynasty}</span></li>
+      ))}
+    </ul>
   </section>
 </BaseLayout>
 
@@ -282,7 +302,7 @@ const description = "Explore the complete unified collection of 2,064 classical 
     let html = '';
 
     slice.forEach(b => {
-      const readUrl = `/library/read/?type=${b.corpusType}&id=${b.book_id}`;
+      const readUrl = `/library/read/${b.corpusType}/${b.book_id}/`;
       html += `
         <a class="book-card" href="${readUrl}">
           <div>
