@@ -1,0 +1,115 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageAttribution from '../../components/PageAttribution.astro';
+
+const title = "What Is Feng Shui? - AstrologyLib";
+const description = "Feng Shui (風水, wind-water) explained plainly: what the classical practice is, its two great schools, and what it honestly cannot promise.";
+
+const faqSchema = {
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What does Feng Shui literally mean?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Wind-water (風水). The name points to the practice's origins: reading the land's winds and waters to site buildings and graves well."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is Feng Shui just interior decorating?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Decorating tips are a modern, simplified offshoot. Classical Feng Shui is about siting, orientation, and timing - where a building goes and which way it faces - using the compass, bagua, and landform reading."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What are the two schools of Feng Shui?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The Form School reads visible landscape (mountains, water, the embrace of hills). The Compass School works with direction and time cycles, notably Flying Stars. Historical practice usually mixed both."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is a luopan?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A luopan (羅盤) is the Feng Shui compass: concentric rings marked with the bagua, Heavenly Stems, Earthly Branches, and other reference circles. It is the practitioner's main instrument."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does Feng Shui really bring wealth?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "There is no reliable evidence for specific outcome claims like 'this arrangement brings wealth.' What is well-supported is the practical half: light, air, orientation, and order genuinely affect how a space feels. The rest is cultural practice."
+      }
+    }
+  ]
+};
+---
+
+<BaseLayout title={title} description={description} active="learn" schemaJson={faqSchema}>
+  <div class="article-head">
+    <div class="crumb"><a href="/">Home</a> › <a href="/learn/">Learn</a> › What Is Feng Shui?</div>
+    <h1><span class="zh">風水</span>What Is Feng Shui?</h1>
+  </div>
+
+  <div class="layout">
+    <aside class="toc">
+      <div class="t-label">In this lesson</div>
+      <ul>
+        <li><a href="#what">What it actually is</a></li>
+        <li><a href="#schools">Two great schools</a></li>
+        <li><a href="#tools">Its working tools</a></li>
+        <li><a href="#honest">An honest note</a></li>
+        <li><a href="#where">Where this leads</a></li>
+      </ul>
+    </aside>
+
+    <article class="article-body">
+      <PageAttribution
+        sources={[
+          { label: 'Bagua (八卦) · eight trigrams', url: '/learn/i-ching-beginners/' },
+          { label: 'Five Elements (五行) foundations', url: '/learn/five-elements/' }
+        ]}
+        verified="2026-10-08"
+        version="1.0.0"
+      />
+
+      <p class="lead"><strong>Feng Shui</strong> (風水) literally means “wind-water.” It is the classical Chinese practice of siting and arranging buildings and graves in relation to landform, direction, and time - using the bagua, the five elements, and the compass. It is older, stranger, and more interesting than furniture-arranging tips.</p>
+
+      <div class="pdf-box" style="border:1px solid var(--ink-200);border-radius:10px;padding:18px 20px;margin:24px 0;background:var(--paper-2,#faf8f2)">
+        <p style="margin:0 0 10px"><strong>Free one-page PDF.</strong> Feng Shui One-Page: Core Ideas & Two Schools — print it, keep it. No signup needed.</p>
+        <a class="btn btn-primary" href="/pdf/what-is-feng-shui-cheatsheet.pdf" download>Download free PDF</a>
+      </div>
+
+      <h2 id="what">What it actually is</h2>
+      <p>Classical Feng Shui asks one question: <strong>where should this go, and which way should it face?</strong> Villages, houses, and tombs were sited by reading ridges ("dragons"), water mouths, and orientations against the compass. The goal was harmony between human dwelling and landform - practical as often as mystical, since a sheltered, well-drained site simply works better.</p>
+
+      <h2 id="schools">Two great schools</h2>
+      <p>The <strong>Form School</strong> (巒頭) reads the visible landscape: mountains as dragons, water as wealth's carrier, the embrace of hills around a site. The <strong>Compass School</strong> (理氣) works with direction, time cycles, and formulas - Flying Stars (玄空飛星) being the most famous, mapping nine "stars" across the bagua grid as time moves. Most historical practice mixed both.</p>
+
+      <h2 id="tools">Its working tools</h2>
+      <p>The <strong>luopan</strong> (羅盤) compass - concentric rings of bagua, stems, branches, and stars - is the practitioner's instrument. The <strong>bagua</strong> map divides space into eight directional sectors, each tied to a trigram, element, and life area. The shared vocabulary with the <a href="/learn/i-ching-beginners/">I Ching</a> and <a href="/learn/five-elements/">Five Elements</a> is not coincidence: it is the same cosmology applied to space.</p>
+
+      <h2 id="honest">An honest note</h2>
+      <p>Two honest statements. First: the classical system is genuinely complex - anyone selling it as "move this plant, get rich" is selling the wrapping, not the practice. Second: <strong>specific outcome claims</strong> (this arrangement brings wealth by March) have no reliable evidence behind them. What is well-supported is the mundane half: light, air, orientation, and uncluttered space genuinely affect how a place feels. Treat the rest as cultural practice, and enjoy it as such.</p>
+
+      <h2 id="where">Where this leads</h2>
+      <p>The cosmology behind Feng Shui is shared with the whole tradition: start with <a href="/learn/yin-yang/">Yin & Yang</a> and <a href="/learn/five-elements/">the Five Elements</a>, or browse the <a href="/glossary/">glossary</a> for terms like luopan and Flying Stars.</p>
+
+      <div class="disclaimer">
+        <p><strong>For guidance and self-awareness purposes only.</strong> This lesson explains Chinese astrology as a cultural and philosophical framework - what it is, where it came from, and how its vocabulary works. It is not a prediction of your future, a medical or financial opinion, or a substitute for professional advice.</p>
+      </div>
+
+      <div class="back-row" style="margin-top:28px">
+        <a class="btn btn-secondary" href="/learn/">← All lessons</a>
+        <a class="btn btn-primary" href="/glossary/">Next: Canonical Glossary (Step 2) →</a>
+      </div>
+    </article>
+  </div>
+</BaseLayout>
