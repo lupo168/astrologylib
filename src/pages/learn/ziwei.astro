@@ -4,9 +4,55 @@ import PageAttribution from '../../components/PageAttribution.astro';
 
 const title = "What Is Zi Wei Dou Shu? - AstrologyLib";
 const description = "Zi Wei Dou Shu (Purple Star Astrology) explained from zero - the Emperor Star, the 12 Palaces, the Four Transformations, a daily-life analogy, and a 30-second example.";
+
+const faqSchema = {
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is Zi Wei Dou Shu?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Zi Wei Dou Shu (紫微斗數), often called the “Emperor of Chinese Astrology,” maps psychological archetypes and life sectors through stars and palaces. It is attributed to the Daoist sage Chen Tuan (陳撶) and was canonized in the Ming-dynasty Wanli Xu Daozang."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What are the 14 Major Stars?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Fourteen personality archetypes orbiting Zi Wei (the North Star, symbolizing the Emperor): command and leadership (Zi Wei, Tian Fu, Wu Qu), strategy and intellect (Tian Ji, Ju Men, Tian Liang), expression and warmth (Tai Yang, Tai Yin, Tian Tong), drive and transformation (Lian Zhen, Tan Lang, Qi Sha, Po Jun), and harmony and trust (Tian Xiang)."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What are the Twelve Palaces?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Twelve life sectors arranged around the chart: Life, Siblings, Marriage, Children, Wealth, Health, Migration, Friends, Career, Property, Fortune and Parents. Each palace governs one domain of existence."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What are the Four Transformations (Si Hua)?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The dynamic layer: Hua Lu (化禄 · flow and opportunity), Hua Quan (化權 · authority and will), Hua Ke (化科 · reputation and clarity) and Hua Ji (化忌 · friction and life lessons). The year’s Heavenly Stem decides where each transformation lands."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How is Zi Wei different from BaZi?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "BaZi reads your elemental energy balance through time (stems and branches). Zi Wei maps psychological archetypes and life sectors across space (stars and palaces). The two systems complement each other."
+      }
+    }
+  ]
+};
 ---
 
-<BaseLayout title={title} description={description} active="traditions">
+<BaseLayout title={title} description={description} active="traditions" schemaJson={faqSchema}>
   <div class="article-head">
     <div class="crumb"><a href="/">Home</a> › <a href="/traditions/">Traditions</a> › What Is Zi Wei Dou Shu?</div>
     <h1><span class="zh">紫微斗數</span>What Is Zi Wei Dou Shu?</h1>
@@ -85,6 +131,11 @@ const description = "Zi Wei Dou Shu (Purple Star Astrology) explained from zero 
       <h2 id="where">Where this leads</h2>
       <p>Zi Wei never reads a palace in isolation. It relies on the <strong>San Fang Si Zheng (三方四正)</strong>—the triangular interplay between Life, Wealth, Career, and Migration. From there, decennial cycles called <strong>Da Xian (大限)</strong> activate each palace for ten years at a time.</p>
 
+
+      <div class="pdf-box" style="border:1px solid var(--ink-200);border-radius:10px;padding:18px 20px;margin:24px 0;background:var(--paper-2,#faf8f2)">
+        <p style="margin:0 0 10px"><strong>Free one-page PDF.</strong> Zi Wei Quick Reference: 14 Stars & 12 Palaces — print it, keep it. No signup needed.</p>
+        <a class="btn btn-primary" href="/pdf/ziwei-cheatsheet.pdf" download>Download free PDF</a>
+      </div>
       <div class="disclaimer">
         <p><strong>For guidance and self-awareness purposes only.</strong> This lesson explains Chinese astrology as a cultural and philosophical framework — what it is, where it came from, and how its vocabulary works. It is not a prediction of your future, a medical or financial opinion, or a substitute for professional advice.</p>
       </div>
