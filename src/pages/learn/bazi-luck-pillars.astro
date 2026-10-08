@@ -1,0 +1,115 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageAttribution from '../../components/PageAttribution.astro';
+
+const title = "Luck Pillars (Da Yun) in BaZi - AstrologyLib";
+const description = "Luck Pillars (大運) are BaZi's ten-year timing cycles, with annual Liu Nian on top. How they are derived and how to read them - as weather, not verdicts.";
+
+const faqSchema = {
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What are Luck Pillars in BaZi?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Luck Pillars (大運) are ten-year timing cycles derived from the month pillar of your BaZi chart. They lay decade-long elemental 'weather' over the natal chart, stepping forward or backward through the stem-branch cycle."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How long is each Luck Pillar?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "About ten years. A typical reading covers seven to nine pillars across a lifetime."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is Liu Nian?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Liu Nian (流年) is the annual luck pillar - the stem-branch combination of each calendar year, shared by everyone. Readers layer it over the Luck Pillar and natal chart."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do Luck Pillars change my Useful God?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. The natal Useful God stays fixed, but a Luck Pillar carrying your needed element is traditionally read as a supportive decade - the timing cooperates with the chart's needs."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "When does my first Luck Pillar start?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Traditionally a few years after birth, counted from the days between birth and the next solar term. The exact method varies by school; the chart tool computes it automatically."
+      }
+    }
+  ]
+};
+---
+
+<BaseLayout title={title} description={description} active="learn" schemaJson={faqSchema}>
+  <div class="article-head">
+    <div class="crumb"><a href="/">Home</a> › <a href="/learn/">Learn</a> › Luck Pillars (Da Yun)</div>
+    <h1><span class="zh">大運</span>Luck Pillars (Da Yun) in BaZi</h1>
+  </div>
+
+  <div class="layout">
+    <aside class="toc">
+      <div class="t-label">In this lesson</div>
+      <ul>
+        <li><a href="#what">What luck pillars are</a></li>
+        <li><a href="#direction">Forward or backward</a></li>
+        <li><a href="#annual">The annual layer: Liu Nian</a></li>
+        <li><a href="#read">How to read them</a></li>
+        <li><a href="#where">Where this leads</a></li>
+      </ul>
+    </aside>
+
+    <article class="article-body">
+      <PageAttribution
+        sources={[
+          { label: 'Luck Pillars (大運) · glossary', url: '/glossary/' },
+          { label: 'Month pillar as the derivation base', url: '/learn/bazi/' }
+        ]}
+        verified="2026-10-08"
+        version="1.0.0"
+      />
+
+      <p class="lead">If the birth chart is the map, the <strong>Luck Pillars</strong> (大運, dà yùn) are the weather moving across it. Derived from your month pillar, they lay ten-year chapters over a life - each a stem-branch pair that interacts with your natal chart. On top of them, each year brings its own <strong>Liu Nian</strong> (流年, annual luck) pillar.</p>
+
+      <div class="pdf-box" style="border:1px solid var(--ink-200);border-radius:10px;padding:18px 20px;margin:24px 0;background:var(--paper-2,#faf8f2)">
+        <p style="margin:0 0 10px"><strong>Free one-page PDF.</strong> Luck Pillars One-Page: 10-Year Cycles & Annual Luck — print it, keep it. No signup needed.</p>
+        <a class="btn btn-primary" href="/pdf/bazi-luck-pillars-cheatsheet.pdf" download>Download free PDF</a>
+      </div>
+
+      <h2 id="what">What luck pillars are</h2>
+      <p>Each Luck Pillar covers roughly <strong>ten years</strong> and carries one Heavenly Stem and one Earthly Branch. They are derived from the <strong>month pillar</strong>, stepping through the sixty stem-branch combinations in order. A full life is typically read as seven to nine such chapters - childhood, youth, middle age, and later years each under different elemental weather.</p>
+
+      <h2 id="direction">Forward or backward</h2>
+      <p>The pillars step <strong>forward</strong> through the cycle for males born in yang years and females born in yin years, and <strong>backward</strong> for the reverse combinations (順行/逆行). The first pillar traditionally begins a few years after birth - the exact count varies by school, usually derived from the days to the next solar term. Do not worry about the arithmetic: the <a href="/tools/bazi-chart/">chart tool</a> computes it.</p>
+
+      <h2 id="annual">The annual layer: Liu Nian</h2>
+      <p>Above the decade chapters sits the <strong>Liu Nian</strong> (流年): each calendar year's own stem-branch pillar, the same one the whole world shares that year. Readers layer them - natal chart as terrain, Luck Pillar as climate, Liu Nian as this year's weather. 2027, for instance, is a Ding-Wei (丁未) year for everyone; what it stirs depends on your chart.</p>
+
+      <h2 id="read">How to read them</h2>
+      <div class="analogy"><b>Everyday analogy.</b> Think of a garden (your chart) through seasons (luck pillars) and this week's forecast (the annual pillar). A rainy decade helps the farmer and floods the builder - same weather, different terrain. Luck pillars describe conditions, not verdicts; the chart still decides what the conditions mean.</div>
+
+      <h2 id="where">Where this leads</h2>
+      <p>Timing language pairs naturally with the <a href="/learn/bazi-useful-god/">Useful God</a>: decades that bring your needed element are traditionally read as supportive. For the full vocabulary, see the <a href="/glossary/">glossary</a>; for your own pillars, the <a href="/tools/bazi-chart/">chart tool</a>.</p>
+
+      <div class="disclaimer">
+        <p><strong>For guidance and self-awareness purposes only.</strong> This lesson explains Chinese astrology as a cultural and philosophical framework - what it is, where it came from, and how its vocabulary works. It is not a prediction of your future, a medical or financial opinion, or a substitute for professional advice.</p>
+      </div>
+
+      <div class="back-row" style="margin-top:28px">
+        <a class="btn btn-secondary" href="/learn/">← All lessons</a>
+        <a class="btn btn-primary" href="/glossary/">Next: Canonical Glossary (Step 2) →</a>
+      </div>
+    </article>
+  </div>
+</BaseLayout>
