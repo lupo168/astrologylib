@@ -4,9 +4,55 @@ import PageAttribution from '../../components/PageAttribution.astro';
 
 const title = "Yin & Yang, Explained Simply - AstrologyLib";
 const description = "Yin and Yang, explained in plain language - the two complementary forces at the root of Chinese astrology, with a daily-life analogy and a 30-second example.";
+
+const faqSchema = {
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What are Yin and Yang?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Two complementary forces describing how anything moves, changes and balances. They are not good and evil, and not a duality to pick a side of — they are partners in a cycle."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is Yang and what is Yin?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yang is the outward, active, bright, rising side — day is yang relative to night. Yin is the inward, receptive, still, gathering side — night is yin relative to day."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which is better, Yin or Yang?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Neither. Each is simply the other’s partner. A breath shows it: inhale (yang, expanding) and exhale (yin, settling) — you never hold only one."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Where does the Yin-Yang concept come from?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The Zhou Yi’s Xi Ci commentary states: “one yin, one yang — this is called the Way.” The idea also runs through Laozi, chapter 42."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does Yin-Yang relate to a BaZi chart?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A chart, a year or a personality is read as some particular balance of the two forces at a given moment — a rhythm you notice, not a label you memorize."
+      }
+    }
+  ]
+};
 ---
 
-<BaseLayout title={title} description={description} active="learn">
+<BaseLayout title={title} description={description} active="learn" schemaJson={faqSchema}>
   <div class="article-head">
     <div class="crumb"><a href="/">Home</a> › <a href="/learn/">Learn</a> › Yin &amp; Yang</div>
     <h1><span class="zh">陰陽</span>Yin &amp; Yang, Explained Simply</h1>
@@ -50,6 +96,11 @@ const description = "Yin and Yang, explained in plain language - the two complem
       <h2 id="where">Where this leads</h2>
       <p>The next lesson adds the Five Elements - the five ways that balance can be made of. Then the Zodiac gives each a face, and BaZi shows how the four pillars of your birth moment hold all of it together. One step at a time, no jargon required.</p>
 
+
+      <div class="pdf-box" style="border:1px solid var(--ink-200);border-radius:10px;padding:18px 20px;margin:24px 0;background:var(--paper-2,#faf8f2)">
+        <p style="margin:0 0 10px"><strong>Free one-page PDF.</strong> Yin & Yang One-Page: Everyday Examples — print it, keep it. No signup needed.</p>
+        <a class="btn btn-primary" href="/pdf/yin-yang-cheatsheet.pdf" download>Download free PDF</a>
+      </div>
       <div class="disclaimer">
         <p><strong>For guidance and self-awareness purposes only.</strong> This lesson explains Chinese astrology as a cultural and philosophical framework - what it is, where it came from, and how its vocabulary works. It is not a prediction of your future, a medical or financial opinion, or a substitute for professional advice.</p>
       </div>
