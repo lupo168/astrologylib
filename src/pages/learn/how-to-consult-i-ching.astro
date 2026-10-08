@@ -1,0 +1,115 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageAttribution from '../../components/PageAttribution.astro';
+
+const title = "How to Consult the I Ching - AstrologyLib";
+const description = "The classic three-coin method, step by step: cast six lines, find your hexagram, read the judgment and the moving lines.";
+
+const faqSchema = {
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How does the three-coin method work?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Assign heads a value of 3 and tails a value of 2, then throw three coins six times, building lines from the bottom up. Sums of 6 and 9 are moving lines; 7 and 8 are stable. The result is one hexagram, plus a second if any lines move."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What are moving lines?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Moving lines are the 6 (old yin) and 9 (old yang) results. They are read as lines in flux: you read their individual line texts, and they flip into their opposite to form a second, resulting hexagram showing where the situation leans."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I ask a yes-or-no question?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "You can, but the I Ching answers poorly in yes-or-no terms. It speaks in images and tendencies. Questions like 'what should I consider about X?' get far more useful answers than 'should I do X?'"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How long does a consultation take?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "About five minutes by hand with coins, under a minute with the online hexagram tool. The reading and reflection afterward take as long as you give them."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does the I Ching decide for me?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. It reframes the question through traditional imagery. The decision stays yours. AstrologyLib presents it as a framework for reflection, not a prediction or professional advice."
+      }
+    }
+  ]
+};
+---
+
+<BaseLayout title={title} description={description} active="learn" schemaJson={faqSchema}>
+  <div class="article-head">
+    <div class="crumb"><a href="/">Home</a> › <a href="/learn/">Learn</a> › How to Consult the I Ching</div>
+    <h1><span class="zh">如何問卦</span>How to Consult the I Ching</h1>
+  </div>
+
+  <div class="layout">
+    <aside class="toc">
+      <div class="t-label">In this lesson</div>
+      <ul>
+        <li><a href="#prepare">Prepare one question</a></li>
+        <li><a href="#coins">The coin values</a></li>
+        <li><a href="#cast">Cast six lines</a></li>
+        <li><a href="#read">Read the answer</a></li>
+        <li><a href="#limits">What it will not do</a></li>
+      </ul>
+    </aside>
+
+    <article class="article-body">
+      <PageAttribution
+        sources={[
+          { label: 'Three-coin method · classical consultation tradition', url: '/tools/hexagram/' },
+          { label: 'Zhou Yi (周易) hexagram judgments', url: '/learn/i-ching-hexagrams/' }
+        ]}
+        verified="2026-10-08"
+        version="1.0.0"
+      />
+
+      <p class="lead">Consulting the I Ching is a small ritual with a practical purpose: it forces you to slow down, state your question clearly, and sit with an answer you did not choose yourself. The classic three-coin method takes about five minutes. Here is exactly how it works.</p>
+
+      <div class="pdf-box" style="border:1px solid var(--ink-200);border-radius:10px;padding:18px 20px;margin:24px 0;background:var(--paper-2,#faf8f2)">
+        <p style="margin:0 0 10px"><strong>Free one-page PDF.</strong> Three-Coin Method One-Page: Values & Steps — print it, keep it. No signup needed.</p>
+        <a class="btn btn-primary" href="/pdf/how-to-consult-i-ching-cheatsheet.pdf" download>Download free PDF</a>
+      </div>
+
+      <h2 id="prepare">Prepare one question</h2>
+      <p>Write down a single, concrete question - not "what will happen?" but "what should I consider about X?" Vague questions get vague answers; the I Ching rewards precision. One question per casting. If you have three questions, cast three times.</p>
+
+      <h2 id="coins">The coin values</h2>
+      <p>Take three ordinary coins. Decide which side is heads (value 3) and which is tails (value 2), and keep it consistent. Each throw gives a sum: <strong>6</strong> = old yin (moving), <strong>7</strong> = young yang, <strong>8</strong> = young yin, <strong>9</strong> = old yang (moving). "Old" lines are called moving lines - they change into their opposite and create a second, resulting hexagram.</p>
+
+      <h2 id="cast">Cast six lines</h2>
+      <p>Throw the coins six times and draw the lines <strong>from the bottom up</strong>: the first throw is the bottom line, the sixth is the top. Mark moving lines (6 and 9) with a small cross or circle. When you are done you have one hexagram - and, if there are moving lines, a second one it is turning into.</p>
+
+      <h2 id="read">Read the answer</h2>
+      <p>Read in this order: first the <strong>judgment</strong> (卦辭) of your hexagram for the overall situation, then the <strong>line texts</strong> of the moving lines for specifics. If there are no moving lines, the judgment alone is the answer. If there are, also glance at the resulting hexagram - it shows where things lean. Our <a href="/tools/hexagram/">hexagram tool</a> does the casting for you; the <a href="/learn/i-ching-hexagrams/">64-hexagram list</a> has every judgment keyword.</p>
+
+      <h2 id="limits">What it will not do</h2>
+      <p>It will not make the decision for you, and it will not give you dates, names, or numbers. What it reliably does is reframe: a stuck situation seen through an old image often shows the part you were avoiding. If a reading feels meaningless, the honest move is to set it aside - not to cast again until you like the answer.</p>
+
+      <div class="disclaimer">
+        <p><strong>For guidance and self-awareness purposes only.</strong> This lesson explains Chinese astrology as a cultural and philosophical framework - what it is, where it came from, and how its vocabulary works. It is not a prediction of your future, a medical or financial opinion, or a substitute for professional advice.</p>
+      </div>
+
+      <div class="back-row" style="margin-top:28px">
+        <a class="btn btn-secondary" href="/learn/">← All lessons</a>
+        <a class="btn btn-primary" href="/learn/i-ching-hexagrams/">Next: The 64 Hexagrams, Listed →</a>
+      </div>
+    </article>
+  </div>
+</BaseLayout>
