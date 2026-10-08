@@ -1,0 +1,115 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageAttribution from '../../components/PageAttribution.astro';
+
+const title = "I Ching for Beginners - AstrologyLib";
+const description = "The I Ching explained from zero: 64 hexagrams, eight trigrams, and how a 3,000-year-old classic is still used for reflection today.";
+
+const faqSchema = {
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is the I Ching?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The I Ching (Classic of Changes) is an ancient Chinese text of 64 six-line figures called hexagrams. Its core, the Zhou Yi, dates to the Western Zhou period over 3,000 years ago; later commentaries called the Ten Wings expanded it into the Yi Jing."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is a hexagram?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A hexagram is a figure of six stacked lines. Each line is either broken (yin) or solid (yang). The 64 hexagrams are all possible combinations of the eight three-line trigrams stacked in pairs."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do I need coins or yarrow stalks to use the I Ching?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. The traditional consultation methods use yarrow stalks or three coins, but most beginners start by reading: pick a question, look up a hexagram, and study its judgment. The method matters less than the question."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How old is the I Ching?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The hexagram figures and their core judgments took shape in the Western Zhou period, roughly 1000-750 BCE - more than three thousand years ago. The philosophical commentaries were added centuries later."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is the I Ching a prediction of the future?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. AstrologyLib presents the I Ching as a cultural and philosophical framework for reflection and guidance - what it is, where it came from, how its vocabulary works - not a prediction, and not medical or financial advice."
+      }
+    }
+  ]
+};
+---
+
+<BaseLayout title={title} description={description} active="learn" schemaJson={faqSchema}>
+  <div class="article-head">
+    <div class="crumb"><a href="/">Home</a> › <a href="/learn/">Learn</a> › I Ching for Beginners</div>
+    <h1><span class="zh">易經入門</span>I Ching for Beginners</h1>
+  </div>
+
+  <div class="layout">
+    <aside class="toc">
+      <div class="t-label">In this lesson</div>
+      <ul>
+        <li><a href="#what">What the I Ching is</a></li>
+        <li><a href="#parts">Its three parts</a></li>
+        <li><a href="#trigrams">Eight trigrams, 64 hexagrams</a></li>
+        <li><a href="#example">A 30-second example</a></li>
+        <li><a href="#where">Where this leads</a></li>
+      </ul>
+    </aside>
+
+    <article class="article-body">
+      <PageAttribution
+        sources={[
+          { label: 'Zhou Yi (周易) · classical I Ching tradition', url: '/glossary/' },
+          { label: 'Ten Wings (十翼) commentaries', url: '/learn/what-are-ten-wings/' }
+        ]}
+        verified="2026-10-08"
+        version="1.0.0"
+      />
+
+      <p class="lead">The I Ching (易經, the Classic of Changes) is one of the oldest Chinese classics - a book of 64 six-line figures used for reflection and decision-making for over three thousand years. Think of it less as a fortune-teller and more as a mirror: you bring a question, it gives you an image to think with.</p>
+
+      <div class="pdf-box" style="border:1px solid var(--ink-200);border-radius:10px;padding:18px 20px;margin:24px 0;background:var(--paper-2,#faf8f2)">
+        <p style="margin:0 0 10px"><strong>Free one-page PDF.</strong> I Ching Basics One-Page: Trigrams & First Hexagrams — print it, keep it. No signup needed.</p>
+        <a class="btn btn-primary" href="/pdf/i-ching-beginners-cheatsheet.pdf" download>Download free PDF</a>
+      </div>
+
+      <h2 id="what">What the I Ching is</h2>
+      <p>The I Ching began as a divination manual in the Western Zhou period (roughly 1000-750 BCE) and grew into one of the Confucian classics. Its core, the <strong>Zhou Yi</strong> (周易), holds the 64 hexagrams with their short judgments. Later commentaries, the <strong>Ten Wings</strong> (十翼), added philosophy - that expanded book is what most people mean by the <strong>Yi Jing</strong> (易經).</p>
+
+      <h2 id="parts">Its three parts</h2>
+      <p>Every hexagram entry has the same anatomy. First the <strong>hexagram</strong> itself: six stacked lines, each either broken (yin) or solid (yang). Then the <strong>judgment</strong> (卦辭): a few cryptic words on the whole figure. Then the <strong>line texts</strong> (爻辭): one note per line, read only when that line is "moving." Three layers, read top-down only as far as you need.</p>
+
+      <h2 id="trigrams">Eight trigrams, 64 hexagrams</h2>
+      <p>The 64 hexagrams are built from just eight three-line <strong>trigrams</strong> (八卦), stacked in pairs: Qian (heaven), Dui (lake), Li (fire), Zhen (thunder), Xun (wind), Kan (water), Gen (mountain), Kun (earth). Eight times eight is sixty-four - every possible combination appears exactly once. You do not need to memorize them; you only need to know how to look one up.</p>
+
+      <h2 id="example">A 30-second example</h2>
+      <div class="analogy"><b>Everyday analogy.</b> Hexagram 1, Qian (乾, all six lines solid), is pure creative drive - "the dragon" in the old language. Hexagram 2, Kun (坤, all six lines broken), is pure receptivity - the field that receives the seed. Most real readings land somewhere between these two poles, and the judgment tells you which way the situation leans.</div>
+
+      <h2 id="where">Where this leads</h2>
+      <p>Reading about the I Ching is the easy part; consulting it is a small skill of its own. Continue with <a href="/learn/how-to-consult-i-ching/">How to Consult the I Ching</a> for the classic three-coin method, browse <a href="/learn/i-ching-hexagrams/">the 64 hexagrams listed</a>, or try casting one right now with the <a href="/tools/hexagram/">hexagram tool</a>.</p>
+
+      <div class="disclaimer">
+        <p><strong>For guidance and self-awareness purposes only.</strong> This lesson explains Chinese astrology as a cultural and philosophical framework - what it is, where it came from, and how its vocabulary works. It is not a prediction of your future, a medical or financial opinion, or a substitute for professional advice.</p>
+      </div>
+
+      <div class="back-row" style="margin-top:28px">
+        <a class="btn btn-secondary" href="/learn/">← All lessons</a>
+        <a class="btn btn-primary" href="/learn/how-to-consult-i-ching/">Next: How to Consult the I Ching →</a>
+      </div>
+    </article>
+  </div>
+</BaseLayout>
