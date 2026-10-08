@@ -1,0 +1,115 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageAttribution from '../../components/PageAttribution.astro';
+
+const title = "How to Find Your BaZi Chart - AstrologyLib";
+const description = "Get your BaZi chart in 30 seconds: what you need (birth date and time), how the free chart tool works, and how to read the result.";
+
+const faqSchema = {
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Do I need my birth time for a BaZi chart?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "For the full eight characters, yes - the hour pillar needs your birth time. With date alone you still get six characters (year, month, day pillars), which is enough for most structural reading."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does BaZi use the lunar calendar?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Not exactly. BaZi month pillars follow the solar terms, and the year pillar changes at Li Chun (around February 4), not at Lunar New Year. The chart tool handles the conversion."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What if I do not know my birth hour?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Leave it blank. Three pillars still give a working chart. Guessing an hour risks a wrong chart, which is worse than an incomplete one."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is the AstrologyLib chart tool free?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. It runs in your browser, needs no account, and stores nothing."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why does the month change at Li Chun instead of New Year?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Because BaZi months are solar-term months, tied to the sun's position rather than the moon. Li Chun marks the start of the first solar-term month, Yin - and with it, the new BaZi year."
+      }
+    }
+  ]
+};
+---
+
+<BaseLayout title={title} description={description} active="learn" schemaJson={faqSchema}>
+  <div class="article-head">
+    <div class="crumb"><a href="/">Home</a> › <a href="/learn/">Learn</a> › How to Find Your BaZi Chart</div>
+    <h1><span class="zh">查八字</span>How to Find Your BaZi Chart</h1>
+  </div>
+
+  <div class="layout">
+    <aside class="toc">
+      <div class="t-label">In this lesson</div>
+      <ul>
+        <li><a href="#need">What you need</a></li>
+        <li><a href="#calendar">A calendar warning</a></li>
+        <li><a href="#tool">Use the free tool</a></li>
+        <li><a href="#read">Read the first thing</a></li>
+        <li><a href="#limits">When the hour is unknown</a></li>
+      </ul>
+    </aside>
+
+    <article class="article-body">
+      <PageAttribution
+        sources={[
+          { label: 'BaZi chart construction · classical method', url: '/tools/bazi-chart/' },
+          { label: 'Day Master (日主) explained', url: '/learn/day-master-meaning/' }
+        ]}
+        verified="2026-10-08"
+        version="1.0.0"
+      />
+
+      <p class="lead">Everything in BaZi starts with the chart - four pillars, eight characters, computed from your birth moment. You need two things: your birth date and your birth time. The rest is arithmetic the tool does for you. Here is how to get a correct chart and read the first thing on it.</p>
+
+      <div class="pdf-box" style="border:1px solid var(--ink-200);border-radius:10px;padding:18px 20px;margin:24px 0;background:var(--paper-2,#faf8f2)">
+        <p style="margin:0 0 10px"><strong>Free one-page PDF.</strong> Find Your Chart One-Page: Inputs & Reading Steps — print it, keep it. No signup needed.</p>
+        <a class="btn btn-primary" href="/pdf/find-your-bazi-chart-cheatsheet.pdf" download>Download free PDF</a>
+      </div>
+
+      <h2 id="need">What you need</h2>
+      <p>Your <strong>birth date</strong> gives the year, month, and day pillars. Your <strong>birth time</strong> gives the hour pillar - BaZi divides the day into twelve two-hour periods (Zi hour is 11pm-1am, Chou 1-3am, and so on). Date alone gives you six of the eight characters; the hour completes the chart.</p>
+
+      <h2 id="calendar">A calendar warning</h2>
+      <p>BaZi does not use the lunar calendar the way most people expect. The <strong>year pillar changes at Li Chun</strong> (立春, around February 4), not at Lunar New Year, and the <strong>month pillars follow the solar terms</strong> (節氣), not the lunar months. Someone born on February 2 is still in the previous BaZi year. The tool handles this; just know it is solar-term based.</p>
+
+      <h2 id="tool">Use the free tool</h2>
+      <p>Open the <a href="/tools/bazi-chart/">BaZi chart tool</a>, enter your birth date, time, and place, and it returns the four pillars with stems on top and branches below. Free, no account, runs in your browser. Double-check the hour against your birth record - a wrong hour is the most common source of a wrong chart.</p>
+
+      <h2 id="read">Read the first thing</h2>
+      <p>Find the day pillar and look at its top character - the stem. That is your <strong>Day Master</strong> (日主): the character that represents you, and the anchor every reading starts from. Learn what yours means in <a href="/learn/day-master-meaning/">Day Master Meaning</a>, or start from zero with <a href="/learn/bazi/">What Is Your BaZi?</a></p>
+
+      <h2 id="limits">When the hour is unknown</h2>
+      <p>Many people do not know their birth hour. That is fine: the year, month, and day pillars still give a working chart, and most structural reading starts from the Day Master anyway. Do not guess an hour to "complete" the chart - a wrong hour is worse than a missing one.</p>
+
+      <div class="disclaimer">
+        <p><strong>For guidance and self-awareness purposes only.</strong> This lesson explains Chinese astrology as a cultural and philosophical framework - what it is, where it came from, and how its vocabulary works. It is not a prediction of your future, a medical or financial opinion, or a substitute for professional advice.</p>
+      </div>
+
+      <div class="back-row" style="margin-top:28px">
+        <a class="btn btn-secondary" href="/learn/">← All lessons</a>
+        <a class="btn btn-primary" href="/learn/day-master-meaning/">Next: Day Master Meaning →</a>
+      </div>
+    </article>
+  </div>
+</BaseLayout>
