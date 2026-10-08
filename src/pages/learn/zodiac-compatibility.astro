@@ -1,0 +1,131 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageAttribution from '../../components/PageAttribution.astro';
+
+const title = "Chinese Zodiac Compatibility Chart - AstrologyLib";
+const description = "How the twelve signs relate: the trine groups (San He), the six harmonious pairs (Liu He), and the six clashes (Liu Chong) - with a full chart.";
+
+const faqSchema = {
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is the most compatible Chinese zodiac pairing?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Tradition names two harmonious systems: the San He trines (e.g., Rat-Dragon-Monkey) and the Liu He pairs (e.g., Rat-Ox). But compatibility in the full tradition reads whole charts, not single signs."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is San He?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "San He (三合) groups the twelve signs into four trines of three, each sharing an elemental frame: Rat-Dragon-Monkey, Ox-Snake-Rooster, Tiger-Horse-Dog, and Rabbit-Goat-Pig."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is Liu Chong?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Liu Chong (六沖) names six clashing pairs: Rat-Horse, Ox-Goat, Tiger-Monkey, Rabbit-Rooster, Dragon-Dog, Snake-Pig. Clash means friction of rhythm, not a verdict on a relationship."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does a zodiac clash mean a relationship will fail?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. The chart is the coarsest layer of the tradition; full BaZi readings weigh stems, elements, and timing alongside it. Many lasting partnerships are 'clashes' on paper."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Where do these combinations come from?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "From the Earthly Branches' relationships in classical Chinese calendrical astrology - the same branch system underlying BaZi and date selection."
+      }
+    }
+  ]
+};
+---
+
+<BaseLayout title={title} description={description} active="learn" schemaJson={faqSchema}>
+  <div class="article-head">
+    <div class="crumb"><a href="/">Home</a> › <a href="/learn/">Learn</a> › Zodiac Compatibility Chart</div>
+    <h1><span class="zh">生肖配對</span>Chinese Zodiac Compatibility Chart</h1>
+  </div>
+
+  <div class="layout">
+    <aside class="toc">
+      <div class="t-label">In this lesson</div>
+      <ul>
+        <li><a href="#sanhe">San He: the four trines</a></li>
+        <li><a href="#liuhe">Liu He: six pairs</a></li>
+        <li><a href="#liuchong">Liu Chong: six clashes</a></li>
+        <li><a href="#chart">The full chart</a></li>
+        <li><a href="#limits">What this does not decide</a></li>
+      </ul>
+    </aside>
+
+    <article class="article-body">
+      <PageAttribution
+        sources={[
+          { label: 'Twelve zodiac animals · full cycle', url: '/learn/zodiac/' },
+          { label: 'Branch relationships (三合六合六沖)', url: '/glossary/' }
+        ]}
+        verified="2026-10-08"
+        version="1.0.0"
+      />
+
+      <p class="lead">The zodiac is not twelve isolated animals - it is a web of relationships. Three traditional systems describe them: <strong>San He</strong> (三合, trine groups of three), <strong>Liu He</strong> (六合, six harmonious pairs), and <strong>Liu Chong</strong> (六沖, six clashes). Here is the full chart, and what it does and does not mean.</p>
+
+      <div class="pdf-box" style="border:1px solid var(--ink-200);border-radius:10px;padding:18px 20px;margin:24px 0;background:var(--paper-2,#faf8f2)">
+        <p style="margin:0 0 10px"><strong>Free one-page PDF.</strong> Zodiac Compatibility One-Page: Trines, Pairs & Clashes — print it, keep it. No signup needed.</p>
+        <a class="btn btn-primary" href="/pdf/zodiac-compatibility-cheatsheet.pdf" download>Download free PDF</a>
+      </div>
+
+      <h2 id="sanhe">San He: the four trines</h2>
+      <p>Four groups of three, each sharing an elemental frame: <strong>Rat-Dragon-Monkey</strong> (water frame), <strong>Ox-Snake-Rooster</strong> (metal frame), <strong>Tiger-Horse-Dog</strong> (fire frame), <strong>Rabbit-Goat-Pig</strong> (wood frame). Trine signs are read as natural allies - different strengths, same direction.</p>
+
+      <h2 id="liuhe">Liu He: six pairs</h2>
+      <p>Six one-to-one harmonies: <strong>Rat-Ox, Tiger-Pig, Rabbit-Dog, Dragon-Rooster, Snake-Monkey, Horse-Goat</strong>. Where trines are teams, pairs are partnerships - the classic "secret friend" (六合貴人) combinations of folk tradition.</p>
+
+      <h2 id="liuchong">Liu Chong: six clashes</h2>
+      <p>Six oppositions, each pair six steps apart: <strong>Rat-Horse, Ox-Goat, Tiger-Monkey, Rabbit-Rooster, Dragon-Dog, Snake-Pig</strong>. "Clash" sounds alarming; in practice it means friction and difference of rhythm, not doom. Many strong partnerships are clashes that learned to work.</p>
+
+      <h2 id="chart">The full chart</h2>
+      <table>
+      <thead><tr><th>Sign</th><th>Trine allies (三合)</th><th>Secret friend (六合)</th><th>Clash (六沖)</th></tr></thead>
+      <tbody>
+      <tr><td>Rat</td><td>Dragon, Monkey</td><td>Ox</td><td>Horse</td></tr>
+      <tr><td>Ox</td><td>Snake, Rooster</td><td>Rat</td><td>Goat</td></tr>
+      <tr><td>Tiger</td><td>Horse, Dog</td><td>Pig</td><td>Monkey</td></tr>
+      <tr><td>Rabbit</td><td>Goat, Pig</td><td>Dog</td><td>Rooster</td></tr>
+      <tr><td>Dragon</td><td>Rat, Monkey</td><td>Rooster</td><td>Dog</td></tr>
+      <tr><td>Snake</td><td>Ox, Rooster</td><td>Monkey</td><td>Pig</td></tr>
+      <tr><td>Horse</td><td>Tiger, Dog</td><td>Goat</td><td>Rat</td></tr>
+      <tr><td>Goat</td><td>Rabbit, Pig</td><td>Horse</td><td>Ox</td></tr>
+      <tr><td>Monkey</td><td>Rat, Dragon</td><td>Snake</td><td>Tiger</td></tr>
+      <tr><td>Rooster</td><td>Ox, Snake</td><td>Dragon</td><td>Rabbit</td></tr>
+      <tr><td>Dog</td><td>Tiger, Horse</td><td>Rabbit</td><td>Dragon</td></tr>
+      <tr><td>Pig</td><td>Rabbit, Goat</td><td>Tiger</td><td>Snake</td></tr>
+      </tbody>
+      </table>
+
+      <h2 id="limits">What this does not decide</h2>
+      <p>A sign-to-sign chart is the coarsest layer of the tradition. Real BaZi compatibility reads <strong>full charts</strong> - stems, branches, elements, and timing - where one clash can be absorbed by three harmonies elsewhere. Use this chart for curiosity and conversation; for anything that matters, the <a href="/tools/bazi-chart/">chart tool</a> and <a href="/learn/bazi/">BaZi basics</a> go deeper.</p>
+
+      <div class="disclaimer">
+        <p><strong>For guidance and self-awareness purposes only.</strong> This lesson explains Chinese astrology as a cultural and philosophical framework - what it is, where it came from, and how its vocabulary works. It is not a prediction of your future, a medical or financial opinion, or a substitute for professional advice.</p>
+      </div>
+
+      <div class="back-row" style="margin-top:28px">
+        <a class="btn btn-secondary" href="/learn/">← All lessons</a>
+        <a class="btn btn-primary" href="/learn/what-is-feng-shui/">Next: What Is Feng Shui? →</a>
+      </div>
+    </article>
+  </div>
+</BaseLayout>
