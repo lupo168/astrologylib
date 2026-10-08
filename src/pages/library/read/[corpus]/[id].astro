@@ -55,30 +55,12 @@ const { book, corpus, corpusName, corpusNameEn, prev, next } = Astro.props;
 
 // Load full text at build time
 let bookText = '';
-let txtPath = '';
 try {
-  txtPath = path.join(process.cwd(), 'public', 'classics', corpus, book.rel_path);
+  const txtPath = path.join(process.cwd(), 'public', 'classics', corpus, book.rel_path);
   bookText = fs.readFileSync(txtPath, 'utf-8');
 } catch {
   bookText = '';
 }
-
-// Load volunteer English translation if present.
-// Convention (see CONTRIBUTING.md): <name>.en.txt sits next to the source <name>.txt,
-// paragraphs split on blank lines, paragraph N of EN <=> paragraph N of ZH.
-let enText = '';
-if (/\.txt$/i.test(txtPath)) {
-  try {
-    enText = fs.readFileSync(txtPath.replace(/\.txt$/i, '.en.txt'), 'utf-8');
-  } catch {
-    enText = '';
-  }
-}
-const hasTranslation = enText.trim().length > 0;
-// Strip the 3-line translator header (# ...) before paragraph alignment
-const enBody = enText.split('\n').filter((l) => !l.trimStart().startsWith('#')).join('\n');
-const zhParas = bookText.split(/\n\s*\n/).map((s) => s.trim()).filter(Boolean);
-const enParas = enBody.split(/\n\s*\n/).map((s) => s.trim()).filter(Boolean);
 
 const pageTitle = `${book.title} · ${corpusName}${corpusNameEn} - AstrologyLib`;
 const pageDesc = `${book.title}（${book.dynasty} · ${book.author}）：${book.summary}`.slice(0, 160);
@@ -96,40 +78,6 @@ const bookSchema = {
   isPartOf: { '@id': 'https://astrologylib.org/#website' },
   url: pageUrl,
 };
-
-// Strip a trailing role suffix (" 撰" etc.) for the schema author name
-const cleanAuthor = book.author.replace(/\s+(撰|編|編註|注|註|輯|修|纂|述|集|評|者)\s*$/, '');
-
-const faqSchema = {
-  '@type': 'FAQPage',
-  '@id': `${pageUrl}#faq`,
-  mainEntity: [
-    {
-      '@type': 'Question',
-      name: `《${book.title}》的作者是誰？`,
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: `《${book.title}》由${book.dynasty}${cleanAuthor}所著。`,
-      },
-    },
-    {
-      '@type': 'Question',
-      name: `《${book.title}》屬於哪部典籍？`,
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: `《${book.title}》收錄於《${corpusName}》（${corpusNameEn}），在 AstrologyLib 古籍總庫中的編號為 ${book.book_id}，分類為${book.category}。`,
-      },
-    },
-    {
-      '@type': 'Question',
-      name: `《${book.title}》的底本來源與使用許可？`,
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: `底本來源：${book.match_source}。原文為公版古籍，英文翻譯採用 CC BY-SA 4.0 許可。`,
-      },
-    },
-  ],
-};
 ---
 
 <BaseLayout
@@ -138,7 +86,7 @@ const faqSchema = {
   active="library"
   ogType="book"
   canonicalUrl={pageUrl}
-  schemaJson={[bookSchema, faqSchema]}
+  schemaJson={bookSchema}
 >
   <div style="max-width:var(--content-max);margin:0 auto;padding:16px 24px 64px">
 
@@ -165,53 +113,7 @@ const faqSchema = {
 
     <!-- Full text (pre-rendered for SEO) -->
     <article style="background:var(--paper);border:1px solid var(--ink-200);border-radius:var(--radius-card);padding:28px 32px;margin-bottom:24px">
-      {hasTranslation ? (
-        <>
-          <div style="margin-bottom:16px;display:flex;gap:8px;align-items:center;flex-wrap:wrap">
-            <span style="font-size:13px;color:var(--ink-500)">中英對照 · Bilingual</span>
-            <button id="lang-zh" aria-pressed="true" style="font-size:13px;padding:4px 12px;border-radius:4px;border:1px solid var(--ink-300);background:var(--paper);color:var(--ink-700);cursor:pointer">中文</button>
-            <button id="lang-bi" aria-pressed="false" style="font-size:13px;padding:4px 12px;border-radius:4px;border:1px solid var(--ink-300);background:var(--paper);color:var(--ink-700);cursor:pointer">中英對照</button>
-          </div>
-          <div id="view-zh" style="white-space:pre-wrap;word-break:break-word;font-family:var(--font-heading);font-size:18px;line-height:2;color:var(--ink)">{bookText}</div>
-          <div id="view-bi" style="display:none">
-            {zhParas.map((zp, i) => (
-              <div style="margin-bottom:22px">
-                <p style="white-space:pre-wrap;word-break:break-word;font-family:var(--font-heading);font-size:18px;line-height:2;color:var(--ink);margin:0 0 8px">{zp}</p>
-                {enParas[i] && (
-                  <p style="white-space:pre-wrap;word-break:break-word;font-size:16px;line-height:1.9;color:var(--ink-700);margin:0;padding-left:14px;border-left:2px solid var(--ink-300)">{enParas[i]}</p>
-                )}
-              </div>
-            ))}
-            {enParas.length > zhParas.length && enParas.slice(zhParas.length).map((ep) => (
-              <p style="white-space:pre-wrap;word-break:break-word;font-size:16px;line-height:1.9;color:var(--ink-700);margin:0 0 22px;padding-left:14px;border-left:2px solid var(--ink-300)">{ep}</p>
-            ))}
-          </div>
-          <script>
-            (() => {
-              const zh = document.getElementById('view-zh');
-              const bi = document.getElementById('view-bi');
-              const bzh = document.getElementById('lang-zh');
-              const bbi = document.getElementById('lang-bi');
-              const setMode = (mode) => {
-                const showBi = mode === 'bi';
-                zh.style.display = showBi ? 'none' : '';
-                bi.style.display = showBi ? '' : 'none';
-                bzh.setAttribute('aria-pressed', String(!showBi));
-                bbi.setAttribute('aria-pressed', String(showBi));
-              };
-              bzh.addEventListener('click', () => setMode('zh'));
-              bbi.addEventListener('click', () => setMode('bi'));
-            })();
-          </script>
-        </>
-      ) : (
-        <>
-          <div style="white-space:pre-wrap;word-break:break-word;font-family:var(--font-heading);font-size:18px;line-height:2;color:var(--ink)">{bookText}</div>
-          <p style="margin-top:20px;font-size:13px;color:var(--ink-500)">
-            尚無英文翻譯 · <a href="/contribute/" style="color:var(--ink-700);text-decoration:underline">Help translate this text</a>
-          </p>
-        </>
-      )}
+      <div style="white-space:pre-wrap;word-break:break-word;font-family:var(--font-heading);font-size:18px;line-height:2;color:var(--ink)">{bookText}</div>
     </article>
 
     <!-- Prev / Next (crawl chain) -->
@@ -227,23 +129,6 @@ const faqSchema = {
         )}
       </div>
     </nav>
-
-    <!-- FAQ (visible Q&A for AEO/GEO citation; mirrors FAQPage schema) -->
-    <section style="background:var(--paper);border:1px solid var(--ink-200);border-radius:var(--radius-card);padding:24px 28px;margin-bottom:24px" aria-label="常見問題">
-      <h2 style="font-family:var(--font-heading);font-size:22px;font-weight:700;color:var(--ink);margin:0 0 16px">常見問題</h2>
-      <div style="margin-bottom:14px">
-        <h3 style="font-size:16px;font-weight:700;color:var(--ink);margin:0 0 6px">《{book.title}》的作者是誰？</h3>
-        <p style="font-size:14px;color:var(--ink-700);margin:0">《{book.title}》由{book.dynasty}{cleanAuthor}所著。</p>
-      </div>
-      <div style="margin-bottom:14px">
-        <h3 style="font-size:16px;font-weight:700;color:var(--ink);margin:0 0 6px">《{book.title}》屬於哪部典籍？</h3>
-        <p style="font-size:14px;color:var(--ink-700);margin:0">《{book.title}》收錄於《{corpusName}》（{corpusNameEn}），在 AstrologyLib 古籍總庫中的編號為 {book.book_id}，分類為{book.category}。</p>
-      </div>
-      <div>
-        <h3 style="font-size:16px;font-weight:700;color:var(--ink);margin:0 0 6px">《{book.title}》的底本來源與使用許可？</h3>
-        <p style="font-size:14px;color:var(--ink-700);margin:0">底本來源：{book.match_source}。原文為公版古籍，英文翻譯採用 CC BY-SA 4.0 許可。</p>
-      </div>
-    </section>
 
     <p style="font-size:13px;color:var(--ink-500)">
       <a href="/library/classics/">← 返回萬卷典藏總庫</a> ·
