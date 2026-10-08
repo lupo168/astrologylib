@@ -1,0 +1,125 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageAttribution from '../../components/PageAttribution.astro';
+
+const title = "I Ching vs Tarot - AstrologyLib";
+const description = "I Ching and Tarot side by side: origins, tools, how each answers a question - and how to choose between them without mystique.";
+
+const faqSchema = {
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Which is older, the I Ching or Tarot?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The I Ching, by millennia. Its core text dates to roughly 1000-750 BCE. Tarot cards appeared in 15th-century Europe as playing cards and were adopted for divination only in the 18th century."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can you use the I Ching and Tarot together?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Many practitioners do, often for different kinds of questions. The systems do not conflict; they are different symbol languages for reflection."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which is easier to learn?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The I Ching's casting method takes minutes to learn, but its classical text rewards years of study. Tarot card meanings take weeks to memorize, with fluent reading taking years. Both are deep."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do either of them predict the future?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Neither, in any reliable sense. AstrologyLib presents both as frameworks for reflection and self-awareness - mirrors for thinking, not oracles."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Where should a beginner start?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "With whichever symbols already speak to you: texts and structure point to the I Ching, images and stories point to Tarot. Start with one before adding the other."
+      }
+    }
+  ]
+};
+---
+
+<BaseLayout title={title} description={description} active="learn" schemaJson={faqSchema}>
+  <div class="article-head">
+    <div class="crumb"><a href="/">Home</a> › <a href="/learn/">Learn</a> › I Ching vs Tarot</div>
+    <h1><span class="zh">易經 vs 塔羅</span>I Ching vs Tarot</h1>
+  </div>
+
+  <div class="layout">
+    <aside class="toc">
+      <div class="t-label">In this lesson</div>
+      <ul>
+        <li><a href="#box">The comparison box</a></li>
+        <li><a href="#same">What they share</a></li>
+        <li><a href="#different">Where they differ</a></li>
+        <li><a href="#choose">How to choose</a></li>
+        <li><a href="#where">Where this leads</a></li>
+      </ul>
+    </aside>
+
+    <article class="article-body">
+      <PageAttribution
+        sources={[
+          { label: 'I Ching (易經) tradition', url: '/learn/i-ching-beginners/' },
+          { label: 'Comparative divination studies', url: '/learn/i-ching-vs-astrology/' }
+        ]}
+        verified="2026-10-08"
+        version="1.0.0"
+      />
+
+      <p class="lead">The I Ching and the Tarot are the two divination systems most Westerners have heard of - one Chinese, one European, both still in daily use. They are often asked about together, so here is an honest side-by-side: what each is, where each shines, and how to choose. <strong>No winner is declared.</strong></p>
+
+      <div class="pdf-box" style="border:1px solid var(--ink-200);border-radius:10px;padding:18px 20px;margin:24px 0;background:var(--paper-2,#faf8f2)">
+        <p style="margin:0 0 10px"><strong>Free one-page PDF.</strong> I Ching vs Tarot One-Page: Honest Comparison — print it, keep it. No signup needed.</p>
+        <a class="btn btn-primary" href="/pdf/i-ching-vs-tarot-cheatsheet.pdf" download>Download free PDF</a>
+      </div>
+
+      <h2 id="box">The comparison box</h2>
+      <table>
+      <thead><tr><th></th><th>I Ching</th><th>Tarot</th></tr></thead>
+      <tbody>
+      <tr><td><strong>Origin</strong></td><td>China; core text c. 1000-750 BCE</td><td>Europe; playing cards 15th c., occult use from the 18th c.</td></tr>
+      <tr><td><strong>Tool</strong></td><td>64 hexagrams, cast with coins or yarrow</td><td>78 cards (22 major + 56 minor arcana)</td></tr>
+      <tr><td><strong>Core text</strong></td><td>Zhou Yi judgments + Ten Wings philosophy</td><td>No single canon; Rider-Waite-Smith imagery is the common reference</td></tr>
+      <tr><td><strong>Question style</strong></td><td>One clear question per casting</td><td>Spreads that map situations from several angles</td></tr>
+      <tr><td><strong>Symbol language</strong></td><td>Abstract lines; meaning lives in the text</td><td>Rich pictures; meaning lives in the image</td></tr>
+      <tr><td><strong>Learning curve</strong></td><td>Method in minutes; the text takes years</td><td>Card meanings in weeks; fluent reading takes years</td></tr>
+      </tbody>
+      </table>
+
+      <h2 id="same">What they share</h2>
+      <p>Both use structured randomness plus symbolism to <strong>reframe a question</strong>. Both work best as mirrors rather than oracles: the value is rarely the "answer" and usually the new angle it forces. Both traditions also warn against the same misuse - asking again and again until you hear what you want.</p>
+
+      <h2 id="different">Where they differ</h2>
+      <p>The I Ching speaks in <strong>abstract lines and terse classical text</strong> - you meet philosophy wearing a riddle's clothes. The Tarot speaks in <strong>pictures</strong> - archetypal scenes your intuition reads before your intellect catches up. One leans textual and cosmological; the other leans visual and psychological. Neither difference is a superiority.</p>
+
+      <h2 id="choose">How to choose</h2>
+      <div class="analogy"><b>Honest guidance.</b> Ask which symbols already speak to you. If you love texts, structure, and Chinese philosophy, start with the <a href="/learn/i-ching-beginners/">I Ching</a>. If you think in images and stories, the Tarot may meet you sooner. Many practitioners use both, for different moods of question - and that is perfectly consistent.</div>
+
+      <h2 id="where">Where this leads</h2>
+      <p>For the I Ching path: <a href="/learn/how-to-consult-i-ching/">How to Consult the I Ching</a> and the <a href="/tools/hexagram/">hexagram tool</a>. For the bigger map of systems, <a href="/learn/i-ching-vs-astrology/">I Ching vs Astrology: A Map</a>.</p>
+
+      <div class="disclaimer">
+        <p><strong>For guidance and self-awareness purposes only.</strong> This lesson explains Chinese astrology as a cultural and philosophical framework - what it is, where it came from, and how its vocabulary works. It is not a prediction of your future, a medical or financial opinion, or a substitute for professional advice.</p>
+      </div>
+
+      <div class="back-row" style="margin-top:28px">
+        <a class="btn btn-secondary" href="/learn/">← All lessons</a>
+        <a class="btn btn-primary" href="/learn/bazi-vs-western-astrology/">Next: BaZi vs Western Astrology →</a>
+      </div>
+    </article>
+  </div>
+</BaseLayout>
