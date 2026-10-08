@@ -1,0 +1,125 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageAttribution from '../../components/PageAttribution.astro';
+
+const title = "Day Master Meaning in BaZi - AstrologyLib";
+const description = "The Day Master (日主) is the one character that is you. All ten day masters - Jia through Gui - with their elements and traditional imagery.";
+
+const faqSchema = {
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is the Day Master in BaZi?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The Day Master (日主) is the Heavenly Stem of the day pillar in your BaZi chart. It represents you. All other characters are interpreted as relationships to it - resources, outputs, officers, or rivals."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I find my Day Master?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Generate your chart with the free BaZi chart tool, find the day pillar, and look at its top character - the stem. That is your Day Master."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What are the ten Day Masters?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The ten Heavenly Stems: Jia, Yi, Bing, Ding, Wu, Ji, Geng, Xin, Ren, Gui - five elements (wood, fire, earth, metal, water), each in yang and yin form."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What does a strong or weak Day Master mean?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It describes whether the Day Master's element is supported by the season and surrounding chart. It is not a value judgment - it tells the reader what kind of balance the chart needs."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can my Day Master change?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. It is fixed by your birth day. What changes over time are the luck cycles moving around it."
+      }
+    }
+  ]
+};
+---
+
+<BaseLayout title={title} description={description} active="learn" schemaJson={faqSchema}>
+  <div class="article-head">
+    <div class="crumb"><a href="/">Home</a> › <a href="/learn/">Learn</a> › Day Master Meaning</div>
+    <h1><span class="zh">日主</span>Day Master Meaning in BaZi</h1>
+  </div>
+
+  <div class="layout">
+    <aside class="toc">
+      <div class="t-label">In this lesson</div>
+      <ul>
+        <li><a href="#ten">The ten Day Masters</a></li>
+        <li><a href="#imagery">Traditional imagery</a></li>
+        <li><a href="#strength">Strong or weak?</a></li>
+        <li><a href="#where">Where this leads</a></li>
+      </ul>
+    </aside>
+
+    <article class="article-body">
+      <PageAttribution
+        sources={[
+          { label: 'Heavenly Stems (天干) · glossary', url: '/glossary/' },
+          { label: 'Day Master in chart context', url: '/learn/bazi/' }
+        ]}
+        verified="2026-10-08"
+        version="1.0.0"
+      />
+
+      <p class="lead">In every BaZi chart, one character is you: the <strong>Day Master</strong> (日主), the Heavenly Stem of the day pillar. There are ten possible Day Masters - the ten Heavenly Stems - each an element with a yin or yang charge. Every other character in the chart is read as a relationship to this one.</p>
+
+      <div class="pdf-box" style="border:1px solid var(--ink-200);border-radius:10px;padding:18px 20px;margin:24px 0;background:var(--paper-2,#faf8f2)">
+        <p style="margin:0 0 10px"><strong>Free one-page PDF.</strong> Day Master One-Page: All 10 Stems at a Glance — print it, keep it. No signup needed.</p>
+        <a class="btn btn-primary" href="/pdf/day-master-meaning-cheatsheet.pdf" download>Download free PDF</a>
+      </div>
+
+      <h2 id="ten">The ten Day Masters</h2>
+      <table>
+      <thead><tr><th>Stem</th><th>Chinese</th><th>Element</th><th>Polarity</th></tr></thead>
+      <tbody>
+      <tr><td>Jia</td><td>甲</td><td>Wood</td><td>Yang</td></tr>
+      <tr><td>Yi</td><td>乙</td><td>Wood</td><td>Yin</td></tr>
+      <tr><td>Bing</td><td>丙</td><td>Fire</td><td>Yang</td></tr>
+      <tr><td>Ding</td><td>丁</td><td>Fire</td><td>Yin</td></tr>
+      <tr><td>Wu</td><td>戊</td><td>Earth</td><td>Yang</td></tr>
+      <tr><td>Ji</td><td>己</td><td>Earth</td><td>Yin</td></tr>
+      <tr><td>Geng</td><td>庚</td><td>Metal</td><td>Yang</td></tr>
+      <tr><td>Xin</td><td>辛</td><td>Metal</td><td>Yin</td></tr>
+      <tr><td>Ren</td><td>壬</td><td>Water</td><td>Yang</td></tr>
+      <tr><td>Gui</td><td>癸</td><td>Water</td><td>Yin</td></tr>
+      </tbody>
+      </table>
+
+      <h2 id="imagery">Traditional imagery</h2>
+      <p>Classical texts attach images to each stem: Jia wood is the great tree, Yi wood the creeping vine; Bing fire the sun, Ding fire the lamp; Wu earth the mountain, Ji earth the field; Geng metal the axe, Xin metal the jewel; Ren water the ocean, Gui water the rain. These are <strong>poetic shorthands from the tradition</strong>, not personality test results - useful for intuition, not for labeling people.</p>
+
+      <h2 id="strength">Strong or weak?</h2>
+      <p>The first question every reading asks: is the Day Master <strong>strong or weak</strong>? A Bing fire Day Master born in summer, surrounded by wood, is strong; the same Bing born in winter, surrounded by water, is weak. Strength is not good or bad - it determines what the chart needs to balance, which is the job of the <a href="/learn/bazi-useful-god/">Useful God</a>. Find yours with the <a href="/tools/bazi-chart/">chart tool</a>, then read <a href="/learn/bazi-ten-gods/">the Ten Gods</a> to see how everything else relates to it.</p>
+
+      <h2 id="where">Where this leads</h2>
+      <p>The Day Master is the anchor; the <a href="/learn/bazi-ten-gods/">Ten Gods</a> name its relationships, the <a href="/learn/bazi-useful-god/">Useful God</a> names what balances it, and the <a href="/learn/bazi-luck-pillars/">Luck Pillars</a> move it through time. The <a href="/glossary/">glossary</a> defines all ten stems in full.</p>
+
+      <div class="disclaimer">
+        <p><strong>For guidance and self-awareness purposes only.</strong> This lesson explains Chinese astrology as a cultural and philosophical framework - what it is, where it came from, and how its vocabulary works. It is not a prediction of your future, a medical or financial opinion, or a substitute for professional advice.</p>
+      </div>
+
+      <div class="back-row" style="margin-top:28px">
+        <a class="btn btn-secondary" href="/learn/">← All lessons</a>
+        <a class="btn btn-primary" href="/learn/bazi-ten-gods/">Next: The Ten Gods, Explained →</a>
+      </div>
+    </article>
+  </div>
+</BaseLayout>
