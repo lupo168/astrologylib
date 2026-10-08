@@ -4,9 +4,55 @@ import PageAttribution from '../../components/PageAttribution.astro';
 
 const title = "What Is Your BaZi? - AstrologyLib";
 const description = "BaZi (eight characters) explained from zero - the four pillars, the Day Master, a daily-life analogy, and a 30-second example.";
+
+const faqSchema = {
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What does BaZi literally mean?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "BaZi means “eight characters.” Your birth moment is encoded as four pairs of Chinese characters — year, month, day and hour — and those eight characters are the whole chart."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the Day Master in BaZi?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The Day Master (日主) is the Heavenly Stem of the day pillar. It represents you. Every other character in the chart is read as a relationship to it: a resource, an output, an officer or a rival."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What are the Four Pillars?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Year pillar (environment and roots), month pillar (upbringing and season), day pillar (you, the Day Master) and hour pillar (inner life and later years). Each pillar has a Heavenly Stem on top and an Earthly Branch below."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What are the Ten Gods?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The Ten Gods name the relationships between the Day Master and the other seven characters — resource, output, officer and rival, each in yin and yang forms. The AstrologyLib glossary lists all ten."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is BaZi a prediction of my future?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. AstrologyLib presents BaZi as a cultural and philosophical framework for guidance and self-awareness — what it is, where it came from and how its vocabulary works — not a prediction, and not medical or financial advice."
+      }
+    }
+  ]
+};
 ---
 
-<BaseLayout title={title} description={description} active="learn">
+<BaseLayout title={title} description={description} active="learn" schemaJson={faqSchema}>
   <div class="article-head">
     <div class="crumb"><a href="/">Home</a> › <a href="/learn/">Learn</a> › What Is Your BaZi?</div>
     <h1><span class="zh">八字</span>What Is Your BaZi?</h1>
@@ -49,6 +95,11 @@ const description = "BaZi (eight characters) explained from zero - the four pill
       <h2 id="where">Where this leads</h2>
       <p>From the Day Master, two timelines extend outward: the Ten Gods (how other people and events relate to you) and the luck cycles - <em>dà yùn</em> (大運) and <em>liú nián</em> (流年) - which move the chart through a life. To explore other major traditions, see our guides on <a href="/learn/ziwei/">Zi Wei Dou Shu (紫微斗數)</a> and <a href="/learn/liuyao/">Liu Yao Divination (六爻神卦)</a>, or proceed directly to Step 2: Canonical Glossary.</p>
 
+
+      <div class="pdf-box" style="border:1px solid var(--ink-200);border-radius:10px;padding:18px 20px;margin:24px 0;background:var(--paper-2,#faf8f2)">
+        <p style="margin:0 0 10px"><strong>Free one-page PDF.</strong> BaZi One-Page: the Four Pillars Diagram — print it, keep it. No signup needed.</p>
+        <a class="btn btn-primary" href="/pdf/bazi-cheatsheet.pdf" download>Download free PDF</a>
+      </div>
       <div class="disclaimer">
         <p><strong>For guidance and self-awareness purposes only.</strong> This lesson explains Chinese astrology as a cultural and philosophical framework - what it is, where it came from, and how its vocabulary works. It is not a prediction of your future, a medical or financial opinion, or a substitute for professional advice.</p>
       </div>
