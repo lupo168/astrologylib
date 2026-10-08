@@ -1,0 +1,179 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageAttribution from '../../components/PageAttribution.astro';
+
+const title = "The 64 Hexagrams, Listed - AstrologyLib";
+const description = "All 64 I Ching hexagrams in order, with plain-English keywords: from Qian (1) and Kun (2) to Ji Ji (63) and Wei Ji (64).";
+
+const faqSchema = {
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How many hexagrams are in the I Ching?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sixty-four. Each hexagram has six lines, and the 64 are every possible combination of the eight three-line trigrams stacked in pairs."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why does the I Ching end with Wei Ji (not yet across)?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The final hexagram, Wei Ji (64, 未濟), means the crossing is not complete. Ending on incompletion is deliberate: no situation is ever final, and every ending starts a new cycle."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What are the upper and lower trigrams?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Each hexagram is two trigrams stacked: the lower (inner) trigram describes the inner situation, the upper (outer) trigram the outer situation. Reading which trigram sits where is the first step of structural interpretation."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do I need to memorize all 64 hexagrams?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Practitioners memorize the structure (trigrams, moving lines) and look up individual hexagrams. This list exists so you can find any hexagram by number in seconds."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Where do the hexagram names come from?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The names and judgments come from the Zhou Yi core text of the Western Zhou period. Later commentaries, especially the Ten Wings, expanded their philosophical meaning."
+      }
+    }
+  ]
+};
+---
+
+<BaseLayout title={title} description={description} active="learn" schemaJson={faqSchema}>
+  <div class="article-head">
+    <div class="crumb"><a href="/">Home</a> › <a href="/learn/">Learn</a> › The 64 Hexagrams, Listed</div>
+    <h1><span class="zh">六十四卦</span>The 64 Hexagrams, Listed</h1>
+  </div>
+
+  <div class="layout">
+    <aside class="toc">
+      <div class="t-label">In this lesson</div>
+      <ul>
+        <li><a href="#how">How the list is ordered</a></li>
+        <li><a href="#table">All 64 hexagrams</a></li>
+        <li><a href="#use">How to use this list</a></li>
+        <li><a href="#where">Where this leads</a></li>
+      </ul>
+    </aside>
+
+    <article class="article-body">
+      <PageAttribution
+        sources={[
+          { label: 'Zhou Yi (周易) · King Wen sequence', url: '/glossary/' },
+          { label: 'Hexagram judgments and line texts', url: '/tools/hexagram/' }
+        ]}
+        verified="2026-10-08"
+        version="1.0.0"
+      />
+
+      <p class="lead">All sixty-four hexagrams in their traditional King Wen sequence, each with a one-line keyword. Find your hexagram's number, read the keyword, then study its judgment in full. The book famously ends not with completion but with Wei Ji - not yet across - a deliberate reminder that no situation is ever final.</p>
+
+      <div class="pdf-box" style="border:1px solid var(--ink-200);border-radius:10px;padding:18px 20px;margin:24px 0;background:var(--paper-2,#faf8f2)">
+        <p style="margin:0 0 10px"><strong>Free one-page PDF.</strong> 64 Hexagrams One-Page: Numbers, Names & Keywords — print it, keep it. No signup needed.</p>
+        <a class="btn btn-primary" href="/pdf/i-ching-hexagrams-cheatsheet.pdf" download>Download free PDF</a>
+      </div>
+
+      <h2 id="how">How the list is ordered</h2>
+      <p>This is the received <strong>King Wen sequence</strong> (文王卦序), the order the hexagrams have appeared in for over two thousand years. It is not ranked by importance: the first two establish the poles (pure yang, pure yin), pairs like Zhun/Meng (3/4) show difficulty at the start, and the final pair Ji Ji/Wei Ji (63/64) closes the book on "already across / not yet across."</p>
+
+      <h2 id="table">All 64 hexagrams</h2>
+      <table>
+      <thead><tr><th>#</th><th>Name</th><th>Chinese</th><th>Keyword</th></tr></thead>
+      <tbody>
+      <tr><td>1</td><td>Qian</td><td>乾</td><td>Creative force; the dragon</td></tr>
+      <tr><td>2</td><td>Kun</td><td>坤</td><td>Receptive earth; devotion</td></tr>
+      <tr><td>3</td><td>Zhun</td><td>屯</td><td>Difficulty at the beginning</td></tr>
+      <tr><td>4</td><td>Meng</td><td>蒙</td><td>Youthful inexperience; learning</td></tr>
+      <tr><td>5</td><td>Xu</td><td>需</td><td>Waiting; patience with confidence</td></tr>
+      <tr><td>6</td><td>Song</td><td>訟</td><td>Conflict; know when to stop</td></tr>
+      <tr><td>7</td><td>Shi</td><td>師</td><td>The army; disciplined collective</td></tr>
+      <tr><td>8</td><td>Bi</td><td>比</td><td>Holding together; alliance</td></tr>
+      <tr><td>9</td><td>Xiao Xu</td><td>小畜</td><td>Small restraint; gathering power</td></tr>
+      <tr><td>10</td><td>Lu</td><td>履</td><td>Treading carefully; conduct</td></tr>
+      <tr><td>11</td><td>Tai</td><td>泰</td><td>Peace; heaven and earth in union</td></tr>
+      <tr><td>12</td><td>Pi</td><td>否</td><td>Obstruction; the noble withdraws</td></tr>
+      <tr><td>13</td><td>Tong Ren</td><td>同人</td><td>Fellowship; community</td></tr>
+      <tr><td>14</td><td>Da You</td><td>大有</td><td>Great possession; abundance</td></tr>
+      <tr><td>15</td><td>Qian</td><td>謙</td><td>Modesty; the level mountain</td></tr>
+      <tr><td>16</td><td>Yu</td><td>豫</td><td>Enthusiasm; preparation</td></tr>
+      <tr><td>17</td><td>Sui</td><td>隨</td><td>Following; adapt to the time</td></tr>
+      <tr><td>18</td><td>Gu</td><td>蠱</td><td>Decay to be repaired; inherited trouble</td></tr>
+      <tr><td>19</td><td>Lin</td><td>臨</td><td>Approach; growing influence</td></tr>
+      <tr><td>20</td><td>Guan</td><td>觀</td><td>Contemplation; being seen</td></tr>
+      <tr><td>21</td><td>Shi He</td><td>噬嗑</td><td>Biting through; remove the obstacle</td></tr>
+      <tr><td>22</td><td>Bi</td><td>賁</td><td>Grace; form over substance</td></tr>
+      <tr><td>23</td><td>Bo</td><td>剝</td><td>Stripping away; decline</td></tr>
+      <tr><td>24</td><td>Fu</td><td>復</td><td>Return; the turning point</td></tr>
+      <tr><td>25</td><td>Wu Wang</td><td>無妄</td><td>Innocence; no contrivance</td></tr>
+      <tr><td>26</td><td>Da Xu</td><td>大畜</td><td>Great restraint; stored power</td></tr>
+      <tr><td>27</td><td>Yi</td><td>頤</td><td>Nourishment; what you take in</td></tr>
+      <tr><td>28</td><td>Da Guo</td><td>大過</td><td>Great excess; the ridgepole sags</td></tr>
+      <tr><td>29</td><td>Kan</td><td>坎</td><td>The abyss; repeated danger</td></tr>
+      <tr><td>30</td><td>Li</td><td>離</td><td>Radiance; clarity and attachment</td></tr>
+      <tr><td>31</td><td>Xian</td><td>咸</td><td>Influence; mutual attraction</td></tr>
+      <tr><td>32</td><td>Heng</td><td>恆</td><td>Duration; steady continuity</td></tr>
+      <tr><td>33</td><td>Dun</td><td>遯</td><td>Retreat; strategic withdrawal</td></tr>
+      <tr><td>34</td><td>Da Zhuang</td><td>大壯</td><td>Great strength; use it rightly</td></tr>
+      <tr><td>35</td><td>Jin</td><td>晉</td><td>Progress; the rising sun</td></tr>
+      <tr><td>36</td><td>Ming Yi</td><td>明夷</td><td>Darkening of the light; endure</td></tr>
+      <tr><td>37</td><td>Jia Ren</td><td>家人</td><td>Family; roles done well</td></tr>
+      <tr><td>38</td><td>Kui</td><td>睽</td><td>Opposition; estrangement</td></tr>
+      <tr><td>39</td><td>Jian</td><td>蹇</td><td>Obstruction; the lame walk</td></tr>
+      <tr><td>40</td><td>Xie</td><td>解</td><td>Release; tension untied</td></tr>
+      <tr><td>41</td><td>Sun</td><td>損</td><td>Decrease; loss that serves</td></tr>
+      <tr><td>42</td><td>Yi</td><td>益</td><td>Increase; gain that serves</td></tr>
+      <tr><td>43</td><td>Guai</td><td>夬</td><td>Breakthrough; resolute action</td></tr>
+      <tr><td>44</td><td>Gou</td><td>姤</td><td>Encounter; the unexpected meeting</td></tr>
+      <tr><td>45</td><td>Cui</td><td>萃</td><td>Gathering; assembly</td></tr>
+      <tr><td>46</td><td>Sheng</td><td>升</td><td>Ascending; steady rise</td></tr>
+      <tr><td>47</td><td>Kun</td><td>困</td><td>Exhaustion; the drained lake</td></tr>
+      <tr><td>48</td><td>Jing</td><td>井</td><td>The well; the shared resource</td></tr>
+      <tr><td>49</td><td>Ge</td><td>革</td><td>Revolution; molting season</td></tr>
+      <tr><td>50</td><td>Ding</td><td>鼎</td><td>The cauldron; new vessel</td></tr>
+      <tr><td>51</td><td>Zhen</td><td>震</td><td>Thunder; arousing shock</td></tr>
+      <tr><td>52</td><td>Gen</td><td>艮</td><td>Stillness; the mountain at rest</td></tr>
+      <tr><td>53</td><td>Jian</td><td>漸</td><td>Gradual progress; the wild goose</td></tr>
+      <tr><td>54</td><td>Gui Mei</td><td>歸妹</td><td>The marrying maiden; misplaced union</td></tr>
+      <tr><td>55</td><td>Feng</td><td>豐</td><td>Abundance at its peak</td></tr>
+      <tr><td>56</td><td>Lu</td><td>旅</td><td>The wanderer; travel lightly</td></tr>
+      <tr><td>57</td><td>Xun</td><td>巽</td><td>Gentle penetration; the wind</td></tr>
+      <tr><td>58</td><td>Dui</td><td>兌</td><td>Joy; the open lake</td></tr>
+      <tr><td>59</td><td>Huan</td><td>渙</td><td>Dispersion; scattering to regather</td></tr>
+      <tr><td>60</td><td>Jie</td><td>節</td><td>Limitation; right measure</td></tr>
+      <tr><td>61</td><td>Zhong Fu</td><td>中孚</td><td>Inner truth; sincerity</td></tr>
+      <tr><td>62</td><td>Xiao Guo</td><td>小過</td><td>Small excess; modesty in action</td></tr>
+      <tr><td>63</td><td>Ji Ji</td><td>既濟</td><td>Already across; order - for now</td></tr>
+      <tr><td>64</td><td>Wei Ji</td><td>未濟</td><td>Not yet across; the work continues</td></tr>
+      </tbody>
+      </table>
+
+      <h2 id="use">How to use this list</h2>
+      <p>Keywords are starting points, not verdicts. When a casting gives you a hexagram, find its number here, read the keyword, then read the full judgment and any moving lines. The keyword tells you the weather; the judgment tells you what to wear.</p>
+
+      <h2 id="where">Where this leads</h2>
+      <p>For the method behind the list, see <a href="/learn/how-to-consult-i-ching/">How to Consult the I Ching</a>; for the philosophy layered on top, <a href="/learn/what-are-ten-wings/">What Are the Ten Wings?</a>. Cast and explore with the <a href="/tools/hexagram/">hexagram tool</a>.</p>
+
+      <div class="disclaimer">
+        <p><strong>For guidance and self-awareness purposes only.</strong> This lesson explains Chinese astrology as a cultural and philosophical framework - what it is, where it came from, and how its vocabulary works. It is not a prediction of your future, a medical or financial opinion, or a substitute for professional advice.</p>
+      </div>
+
+      <div class="back-row" style="margin-top:28px">
+        <a class="btn btn-secondary" href="/learn/">← All lessons</a>
+        <a class="btn btn-primary" href="/learn/what-are-ten-wings/">Next: What Are the Ten Wings? →</a>
+      </div>
+    </article>
+  </div>
+</BaseLayout>
