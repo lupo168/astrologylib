@@ -4,9 +4,55 @@ import PageAttribution from '../../components/PageAttribution.astro';
 
 const title = "The Five Elements, Explained Simply - AstrologyLib";
 const description = "Wood, fire, earth, metal and water - the Five Elements as five ways energy moves, with the generating and controlling cycles, an analogy, and a 30-second example.";
+
+const faqSchema = {
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What are the Five Elements?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Wood, fire, earth, metal and water — not five things, but five ways energy moves. Wood grows and spreads, fire rises and transforms, earth holds and settles, metal cuts and refines, water runs and gathers."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the generating cycle of the Five Elements?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Each element feeds the next: wood feeds fire (it burns), fire feeds earth (it becomes ash), earth feeds metal (ore forms in the ground), metal feeds water (it melts and flows), water feeds wood."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the controlling cycle of the Five Elements?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Each element checks another: wood parts earth (roots break soil), earth dams water, water quenches fire, fire melts metal, metal cuts wood."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How are the Five Elements used in a BaZi chart?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The first question is always: which elements are present, and which are strong? A chart full of wood and fire runs “hot”; one heavy with metal and water runs “cold.” Reading is mostly seeing the balance — and what a missing element would restore."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Are some elements good and others bad?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Each element is simply a different tempo, and nothing in the system is judged. Balance, not ranking, is the point."
+      }
+    }
+  ]
+};
 ---
 
-<BaseLayout title={title} description={description} active="learn">
+<BaseLayout title={title} description={description} active="learn" schemaJson={faqSchema}>
   <div class="article-head">
     <div class="crumb"><a href="/">Home</a> › <a href="/learn/">Learn</a> › The Five Elements</div>
     <h1><span class="zh">五行</span>The Five Elements, Explained Simply</h1>
@@ -49,6 +95,11 @@ const description = "Wood, fire, earth, metal and water - the Five Elements as f
       <h2 id="where">Where this leads</h2>
       <p>Each Zodiac animal carries one or more elements, and each of the four pillars in BaZi does too. Once you can see the Five Elements in a chart, the Zodiac and the pillars become the same language - and the Ten Gods in the glossary name the relationships between them.</p>
 
+
+      <div class="pdf-box" style="border:1px solid var(--ink-200);border-radius:10px;padding:18px 20px;margin:24px 0;background:var(--paper-2,#faf8f2)">
+        <p style="margin:0 0 10px"><strong>Free one-page PDF.</strong> Five Elements Cycles Diagram (Printable) — print it, keep it. No signup needed.</p>
+        <a class="btn btn-primary" href="/pdf/five-elements-cheatsheet.pdf" download>Download free PDF</a>
+      </div>
       <div class="disclaimer">
         <p><strong>For guidance and self-awareness purposes only.</strong> This lesson explains Chinese astrology as a cultural and philosophical framework - what it is, where it came from, and how its vocabulary works. It is not a prediction of your future, a medical or financial opinion, or a substitute for professional advice.</p>
       </div>
