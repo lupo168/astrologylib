@@ -1,0 +1,125 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageAttribution from '../../components/PageAttribution.astro';
+
+const title = "The Ten Gods in BaZi, Explained - AstrologyLib";
+const description = "The Ten Gods (十神) are BaZi's vocabulary of relationships: how every character in your chart relates to your Day Master. All ten, in plain English.";
+
+const faqSchema = {
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What are the Ten Gods in BaZi?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The Ten Gods (十神) name the relationships between the Day Master and the other characters in a BaZi chart: peer, output, wealth, officer, and resource - each in yin and yang forms, making ten."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How many Ten Gods are there?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ten: Companion, Rob Wealth, Eating God, Hurting Officer, Direct Wealth, Indirect Wealth, Direct Officer, Seven Killings, Direct Resource, and Indirect Resource."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do I have all ten gods in my chart?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Your chart contains eight characters, so it shows a subset. Which gods appear - and which are missing - is itself part of the reading."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which god relates to career?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The Officer gods (Direct Officer 正官 and Seven Killings 七殺) traditionally relate to career, duty, and authority. But no single god decides a career on its own."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Are some Ten Gods bad?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. They are descriptive vocabulary, not moral grades. Seven Killings sounds alarming in English, but in context it can mean drive and the ability to handle pressure."
+      }
+    }
+  ]
+};
+---
+
+<BaseLayout title={title} description={description} active="learn" schemaJson={faqSchema}>
+  <div class="article-head">
+    <div class="crumb"><a href="/">Home</a> › <a href="/learn/">Learn</a> › The Ten Gods, Explained</div>
+    <h1><span class="zh">十神</span>The Ten Gods in BaZi, Explained</h1>
+  </div>
+
+  <div class="layout">
+    <aside class="toc">
+      <div class="t-label">In this lesson</div>
+      <ul>
+        <li><a href="#five">The five relationships</a></li>
+        <li><a href="#ten">All ten, listed</a></li>
+        <li><a href="#derive">How they are derived</a></li>
+        <li><a href="#where">Where this leads</a></li>
+      </ul>
+    </aside>
+
+    <article class="article-body">
+      <PageAttribution
+        sources={[
+          { label: 'Ten Gods (十神) · glossary entries', url: '/glossary/' },
+          { label: 'Day Master (日主) as reference point', url: '/learn/day-master-meaning/' }
+        ]}
+        verified="2026-10-08"
+        version="1.0.0"
+      />
+
+      <p class="lead">If the Day Master is “you,” the <strong>Ten Gods</strong> (十神) are everyone and everything else - named by their relationship to you. Five relationship types (peer, output, wealth, officer, resource), each in yin and yang form, make ten. They are descriptive vocabulary, not grades: no god is “good” or “bad.”</p>
+
+      <div class="pdf-box" style="border:1px solid var(--ink-200);border-radius:10px;padding:18px 20px;margin:24px 0;background:var(--paper-2,#faf8f2)">
+        <p style="margin:0 0 10px"><strong>Free one-page PDF.</strong> Ten Gods One-Page: Names, Meanings & Life Areas — print it, keep it. No signup needed.</p>
+        <a class="btn btn-primary" href="/pdf/bazi-ten-gods-cheatsheet.pdf" download>Download free PDF</a>
+      </div>
+
+      <h2 id="five">The five relationships</h2>
+      <p>Each god describes what another element <strong>does to</strong> the Day Master: same element = <strong>peer</strong> (比劫), what I generate = <strong>output</strong> (食傷), what I control = <strong>wealth</strong> (財), what controls me = <strong>officer</strong> (官殺), what generates me = <strong>resource</strong> (印). Each splits into yin/yang polarity relative to the Day Master - hence ten.</p>
+
+      <h2 id="ten">All ten, listed</h2>
+      <table>
+      <thead><tr><th>God</th><th>Chinese</th><th>Plain meaning</th><th>Life area</th></tr></thead>
+      <tbody>
+      <tr><td>Companion</td><td>比肩</td><td>Same element, same polarity - peers, siblings</td><td>Friends, rivals, self-reliance</td></tr>
+      <tr><td>Rob Wealth</td><td>劫財</td><td>Same element, opposite polarity - competition</td><td>Contest, shared resources</td></tr>
+      <tr><td>Eating God</td><td>食神</td><td>What I generate, same polarity - steady craft</td><td>Skill, routine, wellbeing</td></tr>
+      <tr><td>Hurting Officer</td><td>傷官</td><td>What I generate, opposite polarity - bold expression</td><td>Creativity, rebellion, performance</td></tr>
+      <tr><td>Direct Wealth</td><td>正財</td><td>What I control, opposite polarity - earned income</td><td>Salary, steady assets</td></tr>
+      <tr><td>Indirect Wealth</td><td>偏財</td><td>What I control, same polarity - windfall</td><td>Investment, opportunity</td></tr>
+      <tr><td>Direct Officer</td><td>正官</td><td>What controls me, opposite polarity - duty</td><td>Career, reputation, structure</td></tr>
+      <tr><td>Seven Killings</td><td>七殺</td><td>What controls me, same polarity - pressure</td><td>Challenge, authority, risk</td></tr>
+      <tr><td>Direct Resource</td><td>正印</td><td>What generates me, opposite polarity - support</td><td>Learning, mentors, shelter</td></tr>
+      <tr><td>Indirect Resource</td><td>偏印</td><td>What generates me, same polarity - unconventional wisdom</td><td>Research, intuition, niche knowledge</td></tr>
+      </tbody>
+      </table>
+
+      <h2 id="derive">How they are derived</h2>
+      <div class="analogy"><b>Everyday analogy.</b> Think of the Day Master as the subject of a sentence. The Ten Gods are the verbs other characters perform on it: some feed it, some spend it, some employ it, some compete with it. Same sentence structure, ten possible verbs.</div>
+
+      <h2 id="where">Where this leads</h2>
+      <p>Once you can name the relationships, the next question is balance: which element does the chart need most? That is the <a href="/learn/bazi-useful-god/">Useful God</a>. See your own gods in the <a href="/tools/bazi-chart/">chart tool</a>, or look up any term in the <a href="/glossary/">glossary</a>.</p>
+
+      <div class="disclaimer">
+        <p><strong>For guidance and self-awareness purposes only.</strong> This lesson explains Chinese astrology as a cultural and philosophical framework - what it is, where it came from, and how its vocabulary works. It is not a prediction of your future, a medical or financial opinion, or a substitute for professional advice.</p>
+      </div>
+
+      <div class="back-row" style="margin-top:28px">
+        <a class="btn btn-secondary" href="/learn/">← All lessons</a>
+        <a class="btn btn-primary" href="/learn/bazi-useful-god/">Next: Useful God (Yong Shen) →</a>
+      </div>
+    </article>
+  </div>
+</BaseLayout>
