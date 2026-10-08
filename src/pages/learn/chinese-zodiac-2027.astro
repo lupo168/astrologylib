@@ -1,0 +1,115 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageAttribution from '../../components/PageAttribution.astro';
+
+const title = "Chinese Zodiac 2027 - AstrologyLib";
+const description = "2027 is the year of the Fire Goat (丁未). When it starts, what the Goat means, and which signs meet their Ben Ming Nian.";
+
+const faqSchema = {
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What Chinese zodiac animal is 2027?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "2027 is the year of the Goat (specifically the Fire Goat, 丁未年) - the eighth of the twelve zodiac animals."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "When does the 2027 Goat year start?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Lunar New Year falls on February 9, 2027. In BaZi, the year pillar changes earlier, at Li Chun on February 4, 2027."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What element is 2027?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yin fire (Ding 丁) over the Goat branch (Wei 未, earth). Hence the Fire Goat."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is Ben Ming Nian?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ben Ming Nian (本命年) is the year your own zodiac sign returns - for Goat-born people, 2027. Folk custom treats it as a year for extra care; some wear red. It is custom, not a rule."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which years are Goat years?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "…, 1991, 2003, 2015, 2027, 2039 - every twelve years."
+      }
+    }
+  ]
+};
+---
+
+<BaseLayout title={title} description={description} active="learn" schemaJson={faqSchema}>
+  <div class="article-head">
+    <div class="crumb"><a href="/">Home</a> › <a href="/learn/">Learn</a> › Chinese Zodiac 2027</div>
+    <h1><span class="zh">2027生肖</span>Chinese Zodiac 2027</h1>
+  </div>
+
+  <div class="layout">
+    <aside class="toc">
+      <div class="t-label">In this lesson</div>
+      <ul>
+        <li><a href="#when">When the Goat year starts</a></li>
+        <li><a href="#goat">The Goat, eighth sign</a></li>
+        <li><a href="#fire">Why 'Fire' Goat</a></li>
+        <li><a href="#benmingnian">Who meets Ben Ming Nian</a></li>
+        <li><a href="#where">Where this leads</a></li>
+      </ul>
+    </aside>
+
+    <article class="article-body">
+      <PageAttribution
+        sources={[
+          { label: 'Twelve Earthly Branches (地支) · zodiac cycle', url: '/learn/zodiac/' },
+          { label: 'Ding-Wei (丁未) stem-branch combination', url: '/glossary/' }
+        ]}
+        verified="2026-10-08"
+        version="1.0.0"
+      />
+
+      <p class="lead"><strong>2027 is the year of the Goat</strong> - specifically the Fire Goat, 丁未年. The Goat is the eighth of the twelve zodiac animals, and 2027 pairs it with yin fire. Here is when the year starts, what the combination means in traditional terms, and which signs are in their <em>Ben Ming Nian</em>.</p>
+
+      <div class="pdf-box" style="border:1px solid var(--ink-200);border-radius:10px;padding:18px 20px;margin:24px 0;background:var(--paper-2,#faf8f2)">
+        <p style="margin:0 0 10px"><strong>Free one-page PDF.</strong> 2027 Zodiac One-Page: Fire Goat Year at a Glance — print it, keep it. No signup needed.</p>
+        <a class="btn btn-primary" href="/pdf/chinese-zodiac-2027-cheatsheet.pdf" download>Download free PDF</a>
+      </div>
+
+      <h2 id="when">When the Goat year starts</h2>
+      <p>Two dates matter. The <strong>Lunar New Year falls on February 9, 2027</strong> - that is when the folk zodiac year turns. In BaZi practice, the <strong>year pillar changes at Li Chun</strong> (立春, February 4, 2027). Born between February 4 and 8, 2027? Your BaZi year is already Goat while the lunar calendar still says Horse. The <a href="/tools/bazi-chart/">chart tool</a> sorts this out automatically.</p>
+
+      <h2 id="goat">The Goat, eighth sign</h2>
+      <p>The Goat (未) sits eighth in the cycle: Rat, Ox, Tiger, Rabbit, Dragon, Snake, Horse, <strong>Goat</strong>, Monkey, Rooster, Dog, Pig. Traditional folklore associates the Goat with gentleness, artistry, and a love of calm - <strong>folklore, not fact</strong>. Recent Goat years: 2015, 2003, 1991; next after 2027 is 2039.</p>
+
+      <h2 id="fire">Why "Fire" Goat</h2>
+      <p>Each zodiac year also carries one of the ten Heavenly Stems. 2027 is <strong>Ding</strong> (丁, yin fire) over <strong>Wei</strong> (未, Goat, earth). Yin fire is candlelight and embers rather than wildfire - the tradition reads Ding-Wei as warmth over steady earth. Whether that poetry moves you is personal; the stem-branch facts are the same for everyone.</p>
+
+      <h2 id="benmingnian">Who meets Ben Ming Nian</h2>
+      <p><strong>Ben Ming Nian</strong> (本命年) is your zodiac year returning - in 2027, everyone born in a Goat year. Folk custom treats it as a year to be a little more careful, and some wear red for protection. Presented as custom, not counsel: it is what people do, not what you must do. For the Goat year in depth, see <a href="/learn/year-of-goat-2027/">2027: Year of the Goat</a>; for sign-to-sign dynamics, the <a href="/learn/zodiac-compatibility/">compatibility chart</a>.</p>
+
+      <h2 id="where">Where this leads</h2>
+      <p>New to the zodiac cycle? Start with <a href="/learn/zodiac/">The Chinese Zodiac</a>. For the year's folklore in full, <a href="/learn/year-of-goat-2027/">Year of the Goat 2027</a>.</p>
+
+      <div class="disclaimer">
+        <p><strong>For guidance and self-awareness purposes only.</strong> This lesson explains Chinese astrology as a cultural and philosophical framework - what it is, where it came from, and how its vocabulary works. It is not a prediction of your future, a medical or financial opinion, or a substitute for professional advice.</p>
+      </div>
+
+      <div class="back-row" style="margin-top:28px">
+        <a class="btn btn-secondary" href="/learn/">← All lessons</a>
+        <a class="btn btn-primary" href="/learn/year-of-goat-2027/">Next: 2027: Year of the Goat →</a>
+      </div>
+    </article>
+  </div>
+</BaseLayout>
