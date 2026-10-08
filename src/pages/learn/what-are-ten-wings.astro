@@ -1,0 +1,115 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageAttribution from '../../components/PageAttribution.astro';
+
+const title = "What Are the Ten Wings? - AstrologyLib";
+const description = "The Ten Wings explained: the ten commentaries that turned the Zhou Yi divination manual into the Yi Jing classic of philosophy.";
+
+const faqSchema = {
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What are the Ten Wings?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The Ten Wings (十翼) are ten traditional commentaries on the I Ching: the two Tuan Zhuan, two Xiang Zhuan, two Xi Ci, Wen Yan, Shuo Gua, Xu Gua, and Za Gua. They added philosophy and cosmology to the original divination text."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Who wrote the Ten Wings?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Tradition credits Confucius. Modern scholarship dates them to the Warring States through Han periods and sees multiple authors. Either way, they transformed the I Ching from a divination manual into a philosophical classic."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the Xi Ci?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The Xi Ci (繫辭, Appended Judgments), also called the Great Treatise, is the philosophical core of the Ten Wings. It discusses the nature of change, cosmology, and how the sage uses the I Ching - in two parts, upper and lower."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do beginners need to read the Ten Wings?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Start with the hexagrams themselves. The Wings repay reading once you have cast a few hexagrams and want to know what the tradition thinks they mean."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the difference between the Zhou Yi and the Ten Wings?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The Zhou Yi is the original core: 64 hexagrams with judgments and line texts. The Ten Wings are later commentaries on it. Together they form the Yi Jing as a classic."
+      }
+    }
+  ]
+};
+---
+
+<BaseLayout title={title} description={description} active="learn" schemaJson={faqSchema}>
+  <div class="article-head">
+    <div class="crumb"><a href="/">Home</a> › <a href="/learn/">Learn</a> › What Are the Ten Wings?</div>
+    <h1><span class="zh">十翼</span>What Are the Ten Wings?</h1>
+  </div>
+
+  <div class="layout">
+    <aside class="toc">
+      <div class="t-label">In this lesson</div>
+      <ul>
+        <li><a href="#list">The ten, listed</a></li>
+        <li><a href="#roles">What each one does</a></li>
+        <li><a href="#authorship">Who wrote them?</a></li>
+        <li><a href="#why">Why they matter</a></li>
+        <li><a href="#where">Where this leads</a></li>
+      </ul>
+    </aside>
+
+    <article class="article-body">
+      <PageAttribution
+        sources={[
+          { label: 'Ten Wings (十翼) · classical commentaries', url: '/glossary/' },
+          { label: 'Zhou Yi core text vs Yi Jing classic', url: '/learn/zhouyi-vs-yijing/' }
+        ]}
+        verified="2026-10-08"
+        version="1.0.0"
+      />
+
+      <p class="lead">The Zhou Yi began as a terse divination manual. The Ten Wings (十翼) are the ten commentaries that gave it wings - philosophy, cosmology, and ethics - and turned a fortune-teller's handbook into one of the Confucian classics. If the hexagrams are the skeleton, the Wings are the flesh.</p>
+
+      <div class="pdf-box" style="border:1px solid var(--ink-200);border-radius:10px;padding:18px 20px;margin:24px 0;background:var(--paper-2,#faf8f2)">
+        <p style="margin:0 0 10px"><strong>Free one-page PDF.</strong> Ten Wings One-Page: The 10 Commentaries at a Glance — print it, keep it. No signup needed.</p>
+        <a class="btn btn-primary" href="/pdf/what-are-ten-wings-cheatsheet.pdf" download>Download free PDF</a>
+      </div>
+
+      <h2 id="list">The ten, listed</h2>
+      <p>The Ten Wings are: <strong>Tuan Zhuan</strong> upper and lower (彖傳上/下), <strong>Xiang Zhuan</strong> upper and lower (象傳上/下), <strong>Xi Ci</strong> upper and lower (繫辭上/下), <strong>Wen Yan</strong> (文言), <strong>Shuo Gua</strong> (說卦), <strong>Xu Gua</strong> (序卦), and <strong>Za Gua</strong> (雜卦). Ten texts, traditionally counted as the "wings" that let the classic fly.</p>
+
+      <h2 id="roles">What each one does</h2>
+      <p>The <strong>Tuan</strong> commentaries explain each hexagram's judgment; the <strong>Xiang</strong> commentaries explain its "image" (the Greater Xiang on the trigrams, the Lesser on the lines). The <strong>Xi Ci</strong>, or Great Treatise, is the philosophical heart - cosmology, the nature of change, the sage's role. <strong>Wen Yan</strong> expands only Qian and Kun. <strong>Shuo Gua</strong> decodes the eight trigrams' symbolism; <strong>Xu Gua</strong> explains why the hexagrams are ordered as they are; <strong>Za Gua</strong> contrasts them in pairs.</p>
+
+      <h2 id="authorship">Who wrote them?</h2>
+      <p>Tradition credits them to Confucius. Modern scholarship dates the Wings to the Warring States through Han periods - centuries after the Zhou Yi core - and sees multiple hands. Both views agree on one thing: the Wings are where the I Ching stops being only about divination and starts being about how the world works.</p>
+
+      <h2 id="why">Why they matter</h2>
+      <div class="analogy"><b>Everyday analogy.</b> Think of the Zhou Yi as a screenplay and the Ten Wings as the director's commentary plus film school. You can watch the film without them - but the commentary is why the film is still studied two thousand years later.</div>
+
+      <h2 id="where">Where this leads</h2>
+      <p>The Wings are also why we say <strong>Yi Jing</strong> for the whole classic and <strong>Zhou Yi</strong> for the core - see <a href="/learn/zhouyi-vs-yijing/">Zhou Yi vs Yi Jing</a>. Classical passages from the Wings appear throughout our <a href="/library/">library</a>; start with <a href="/learn/i-ching-beginners/">I Ching for Beginners</a> if you are new.</p>
+
+      <div class="disclaimer">
+        <p><strong>For guidance and self-awareness purposes only.</strong> This lesson explains Chinese astrology as a cultural and philosophical framework - what it is, where it came from, and how its vocabulary works. It is not a prediction of your future, a medical or financial opinion, or a substitute for professional advice.</p>
+      </div>
+
+      <div class="back-row" style="margin-top:28px">
+        <a class="btn btn-secondary" href="/learn/">← All lessons</a>
+        <a class="btn btn-primary" href="/learn/zhouyi-vs-yijing/">Next: Zhou Yi vs Yi Jing →</a>
+      </div>
+    </article>
+  </div>
+</BaseLayout>
