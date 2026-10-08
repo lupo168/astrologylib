@@ -4,9 +4,55 @@ import PageAttribution from '../../components/PageAttribution.astro';
 
 const title = "The 12 Zodiac Animals, Explained Simply - AstrologyLib";
 const description = "The 12 Chinese zodiac animals and the Earthly Branches - why the Rat comes first, a daily-life analogy, and a 30-second example.";
+
+const faqSchema = {
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What are the 12 Chinese zodiac animals?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Rat, ox, tiger, rabbit, dragon, snake, horse, goat, monkey, rooster, dog and pig — twelve animals, one per year, in a repeating cycle. The animal of your birth year is your zodiac sign."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why does the Rat come first?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Not because of the river-race folklore. The Rat’s branch zǐ (子) begins the day’s cycle (11 pm–1 am) and stands first among the twelve Earthly Branches. The animals were layered onto an order that already existed."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is the Chinese zodiac a calendar or a personality test?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A calendar first. The twelve animals are the faces of the twelve Earthly Branches (子丑寅卯辰巳午未申酉戌亥) — the same branches used in the four pillars. The animal made the calendar memorable."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "When does the zodiac year change?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "At Chinese New Year, not January 1. A birth in late January can fall on either side of the line — the kind of edge case the four pillars are careful about."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the zodiac animal of 2027?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "2027 is the year of the Goat (未羊). 2026 is the year of the Horse (午馬)."
+      }
+    }
+  ]
+};
 ---
 
-<BaseLayout title={title} description={description} active="learn">
+<BaseLayout title={title} description={description} active="learn" schemaJson={faqSchema}>
   <div class="article-head">
     <div class="crumb"><a href="/">Home</a> › <a href="/learn/">Learn</a> › The Chinese Zodiac</div>
     <h1><span class="zh">生肖</span>The 12 Zodiac Animals, Explained Simply</h1>
@@ -49,6 +95,11 @@ const description = "The 12 Chinese zodiac animals and the Earthly Branches - wh
       <h2 id="where">Where this leads</h2>
       <p>The animal is the friendly face; the branch behind it - with its element and direction - is what a BaZi chart actually uses. The glossary keeps both names, so you can move from "I'm a Horse" to "my chart's 午 branch" without losing the thread.</p>
 
+
+      <div class="pdf-box" style="border:1px solid var(--ink-200);border-radius:10px;padding:18px 20px;margin:24px 0;background:var(--paper-2,#faf8f2)">
+        <p style="margin:0 0 10px"><strong>Free one-page PDF.</strong> Chinese Zodiac: 12 Animals Year Chart (Printable) — print it, keep it. No signup needed.</p>
+        <a class="btn btn-primary" href="/pdf/zodiac-cheatsheet.pdf" download>Download free PDF</a>
+      </div>
       <div class="disclaimer">
         <p><strong>For guidance and self-awareness purposes only.</strong> This lesson explains Chinese astrology as a cultural and philosophical framework - what it is, where it came from, and how its vocabulary works. It is not a prediction of your future, a medical or financial opinion, or a substitute for professional advice.</p>
       </div>
