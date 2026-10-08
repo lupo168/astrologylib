@@ -1,0 +1,125 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageAttribution from '../../components/PageAttribution.astro';
+
+const title = "BaZi vs Western Astrology - AstrologyLib";
+const description = "BaZi and Western astrology side by side: stems and branches versus planets and houses - two birth-moment maps, honestly compared.";
+
+const faqSchema = {
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Can BaZi and Western astrology be combined?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Many practitioners study both. They are different symbol systems reading the same birth moment, and each illuminates things the other leaves out."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which is more accurate?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "That is the wrong question - they are different frameworks, not competing measurements. Serious practitioners of each read tendencies and themes, not fixed events."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does BaZi use planets?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. BaZi works with Heavenly Stems, Earthly Branches, and the five elements. There are no planets, signs, or houses in its grammar."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What do I need for each system?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "BaZi needs birth date and time (place only for time zone). Western astrology needs date, exact time, and birth place, because the houses depend on location."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do they ever contradict each other?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "They can emphasize different themes, the way two biographies of one person differ. Practitioners treat them as lenses, not verdicts."
+      }
+    }
+  ]
+};
+---
+
+<BaseLayout title={title} description={description} active="learn" schemaJson={faqSchema}>
+  <div class="article-head">
+    <div class="crumb"><a href="/">Home</a> › <a href="/learn/">Learn</a> › BaZi vs Western Astrology</div>
+    <h1><span class="zh">八字 vs 西洋占星</span>BaZi vs Western Astrology</h1>
+  </div>
+
+  <div class="layout">
+    <aside class="toc">
+      <div class="t-label">In this lesson</div>
+      <ul>
+        <li><a href="#box">The comparison box</a></li>
+        <li><a href="#same">What they share</a></li>
+        <li><a href="#different">Where they differ</a></li>
+        <li><a href="#choose">How to choose</a></li>
+        <li><a href="#where">Where this leads</a></li>
+      </ul>
+    </aside>
+
+    <article class="article-body">
+      <PageAttribution
+        sources={[
+          { label: 'BaZi (八字) system', url: '/learn/bazi/' },
+          { label: 'Comparative astrology studies', url: '/learn/i-ching-vs-astrology/' }
+        ]}
+        verified="2026-10-08"
+        version="1.0.0"
+      />
+
+      <p class="lead">BaZi and Western astrology both do the same bold thing: <strong>read a birth moment as a map of a life</strong>. One grew in China from stems, branches, and elements; the other grew from Hellenistic roots through planets, signs, and houses. Same ambition, different instruments. Here is the honest comparison.</p>
+
+      <div class="pdf-box" style="border:1px solid var(--ink-200);border-radius:10px;padding:18px 20px;margin:24px 0;background:var(--paper-2,#faf8f2)">
+        <p style="margin:0 0 10px"><strong>Free one-page PDF.</strong> BaZi vs Western Astrology One-Page: Honest Comparison — print it, keep it. No signup needed.</p>
+        <a class="btn btn-primary" href="/pdf/bazi-vs-western-astrology-cheatsheet.pdf" download>Download free PDF</a>
+      </div>
+
+      <h2 id="box">The comparison box</h2>
+      <table>
+      <thead><tr><th></th><th>BaZi</th><th>Western astrology</th></tr></thead>
+      <tbody>
+      <tr><td><strong>Roots</strong></td><td>China; stem-branch calendar system, classical texts from Han onward</td><td>Hellenistic Egypt/Greece; transmitted via Persia, India, and medieval Europe</td></tr>
+      <tr><td><strong>Input</strong></td><td>Birth year, month, day, hour (solar-term calendar)</td><td>Birth date, exact time, and place (for houses)</td></tr>
+      <tr><td><strong>Core units</strong></td><td>10 Heavenly Stems, 12 Earthly Branches, 5 elements</td><td>Planets, 12 zodiac signs, 12 houses, aspects</td></tr>
+      <tr><td><strong>Central question</strong></td><td>Is the Day Master balanced? What does the chart need?</td><td>How do planetary archetypes express through signs and houses?</td></tr>
+      <tr><td><strong>Timing system</strong></td><td>10-year Luck Pillars + annual Liu Nian</td><td>Transits, progressions, solar returns</td></tr>
+      <tr><td><strong>Needs birth place?</strong></td><td>No - time zone suffices</td><td>Yes - houses depend on location</td></tr>
+      </tbody>
+      </table>
+
+      <h2 id="same">What they share</h2>
+      <p>Both map the birth moment onto a symbolic structure; both have layered timing systems for unfolding it across a life; both are read as <strong>tendencies and themes, not fixed events</strong> by serious practitioners. And both are frequently reduced to sun-sign or animal-sign entertainment - which neither tradition's practitioners recognize as the real thing.</p>
+
+      <h2 id="different">Where they differ</h2>
+      <p>BaZi has <strong>no planets</strong> - its sky is stems, branches, and the five-element cycles of generation and control. Western astrology has <strong>no five elements</strong> - its grammar is planetary archetype expressed through sign and house. BaZi's central drama is balance around the Day Master; Western's is the interplay of planetary functions. Different instruments, different music.</p>
+
+      <h2 id="choose">How to choose</h2>
+      <div class="analogy"><b>Honest guidance.</b> There is no ranking - only fit. If systematic cycles and elemental logic appeal to you, BaZi rewards study. If mythic archetypes and psychological narrative appeal, Western astrology has the deeper modern literature. Studying both is common and legitimate; each illuminates what the other leaves out.</div>
+
+      <h2 id="where">Where this leads</h2>
+      <p>For the BaZi path: <a href="/learn/bazi/">What Is Your BaZi?</a> and the <a href="/tools/bazi-chart/">chart tool</a>. For the full systems map: <a href="/learn/i-ching-vs-astrology/">I Ching vs Astrology: A Map</a>.</p>
+
+      <div class="disclaimer">
+        <p><strong>For guidance and self-awareness purposes only.</strong> This lesson explains Chinese astrology as a cultural and philosophical framework - what it is, where it came from, and how its vocabulary works. It is not a prediction of your future, a medical or financial opinion, or a substitute for professional advice.</p>
+      </div>
+
+      <div class="back-row" style="margin-top:28px">
+        <a class="btn btn-secondary" href="/learn/">← All lessons</a>
+        <a class="btn btn-primary" href="/learn/ziwei-vs-bazi/">Next: Zi Wei Dou Shu vs BaZi →</a>
+      </div>
+    </article>
+  </div>
+</BaseLayout>
