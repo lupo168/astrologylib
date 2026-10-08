@@ -1,0 +1,111 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageAttribution from '../../components/PageAttribution.astro';
+
+const title = "Zhou Yi vs Yi Jing: What's the Difference? - AstrologyLib";
+const description = "Zhou Yi or Yi Jing? The difference between the original divination core and the expanded Confucian classic, explained plainly.";
+
+const faqSchema = {
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Are the Zhou Yi and Yi Jing the same book?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Mostly. The Zhou Yi is the original core - 64 hexagrams with judgments from the Western Zhou period. The Yi Jing is that core plus the Ten Wings commentaries, canonized as a Confucian classic."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which came first?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The Zhou Yi core came first (c. 1000-750 BCE). The Ten Wings were added centuries later, during the Warring States through Han periods."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What are the Thirteen Classics?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The Thirteen Classics (十三經) are the Confucian canon, including the Yi Jing, the Book of Documents, the Book of Songs, and others. They were the core curriculum of educated China for two thousand years."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is the Yi Jing a Confucian text?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The expanded Yi Jing - core plus Ten Wings - was canonized as Confucian. The Zhou Yi core predates Confucius and began as a divination manual."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which should I read first?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The hexagrams themselves. Read a few judgments, cast a hexagram or two, then let curiosity pull you into the commentaries."
+      }
+    }
+  ]
+};
+---
+
+<BaseLayout title={title} description={description} active="learn" schemaJson={faqSchema}>
+  <div class="article-head">
+    <div class="crumb"><a href="/">Home</a> › <a href="/learn/">Learn</a> › Zhou Yi vs Yi Jing</div>
+    <h1><span class="zh">周易與易經</span>Zhou Yi vs Yi Jing: What's the Difference?</h1>
+  </div>
+
+  <div class="layout">
+    <aside class="toc">
+      <div class="t-label">In this lesson</div>
+      <ul>
+        <li><a href="#core">The Zhou Yi core</a></li>
+        <li><a href="#classic">The Yi Jing classic</a></li>
+        <li><a href="#which">Which term to use when</a></li>
+        <li><a href="#where">Where this leads</a></li>
+      </ul>
+    </aside>
+
+    <article class="article-body">
+      <PageAttribution
+        sources={[
+          { label: 'Zhou Yi (周易) · Western Zhou core text', url: '/learn/i-ching-beginners/' },
+          { label: 'Ten Wings (十翼) commentaries', url: '/learn/what-are-ten-wings/' }
+        ]}
+        verified="2026-10-08"
+        version="1.0.0"
+      />
+
+      <p class="lead">Two names, mostly one book. <strong>Zhou Yi</strong> (周易) is the original core - 64 hexagrams with judgments, a Western Zhou divination text. <strong>Yi Jing</strong> (易經) is the expanded classic - that core plus the Ten Wings commentaries, canonized as one of the Confucian Thirteen Classics. The difference matters when you read about it, not when you consult it.</p>
+
+      <div class="pdf-box" style="border:1px solid var(--ink-200);border-radius:10px;padding:18px 20px;margin:24px 0;background:var(--paper-2,#faf8f2)">
+        <p style="margin:0 0 10px"><strong>Free one-page PDF.</strong> Zhou Yi vs Yi Jing One-Page: Core vs Classic — print it, keep it. No signup needed.</p>
+        <a class="btn btn-primary" href="/pdf/zhouyi-vs-yijing-cheatsheet.pdf" download>Download free PDF</a>
+      </div>
+
+      <h2 id="core">The Zhou Yi core</h2>
+      <p>The Zhou Yi is the oldest layer: the hexagram figures, the hexagram judgments (卦辭), and the line statements (爻辭). Terse, oracular, practical - a working manual from roughly 1000-750 BCE. When scholars say "Zhou Yi," they usually mean this divination core specifically.</p>
+
+      <h2 id="classic">The Yi Jing classic</h2>
+      <p>The Yi Jing is the Zhou Yi plus the Ten Wings - philosophy, cosmology, and commentary added over centuries. As a "Jing" (經, classic), it joined the Confucian canon: the book was no longer just consulted, it was studied, memorized, and quoted by scholars for two millennia. Same skeleton, far more flesh.</p>
+
+      <h2 id="which">Which term to use when</h2>
+      <div class="analogy"><b>Everyday analogy.</b> Zhou Yi is the screenplay; Yi Jing is the screenplay plus the director's commentary, the essays, and the film-school syllabus. In casual English, "I Ching" covers both - and that is fine. Use "Zhou Yi" when you mean the original divination text; "Yi Jing" when you mean the classic as a whole.</div>
+
+      <h2 id="where">Where this leads</h2>
+      <p>For the core itself, start with <a href="/learn/i-ching-beginners/">I Ching for Beginners</a>; for the commentaries, <a href="/learn/what-are-ten-wings/">What Are the Ten Wings?</a>. The <a href="/glossary/">glossary</a> defines every term used on this page.</p>
+
+      <div class="disclaimer">
+        <p><strong>For guidance and self-awareness purposes only.</strong> This lesson explains Chinese astrology as a cultural and philosophical framework - what it is, where it came from, and how its vocabulary works. It is not a prediction of your future, a medical or financial opinion, or a substitute for professional advice.</p>
+      </div>
+
+      <div class="back-row" style="margin-top:28px">
+        <a class="btn btn-secondary" href="/learn/">← All lessons</a>
+        <a class="btn btn-primary" href="/glossary/">Next: Canonical Glossary (Step 2) →</a>
+      </div>
+    </article>
+  </div>
+</BaseLayout>
