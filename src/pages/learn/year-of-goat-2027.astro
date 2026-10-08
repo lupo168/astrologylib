@@ -1,0 +1,115 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageAttribution from '../../components/PageAttribution.astro';
+
+const title = "2027: Year of the Goat - AstrologyLib";
+const description = "A closer look at the 2027 Goat year: the Ding-Wei combination, Goat years through history, and Ben Ming Nian customs.";
+
+const faqSchema = {
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is the 2027 Goat year called in Chinese?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ding-Wei (丁未) - the stem Ding (yin fire) over the branch Wei (Goat). It is called the Fire Goat year."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What years are Goat years?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "2015, 2027, 2039 - every twelve years. The stem changes each cycle, so each Goat year has a different elemental flavor."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What does Ben Ming Nian mean for Goat-born people in 2027?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "2027 is their Ben Ming Nian (本命年), the return of their sign. Folk custom suggests extra care and wearing red; it is custom, not a prediction."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is the Goat lucky in Chinese culture?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The Goat carries gentle, artistic associations in folklore, with some cautionary notes about worry. These are cultural stories about a symbol, not assessments of people."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "When exactly does the Goat year begin?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "February 9, 2027 by the lunar calendar; February 4 (Li Chun) for BaZi year-pillar purposes."
+      }
+    }
+  ]
+};
+---
+
+<BaseLayout title={title} description={description} active="learn" schemaJson={faqSchema}>
+  <div class="article-head">
+    <div class="crumb"><a href="/">Home</a> › <a href="/learn/">Learn</a> › 2027: Year of the Goat</div>
+    <h1><span class="zh">2027羊年</span>2027: Year of the Goat</h1>
+  </div>
+
+  <div class="layout">
+    <aside class="toc">
+      <div class="t-label">In this lesson</div>
+      <ul>
+        <li><a href="#dingwei">Ding-Wei: fire on earth</a></li>
+        <li><a href="#cycle">Goat years around 2027</a></li>
+        <li><a href="#folklore">Goat folklore</a></li>
+        <li><a href="#customs">Ben Ming Nian customs</a></li>
+        <li><a href="#where">Where this leads</a></li>
+      </ul>
+    </aside>
+
+    <article class="article-body">
+      <PageAttribution
+        sources={[
+          { label: 'Wei (未) branch · Goat', url: '/learn/zodiac/' },
+          { label: '2027 annual pillar overview', url: '/learn/chinese-zodiac-2027/' }
+        ]}
+        verified="2026-10-08"
+        version="1.0.0"
+      />
+
+      <p class="lead">Every Goat year has its own flavor, set by its Heavenly Stem. 2027's is <strong>Ding-Wei</strong> (丁未): yin fire sitting on Goat earth. This page looks closer at the combination, the Goat years around it, and what folk custom says about meeting your own sign's year.</p>
+
+      <div class="pdf-box" style="border:1px solid var(--ink-200);border-radius:10px;padding:18px 20px;margin:24px 0;background:var(--paper-2,#faf8f2)">
+        <p style="margin:0 0 10px"><strong>Free one-page PDF.</strong> Year of the Goat One-Page: 2027 Essentials — print it, keep it. No signup needed.</p>
+        <a class="btn btn-primary" href="/pdf/year-of-goat-2027-cheatsheet.pdf" download>Download free PDF</a>
+      </div>
+
+      <h2 id="dingwei">Ding-Wei: fire on earth</h2>
+      <p>Ding (丁) is yin fire - the lamp, the ember, the hearth. Wei (未) is the Goat branch, carrying earth. In five-element terms, fire generates earth: the year's stem feeds its branch, a combination the tradition reads as <strong>supportive and steady rather than explosive</strong>. Read it as poetry about the year's texture, not a forecast.</p>
+
+      <h2 id="cycle">Goat years around 2027</h2>
+      <p>The cycle runs twelve years: <strong>2015</strong> (Yi-Wei, wood Goat), <strong>2027</strong> (Ding-Wei, fire Goat), <strong>2039</strong> (Ji-Wei, earth Goat). Each Goat year shares the branch's folklore while its stem changes the flavor - wood Goats, fire Goats, and earth Goats are distinguished in folk talk the way vintages are distinguished in wine.</p>
+
+      <h2 id="folklore">Goat folklore</h2>
+      <p>Traditional lore paints the Goat as gentle, artistic, peace-loving, and attached to comfort - the aesthete of the zodiac. It also warns, in some tellings, of worry and indecision. Both halves are <strong>stories a culture tells about a symbol</strong>, and they say more about the culture than about anyone born in 2015.</p>
+
+      <h2 id="customs">Ben Ming Nian customs</h2>
+      <p>If you were born in a Goat year, 2027 is your <strong>Ben Ming Nian</strong> (本命年). Common customs include wearing something red (often gifted by elders, not bought yourself) and treading a little more carefully in big decisions. These are customs people enjoy keeping - not obligations, and not predictions. Check your sign dynamics in the <a href="/learn/zodiac-compatibility/">compatibility chart</a> or the year's overview in <a href="/learn/chinese-zodiac-2027/">Chinese Zodiac 2027</a>.</p>
+
+      <h2 id="where">Where this leads</h2>
+      <p>For how the Goat relates to the other eleven signs, see the <a href="/learn/zodiac-compatibility/">compatibility chart</a>. For the zodiac system from zero, <a href="/learn/zodiac/">The Chinese Zodiac</a>.</p>
+
+      <div class="disclaimer">
+        <p><strong>For guidance and self-awareness purposes only.</strong> This lesson explains Chinese astrology as a cultural and philosophical framework - what it is, where it came from, and how its vocabulary works. It is not a prediction of your future, a medical or financial opinion, or a substitute for professional advice.</p>
+      </div>
+
+      <div class="back-row" style="margin-top:28px">
+        <a class="btn btn-secondary" href="/learn/">← All lessons</a>
+        <a class="btn btn-primary" href="/learn/zodiac-compatibility/">Next: Zodiac Compatibility Chart →</a>
+      </div>
+    </article>
+  </div>
+</BaseLayout>
