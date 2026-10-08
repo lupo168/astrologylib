@@ -1,0 +1,120 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageAttribution from '../../components/PageAttribution.astro';
+
+const title = "I Ching vs Astrology: A Map of Divination Systems - AstrologyLib";
+const description = "A map of the major divination systems: I Ching, BaZi, Zi Wei Dou Shu, Western astrology, and Tarot - birth-based versus question-based, East versus West.";
+
+const faqSchema = {
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How many major divination systems are there?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "This map covers five widely practiced ones: the I Ching, BaZi, Zi Wei Dou Shu, Western astrology, and Tarot. Many smaller traditions exist, but these five cover most of what beginners encounter."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the difference between birth-based and question-based systems?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Birth-based systems (BaZi, Zi Wei, Western astrology) compute a chart from your birth moment and read it across time. Question-based systems (I Ching, Tarot) answer a specific question asked in the moment."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which system is the oldest?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The I Ching's core text, dating to roughly 1000-750 BCE, is the oldest of the five by a wide margin."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can different systems be mixed?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Practitioners commonly consult a question-based system for decisions and a birth-based system for longer patterns. The systems address different jobs."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Where should a complete beginner start?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "With the question you actually have. A decision to make points to the I Ching or Tarot; curiosity about yourself points to BaZi, Zi Wei, or Western astrology."
+      }
+    }
+  ]
+};
+---
+
+<BaseLayout title={title} description={description} active="learn" schemaJson={faqSchema}>
+  <div class="article-head">
+    <div class="crumb"><a href="/">Home</a> › <a href="/learn/">Learn</a> › I Ching vs Astrology: A Map</div>
+    <h1><span class="zh">占卜系統地圖</span>I Ching vs Astrology: A Map of Divination Systems</h1>
+  </div>
+
+  <div class="layout">
+    <aside class="toc">
+      <div class="t-label">In this lesson</div>
+      <ul>
+        <li><a href="#map">The five systems</a></li>
+        <li><a href="#axes">Two axes</a></li>
+        <li><a href="#navigate">How to navigate</a></li>
+        <li><a href="#where">Where this leads</a></li>
+      </ul>
+    </aside>
+
+    <article class="article-body">
+      <PageAttribution
+        sources={[
+          { label: 'Five traditions · comparative overview', url: '/learn/i-ching-vs-tarot/' },
+          { label: 'Chinese systems vocabulary', url: '/glossary/' }
+        ]}
+        verified="2026-10-08"
+        version="1.0.0"
+      />
+
+      <p class="lead">Newcomers meet a confusing crowd: I Ching, BaZi, Zi Wei, Western astrology, Tarot - all “divination,” all different. This page is a <strong>map, not a match</strong>: five major systems placed on two axes, so you can see where each lives and which one fits the question you actually have.</p>
+
+      <div class="pdf-box" style="border:1px solid var(--ink-200);border-radius:10px;padding:18px 20px;margin:24px 0;background:var(--paper-2,#faf8f2)">
+        <p style="margin:0 0 10px"><strong>Free one-page PDF.</strong> Divination Systems Map One-Page: Five Systems at a Glance — print it, keep it. No signup needed.</p>
+        <a class="btn btn-primary" href="/pdf/i-ching-vs-astrology-cheatsheet.pdf" download>Download free PDF</a>
+      </div>
+
+      <h2 id="map">The five systems</h2>
+      <table>
+      <thead><tr><th>System</th><th>Roots</th><th>Instrument</th><th>Answers</th></tr></thead>
+      <tbody>
+      <tr><td><strong>I Ching</strong></td><td>China, c. 1000-750 BCE</td><td>64 hexagrams, cast per question</td><td>Specific questions; situations in change</td></tr>
+      <tr><td><strong>BaZi</strong></td><td>China, classical</td><td>Birth chart: stems, branches, elements</td><td>Constitutional patterns; timing across life</td></tr>
+      <tr><td><strong>Zi Wei Dou Shu</strong></td><td>China, Song dynasty</td><td>Birth chart: stars in twelve palaces</td><td>Life areas in narrative detail</td></tr>
+      <tr><td><strong>Western astrology</strong></td><td>Hellenistic roots</td><td>Birth chart: planets, signs, houses</td><td>Psychological archetypes; transits</td></tr>
+      <tr><td><strong>Tarot</strong></td><td>Europe, 15th-18th c.</td><td>78 cards drawn per question</td><td>Situations from multiple angles</td></tr>
+      </tbody>
+      </table>
+
+      <h2 id="axes">Two axes</h2>
+      <p><strong>Birth-based vs question-based.</strong> BaZi, Zi Wei, and Western astrology start from your birth moment and unfold it through time. The I Ching and Tarot start from a question asked now and answer it directly. Neither axis is better - they do different jobs. <strong>East vs West</strong> is the second axis: Chinese systems share the yin-yang and five-element cosmos; Western systems share planetary and archetypal languages.</p>
+
+      <h2 id="navigate">How to navigate</h2>
+      <div class="analogy"><b>Honest guidance.</b> Start from your question, not from the system. A decision to make? I Ching or Tarot. Self-understanding over time? BaZi, Zi Wei, or Western astrology. Drawn to Chinese cosmology? The first three. Raised on myth and image? The last two. And "all of the above, slowly" is a legitimate answer - the map is here whenever you are ready.</div>
+
+      <h2 id="where">Where this leads</h2>
+      <p>Deeper comparisons: <a href="/learn/i-ching-vs-tarot/">I Ching vs Tarot</a>, <a href="/learn/bazi-vs-western-astrology/">BaZi vs Western Astrology</a>, <a href="/learn/ziwei-vs-bazi/">Zi Wei Dou Shu vs BaZi</a>. System primers: <a href="/learn/i-ching-beginners/">I Ching for Beginners</a>, <a href="/learn/bazi/">What Is Your BaZi?</a>, <a href="/learn/ziwei/">Zi Wei Dou Shu</a>.</p>
+
+      <div class="disclaimer">
+        <p><strong>For guidance and self-awareness purposes only.</strong> This lesson explains Chinese astrology as a cultural and philosophical framework - what it is, where it came from, and how its vocabulary works. It is not a prediction of your future, a medical or financial opinion, or a substitute for professional advice.</p>
+      </div>
+
+      <div class="back-row" style="margin-top:28px">
+        <a class="btn btn-secondary" href="/learn/">← All lessons</a>
+        <a class="btn btn-primary" href="/glossary/">Next: Canonical Glossary (Step 2) →</a>
+      </div>
+    </article>
+  </div>
+</BaseLayout>
