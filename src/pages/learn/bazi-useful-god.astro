@@ -1,0 +1,111 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageAttribution from '../../components/PageAttribution.astro';
+
+const title = "Useful God (Yong Shen) in BaZi - AstrologyLib";
+const description = "The Useful God (用神) is the element your BaZi chart needs most for balance. What it is, how practitioners find it, and where schools honestly disagree.";
+
+const faqSchema = {
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is the Useful God in BaZi?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The Useful God (用神) is the element a BaZi chart most needs for balance, chosen from the Day Master's strength and the chart's structure. Its counterparts are the Unfavorable God (忌神), which harms balance, and the Hostile God (仇神), which supports the harm."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How is the Useful God chosen?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "By assessing whether the Day Master is strong or weak against the season and chart, then selecting the element that restores balance. It is interpretive judgment - schools disagree on method."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can the Useful God change over time?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The natal Useful God is fixed, but practitioners adjust their reading as Luck Pillars bring different elements into play across decades."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does the Useful God tell me my lucky color?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Classical texts do associate elements with colors and directions, but AstrologyLib treats these as cultural associations, not prescriptions. No color changes your chart."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why do different schools pick different Useful Gods?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Because the selection weighs competing factors - season, structure, flow - and schools rank them differently. Disagreement here is normal and long-standing."
+      }
+    }
+  ]
+};
+---
+
+<BaseLayout title={title} description={description} active="learn" schemaJson={faqSchema}>
+  <div class="article-head">
+    <div class="crumb"><a href="/">Home</a> › <a href="/learn/">Learn</a> › Useful God (Yong Shen)</div>
+    <h1><span class="zh">用神</span>Useful God (Yong Shen) in BaZi</h1>
+  </div>
+
+  <div class="layout">
+    <aside class="toc">
+      <div class="t-label">In this lesson</div>
+      <ul>
+        <li><a href="#what">What the Useful God is</a></li>
+        <li><a href="#how">How practitioners find it</a></li>
+        <li><a href="#disagree">Where schools disagree</a></li>
+        <li><a href="#where">Where this leads</a></li>
+      </ul>
+    </aside>
+
+    <article class="article-body">
+      <PageAttribution
+        sources={[
+          { label: 'Useful God (用神) · glossary', url: '/glossary/' },
+          { label: 'Day Master strength assessment', url: '/learn/day-master-meaning/' }
+        ]}
+        verified="2026-10-08"
+        version="1.0.0"
+      />
+
+      <p class="lead">The <strong>Useful God</strong> (用神, yòng shén) is the single most practical concept in BaZi - and the most argued-over. It names the element your chart needs most to stay in balance. Its opposites have names too: the <strong>Unfavorable God</strong> (忌神) harms the balance, the <strong>Hostile God</strong> (仇神) feeds the harm.</p>
+
+      <div class="pdf-box" style="border:1px solid var(--ink-200);border-radius:10px;padding:18px 20px;margin:24px 0;background:var(--paper-2,#faf8f2)">
+        <p style="margin:0 0 10px"><strong>Free one-page PDF.</strong> Useful God One-Page: Finding What Balances the Chart — print it, keep it. No signup needed.</p>
+        <a class="btn btn-primary" href="/pdf/bazi-useful-god-cheatsheet.pdf" download>Download free PDF</a>
+      </div>
+
+      <h2 id="what">What the Useful God is</h2>
+      <p>Start from the Day Master's strength. A weak Bing fire Day Master born in winter, surrounded by water, needs wood and fire - support. A strong Geng metal Day Master in autumn, drowning in metal, needs fire to shape it and water to drain it. The element (or elements) the chart is "asking for" is the Useful God. Everything else is then read as helping or hindering it.</p>
+
+      <h2 id="how">How practitioners find it</h2>
+      <p>The standard procedure: assess the Day Master's strength against the season and the chart, identify what supports or regulates it, and select the balancing element. The <a href="/tools/bazi-chart/">chart tool</a> shows the elemental balance; the <a href="/learn/bazi-ten-gods/">Ten Gods</a> show which relationships carry the needed element. In classical texts this selection is treated as the key that unlocks the whole reading.</p>
+
+      <h2 id="disagree">Where schools disagree</h2>
+      <p>Honestly: different schools pick different Useful Gods for the same chart. Some prioritize seasonal support, others structural flow; some allow two Useful Gods, others insist on one. This is <strong>interpretive judgment, not a lab result</strong> - and any teacher who claims one mechanical rule works for every chart is oversimplifying. Treat the Useful God as a working hypothesis, held lightly.</p>
+
+      <h2 id="where">Where this leads</h2>
+      <p>The Useful God also frames timing: <a href="/learn/bazi-luck-pillars/">Luck Pillars</a> that bring your Useful God are traditionally read as supportive decades. For the vocabulary around it, see <a href="/learn/bazi-ten-gods/">the Ten Gods</a> and the <a href="/glossary/">glossary</a>.</p>
+
+      <div class="disclaimer">
+        <p><strong>For guidance and self-awareness purposes only.</strong> This lesson explains Chinese astrology as a cultural and philosophical framework - what it is, where it came from, and how its vocabulary works. It is not a prediction of your future, a medical or financial opinion, or a substitute for professional advice.</p>
+      </div>
+
+      <div class="back-row" style="margin-top:28px">
+        <a class="btn btn-secondary" href="/learn/">← All lessons</a>
+        <a class="btn btn-primary" href="/learn/bazi-luck-pillars/">Next: Luck Pillars (Da Yun) →</a>
+      </div>
+    </article>
+  </div>
+</BaseLayout>
