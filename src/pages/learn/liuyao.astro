@@ -4,9 +4,55 @@ import PageAttribution from '../../components/PageAttribution.astro';
 
 const title = "What Is Liu Yao Divination? - AstrologyLib";
 const description = "Liu Yao (Six Lines Divination) explained from zero - King Wen Ba Gua, Shi and Ying lines, the Six Kinships, a daily-life analogy, and a 30-second example.";
+
+const faqSchema = {
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is Liu Yao divination?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Liu Yao (六爻 · Six Lines Divination), also called Wen Wang Ba Gua or the Najia method, answers immediate, concrete situational decisions. It was pioneered by the Western Han scholar Jing Fang (京房)."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How is Liu Yao different from reading the I Ching directly?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A philosophical reading consults the poetic line commentary of the Zhou Yi. Liu Yao instead assigns each of the six lines an Earthly Branch, a Six Kinship role and a Celestial Spirit — turning the hexagram into an exact, computational diagnostic tool."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What are the Shi and Ying lines?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The Shi line (世爻 · Self) represents you, the inquirer. The Ying line (應爻 · Other) represents the counterpart — the employer, partner or situation. If they generate or combine, agreement comes naturally; if they clash, expect friction."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What are the Six Kinships in Liu Yao?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Five relational categories naming what each line governs: Parents (contracts, exams, property), Officer/Ghost (career, authority), Siblings (peers, competitors), Wealth (money, assets) and Offspring (creativity, customers, relief)."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the Yong Shen?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The Yong Shen (用神 · Functional Focus Spirit) is the kinship line that represents the matter you are asking about — for a job question it is usually the Officer line; for money, the Wealth line."
+      }
+    }
+  ]
+};
 ---
 
-<BaseLayout title={title} description={description} active="traditions">
+<BaseLayout title={title} description={description} active="traditions" schemaJson={faqSchema}>
   <div class="article-head">
     <div class="crumb"><a href="/">Home</a> › <a href="/traditions/">Traditions</a> › What Is Liu Yao Divination?</div>
     <h1><span class="zh">六爻神卦</span>What Is Liu Yao Divination?</h1>
@@ -118,6 +164,11 @@ const description = "Liu Yao (Six Lines Divination) explained from zero - King W
       <h2 id="where">Where this leads</h2>
       <p>When an old line changes polarity, it creates a <strong>Moving Line (動爻)</strong> and generates a transformed hexagram. By cross-referencing Month Clash (月破) and Ten-Day Void (旬空), Liu Yao provides precise calendar timing (down to the day or month) for when an outcome manifests.</p>
 
+
+      <div class="pdf-box" style="border:1px solid var(--ink-200);border-radius:10px;padding:18px 20px;margin:24px 0;background:var(--paper-2,#faf8f2)">
+        <p style="margin:0 0 10px"><strong>Free one-page PDF.</strong> Liu Yao Line-Assignment Card (Printable) — print it, keep it. No signup needed.</p>
+        <a class="btn btn-primary" href="/pdf/liuyao-cheatsheet.pdf" download>Download free PDF</a>
+      </div>
       <div class="disclaimer">
         <p><strong>For guidance and self-awareness purposes only.</strong> This lesson explains Chinese divination as an analytical and cultural framework — how its logic operates and where its literature originates. It is not a prediction of your future or a substitute for professional counsel.</p>
       </div>
