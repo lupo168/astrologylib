@@ -1,0 +1,125 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageAttribution from '../../components/PageAttribution.astro';
+
+const title = "Zi Wei Dou Shu vs BaZi - AstrologyLib";
+const description = "Zi Wei Dou Shu and BaZi side by side: stars and palaces versus stems and elements - China's two great birth-chart systems, honestly compared.";
+
+const faqSchema = {
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Which is older, BaZi or Zi Wei Dou Shu?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "BaZi's stem-branch roots are older, with classical texts from the Han-Tang periods. Zi Wei Dou Shu reached its mature, systematized form later, in the Song dynasty."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I use BaZi and Zi Wei Dou Shu together?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes - historically, practitioners often learned both as companion arts. They read the same birth data through different symbol systems."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which is easier to learn?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "BaZi's core logic (Day Master, balance, Ten Gods) is usually quicker to grasp. Zi Wei's stars, palaces, and Four Transformations take longer but give richly narrative readings."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do the two systems ever contradict each other?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "They can emphasize different themes, like two biographies of one person. Neither tradition claims the other is wrong; practitioners treat them as complementary lenses."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Where should a beginner start?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "BaZi first if you like systems and structure; Zi Wei if you are drawn to story and archetype. Either way, learn one well before adding the other."
+      }
+    }
+  ]
+};
+---
+
+<BaseLayout title={title} description={description} active="learn" schemaJson={faqSchema}>
+  <div class="article-head">
+    <div class="crumb"><a href="/">Home</a> › <a href="/learn/">Learn</a> › Zi Wei Dou Shu vs BaZi</div>
+    <h1><span class="zh">紫微 vs 八字</span>Zi Wei Dou Shu vs BaZi</h1>
+  </div>
+
+  <div class="layout">
+    <aside class="toc">
+      <div class="t-label">In this lesson</div>
+      <ul>
+        <li><a href="#box">The comparison box</a></li>
+        <li><a href="#same">What they share</a></li>
+        <li><a href="#different">Where they differ</a></li>
+        <li><a href="#choose">How to choose</a></li>
+        <li><a href="#where">Where this leads</a></li>
+      </ul>
+    </aside>
+
+    <article class="article-body">
+      <PageAttribution
+        sources={[
+          { label: 'Zi Wei Dou Shu (紫微斗數) tradition', url: '/learn/ziwei/' },
+          { label: 'BaZi (八字) system', url: '/learn/bazi/' }
+        ]}
+        verified="2026-10-08"
+        version="1.0.0"
+      />
+
+      <p class="lead">China produced two great birth-chart systems: <strong>BaZi</strong> (八字), built from stems, branches, and elements, and <strong>Zi Wei Dou Shu</strong> (紫微斗數), built from stars set in twelve palaces. Same birth data at the root, same yin-yang cosmology - very different reading experience. Here is how they compare.</p>
+
+      <div class="pdf-box" style="border:1px solid var(--ink-200);border-radius:10px;padding:18px 20px;margin:24px 0;background:var(--paper-2,#faf8f2)">
+        <p style="margin:0 0 10px"><strong>Free one-page PDF.</strong> Zi Wei vs BaZi One-Page: Honest Comparison — print it, keep it. No signup needed.</p>
+        <a class="btn btn-primary" href="/pdf/ziwei-vs-bazi-cheatsheet.pdf" download>Download free PDF</a>
+      </div>
+
+      <h2 id="box">The comparison box</h2>
+      <table>
+      <thead><tr><th></th><th>BaZi</th><th>Zi Wei Dou Shu</th></tr></thead>
+      <tbody>
+      <tr><td><strong>Mature form</strong></td><td>Classical texts from Han-Tang; systematized over centuries</td><td>Mature form in the Song dynasty</td></tr>
+      <tr><td><strong>Core units</strong></td><td>Stems, branches, five elements, Ten Gods</td><td>14 major stars + auxiliary stars, 12 palaces, Four Transformations (四化)</td></tr>
+      <tr><td><strong>Central question</strong></td><td>Is the Day Master balanced?</td><td>Which stars sit in which palaces of life?</td></tr>
+      <tr><td><strong>Reading feel</strong></td><td>Systematic; elemental accounting</td><td>Narrative; star archetypes in life areas</td></tr>
+      <tr><td><strong>Timing</strong></td><td>10-year Luck Pillars + annual Liu Nian</td><td>Decadal and annual palace movements + Four Transformations</td></tr>
+      <tr><td><strong>Input</strong></td><td>Birth date + hour</td><td>Birth date + hour (traditionally also gender)</td></tr>
+      </tbody>
+      </table>
+
+      <h2 id="same">What they share</h2>
+      <p>Both start from the same birth data, both live inside the yin-yang and five-element cosmos, and both read a life as <strong>structure plus timing</strong>. Historically, educated practitioners often learned both - they were companion arts, not rivals.</p>
+
+      <h2 id="different">Where they differ</h2>
+      <p>BaZi is <strong>elemental accounting</strong>: every character is weighed for what it does to the Day Master's balance. Zi Wei is <strong>celestial narrative</strong>: stars like Zi Wei (the Emperor), Tian Ji, and Tai Yang are characters placed on the twelve palaces (life, wealth, career, and so on), and the Four Transformations show how they activate. One reads like engineering, the other like a cast of characters.</p>
+
+      <h2 id="choose">How to choose</h2>
+      <div class="analogy"><b>Honest guidance.</b> If you like systems, cycles, and clean logic, BaZi will feel like home. If you like stories, archetypes, and richly peopled charts, Zi Wei rewards the longer learning curve. Most serious students end up bilingual - and neither system claims the other is wrong.</div>
+
+      <h2 id="where">Where this leads</h2>
+      <p>Try both instruments: the <a href="/tools/bazi-chart/">BaZi chart tool</a> and the <a href="/tools/ziwei/">Zi Wei chart tool</a>. Background: <a href="/learn/bazi/">What Is Your BaZi?</a> and <a href="/learn/ziwei/">Zi Wei Dou Shu</a>.</p>
+
+      <div class="disclaimer">
+        <p><strong>For guidance and self-awareness purposes only.</strong> This lesson explains Chinese astrology as a cultural and philosophical framework - what it is, where it came from, and how its vocabulary works. It is not a prediction of your future, a medical or financial opinion, or a substitute for professional advice.</p>
+      </div>
+
+      <div class="back-row" style="margin-top:28px">
+        <a class="btn btn-secondary" href="/learn/">← All lessons</a>
+        <a class="btn btn-primary" href="/learn/i-ching-vs-astrology/">Next: I Ching vs Astrology: A Map →</a>
+      </div>
+    </article>
+  </div>
+</BaseLayout>
