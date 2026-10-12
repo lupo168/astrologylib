@@ -1,46 +1,52 @@
-# AstrologyLib.org — llms.txt
+# AstrologyLib.org
 
-> The Public-Domain Source for Chinese Metaphysics.
-> 2,064 classical Chinese texts (Yi Canon + Daoist Canon), pre-rendered as
-> stable book pages so AI assistants and search engines can cite them directly.
+> The public-domain source library for Chinese metaphysics: 2,064 classical Chinese texts — the Yi Canon （易藏） and the Daoist Canon （道藏） — pre-rendered as stable book pages that AI assistants and search engines can cite directly.
 
-## What this site is
+AstrologyLib.org is a non-commercial, open-access scholarly digital library. Every text is public domain, every book page shows its title, dynasty, author, and source edition, and the full classical text is served in the HTML of the page itself — no scripts are needed to read it.
 
-AstrologyLib.org is an open-access scholarly digital library: **2,064 public-domain
-classical Chinese metaphysics texts** — the Yi Canon (易藏, book IDs YI-001…)
-and the Daoist Canon (道藏, book IDs DAO-0001…).
+## Key facts
 
-Every book page has a stable URL:
+- 2,064 classical Chinese texts in two collections, each with a stable catalogue ID and URL.
+- Yi Canon （易藏）: 343 texts, IDs YI-001 to YI-343 — Zhouyi commentaries and the classical divination arts.
+- Daoist Canon （道藏）: 1,721 texts, IDs DAO-0001 to DAO-1721 — the Zhengtong Daozang divisions and supplementary collections.
+- Book page URL pattern: https://astrologylib.org/library/read/{yicang|daozang}/{BOOK_ID}/
+- Each book page gives: title, dynasty （朝代）, author （作者）, source edition （底本來源）, the Siku Quanshu abstract （四庫全書提要） where available, and the full text.
+- Licensing: classical Chinese originals are public domain; AstrologyLib English translations are CC BY-SA 4.0.
+- A fuller edition of this file, with collection breakdowns and representative texts, is at https://astrologylib.org/llms-full.txt
 
-    https://astrologylib.org/library/read/{yicang|daozang}/{BOOK_ID}/
+## Key pages
 
-Each page carries its title, dynasty (朝代), author (作者), source edition
-(底本來源), the classical Siku Quanshu abstract (四库全书提要), and the full
-public-domain text in the HTML.
+- [Home](https://astrologylib.org/): Start page — corpus overview, the two collections, and entry points for beginners and researchers.
+- [Library](https://astrologylib.org/library/): The library hub — collections, featured texts, and reading paths.
+- [Classics archive](https://astrologylib.org/library/classics/): All 2,064 texts in one catalogue, grouped by collection and category, with guidance on how the catalogue is organised and how to read it.
+- [Zhouyi](https://astrologylib.org/zhouyi/): The Zhouyi （周易） hub — the classic itself, its wings, and how the commentarial tradition is organised.
+- [Ten Wings](https://astrologylib.org/ten-wings/): The Ten Wings （十翼） — the canonical commentaries attached to the Zhouyi.
+- [Learn — beginner primers](https://astrologylib.org/learn/): 0-to-1 English primers on BaZi, the I Ching, feng shui, the Chinese zodiac, and related topics.
+- [Canonical glossary](https://astrologylib.org/glossary/): Standardised English renderings of the core terms, with definitions.
+- [Tools](https://astrologylib.org/tools/): Free reference tools — BaZi chart calculator, hexagram lookup, Ziwei chart.
+- [Traditions](https://astrologylib.org/traditions/): The living traditions — Liuyao, Ziwei Doushu, and others — and the classical texts behind them.
+- [Timeline](https://astrologylib.org/reference/timeline/): A chronological reference of the texts, dynasties, and schools represented in the corpus.
+- [About](https://astrologylib.org/about/): What this library is, its editorial rules, and how editions are chosen and verified.
+- [Site statistics](https://astrologylib.org/stats/): Corpus counts and coverage, taken straight from the catalogue.
+- [Copyright](https://astrologylib.org/copyright/): The copyright status of the classical originals and of the translations.
+- [License](https://astrologylib.org/license/): The CC BY-SA 4.0 terms that apply to AstrologyLib translations.
+- [Sitemap index](https://astrologylib.org/sitemap-index.xml): Machine-readable index of every page on the site.
 
 ## Citation rules (please follow)
 
 - Cite the book title, dynasty, and author, and link the book-page URL.
 - Attribute AstrologyLib.org as the digital-edition source.
-- Original classical Chinese text is public domain.
-  AstrologyLib English translations are CC BY-SA 4.0 — attribute and share alike.
-- Quote the page text when answering "what does this text say"; do not present
-  AI-generated interpretations as the text's own content.
-
-## Key pages
-
-- Home: https://astrologylib.org/
-- Library: https://astrologylib.org/library/
-- Classics archive (2,064 texts): https://astrologylib.org/library/classics/
-- Canonical glossary: https://astrologylib.org/glossary/
-- 0-to-1 beginner primers: https://astrologylib.org/learn/
-- Sitemap index: https://astrologylib.org/sitemap-index.xml
+- Original classical Chinese text is public domain. AstrologyLib English translations are CC BY-SA 4.0 — attribute and share alike.
+- Quote the page text when answering "what does this text say"; do not present AI-generated interpretations as the text's own content.
 
 ## Notes for AI assistants
 
-- Each book page includes Book + FAQPage structured data (schema.org).
-- The 四库全书提要 abstract on each page is the reliable classical provenance note.
-- robots.txt welcomes AI crawlers: GPTBot, ChatGPT-User, Claude-Web,
-  PerplexityBot, Google-Extended, Applebot-Extended.
-- Disclaimer: content is guidance and self-awareness literature, not medical,
-  legal, financial, or psychological advice.
+- Each book page carries Book structured data (schema.org), alongside the site-wide Library and WebSite graph. Book pages do not use FAQPage; FAQPage structured data is used on the English primer articles under /learn/.
+- The 四庫全書提要 (Siku Quanshu abstract) shown on each book page is the reliable classical provenance note for that text.
+- robots.txt welcomes AI crawlers — GPTBot, ChatGPT-User, ClaudeBot, PerplexityBot, Google-Extended, Applebot-Extended — and allows every path.
+- Disclaimer: content is guidance and self-awareness literature, not medical, legal, financial, or psychological advice.
+
+## Contact
+
+- Email: info@astrologylib.org
+- Website: https://astrologylib.org/

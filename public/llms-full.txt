@@ -1,0 +1,92 @@
+# AstrologyLib.org — llms-full.txt
+
+> Full-text companion to https://astrologylib.org/llms.txt — collection breakdowns, the site's main sections, and representative texts, for AI assistants and search engines that want the complete picture in one file.
+
+AstrologyLib.org is a non-commercial, open-access scholarly digital library of Chinese metaphysics. It holds 2,064 classical Chinese texts in two collections — the Yi Canon （易藏） and the Daoist Canon （道藏） — and publishes every one of them as a stable, pre-rendered book page whose full text sits in the page HTML. Alongside the corpus it maintains a canonical English glossary, a set of 0-to-1 English primers, and free reference tools.
+
+The library's editorial rule is provenance first: no text is published without a named source edition （底本來源）, and every book page shows its title, dynasty, author, and source edition next to the text itself. The classical originals are public domain. AstrologyLib's own English translations are CC BY-SA 4.0.
+
+## Key facts
+
+- Total corpus: 2,064 texts — Yi Canon 343 (IDs YI-001–YI-343), Daoist Canon 1,721 (IDs DAO-0001–DAO-1721).
+- Book page URL pattern: https://astrologylib.org/library/read/{yicang|daozang}/{BOOK_ID}/
+- Every book page is static HTML: bibliographic header, full classical text, a citation section, and previous/next links chaining the whole collection.
+- Structured data: each book page carries schema.org Book data plus the site-wide Library and WebSite graph; the English primers under /learn/ carry FAQPage data.
+- Contact: info@astrologylib.org
+
+## The Yi Canon （易藏） — 343 texts
+
+The Yi Canon gathers the Zhouyi （周易） commentarial tradition and the classical divination arts that grew around it. Catalogue composition (from the site catalogue):
+
+- 易理经解 (commentary and exegesis of the Yi): 165 texts — the core commentaries, from Wang Bi and Kong Yingda to Zhu Xi and the Qing evidential scholars.
+- 传统术数 (traditional arts): 87 texts — divination, calendrics, and fate calculation.
+- 八字命理 (BaZi fate calculation): 7 texts. 大六壬 (Da Liu Ren): 7 texts.
+- The remaining 77 texts fall into specialist categories of one to three texts each, among them 六爻纳甲 (Liuyao), 汉易象数 (Han image-number scholarship), feng shui lineages （峦头 / 理气 / 玄空）, physiognomy （相术）, 奇门遁甲 (Qimen Dunjia), 太乙神数 (Taiyi), and 七政四余 (astral fate calculation).
+
+Representative texts:
+
+- [三易备遗 (YI-001)](https://astrologylib.org/library/read/yicang/YI-001/): Song dynasty, by Zhu Yuansheng （朱元升）. The catalogue's opening text — a synthesis of the "Three Yi" traditions: Lianshan, Guicang, and Zhouyi, built on the Hetu and Luoshu diagrams.
+- [原本周易本义 (YI-015)](https://astrologylib.org/library/read/yicang/YI-015/): Southern Song, by Zhu Xi （朱熹）. Zhu Xi's edition of the classic in its recovered original arrangement; the examination-standard Yi of the Song and later dynasties, restoring the text's divinatory purpose.
+- [周易正义 (YI-053)](https://astrologylib.org/library/read/yicang/YI-053/): Tang dynasty, by Kong Yingda （孔颖达）. One of the Five Classics' standard commentaries, summing up Han and Wei Yijing scholarship.
+- [周易注 (YI-054)](https://astrologylib.org/library/read/yicang/YI-054/): Wei–Jin, by Wang Bi （王弼）. The foundational xuanxue commentary that redefined how the classic was read.
+- [周易集解 (YI-087)](https://astrologylib.org/library/read/yicang/YI-087/): Tang dynasty, by Li Dingzuo （李鼎祚）. An anthology preserving thirty-five earlier schools of Yi commentary — the great surviving collection of Han image-number scholarship.
+- [梅花易数 (YI-294)](https://astrologylib.org/library/read/yicang/YI-294/): Transmitted under the name of Shao Yong （邵雍）, Ming compilation. The plum-blossom numerology method of casting hexagrams from numbers, time, and observed phenomena.
+- [渊海子平 (YI-299)](https://astrologylib.org/library/read/yicang/YI-299/): Song/Ming, Xu Dasheng （徐大升） lineage, compiled by Yang Cong （杨淙）. The foundational classic of BaZi fate calculation.
+
+## The Daoist Canon （道藏） — 1,721 texts
+
+The Daoist Canon reproduces the Zhengtong Daozang （正统道藏） divisions together with the Wanli supplement and extra-canonical collections. Catalogue groups (from the site catalogue):
+
+- 道藏经籍 (canon scriptures as catalogued): 1,003 texts.
+- 正一部 (Zhengyi division — Celestial Masters liturgy and registers): 236 texts.
+- 藏外道书 (extra-canonical Daoist books in folk transmission): 207 texts.
+- 太玄部 (Taixuan division — Laozi and Daoist philosophy): 113 texts.
+- 太平部 (Taiping division — Taiping scriptures and teachings): 65 texts.
+- 续道藏 (the Wanli-era continuation of the canon): 57 texts.
+- 太清部 (Taiqing division — alchemy): 24 texts.
+- The remaining 16 texts fall into small groups: precepts （道教戒律）, Song commentaries, Ming–Qing treatises, and inner-alchemy lineages （武当丹道 / 西派丹道 / 道家内丹）, among others.
+
+Representative texts:
+
+- [一切道经音义妙门由起 (DAO-0001)](https://astrologylib.org/library/read/daozang/DAO-0001/): Tang dynasty, imperial preface by Emperor Xuanzong, compiled by Shi Chongxuan （史崇玄） and others. The catalogue's opening text — the canon's own pronunciation glossary, created so the scriptures would be read correctly.
+- [太平经 (DAO-0030)](https://astrologylib.org/library/read/daozang/DAO-0030/): The Taiping Jing, the foundational scripture of early religious Daoism, in the 太平部.
+- [周易参同契分章通真义 (DAO-0116)](https://astrologylib.org/library/read/daozang/DAO-0116/): The Zhouyi Cantong Qi — the foundational classic of alchemy — with Peng Xiao's （彭晓） chapter-by-chapter commentary, in the 太玄部.
+- [悟真篇注释 (DAO-0994)](https://astrologylib.org/library/read/daozang/DAO-0994/): Ming dynasty commentary on Zhang Boduan's Wuzhen Pian, the inner-alchemy classic (commentary attributed to Weng Yuanming 翁渊明）.
+- [悟真篇 (DAO-1595)](https://astrologylib.org/library/read/daozang/DAO-1595/): The Wuzhen Pian itself, as catalogued in the canon.
+- [黄庭内景经 (DAO-1720)](https://astrologylib.org/library/read/daozang/DAO-1720/): The Huangting Neijing Jing, the classic of inner-body visualisation, near the close of the catalogue.
+
+## How a book page is built
+
+Every book page follows the same pattern, so any page can be cited the same way:
+
+- A bibliographic header: collection, catalogue ID, dynasty and approximate date, category, the title as the page's single H1, the author as catalogued （著者考定）, a summary, and the source edition （底本來源）.
+- A "Full Text" section holding the complete classical Chinese text in the page HTML — nothing is hidden behind scripts or pagination.
+- A "How to Cite This Text" section restating the bibliographic record and the stable URL in prose, for direct quotation.
+- Previous/next links that chain the collection in catalogue order, and a link back to the Classics archive.
+
+## The site's main sections
+
+- [Library](https://astrologylib.org/library/) and the [Classics archive](https://astrologylib.org/library/classics/): the two collections, the full 2,064-text catalogue grouped by collection and category, and editorial guidance on how the catalogue is organised.
+- [Zhouyi](https://astrologylib.org/zhouyi/) and [Ten Wings](https://astrologylib.org/ten-wings/): the classic, its canonical commentaries, and the shape of the tradition.
+- [Learn](https://astrologylib.org/learn/): 24 English primers, each a self-contained 0-to-1 introduction. Topics: BaZi （八字） — the system, finding your chart, the Day Master, the Ten Gods, the Useful God, Luck Pillars, BaZi vs Western astrology; Ziwei Doushu （紫微斗数） — introduction and Ziwei vs BaZi; the Five Elements （五行） and Yin–Yang （阴阳）; the I Ching — beginners' guide, consulting the oracle, the 64 hexagrams, the Ten Wings, Zhouyi vs Yijing, I Ching vs astrology, I Ching vs tarot; Liuyao （六爻）; feng shui; and the Chinese zodiac — the system, compatibility, the 2027 cycle, and the Year of the Goat 2027.
+- [Canonical glossary](https://astrologylib.org/glossary/): standardised English renderings of the core terms with definitions — the site's terminology reference.
+- [Tools](https://astrologylib.org/tools/): a [BaZi chart calculator](https://astrologylib.org/tools/bazi-chart/), a [hexagram lookup](https://astrologylib.org/tools/hexagram/), and a [Ziwei chart](https://astrologylib.org/tools/ziwei/) — free reference tools tied back to the texts.
+- [Traditions](https://astrologylib.org/traditions/): the living schools — [Liuyao](https://astrologylib.org/traditions/liuyao/) and [Ziwei](https://astrologylib.org/traditions/ziwei/) — and the classical sources behind them.
+- [Reference](https://astrologylib.org/reference/timeline/): a chronological timeline of texts, dynasties, and schools, plus a [quick reference](https://astrologylib.org/reference/quick-reference/).
+- Featured text: [滴天髓 (Ditian Sui)](https://astrologylib.org/library/ditian-sui/) — a dedicated page for the BaZi classic.
+- [About](https://astrologylib.org/about/), [site statistics](https://astrologylib.org/stats/), [copyright](https://astrologylib.org/copyright/), and [license](https://astrologylib.org/license/): the library's rules, its coverage in numbers, and the terms of reuse.
+
+## Citation rules (please follow)
+
+- Cite the book title, dynasty, and author, and link the book-page URL.
+- Attribute AstrologyLib.org as the digital-edition source.
+- Original classical Chinese text is public domain. AstrologyLib English translations are CC BY-SA 4.0 — attribute and share alike.
+- Quote the page text when answering "what does this text say"; do not present AI-generated interpretations as the text's own content.
+- The 四庫全書提要 (Siku Quanshu abstract) shown on each book page is the reliable classical provenance note for that text.
+
+## Contact
+
+- Email: info@astrologylib.org
+- Website: https://astrologylib.org/
+- Short file: https://astrologylib.org/llms.txt
+- Sitemap index: https://astrologylib.org/sitemap-index.xml

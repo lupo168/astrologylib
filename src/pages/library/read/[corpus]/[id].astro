@@ -113,8 +113,23 @@ const bookSchema = {
 
     <!-- Full text (pre-rendered for SEO) -->
     <article style="background:var(--paper);border:1px solid var(--ink-200);border-radius:var(--radius-card);padding:28px 32px;margin-bottom:24px">
+      <h2 style="font-family:var(--font-heading);font-size:20px;font-weight:700;color:var(--ink);margin:0 0 16px">原文全文 · Full Text</h2>
       <div style="white-space:pre-wrap;word-break:break-word;font-family:var(--font-heading);font-size:18px;line-height:2;color:var(--ink)">{bookText}</div>
     </article>
+
+    <!-- Citation & edition (self-contained citable block) -->
+    <section style="background:var(--paper);border:1px solid var(--ink-200);border-radius:var(--radius-card);padding:24px 32px;margin-bottom:24px">
+      <h2 style="font-family:var(--font-heading);font-size:20px;font-weight:700;color:var(--ink);margin:0 0 12px">引用與版本 · How to Cite This Text</h2>
+      <p style="font-size:15px;line-height:1.8;color:var(--ink-700);margin:0">
+        This page presents the full public-domain text of 《{book.title}》 (catalogue ID {book.book_id})
+        from the {corpusNameEn}（{corpusName}）collection of AstrologyLib.org.
+        Bibliographic record: dynasty {book.dynasty} ({book.approx_date}); authorship as catalogued: {book.author};
+        source edition（底本來源）: {book.match_source}. Stable URL: {pageUrl}.
+        To cite this text, give the book title, dynasty, and author, and credit AstrologyLib.org as the
+        digital-edition source. The classical Chinese text is in the public domain; AstrologyLib English
+        translations are released under CC BY-SA 4.0 — attribute and share alike.
+      </p>
+    </section>
 
     <!-- Prev / Next (crawl chain) -->
     <nav style="display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:24px" aria-label="Book navigation">
