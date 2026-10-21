@@ -109,6 +109,7 @@ const bookSchema = {
       <p style="font-size:16px;color:var(--ink-700);margin-bottom:8px">著者考定：{book.author}</p>
       <p style="font-size:14px;color:var(--ink-500);line-height:1.6;max-width:800px">{book.summary}</p>
       <p style="font-size:12px;color:var(--ink-500);margin-top:8px">底本來源：{book.match_source} · 公版原文，CC BY-SA 4.0 翻譯</p>
+      <p class="view-counter" data-vc="page" hidden style="margin-top:10px">This text has been read <span data-vc-num></span> <span data-vc-word>times</span>.</p>
     </header>
 
     <!-- Full text (pre-rendered for SEO) -->

@@ -331,5 +331,31 @@ const NAV: NavItem[] = [
       });
     })();
   </script>
+  <script>
+    // Public view counter (own Cloudflare Worker; async, fails silently)
+    (function(){
+      var API = 'https://al-view-counter.lupo168.workers.dev';
+      function fmt(n){ return Number(n).toLocaleString('en-US'); }
+      function fill(sel, val){
+        document.querySelectorAll(sel).forEach(function(w){
+          var num = w.querySelector('[data-vc-num]');
+          if(num) num.textContent = fmt(val);
+          var word = w.querySelector('[data-vc-word]');
+          if(word) word.textContent = (val === 1 ? 'time' : 'times');
+          w.hidden = false;
+        });
+      }
+      function hit(key, sel){
+        fetch(API + '/hit?key=' + encodeURIComponent(key), { method: 'POST', keepalive: true })
+          .then(function(r){ if(!r.ok) throw new Error('counter'); return r.json(); })
+          .then(function(d){ if(sel) fill(sel, d.value); })
+          .catch(function(){ /* stay hidden on any failure */ });
+      }
+      hit('total', '[data-vc="total"]');
+      if(document.querySelector('[data-vc="page"]')){
+        hit('p:' + window.location.pathname, '[data-vc="page"]');
+      }
+    })();
+  </script>
 </body>
 </html>

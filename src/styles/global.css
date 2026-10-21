@@ -52,6 +52,11 @@ img,svg{vertical-align:middle}
 .nav-drop a:hover{background:var(--paper-shade,#efe9dc);color:var(--red);font-weight:600}
 .nav-drop a.drop-active{color:var(--red);font-weight:600}
 
+/* ---------- 阅读计数（公开计数器 · Worker 驱动） ---------- */
+.view-counter{font-size:13px;color:var(--ink-500);letter-spacing:.04em}
+.view-counter [data-vc-num]{font-weight:700;color:var(--ink-700);font-variant-numeric:tabular-nums}
+.views-strip{max-width:var(--content-max);margin:0 auto;padding:2px 24px 10px;text-align:center}
+
 /* ---------- 页脚 ---------- */
 .site-footer{max-width:var(--content-max);margin:0 auto;padding:40px 24px 56px;color:var(--ink-500);font-size:13px;line-height:1.6;border-top:var(--border-gold)}
 .site-footer .f-top{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;margin-bottom:18px}
