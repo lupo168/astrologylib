@@ -48,5 +48,5 @@ AstrologyLib.org is a non-commercial, open-access scholarly digital library. Eve
 
 ## Contact
 
-- Email: info@astrologylib.org
+- Email: hi@astrologylib.org
 - Website: https://astrologylib.org/

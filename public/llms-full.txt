@@ -12,7 +12,7 @@ The library's editorial rule is provenance first: no text is published without a
 - Book page URL pattern: https://astrologylib.org/library/read/{yicang|daozang}/{BOOK_ID}/
 - Every book page is static HTML: bibliographic header, full classical text, a citation section, and previous/next links chaining the whole collection.
 - Structured data: each book page carries schema.org Book data plus the site-wide Library and WebSite graph; the English primers under /learn/ carry FAQPage data.
-- Contact: info@astrologylib.org
+- Contact: hi@astrologylib.org
 
 ## The Yi Canon （易藏） — 343 texts
 
@@ -86,7 +86,7 @@ Every book page follows the same pattern, so any page can be cited the same way:
 
 ## Contact
 
-- Email: info@astrologylib.org
+- Email: hi@astrologylib.org
 - Website: https://astrologylib.org/
 - Short file: https://astrologylib.org/llms.txt
 - Sitemap index: https://astrologylib.org/sitemap-index.xml
