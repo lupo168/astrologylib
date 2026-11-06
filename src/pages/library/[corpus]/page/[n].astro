@@ -1,0 +1,73 @@
+---
+/**
+ * Library corpus pagination: /library/:corpus/page/:n/
+ * Page 1 of each corpus lives on /library/ itself; this route serves pages 2..N,
+ * 100 books per page, so crawlers reach every book without a single 2,064-link page.
+ */
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+
+// NOTE: getStaticPaths is bundled separately — all imports and constants
+// it uses must live inside it (module scope is not visible there).
+export async function getStaticPaths() {
+  const PAGE_SIZE = 100;
+  const yicangCatalog = (await import('../../../../data/yicang_catalog.json')).default;
+  const daozangCatalog = (await import('../../../../data/daozang_catalog.json')).default;
+  const corpora: Record<string, { name: string; nameEn: string; catalog: { book_id: string; title: string; dynasty: string }[] }> = {
+    yicang: { name: '易藏', nameEn: 'Yi Canon', catalog: yicangCatalog },
+    daozang: { name: '道藏', nameEn: 'Daoist Canon', catalog: daozangCatalog },
+  };
+  const paths = [];
+  for (const [corpus, meta] of Object.entries(corpora)) {
+    const totalPages = Math.ceil(meta.catalog.length / PAGE_SIZE);
+    for (let n = 2; n <= totalPages; n++) {
+      paths.push({
+        params: { corpus, n: String(n) },
+        props: {
+          corpus,
+          corpusName: meta.name,
+          corpusNameEn: meta.nameEn,
+          page: n,
+          totalPages,
+          total: meta.catalog.length,
+          books: meta.catalog.slice((n - 1) * PAGE_SIZE, n * PAGE_SIZE),
+        },
+      });
+    }
+  }
+  return paths;
+}
+
+const { corpus, corpusName, corpusNameEn, page, totalPages, total, books } = Astro.props;
+const title = `${corpusName} · 第 ${page} 页 · The Library - AstrologyLib`;
+const description = `${corpusName}${corpusNameEn}第 ${page} / ${totalPages} 页，共 ${total} 部公有领域典籍。`;
+const pageUrl = `https://astrologylib.org/library/${corpus}/page/${page}/`;
+const prevUrl = page === 2 ? '/library/' : `/library/${corpus}/page/${page - 1}/`;
+const nextUrl = page < totalPages ? `/library/${corpus}/page/${page + 1}/` : null;
+---
+
+<BaseLayout title={title} description={description} active="library" canonicalUrl={pageUrl}>
+  <div style="max-width:var(--content-max);margin:0 auto;padding:16px 24px 64px">
+    <nav aria-label="Breadcrumb" style="margin-bottom:20px;font-size:14px;color:var(--ink-500)">
+      <a href="/">Home</a> › <a href="/library/">Library</a> ›
+      <span>{corpusName} · 第 {page} 页</span>
+    </nav>
+    <h1 style="font-family:var(--font-heading);font-size:28px;font-weight:900;color:var(--ink);margin:0 0 6px">{corpusName} · {corpusNameEn}</h1>
+    <p style="font-size:13px;color:var(--ink-500);margin:0 0 16px">第 {page} / {totalPages} 页 · 共 {total} 部 · 本页 {books.length} 部。<a href="/library/classics/" style="color:var(--red);text-decoration:underline">前往可检索总库 →</a></p>
+    <ul style="columns:3;column-gap:24px;list-style:none;margin:0 0 28px;padding:0;font-size:13px;line-height:1.6">
+      {books.map((b) => (
+        <li style="break-inside:avoid;margin-bottom:3px"><a href={`/library/read/${corpus}/${b.book_id}/`} style="color:var(--ink-700);text-decoration:none">《{b.title}》</a> <span style="color:var(--ink-500);font-size:12px">{b.dynasty}</span></li>
+      ))}
+    </ul>
+    <nav style="display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:14px" aria-label="Pagination">
+      <div>
+        <a href={prevUrl} style="color:var(--ink-700)">← 上一页</a>
+      </div>
+      <div style="color:var(--ink-500);font-size:13px">第 {page} / {totalPages} 页 · <a href="/library/" style="color:var(--ink-700)">回藏书阁</a></div>
+      <div>
+        {nextUrl && (
+          <a href={nextUrl} style="color:var(--ink-700)">下一页 →</a>
+        )}
+      </div>
+    </nav>
+  </div>
+</BaseLayout>
