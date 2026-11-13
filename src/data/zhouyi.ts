@@ -140,7 +140,7 @@ export const SHANGJING: Hexagram[] = [
     ]
 
   },
-  { n: 7, lines: '010000', zh: '師', py: 'Shī', en: 'The Army', gua: '師：貞丈人吉，无咎。', guaEn: 'The Army: the elder leads, good fortune, no blame.',
+  { n: 7, lines: '010000', zh: '師', py: 'Shī', en: 'The Army', gua: '師：貞丈人吉，无咎。', guaEn: 'The Army: steadfastness. Good fortune for a mature, experienced leader; no blame.',
 
     yao: [
 
@@ -197,7 +197,7 @@ export const SHANGJING: Hexagram[] = [
     ]
 
   },
-  { n: 10, lines: '110111', zh: '履', py: 'Lǚ', en: 'Treading', gua: '履虎尾，不咥人，亨。', guaEn: 'Treading on the tiger’s tail: it does not bite; success.',
+  { n: 10, lines: '110111', zh: '履', py: 'Lǚ', en: 'Treading', gua: '履：履虎尾，不咥人，亨。', guaEn: 'Treading on the tiger’s tail: it does not bite; success.',
 
     yao: [
 
@@ -235,7 +235,7 @@ export const SHANGJING: Hexagram[] = [
     ]
 
   },
-  { n: 12, lines: '000111', zh: '否', py: 'Pǐ', en: 'Standstill', gua: '否之匪人，不利君子貞，大往小來。', guaEn: 'Standstill: not the right persons; it is not favorable for the noble person to persist. The great depart, the small arrive.',
+  { n: 12, lines: '000111', zh: '否', py: 'Pǐ', en: 'Standstill', gua: '否：否之匪人，不利君子貞，大往小來。', guaEn: 'Standstill: not the right persons; it is not favorable for the noble person to persist. The great depart, the small arrive.',
 
     yao: [
 
@@ -254,7 +254,7 @@ export const SHANGJING: Hexagram[] = [
     ]
 
   },
-  { n: 13, lines: '101111', zh: '同人', py: 'Tóng Rén', en: 'Fellowship', gua: '同人于野，亨。利涉大川，利君子貞。', guaEn: 'Fellowship in the open field: success. Favorable to cross the great river, favorable for the noble person to persevere.',
+  { n: 13, lines: '101111', zh: '同人', py: 'Tóng Rén', en: 'Fellowship', gua: '同人：同人于野，亨。利涉大川，利君子貞。', guaEn: 'Fellowship in the open field: success. Favorable to cross the great river, favorable for the noble person to persevere.',
 
     yao: [
 
@@ -349,7 +349,7 @@ export const SHANGJING: Hexagram[] = [
     ]
 
   },
-  { n: 18, lines: '011001', zh: '蠱', py: 'Gǔ', en: 'Work on What Has Been Spoiled', gua: '蠱：元亨。利涉大川。先甲三日，後甲三日。', guaEn: 'Work on the Spoiled: sublime success, favorable to cross the great river. Three days before the start, three days after.',
+  { n: 18, lines: '011001', zh: '蠱', py: 'Gǔ', en: 'Work on What Has Been Spoiled', gua: '蠱：元亨。利涉大川。先甲三日，後甲三日。', guaEn: 'Work on the Spoiled: sublime success, favorable to cross the great river. Three days before the jia day, three days after it.',
 
     yao: [
 
@@ -444,7 +444,7 @@ export const SHANGJING: Hexagram[] = [
     ]
 
   },
-  { n: 23, lines: '000001', zh: '剝', py: 'Bō', en: 'Splitting Apart', gua: '剝：不利。有攸往。', guaEn: 'Splitting Apart: it is not favorable to move forward.',
+  { n: 23, lines: '000001', zh: '剝', py: 'Bō', en: 'Splitting Apart', gua: '剝：不利有攸往。', guaEn: 'Splitting Apart: it is not favorable to move forward.',
 
     yao: [
 
@@ -520,7 +520,7 @@ export const SHANGJING: Hexagram[] = [
     ]
 
   },
-  { n: 27, lines: '100001', zh: '頤', py: 'Yí', en: 'Nourishment', gua: '頤：貞吉。觀頤，自求口實。', guaEn: 'Nourishment: perseverance brings good fortune. Watch how one nourishes, and seek food from one’s own mouth.',
+  { n: 27, lines: '100001', zh: '頤', py: 'Yí', en: 'Nourishment', gua: '頤：貞吉。觀頤，自求口實。', guaEn: 'Nourishment: perseverance brings good fortune. Watch how nourishment is given, and seek your own sustenance.',
 
     yao: [
 
@@ -599,7 +599,7 @@ export const SHANGJING: Hexagram[] = [
 ];
 
 export const XIACJING: Hexagram[] = [
-  { n: 31, lines: '001110', zh: '咸', py: 'Xián', en: 'Influence', gua: '咸：亨。利貞。取女吉。', guaEn: 'Influence: success, favorable to persevere. Taking a maiden brings good fortune.',
+  { n: 31, lines: '001110', zh: '咸', py: 'Xián', en: 'Influence', gua: '咸：亨。利貞。取女吉。', guaEn: 'Influence: success, favorable to persevere. Marrying a maiden brings good fortune.',
 
     yao: [
 
@@ -675,7 +675,7 @@ export const XIACJING: Hexagram[] = [
     ]
 
   },
-  { n: 35, lines: '000101', zh: '晉', py: 'Jìn', en: 'Progress', gua: '晉：康侯用錫馬蕃庶，晝日三接。', guaEn: 'Progress: the noble son is given horses in abundance and is received three times in a day.',
+  { n: 35, lines: '000101', zh: '晉', py: 'Jìn', en: 'Progress', gua: '晉：康侯用錫馬蕃庶，晝日三接。', guaEn: 'Progress: the honored lord is given horses in abundance and is received three times in a day.',
 
     yao: [
 
@@ -846,7 +846,7 @@ export const XIACJING: Hexagram[] = [
     ]
 
   },
-  { n: 44, lines: '011111', zh: '姤', py: 'Gòu', en: 'Coming to Meet', gua: '姤：女壯，勿用取女。', guaEn: 'Coming to Meet: the maiden is strong; do not take such a woman.',
+  { n: 44, lines: '011111', zh: '姤', py: 'Gòu', en: 'Coming to Meet', gua: '姤：女壯，勿用取女。', guaEn: 'Coming to Meet: the maiden is strong; do not marry such a woman.',
 
     yao: [
 
@@ -1017,7 +1017,7 @@ export const XIACJING: Hexagram[] = [
     ]
 
   },
-  { n: 53, lines: '001011', zh: '漸', py: 'Jiàn', en: 'Development', gua: '漸：女歸吉，利貞。', guaEn: 'Development: the maiden’s return brings good fortune; favorable to persevere.',
+  { n: 53, lines: '001011', zh: '漸', py: 'Jiàn', en: 'Development', gua: '漸：女歸吉，利貞。', guaEn: 'Development: for a young woman to marry brings good fortune; favorable to persevere.',
 
     yao: [
 

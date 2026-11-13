@@ -1,0 +1,1502 @@
+[
+ [
+  "xiao-yun",
+  "shortDef",
+  "逐年推运",
+  "Year-by-year luck cycles, mainly referenced for a person's early years before the Decadal Luck begins."
+ ],
+ [
+  "liu-nian",
+  "en",
+  "Annual Year Luck (Liu Nian)",
+  "Annual Luck (Liu Nian)"
+ ],
+ [
+  "liu-nian",
+  "detailedDef(+)",
+  "",
+  "In Zi Wei Dou Shu, the same words name the annual transit — "
+ ],
+ [
+  "sui-yun",
+  "shortDef",
+  "流年与大运并论",
+  "Reading the Annual Year (Liu Nian) and Decadal Luck (Da Yun) together as one combined climate."
+ ],
+ [
+  "ming-gong",
+  "en",
+  "Palace of Destiny",
+  "Life Palace (BaZi · Ming Gong)"
+ ],
+ [
+  "ming-gong",
+  "shortDef",
+  "",
+  "In BaZi, an auxiliary life pillar derived from the birth month and hour, marking temperament and life orientation."
+ ],
+ [
+  "ming-gong",
+  "detailedDef(+)",
+  "",
+  "Distinct from the Life Palace of Zi Wei Dou Shu, which ancho"
+ ],
+ [
+  "shen-gong",
+  "en",
+  "Palace of Self",
+  "Body Palace (Shen Gong)"
+ ],
+ [
+  "shen-gong",
+  "shortDef",
+  "",
+  "Primarily a Zi Wei Dou Shu concept: the palace of embodied effort, habit, and mid-life focus — see shen-gong-ziwei."
+ ],
+ [
+  "tai-yuan",
+  "shortDef",
+  "",
+  "Fetal Origin: the month pillar counted ten months back from birth, marking prenatal influence."
+ ],
+ [
+  "de-di",
+  "shortDef",
+  "地支有根、得地气",
+  "Gaining ground: the Day Master's element finds root support in the Earthly Branches."
+ ],
+ [
+  "yong-shen",
+  "detailedDef(+)",
+  "",
+  "In Liu Yao divination the same words name a different concep"
+ ],
+ [
+  "xi-shen",
+  "en",
+  "Favorable Element (Xi Shen)",
+  "Favorable God (Xi Shen)"
+ ],
+ [
+  "xian-shen",
+  "en",
+  "Neutral God",
+  "Idle God (Xian Shen)"
+ ],
+ [
+  "xian-shen",
+  "shortDef",
+  "吉凶影响小",
+  "A neutral presence that neither strongly helps nor harms the Useful God."
+ ],
+ [
+  "chou-shen",
+  "en",
+  "Hostile God",
+  "Hostile God (Chou Shen)"
+ ],
+ [
+  "chou-shen",
+  "shortDef",
+  "克制喜用之神",
+  "The element that curbs both the Useful God and the Favorable God."
+ ],
+ [
+  "tong-guan",
+  "shortDef",
+  "化克为生",
+  "A mediating element transforms a standoff between two clashing elements into a flow of generation."
+ ],
+ [
+  "fu-yi",
+  "shortDef",
+  "太旺抑、太弱扶",
+  "Balancing: restraining a Day Master that is too strong, supporting one that is too weak."
+ ],
+ [
+  "bing-yao",
+  "shortDef",
+  "格局失衡处与解药",
+  "Disease and Remedy: the chart's structural flaw, and the element that cures it."
+ ],
+ [
+  "liu-qin",
+  "en",
+  "Six Relations",
+  "Six Relations (Liu Qin)"
+ ],
+ [
+  "liu-qin",
+  "shortDef",
+  "父母/兄弟/夫妻/子女等十神对应关系",
+  "The family relations — parents, siblings, spouse, children — mapped through the Ten Gods."
+ ],
+ [
+  "liu-qin",
+  "detailedDef(+)",
+  "",
+  "In Liu Yao, the Six Kinships label the lines of a cast hexag"
+ ],
+ [
+  "mu",
+  "shortDef",
+  "阳木甲 / 阴木乙",
+  "Wood in two polarities: Jia (yang) and Yi (yin)."
+ ],
+ [
+  "huo",
+  "shortDef",
+  "阳火丙 / 阴火丁",
+  "Fire in two polarities: Bing (yang) and Ding (yin)."
+ ],
+ [
+  "tu",
+  "shortDef",
+  "阳土戊 / 阴土己",
+  "Earth in two polarities: Wu (yang) and Ji (yin)."
+ ],
+ [
+  "jin",
+  "shortDef",
+  "阳金庚 / 阴金辛",
+  "Metal in two polarities: Geng (yang) and Xin (yin)."
+ ],
+ [
+  "shui",
+  "shortDef",
+  "阳水壬 / 阴水癸",
+  "Water in two polarities: Ren (yang) and Gui (yin)."
+ ],
+ [
+  "sheng",
+  "shortDef",
+  "",
+  "To generate: the mother element produces and feeds its child (Wood feeds Fire)."
+ ],
+ [
+  "ke",
+  "shortDef",
+  "",
+  "To control: one element disciplines and shapes another (Wood parts Earth)."
+ ],
+ [
+  "xie",
+  "shortDef",
+  "我生者为泄",
+  "Drain: what the Day Master generates siphons its energy outward."
+ ],
+ [
+  "hao",
+  "shortDef",
+  "我克者为耗",
+  "Expend: what the Day Master controls costs it effort to hold."
+ ],
+ [
+  "bang",
+  "shortDef",
+  "同我者为帮",
+  "Support: same-element stems and branches reinforce the Day Master."
+ ],
+ [
+  "chong",
+  "shortDef",
+  "六冲",
+  "Clash — the six directly opposed branch pairs (see liu-chong)."
+ ],
+ [
+  "he",
+  "shortDef",
+  "六合 / 三合 / 天干五合",
+  "Combination — Six Harmonies, Three Combinations, and the five stem pairs (see liu-he, san-he)."
+ ],
+ [
+  "xing",
+  "shortDef",
+  "三刑",
+  "Punishment — the punishing branch groups (see xiang-xing)."
+ ],
+ [
+  "hai",
+  "shortDef",
+  "六害",
+  "Harm — the six harmful branch pairs (see liu-hai)."
+ ],
+ [
+  "po",
+  "shortDef",
+  "六破",
+  "Break — the six breaking branch pairs (see xiang-po)."
+ ],
+ [
+  "wang-xiang-xiu-qiu-si",
+  "shortDef",
+  "旺/相/休/囚/死",
+  "The five seasonal strength states: Prosperous, Assisting, Resting, Imprisoned, Dead."
+ ],
+ [
+  "na-yin",
+  "shortDef",
+  "六十甲子纳音五行",
+  "The 'melodic' Five-Element assigned to each of the sixty stem-branch pairs, used in classical dating and divination."
+ ],
+ [
+  "jia",
+  "shortDef",
+  "十天干之一",
+  "First Heavenly Stem: Yang Wood — the great tree; pioneering, upright, unbending."
+ ],
+ [
+  "yi",
+  "shortDef",
+  "",
+  "Second Heavenly Stem: Yin Wood — the climbing vine; flexible, refined, adaptive."
+ ],
+ [
+  "bing",
+  "shortDef",
+  "",
+  "Third Heavenly Stem: Yang Fire — the sun; open, warm, illuminating."
+ ],
+ [
+  "ding",
+  "shortDef",
+  "",
+  "Fourth Heavenly Stem: Yin Fire — candlelight and hearth; focused, gentle, persistent."
+ ],
+ [
+  "wu",
+  "shortDef",
+  "",
+  "Fifth Heavenly Stem: Yang Earth — the mountain; solid, reliable, encompassing."
+ ],
+ [
+  "ji",
+  "shortDef",
+  "",
+  "Sixth Heavenly Stem: Yin Earth — field and garden soil; nurturing, practical, modest."
+ ],
+ [
+  "geng",
+  "shortDef",
+  "",
+  "Seventh Heavenly Stem: Yang Metal — raw ore and axe; decisive, righteous, forceful."
+ ],
+ [
+  "xin",
+  "shortDef",
+  "",
+  "Eighth Heavenly Stem: Yin Metal — jewelry and blade; precise, refined, discriminating."
+ ],
+ [
+  "ren",
+  "shortDef",
+  "",
+  "Ninth Heavenly Stem: Yang Water — ocean and river; wise, flowing, far-reaching."
+ ],
+ [
+  "gui",
+  "shortDef",
+  "",
+  "Tenth Heavenly Stem: Yin Water — rain and dew; intuitive, subtle, penetrating."
+ ],
+ [
+  "zi",
+  "shortDef",
+  "十二地支之一",
+  "First Earthly Branch: Rat, Yang Water, the hour 23:00–01:00, deep winter."
+ ],
+ [
+  "chou",
+  "shortDef",
+  "",
+  "Second Earthly Branch: Ox, Yin Earth, 01:00–03:00, the frozen end of winter."
+ ],
+ [
+  "yin",
+  "shortDef",
+  "",
+  "Third Earthly Branch: Tiger, Yang Wood, 03:00–05:00, the awakening of spring."
+ ],
+ [
+  "mao",
+  "shortDef",
+  "",
+  "Fourth Earthly Branch: Rabbit, Yin Wood, 05:00–07:00, mid-spring growth."
+ ],
+ [
+  "chen",
+  "shortDef",
+  "",
+  "Fifth Earthly Branch: Dragon, Yang Earth, 07:00–09:00, spring's fertile storage."
+ ],
+ [
+  "si",
+  "shortDef",
+  "",
+  "Sixth Earthly Branch: Snake, Yin Fire, 09:00–11:00, early summer's warmth."
+ ],
+ [
+  "wu-horse",
+  "shortDef",
+  "",
+  "Seventh Earthly Branch: Horse, Yang Fire, 11:00–13:00, high summer."
+ ],
+ [
+  "wei",
+  "shortDef",
+  "",
+  "Eighth Earthly Branch: Goat, Yin Earth, 13:00–15:00, late summer's ripening."
+ ],
+ [
+  "shen",
+  "shortDef",
+  "",
+  "Ninth Earthly Branch: Monkey, Yang Metal, 15:00–17:00, the first touch of autumn."
+ ],
+ [
+  "you",
+  "shortDef",
+  "",
+  "Tenth Earthly Branch: Rooster, Yin Metal, 17:00–19:00, crisp mid-autumn."
+ ],
+ [
+  "xu",
+  "shortDef",
+  "",
+  "Eleventh Earthly Branch: Dog, Yang Earth, 19:00–21:00, autumn drying into earth."
+ ],
+ [
+  "hai-pig",
+  "shortDef",
+  "",
+  "Twelfth Earthly Branch: Pig, Yin Water, 21:00–23:00, winter's stillness."
+ ],
+ [
+  "liushi-jiazi",
+  "shortDef",
+  "干支组合 60 一轮",
+  "The full sixty-pair cycle of stems and branches, restarting roughly every sixty years."
+ ],
+ [
+  "ganzhi-jinian",
+  "shortDef",
+  "",
+  "Recording years, months, days, and hours with the stem-branch cycle."
+ ],
+ [
+  "xiao-shen",
+  "en",
+  "Starving God",
+  "Owl Spirit (Xiao Shen)"
+ ],
+ [
+  "xiao-shen",
+  "shortDef",
+  "偏印显凶性时",
+  "The Indirect Seal turned hostile — the owl that robs the Eating God's food."
+ ],
+ [
+  "xiao-shen",
+  "detailedDef",
+  "",
+  "Xiao means owl, a raptor that seizes pre"
+ ],
+ [
+  "yang-ren",
+  "en",
+  "Sheep Blade / Yang Blade",
+  "Yang Blade (Yang Ren)"
+ ],
+ [
+  "yang-ren",
+  "shortDef",
+  "帝旺之位，极旺",
+  "The Blade at the Emperor-of-Prosperity (Di Wang) position for a Yang Day Master — strength pushed to excess."
+ ],
+ [
+  "yang-ren",
+  "detailedDef",
+  "",
+  "The character 羊 (sheep) is a classical l"
+ ],
+ [
+  "jian-lu",
+  "en",
+  "Established Salary",
+  "Established Prosperity (Jian Lu)"
+ ],
+ [
+  "jian-lu",
+  "shortDef",
+  "临官之位",
+  "The Approaching-Officer (Lin Guan) position: the Day Master standing self-sufficient in its own element."
+ ],
+ [
+  "lu-shen",
+  "en",
+  "Salary Star",
+  "Prosperity Star (Lu Shen)"
+ ],
+ [
+  "lu-shen",
+  "shortDef",
+  "地支得日主同五行旺地",
+  "The branch where the Day Master rests at ease in its own element — natural provision."
+ ],
+ [
+  "cai-guan-yin",
+  "shortDef",
+  "三大顺用组合",
+  "The three classical favorable structures: Wealth, Officer, and Seal working in order."
+ ],
+ [
+  "sha-yin-xiang-sheng",
+  "shortDef",
+  "七杀得印化",
+  "Killings transformed by the Seal: pressure channeled into growth and legitimacy."
+ ],
+ [
+  "shi-shen-zhi-sha",
+  "shortDef",
+  "制杀贵格",
+  "The Eating God restraining Seven Killings — a noble structure of productive control."
+ ],
+ [
+  "shang-guan-pei-yin",
+  "shortDef",
+  "伤官泄秀得印",
+  "Hurting Officer's brilliance tempered by the Seal — expression with grounding."
+ ],
+ [
+  "shang-guan-jian-guan",
+  "shortDef",
+  "多为忌",
+  "Hurting Officer meeting the Direct Officer — usually unfavorable; rebellion collides with authority."
+ ],
+ [
+  "guan-sha-hunza",
+  "shortDef",
+  "忌混杂",
+  "Officer and Killings mixed — divided authority, usually unfavorable."
+ ],
+ [
+  "cai-xing-huai-yin",
+  "shortDef",
+  "忌",
+  "Wealth damaging the Seal — material concerns eroding learning and support."
+ ],
+ [
+  "xiao-shen-duo-shi",
+  "shortDef",
+  "忌",
+  "The Owl Spirit robbing the Eating God — sustenance and creativity seized."
+ ],
+ [
+  "bi-jie-duo-cai",
+  "shortDef",
+  "忌",
+  "Peers and Rob Wealth seizing the assets — competition taking what one holds."
+ ],
+ [
+  "shen-sha",
+  "en",
+  "Stars / Gods & Killers (Shen Sha)",
+  "Spirits & Killers (Shen Sha)"
+ ],
+ [
+  "shen-sha",
+  "shortDef",
+  "命理吉凶星曜",
+  "Auxiliary stars and spirits marking auspicious and inauspicious tendencies."
+ ],
+ [
+  "wen-chang",
+  "shortDef",
+  "学业文采",
+  "Literary Star — study, writing, examinations, and scholarly talent."
+ ],
+ [
+  "tao-hua",
+  "shortDef",
+  "姻缘人缘",
+  "Peach Blossom — charm, romance, and social attraction."
+ ],
+ [
+  "yi-ma",
+  "shortDef",
+  "动迁远行",
+  "Post Horse — travel, relocation, and forward movement."
+ ],
+ [
+  "hua-gai",
+  "shortDef",
+  "孤高艺术宗教缘",
+  "Canopy Star — artistic gifts, solitude, and spiritual inclination."
+ ],
+ [
+  "jiang-xing",
+  "shortDef",
+  "领导权柄",
+  "General Star — command presence and leadership authority."
+ ],
+ [
+  "jin-yu",
+  "shortDef",
+  "贵气",
+  "Golden Carriage — refinement, comfort, and noble bearing."
+ ],
+ [
+  "tian-de",
+  "shortDef",
+  "贵人解厄",
+  "Heavenly Virtue — benevolent rescue from difficulty."
+ ],
+ [
+  "yue-de",
+  "shortDef",
+  "贵人解厄",
+  "Monthly Virtue — benevolent rescue from difficulty."
+ ],
+ [
+  "tian-she",
+  "shortDef",
+  "逢凶化吉",
+  "Heavenly Amnesty — grave faults finding pardon."
+ ],
+ [
+  "fu-xing",
+  "shortDef",
+  "福气",
+  "Fortune Star — natural blessing and ease of living."
+ ],
+ [
+  "jie-sha",
+  "shortDef",
+  "灾厄",
+  "Robbery Star — sudden loss and outside shocks."
+ ],
+ [
+  "zai-sha",
+  "shortDef",
+  "灾厄",
+  "Disaster Star — accidents and calamity."
+ ],
+ [
+  "wang-shen",
+  "shortDef",
+  "耗损",
+  "Lost Spirit — dissipation and quiet attrition."
+ ],
+ [
+  "gu-chen",
+  "shortDef",
+  "孤独",
+  "Solitary Star — inner solitude and self-sufficiency."
+ ],
+ [
+  "gua-su",
+  "shortDef",
+  "孤独",
+  "Widow Star — isolation within partnership."
+ ],
+ [
+  "hong-luan",
+  "en",
+  "Red Phoenix",
+  "Red Luan Bird (Hong Luan)"
+ ],
+ [
+  "hong-luan",
+  "shortDef",
+  "婚喜",
+  "Romance and wedding joy."
+ ],
+ [
+  "tian-xi",
+  "en",
+  "Heavenly Joy",
+  "Heavenly Joy (Tian Xi)"
+ ],
+ [
+  "tian-xi",
+  "shortDef",
+  "婚喜",
+  "Celebrations, weddings, and happy events."
+ ],
+ [
+  "mu-ku",
+  "shortDef",
+  "收纳收藏",
+  "Tomb and Storage — the branch that gathers and stores an element's Qi."
+ ],
+ [
+  "kui-gang",
+  "en",
+  "Kui Gang",
+  "Kui Gang (Four Majestic Day Pillars)"
+ ],
+ [
+  "kui-gang",
+  "shortDef",
+  "特殊日柱，刚强",
+  "Four special day pillars (Geng Chen, Geng Xu, Wu Xu, Ren Chen) noted for forceful, unbending character."
+ ],
+ [
+  "yin-yang-chacuo",
+  "en",
+  "Yin-Yang Error",
+  "Yin-Yang Error Days (Yin Cha Yang Cuo)"
+ ],
+ [
+  "yin-yang-chacuo",
+  "shortDef",
+  "婚姻多阻",
+  "Special days on which marriage plans meet repeated friction."
+ ],
+ [
+  "liu-xiu",
+  "shortDef",
+  "聪明秀气",
+  "Six Elegant days — quick, refined intelligence."
+ ],
+ [
+  "guo-yin",
+  "shortDef",
+  "掌权",
+  "National Seal — official authority and standing."
+ ],
+ [
+  "xian-chi",
+  "en",
+  "Salty Pool",
+  "Salty Pool (Xian Chi)"
+ ],
+ [
+  "xian-chi",
+  "shortDef",
+  "桃花之别称（情欲之星）",
+  "An alternate name for the Peach Blossom star — attraction and desire."
+ ],
+ [
+  "xian-chi",
+  "detailedDef",
+  "",
+  "Xian Chi was originally an ancient astro"
+ ],
+ [
+  "ge-ju",
+  "shortDef",
+  "命局归类",
+  "The structural classification of a chart — its governing arrangement."
+ ],
+ [
+  "zheng-guan-ge",
+  "shortDef",
+  "",
+  "The Direct Officer as the chart's governing structure — legitimacy and position."
+ ],
+ [
+  "qi-sha-ge",
+  "shortDef",
+  "",
+  "Seven Killings as the governing structure — power under pressure."
+ ],
+ [
+  "cai-ge",
+  "shortDef",
+  "",
+  "Wealth as the governing structure — resources and stewardship."
+ ],
+ [
+  "shi-shen-ge",
+  "shortDef",
+  "",
+  "The Eating God as the governing structure — easy, productive flow."
+ ],
+ [
+  "shang-guan-ge",
+  "shortDef",
+  "",
+  "Hurting Officer as the governing structure — brilliance and rebellion."
+ ],
+ [
+  "jian-lu-ge",
+  "en",
+  "Established Salary Pattern",
+  "Established Prosperity Pattern (Jian Lu Ge)"
+ ],
+ [
+  "yang-ren-ge",
+  "shortDef",
+  "",
+  "The Yang Blade structure — immense force needing an outlet."
+ ],
+ [
+  "cong-ge",
+  "shortDef",
+  "弃命从势",
+  "Following structures: a helpless Day Master yields to the dominant force."
+ ],
+ [
+  "cong-cai-ge",
+  "shortDef",
+  "",
+  "Following Wealth: the whole chart yields to dominant Wealth."
+ ],
+ [
+  "cong-sha-ge",
+  "shortDef",
+  "",
+  "Following Killings: yielding to dominant authority and pressure."
+ ],
+ [
+  "cong-er-ge",
+  "shortDef",
+  "",
+  "Following the Children: yielding to dominant Output (expression)."
+ ],
+ [
+  "cong-ruo-ge",
+  "shortDef",
+  "无根无助，弃命从弱",
+  "Following Weakness: rootless and unaided, the Day Master abandons itself to the weak side."
+ ],
+ [
+  "cong-qiang-ge",
+  "shortDef",
+  "比劫印旺，顺其势",
+  "Following Strength: with Peers and Seals dominant, the chart flows with its own power."
+ ],
+ [
+  "hua-qi-ge",
+  "shortDef",
+  "天干五合而化",
+  "Transformation structure: leading stems combine and the chart transforms to a new element."
+ ],
+ [
+  "zhuan-wang-ge",
+  "shortDef",
+  "一行独旺",
+  "Single-phase dominance: one element fills the chart."
+ ],
+ [
+  "qu-zhi-ge",
+  "shortDef",
+  "木专旺",
+  "Wood Dominance: Wood alone prevails (Qu Zhi)."
+ ],
+ [
+  "yan-shang-ge",
+  "shortDef",
+  "火专旺",
+  "Fire Dominance: Fire alone prevails (Yan Shang)."
+ ],
+ [
+  "jia-se-ge",
+  "shortDef",
+  "土专旺",
+  "Earth Dominance: Earth alone prevails (Jia Se)."
+ ],
+ [
+  "cong-ge-jin",
+  "shortDef",
+  "金专旺",
+  "Metal Dominance: Metal alone prevails (Cong Ge)."
+ ],
+ [
+  "run-xia-ge",
+  "shortDef",
+  "水专旺",
+  "Water Dominance: Water alone prevails (Run Xia)."
+ ],
+ [
+  "pai-pan",
+  "shortDef",
+  "起盘",
+  "Constructing the chart: computing the pillars, palaces, and cycles."
+ ],
+ [
+  "qi-yun",
+  "shortDef",
+  "定大运起点",
+  "Fixing the starting age of the first Decadal Luck cycle."
+ ],
+ [
+  "jiao-yun",
+  "shortDef",
+  "换大运",
+  "The handover between one Decadal Luck cycle and the next."
+ ],
+ [
+  "sui-yun-bing-lin",
+  "shortDef",
+  "流年与大运同柱",
+  "The Annual Year landing on the same pillar as the Decadal Luck — doubled force."
+ ],
+ [
+  "tai-sui",
+  "shortDef",
+  "值年之神",
+  "The presiding spirit of the year — the year's branch itself."
+ ],
+ [
+  "fan-tai-sui",
+  "shortDef",
+  "",
+  "Disturbing Tai Sui: any clash, harm, or punishment involving the year's branch."
+ ],
+ [
+  "chong-tai-sui",
+  "shortDef",
+  "",
+  "A direct clash with the year's Tai Sui."
+ ],
+ [
+  "xing-tai-sui",
+  "shortDef",
+  "",
+  "A punishing relationship with the year's Tai Sui."
+ ],
+ [
+  "hai-tai-sui",
+  "shortDef",
+  "",
+  "A harmful relationship with the year's Tai Sui."
+ ],
+ [
+  "shu-xiang",
+  "en",
+  "Zodiac Sign",
+  "Zodiac Sign (Shu Xiang)"
+ ],
+ [
+  "shu-xiang",
+  "shortDef",
+  "",
+  "The animal of the birth year — same as Sheng Xiao."
+ ],
+ [
+  "san-he",
+  "shortDef",
+  "地支三合局",
+  "Three-branch combinations forming an elemental frame (e.g. Shen–Zi–Chen gathers Water)."
+ ],
+ [
+  "san-hui",
+  "shortDef",
+  "地支三会方",
+  "Three-branch seasonal assemblies (e.g. Yin–Mao–Chen gathers Wood)."
+ ],
+ [
+  "liu-hai",
+  "shortDef",
+  "",
+  "Six Harms — branch pairs that quietly undermine each other."
+ ],
+ [
+  "xiang-xing",
+  "shortDef",
+  "三刑",
+  "Mutual Punishment — the punishing branch groups."
+ ],
+ [
+  "xiang-po",
+  "shortDef",
+  "六破",
+  "Mutual Break — the six breaking branch pairs."
+ ],
+ [
+  "he-hun",
+  "shortDef",
+  "八字合婚",
+  "Marriage compatibility assessed through the two BaZi charts."
+ ],
+ [
+  "he-bazi",
+  "shortDef",
+  "",
+  "Comparing two Eight-Character charts for compatibility."
+ ],
+ [
+  "gua-ci",
+  "en",
+  "Hexagram Judgment (Guaci)",
+  "Hexagram Judgment (Gua Ci)"
+ ],
+ [
+  "yao-ci",
+  "en",
+  "Line Commentary (Yaoci)",
+  "Line Statements (Yao Ci)"
+ ],
+ [
+  "ming-gong-ziwei",
+  "detailedDef(+)",
+  "",
+  "(For the BaZi term of the same name, see ming-gong.)"
+ ],
+ [
+  "hua-lu",
+  "detailedDef(sub)",
+  "Associated with Wood and Spring energy",
+  "In one common school, associated with Wood and Spring energy"
+ ],
+ [
+  "hua-quan",
+  "detailedDef(sub)",
+  "Associated with Fire and Summer energy",
+  "In one common school, associated with Fire and Summer energy"
+ ],
+ [
+  "hua-ke",
+  "detailedDef(sub)",
+  "Associated with Metal and Autumn energy",
+  "In one common school, associated with Metal and Autumn energy"
+ ],
+ [
+  "hua-ji",
+  "detailedDef(sub)",
+  "Associated with Water and Winter energy",
+  "In one common school, associated with Water and Winter energy"
+ ],
+ [
+  "san-fang-si-zheng",
+  "en",
+  "Triangular & Polar Assembly",
+  "Trine and Opposition (San Fang Si Zheng)"
+ ],
+ [
+  "san-fang-si-zheng",
+  "detailedDef(sub)",
+  "Forms a tetrahedron of influence:",
+  "Forms a four-point field of view:"
+ ],
+ [
+  "liu-qin-liuyao",
+  "detailedDef(+)",
+  "",
+  "(For the BaZi term of the same name, see liu-qin.)"
+ ],
+ [
+  "ming-pan",
+  "zh",
+  "命盘",
+  "命盤"
+ ],
+ [
+  "da-yun",
+  "zh",
+  "大运",
+  "大運"
+ ],
+ [
+  "xiao-yun",
+  "zh",
+  "小运",
+  "小運"
+ ],
+ [
+  "sui-yun",
+  "zh",
+  "岁运",
+  "歲運"
+ ],
+ [
+  "ming-gong",
+  "zh",
+  "命宫",
+  "命宮"
+ ],
+ [
+  "shen-gong",
+  "zh",
+  "身宫",
+  "身宮"
+ ],
+ [
+  "xian-shen",
+  "zh",
+  "闲神",
+  "閒神"
+ ],
+ [
+  "tiao-hou",
+  "zh",
+  "调候",
+  "調候"
+ ],
+ [
+  "tong-guan",
+  "zh",
+  "通关",
+  "通關"
+ ],
+ [
+  "bing-yao",
+  "zh",
+  "病药",
+  "病藥"
+ ],
+ [
+  "liu-qin",
+  "zh",
+  "六亲",
+  "六親"
+ ],
+ [
+  "xiang-ke",
+  "zh",
+  "相克",
+  "相剋"
+ ],
+ [
+  "ke",
+  "zh",
+  "克",
+  "剋"
+ ],
+ [
+  "xie",
+  "zh",
+  "泄",
+  "洩"
+ ],
+ [
+  "bang",
+  "zh",
+  "帮",
+  "幫"
+ ],
+ [
+  "chong",
+  "zh",
+  "冲",
+  "衝"
+ ],
+ [
+  "na-yin",
+  "zh",
+  "纳音",
+  "納音"
+ ],
+ [
+  "ganzhi-jinian",
+  "zh",
+  "干支纪年",
+  "干支紀年"
+ ],
+ [
+  "jie-cai",
+  "zh",
+  "劫财",
+  "劫財"
+ ],
+ [
+  "shang-guan",
+  "zh",
+  "伤官",
+  "傷官"
+ ],
+ [
+  "pian-cai",
+  "zh",
+  "偏财",
+  "偏財"
+ ],
+ [
+  "zheng-cai",
+  "zh",
+  "正财",
+  "正財"
+ ],
+ [
+  "qi-sha",
+  "zh",
+  "七杀",
+  "七殺"
+ ],
+ [
+  "xiao-shen",
+  "zh",
+  "枭神",
+  "梟神"
+ ],
+ [
+  "jian-lu",
+  "zh",
+  "建禄",
+  "建祿"
+ ],
+ [
+  "lu-shen",
+  "zh",
+  "禄神",
+  "祿神"
+ ],
+ [
+  "cai-guan-yin",
+  "zh",
+  "财官印",
+  "財官印"
+ ],
+ [
+  "sha-yin-xiang-sheng",
+  "zh",
+  "杀印相生",
+  "殺印相生"
+ ],
+ [
+  "shi-shen-zhi-sha",
+  "zh",
+  "食神制杀",
+  "食神制殺"
+ ],
+ [
+  "shang-guan-pei-yin",
+  "zh",
+  "伤官配印",
+  "傷官配印"
+ ],
+ [
+  "shang-guan-jian-guan",
+  "zh",
+  "伤官见官",
+  "傷官見官"
+ ],
+ [
+  "guan-sha-hunza",
+  "zh",
+  "官杀混杂",
+  "官殺混雜"
+ ],
+ [
+  "cai-xing-huai-yin",
+  "zh",
+  "财星坏印",
+  "財星壞印"
+ ],
+ [
+  "xiao-shen-duo-shi",
+  "zh",
+  "枭神夺食",
+  "梟神奪食"
+ ],
+ [
+  "bi-jie-duo-cai",
+  "zh",
+  "比劫夺财",
+  "比劫奪財"
+ ],
+ [
+  "tian-yi-guiren",
+  "zh",
+  "天乙贵人",
+  "天乙貴人"
+ ],
+ [
+  "yi-ma",
+  "zh",
+  "驿马",
+  "驛馬"
+ ],
+ [
+  "hua-gai",
+  "zh",
+  "华盖",
+  "華蓋"
+ ],
+ [
+  "jiang-xing",
+  "zh",
+  "将星",
+  "將星"
+ ],
+ [
+  "zai-sha",
+  "zh",
+  "灾煞",
+  "災煞"
+ ],
+ [
+  "hong-luan",
+  "zh",
+  "红鸾",
+  "紅鑾"
+ ],
+ [
+  "mu-ku",
+  "zh",
+  "墓库",
+  "墓庫"
+ ],
+ [
+  "yin-yang-chacuo",
+  "zh",
+  "阴阳差错",
+  "陰陽差錯"
+ ],
+ [
+  "guo-yin",
+  "zh",
+  "国印",
+  "國印"
+ ],
+ [
+  "qi-sha-ge",
+  "zh",
+  "七杀格",
+  "七殺格"
+ ],
+ [
+  "cai-ge",
+  "zh",
+  "财格",
+  "財格"
+ ],
+ [
+  "shang-guan-ge",
+  "zh",
+  "伤官格",
+  "傷官格"
+ ],
+ [
+  "jian-lu-ge",
+  "zh",
+  "建禄格",
+  "建祿格"
+ ],
+ [
+  "cong-ge",
+  "zh",
+  "从格",
+  "從格"
+ ],
+ [
+  "cong-cai-ge",
+  "zh",
+  "从财格",
+  "從財格"
+ ],
+ [
+  "cong-sha-ge",
+  "zh",
+  "从杀格",
+  "從殺格"
+ ],
+ [
+  "cong-er-ge",
+  "zh",
+  "从儿格",
+  "從兒格"
+ ],
+ [
+  "cong-ruo-ge",
+  "zh",
+  "从弱格",
+  "從弱格"
+ ],
+ [
+  "cong-qiang-ge",
+  "zh",
+  "从强格",
+  "從强格"
+ ],
+ [
+  "hua-qi-ge",
+  "zh",
+  "化气格",
+  "化氣格"
+ ],
+ [
+  "zhuan-wang-ge",
+  "zh",
+  "专旺格",
+  "專旺格"
+ ],
+ [
+  "jia-se-ge",
+  "zh",
+  "稼穑格",
+  "稼穡格"
+ ],
+ [
+  "cong-ge-jin",
+  "zh",
+  "从革格",
+  "從革格"
+ ],
+ [
+  "run-xia-ge",
+  "zh",
+  "润下格",
+  "潤下格"
+ ],
+ [
+  "pai-pan",
+  "zh",
+  "排盘",
+  "排盤"
+ ],
+ [
+  "qi-yun",
+  "zh",
+  "起运",
+  "起運"
+ ],
+ [
+  "jiao-yun",
+  "zh",
+  "交运",
+  "交運"
+ ],
+ [
+  "sui-yun-bing-lin",
+  "zh",
+  "岁运并临",
+  "歲運並臨"
+ ],
+ [
+  "tai-sui",
+  "zh",
+  "太岁",
+  "太歲"
+ ],
+ [
+  "fan-tai-sui",
+  "zh",
+  "犯太岁",
+  "犯太歲"
+ ],
+ [
+  "chong-tai-sui",
+  "zh",
+  "冲太岁",
+  "衝太歲"
+ ],
+ [
+  "xing-tai-sui",
+  "zh",
+  "刑太岁",
+  "刑太歲"
+ ],
+ [
+  "hai-tai-sui",
+  "zh",
+  "害太岁",
+  "害太歲"
+ ],
+ [
+  "shu-xiang",
+  "zh",
+  "属相",
+  "屬相"
+ ],
+ [
+  "san-hui",
+  "zh",
+  "三会",
+  "三會"
+ ],
+ [
+  "liu-chong",
+  "zh",
+  "六冲",
+  "六衝"
+ ],
+ [
+  "shier-changsheng",
+  "zh",
+  "十二长生",
+  "十二長生"
+ ],
+ [
+  "bian-yao",
+  "zh",
+  "变爻",
+  "變爻"
+ ],
+ [
+  "gua-ci",
+  "zh",
+  "卦辞",
+  "卦辭"
+ ],
+ [
+  "yao-ci",
+  "zh",
+  "爻辞",
+  "爻辭"
+ ],
+ [
+  "ming-gong-ziwei",
+  "zh",
+  "命宫",
+  "命宮"
+ ],
+ [
+  "shen-gong-ziwei",
+  "zh",
+  "身宫",
+  "身宮"
+ ],
+ [
+  "shier-gong",
+  "zh",
+  "十二宫",
+  "十二宮"
+ ],
+ [
+  "hua-lu",
+  "zh",
+  "化禄",
+  "化祿"
+ ],
+ [
+  "hua-quan",
+  "zh",
+  "化权",
+  "化權"
+ ],
+ [
+  "ying-yao",
+  "zh",
+  "应爻",
+  "應爻"
+ ],
+ [
+  "liu-qin-liuyao",
+  "zh",
+  "六亲",
+  "六親"
+ ],
+ [
+  "qi-cai-yao",
+  "zh",
+  "妻财爻",
+  "妻財爻"
+ ],
+ [
+  "zi-sun-yao",
+  "zh",
+  "子孙爻",
+  "子孫爻"
+ ],
+ [
+  "fei-shen",
+  "zh",
+  "飞神",
+  "飛神"
+ ],
+ [
+  "dong-bian",
+  "zh",
+  "动变",
+  "動變"
+ ],
+ [
+  "jin-shen-tui-shen",
+  "zh",
+  "进神退神",
+  "進神退神"
+ ]
+]
