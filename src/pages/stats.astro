@@ -237,13 +237,17 @@ const cfStats = {
       }
     } catch (e) {}
 
+    // Escape plain text (the 404 path comes from location.pathname + search)
+    // before interpolating into innerHTML.
+    const escHtml = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
+
     // 3. 读取 404 捕获日志
     try {
       const missed = localStorage.getItem("cal_last_404_path");
       const missedTime = localStorage.getItem("cal_last_404_time");
       const logEl = document.getElementById("client-404-log");
       if (missed && logEl) {
-        logEl.innerHTML = `<span style="color:var(--red);font-weight:700">${missed}</span> (${new Date(parseInt(missedTime, 10)).toLocaleTimeString()})`;
+        logEl.innerHTML = `<span style="color:var(--red);font-weight:700">${escHtml(missed)}</span> (${new Date(parseInt(missedTime, 10)).toLocaleTimeString()})`;
       }
     } catch (e) {}
 
