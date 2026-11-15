@@ -143,17 +143,17 @@ const schemaJsonLd = {
 
       <form id="auth-form" style="display:flex;flex-direction:column;gap:14px">
         <div id="field-name" style="display:none">
-          <label style="display:block;font-size:12px;color:var(--ink-700);margin-bottom:4px;font-weight:600">稱呼 / 暱稱 (Display Name)</label>
+          <label style="display:block;font-size:12px;color:var(--ink-700);margin-bottom:4px;font-weight:600" for="input-name">稱呼 / 暱稱 (Display Name)</label>
           <input type="text" id="input-name" placeholder="如：Julian V. 或 研易者" style="width:100%;padding:8px 12px;border:1px solid var(--ink-300);border-radius:var(--radius-btn);font-size:14px" />
         </div>
 
         <div>
-          <label style="display:block;font-size:12px;color:var(--ink-700);margin-bottom:4px;font-weight:600">電子信箱 (Email)</label>
+          <label style="display:block;font-size:12px;color:var(--ink-700);margin-bottom:4px;font-weight:600" for="input-email">電子信箱 (Email)</label>
           <input type="email" id="input-email" required placeholder="your.name@example.com" style="width:100%;padding:8px 12px;border:1px solid var(--ink-300);border-radius:var(--radius-btn);font-size:14px" />
         </div>
 
         <div>
-          <label style="display:block;font-size:12px;color:var(--ink-700);margin-bottom:4px;font-weight:600">密碼 (Password)</label>
+          <label style="display:block;font-size:12px;color:var(--ink-700);margin-bottom:4px;font-weight:600" for="input-password">密碼 (Password)</label>
           <input type="password" id="input-password" required placeholder="至少 6 位密碼" style="width:100%;padding:8px 12px;border:1px solid var(--ink-300);border-radius:var(--radius-btn);font-size:14px" />
         </div>
 
@@ -179,7 +179,7 @@ const schemaJsonLd = {
 
       <form id="post-topic-form" style="display:flex;flex-direction:column;gap:14px">
         <div>
-          <label style="display:block;font-size:12px;color:var(--ink-700);margin-bottom:4px;font-weight:600">學術分類 (Category)</label>
+          <label style="display:block;font-size:12px;color:var(--ink-700);margin-bottom:4px;font-weight:600" for="topic-cat">學術分類 (Category)</label>
           <select id="topic-cat" style="width:100%;padding:8px 12px;border:1px solid var(--ink-300);border-radius:var(--radius-btn);font-size:14px">
             <option value="Classics & Errata">典籍校勘與底本 (Classics & Errata)</option>
             <option value="BaZi & Destiny">八字與時空模型 (BaZi & Destiny)</option>
@@ -190,12 +190,12 @@ const schemaJsonLd = {
         </div>
 
         <div>
-          <label style="display:block;font-size:12px;color:var(--ink-700);margin-bottom:4px;font-weight:600">研討標題 (Title)</label>
+          <label style="display:block;font-size:12px;color:var(--ink-700);margin-bottom:4px;font-weight:600" for="topic-title">研討標題 (Title)</label>
           <input type="text" id="topic-title" required placeholder="如：關於某某典籍某爻辭之校勘異議" style="width:100%;padding:8px 12px;border:1px solid var(--ink-300);border-radius:var(--radius-btn);font-size:14px" />
         </div>
 
         <div>
-          <label style="display:block;font-size:12px;color:var(--ink-700);margin-bottom:4px;font-weight:600">研討正文 (Content)</label>
+          <label style="display:block;font-size:12px;color:var(--ink-700);margin-bottom:4px;font-weight:600" for="topic-content">研討正文 (Content)</label>
           <textarea id="topic-content" required rows="5" placeholder="請填寫具體學術分析、版本出處或研討見解（嚴禁商業外鏈與醫療話題）..." style="width:100%;padding:8px 12px;border:1px solid var(--ink-300);border-radius:var(--radius-btn);font-size:14px;resize:vertical"></textarea>
         </div>
 
@@ -398,11 +398,17 @@ const schemaJsonLd = {
     }
   }
 
+  // Escape plain-text user input before interpolating into innerHTML templates.
+  // Display names and topic title/content are free text (no markup).
+  function escapeHtml(s) {
+    return String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
+  }
+
   function updateAuthUI() {
     const statusText = document.getElementById('user-status-text');
     const authBtn = document.getElementById('btn-open-auth');
     if (currentUser) {
-      statusText.innerHTML = `👤 <strong>${currentUser.name}</strong> <span style="font-size:12px;color:var(--success)">[Verified]</span>`;
+      statusText.innerHTML = `👤 <strong>${escapeHtml(currentUser.name)}</strong> <span style="font-size:12px;color:var(--success)">[Verified]</span>`;
       authBtn.textContent = 'Sign Out · 登出';
     } else {
       statusText.textContent = '访客（未登入）';
@@ -440,12 +446,12 @@ const schemaJsonLd = {
             <span style="font-size:11px;color:var(--red);background:#FEF2F2;padding:2px 6px;border-radius:2px">NEW</span>
             <span style="font-size:12px;color:var(--ink-500)">· ${t.createdAt}</span>
           </div>
-          <h3 style="font-family:var(--font-heading);font-size:18px;font-weight:700;color:var(--ink);margin:0 0 6px">${t.title}</h3>
-          <p style="font-size:13px;color:var(--ink-700);line-height:1.5;margin:0">${t.content}</p>
+          <h3 style="font-family:var(--font-heading);font-size:18px;font-weight:700;color:var(--ink);margin:0 0 6px">${escapeHtml(t.title)}</h3>
+          <p style="font-size:13px;color:var(--ink-700);line-height:1.5;margin:0">${escapeHtml(t.content)}</p>
         </div>
         <div style="text-align:right;min-width:100px">
           <div style="font-size:14px;font-weight:700;color:var(--ink)">💬 0</div>
-          <div style="font-size:12px;color:var(--ink-500);margin-top:4px">${t.author}</div>
+          <div style="font-size:12px;color:var(--ink-500);margin-top:4px">${escapeHtml(t.author)}</div>
         </div>
       </div>
     `;
