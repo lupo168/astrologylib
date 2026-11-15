@@ -67,7 +67,7 @@ const description = "Open-access scholarly discussion on classical texts, BaZi m
       </div>
 
       <form id="reply-form" style="display:none;flex-direction:column;gap:12px">
-        <textarea id="reply-content" required rows="4" placeholder="請理性陳述您的學術見解、版本出處或對讀分析（嚴禁商業推廣外鏈）..." style="width:100%;padding:10px 14px;border:1px solid var(--ink-300);border-radius:var(--radius-btn);font-size:14px;resize:vertical"></textarea>
+        <textarea id="reply-content" required rows="4" aria-label="發表您的研討見解 / 校勘考據" placeholder="請理性陳述您的學術見解、版本出處或對讀分析（嚴禁商業推廣外鏈）..." style="width:100%;padding:10px 14px;border:1px solid var(--ink-300);border-radius:var(--radius-btn);font-size:14px;resize:vertical"></textarea>
         <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px">
           <span style="font-size:12px;color:var(--ink-500)">* 已通過 Cloudflare 隱形安全防護與 De-TCM 脫敏審核</span>
           <button type="submit" style="background:var(--ink);color:#fff;border:none;padding:8px 22px;font-size:14px;font-weight:600;border-radius:var(--radius-btn);cursor:pointer">
@@ -173,6 +173,12 @@ const description = "Open-access scholarly discussion on classical texts, BaZi m
     injectQAPageSchema(currentTopic);
   }
 
+  // Escape plain-text user input before interpolating into innerHTML templates.
+  // Reply author/role/content are user-typed free text (no markup).
+  function escapeHtml(s) {
+    return String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
+  }
+
   function renderReplies() {
     const container = document.getElementById('replies-container');
     const replies = currentTopic.replies || [];
@@ -187,12 +193,12 @@ const description = "Open-access scholarly discussion on classical texts, BaZi m
       <div style="background:#fff;border:1px solid var(--ink-300);border-radius:var(--radius-card);padding:20px 24px">
         <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;font-size:13px">
           <div>
-            <strong style="color:var(--ink)">${r.author}</strong>
-            ${r.authorRole ? `<span style="margin-left:8px;font-size:11px;color:var(--ink-500);background:#F3F4F6;padding:1px 6px;border-radius:2px">${r.authorRole}</span>` : ''}
+            <strong style="color:var(--ink)">${escapeHtml(r.author)}</strong>
+            ${r.authorRole ? `<span style="margin-left:8px;font-size:11px;color:var(--ink-500);background:#F3F4F6;padding:1px 6px;border-radius:2px">${escapeHtml(r.authorRole)}</span>` : ''}
           </div>
           <span style="color:var(--ink-500);font-size:12px">${r.createdAt}</span>
         </div>
-        <p style="font-size:15px;line-height:1.7;color:var(--ink);margin:0 0 12px;white-space:pre-wrap">${r.content}</p>
+        <p style="font-size:15px;line-height:1.7;color:var(--ink);margin:0 0 12px;white-space:pre-wrap">${escapeHtml(r.content)}</p>
         <div style="display:flex;align-items:center;gap:6px;font-size:12px;color:var(--ink-500)">
           <span>👍 贊同 (${r.likes})</span>
         </div>
