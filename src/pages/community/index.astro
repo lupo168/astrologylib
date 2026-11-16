@@ -128,12 +128,12 @@ const schemaJsonLd = {
 
   </div>
 
-  <!-- 极简注册/登录弹窗 (纯原生 Modal) -->
-  <div id="auth-modal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:999;align-items:center;justify-content:center;padding:20px">
+  <!-- 极简注册/登录弹窗 (原生 <dialog>) -->
+  <dialog id="auth-modal" closedby="any" aria-labelledby="auth-modal-title" style="border:0;padding:0;background:transparent;width:100%;max-width:420px">
     <div style="background:#fff;border-radius:var(--radius-card);width:100%;max-width:420px;padding:28px 32px;box-shadow:0 12px 32px rgba(0,0,0,0.15)">
       <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:18px">
         <h3 id="auth-modal-title" style="font-size:18px;font-weight:700;color:var(--ink);margin:0">Sign In to Community</h3>
-        <button id="btn-close-auth" style="background:none;border:none;font-size:20px;cursor:pointer;color:var(--ink-500)">×</button>
+        <button id="btn-close-auth" aria-label="Close" style="background:none;border:none;font-size:20px;cursor:pointer;color:var(--ink-500)">×</button>
       </div>
 
       <div style="display:flex;gap:12px;margin-bottom:20px;border-bottom:1px solid var(--ink-300)">
@@ -149,7 +149,7 @@ const schemaJsonLd = {
 
         <div>
           <label style="display:block;font-size:12px;color:var(--ink-700);margin-bottom:4px;font-weight:600" for="input-email">電子信箱 (Email)</label>
-          <input type="email" id="input-email" required placeholder="your.name@example.com" style="width:100%;padding:8px 12px;border:1px solid var(--ink-300);border-radius:var(--radius-btn);font-size:14px" />
+          <input type="email" id="input-email" autofocus required placeholder="your.name@example.com" style="width:100%;padding:8px 12px;border:1px solid var(--ink-300);border-radius:var(--radius-btn);font-size:14px" />
         </div>
 
         <div>
@@ -167,20 +167,20 @@ const schemaJsonLd = {
         </button>
       </form>
     </div>
-  </div>
+  </dialog>
 
   <!-- 极简发帖弹窗 -->
-  <div id="new-topic-modal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:999;align-items:center;justify-content:center;padding:20px">
+  <dialog id="new-topic-modal" closedby="any" aria-labelledby="new-topic-title" style="border:0;padding:0;background:transparent;width:100%;max-width:560px">
     <div style="background:#fff;border-radius:var(--radius-card);width:100%;max-width:560px;padding:28px 32px;box-shadow:0 12px 32px rgba(0,0,0,0.15)">
       <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
-        <h3 style="font-size:18px;font-weight:700;color:var(--ink);margin:0">發起新研討 / 勘誤</h3>
-        <button id="btn-close-topic" style="background:none;border:none;font-size:20px;cursor:pointer;color:var(--ink-500)">×</button>
+        <h3 id="new-topic-title" style="font-size:18px;font-weight:700;color:var(--ink);margin:0">發起新研討 / 勘誤</h3>
+        <button id="btn-close-topic" aria-label="Close" style="background:none;border:none;font-size:20px;cursor:pointer;color:var(--ink-500)">×</button>
       </div>
 
       <form id="post-topic-form" style="display:flex;flex-direction:column;gap:14px">
         <div>
           <label style="display:block;font-size:12px;color:var(--ink-700);margin-bottom:4px;font-weight:600" for="topic-cat">學術分類 (Category)</label>
-          <select id="topic-cat" style="width:100%;padding:8px 12px;border:1px solid var(--ink-300);border-radius:var(--radius-btn);font-size:14px">
+          <select id="topic-cat" autofocus style="width:100%;padding:8px 12px;border:1px solid var(--ink-300);border-radius:var(--radius-btn);font-size:14px">
             <option value="Classics & Errata">典籍校勘與底本 (Classics & Errata)</option>
             <option value="BaZi & Destiny">八字與時空模型 (BaZi & Destiny)</option>
             <option value="Feng Shui">風水與微氣候 (Feng Shui)</option>
@@ -209,7 +209,7 @@ const schemaJsonLd = {
         </button>
       </form>
     </div>
-  </div>
+  </dialog>
 
 </BaseLayout>
 
@@ -246,6 +246,15 @@ const schemaJsonLd = {
     color: #fff !important;
     border-color: var(--ink);
   }
+  /* 原生 <dialog>：阻止背景页随弹窗滚动；遮罩由 ::backdrop 承载 */
+  dialog:modal {
+    overscroll-behavior: contain;
+  }
+  dialog::backdrop {
+    background: rgba(0,0,0,0.5);
+    overflow: hidden;
+    overscroll-behavior: contain;
+  }
 </style>
 
 <script>
@@ -276,6 +285,20 @@ const schemaJsonLd = {
     const authModal = document.getElementById('auth-modal');
     const topicModal = document.getElementById('new-topic-modal');
 
+    // closedby="any" 轻触关闭在 Safari 尚不支持：按指南用指针位置检测补齐
+    // （Chrome 134+ / Edge 134+ / Firefox 141+ 原生支持 closedby）
+    if (!('closedBy' in HTMLDialogElement.prototype)) {
+      const outside = (e, dialog) => {
+        const r = dialog.getBoundingClientRect();
+        return e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom;
+      };
+      for (const dialog of [authModal, topicModal]) {
+        let pressedOutside = false;
+        dialog.addEventListener('pointerdown', (e) => { pressedOutside = outside(e, dialog); });
+        dialog.addEventListener('pointerup', (e) => { if (pressedOutside && outside(e, dialog)) dialog.close(); });
+      }
+    }
+
     document.getElementById('btn-open-auth').addEventListener('click', () => {
       if (currentUser) {
         if (confirm(`當前登入者：${currentUser.name} (${currentUser.email})\n是否登出？`)) {
@@ -289,11 +312,11 @@ const schemaJsonLd = {
     });
 
     document.getElementById('btn-close-auth').addEventListener('click', () => {
-      authModal.style.display = 'none';
+      authModal.close();
     });
 
     document.getElementById('btn-close-topic').addEventListener('click', () => {
-      topicModal.style.display = 'none';
+      topicModal.close();
     });
 
     document.getElementById('tab-login').addEventListener('click', () => switchAuthMode('login'));
@@ -305,7 +328,7 @@ const schemaJsonLd = {
         alert("🔒 研討區嚴防機器人亂入，發帖前請先【註冊或登入】驗證身分。");
         openAuthModal('register');
       } else {
-        topicModal.style.display = 'flex';
+        if (!topicModal.open) topicModal.showModal();
       }
     });
 
@@ -321,7 +344,7 @@ const schemaJsonLd = {
       currentUser = { email, name, role: 'Scholar Member', loginAt: new Date().toISOString() };
       localStorage.setItem('cal_community_user', JSON.stringify(currentUser));
       updateAuthUI();
-      authModal.style.display = 'none';
+      authModal.close();
       alert(`✓ 歡迎您，${name}！身分驗證成功。`);
     });
 
@@ -359,7 +382,7 @@ const schemaJsonLd = {
       };
 
       prependTopicRow(newTopic);
-      topicModal.style.display = 'none';
+      topicModal.close();
       document.getElementById('post-topic-form').reset();
       alert("✓ 研討主題已成功發布！");
     });
@@ -367,7 +390,7 @@ const schemaJsonLd = {
 
   function openAuthModal(mode) {
     const modal = document.getElementById('auth-modal');
-    modal.style.display = 'flex';
+    if (!modal.open) modal.showModal();
     switchAuthMode(mode);
   }
 
